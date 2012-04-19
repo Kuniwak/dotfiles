@@ -1,7 +1,6 @@
 " Appearance
 if has('gui_macvim')
   "colorscheme darkburn
-  colorscheme jellybeans
 
   set showtabline=2
   set transparency=3
@@ -11,3 +10,5 @@ if has('gui_macvim')
   
   set transparency=10
 end
+
+colorscheme jellybeans

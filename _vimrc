@@ -10,8 +10,16 @@
 " Vundle {{{
 set nocompatible
 filetype off
-set rtp +=~/.vim/vundle.git/
-call vundle#rc()
+
+" Refer: http://d.hatena.ne.jp/holypp/20110516/1305552171
+if has("win32") || has("win64")
+  set rtp+=~/vimfiles/vundle.git/ 
+  call vundle#rc('~/vimfiles/bundle/')
+else
+  set rtp+=~/.vim/vundle.git/ 
+  call vundle#rc()
+endif
+
 Bundle 'mattn/zencoding-vim'
 Bundle 'nanotech/jellybeans.vim'
 Bundle 'Shougo/vimfiler'
@@ -63,7 +71,7 @@ map <silent> e <Plug>CamelCaseMotion_e
 set tabstop=4
 set shiftwidth=4
 set list
-set listchars=tab:»\ 
+set listchars=tab:>\ 
 set autoindent
 set nosmartindent
 autocmd FileType html set indentexpr&
@@ -122,3 +130,5 @@ map n nzz
 map N Nzz
 map * *zz
 map # #zz
+
+colorscheme jellybeans
