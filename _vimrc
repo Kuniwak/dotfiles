@@ -31,6 +31,7 @@ Bundle 'OrgaChem/JavaScript-syntax'
 Bundle 'thinca/vim-qfreplace'
 Bundle 'thinca/vim-quickrun'
 Bundle 'tomtom/tcomment_vim'
+
 filetype plugin indent on
 " }}}
 
@@ -115,9 +116,11 @@ set number
 " git clone https://github.com/vim-scripts/javascript.vim
 
 set cursorline
-nnoremap o o<Left><Right>
-nnoremap O O<Left><Right>
-inoremap <Enter> <Enter>a<Backspace>
+
+" Keep indent
+"nnoremap o o<Left><Right>
+"nnoremap O O<Left><Right>
+"inoremap <Enter> <Enter>a<Backspace>
 
 set foldcolumn=3
 set foldmethod=marker
