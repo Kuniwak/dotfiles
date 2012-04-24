@@ -31,6 +31,7 @@ Bundle 'OrgaChem/JavaScript-syntax'
 Bundle 'thinca/vim-qfreplace'
 Bundle 'thinca/vim-quickrun'
 Bundle 'tomtom/tcomment_vim'
+Bundle 'timcharper/textile.vim'
 
 filetype plugin indent on
 " }}}
