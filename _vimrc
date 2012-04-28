@@ -135,4 +135,7 @@ map N Nzz
 map * *zz
 map # #zz
 
+" Textile
+let g:TextileBrowser="Google Chrome"
+
 colorscheme jellybeans
