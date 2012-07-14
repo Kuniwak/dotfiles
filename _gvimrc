@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 scriptencoding utf-8 
 
 " Appearance
@@ -8,8 +7,8 @@ if has('gui_macvim')
   set showtabline=2
   set transparency=3
   set guioptions-=T
-  set guifont=Monaco:h12
-  set guifontwide=HiraMaruPro-W4:h12
+  set guifont=Monaco:h11
+  set guifontwide=HiraMaruPro-W4:h11
   
   set transparency=10
 end
@@ -35,4 +34,3 @@ if has('gui_macvim')
 end
 
 colorscheme jellybeans
->>>>>>> Makes small the font size
