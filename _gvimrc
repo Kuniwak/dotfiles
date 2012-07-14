@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 scriptencoding utf-8 
 
 " Appearance
@@ -19,3 +20,19 @@ if has("win32") || has("win64")
 end
 
 colorscheme jellybeans
+=======
+" Appearance
+if has('gui_macvim')
+  "colorscheme darkburn
+
+  set showtabline=2
+  set transparency=3
+  set guioptions-=T
+  set guifont=Monaco:h11
+  set guifontwide=HiraMaruPro-W4:h11
+  
+  set transparency=10
+end
+
+colorscheme jellybeans
+>>>>>>> Makes small the font size
