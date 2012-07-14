@@ -137,5 +137,3 @@ map # #zz
 
 " Textile
 let g:TextileBrowser="Google Chrome"
-
-colorscheme jellybeans
