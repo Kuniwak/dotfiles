@@ -26,6 +26,7 @@ Bundle 'Shougo/vimfiler'
 Bundle 'Shougo/vimproc'
 Bundle 'Shougo/unite.vim'
 Bundle 'Shougo/neocomplcache'
+Bundle 'Shougo/neocomplcache-snippets-complete'
 Bundle 'tpope/vim-surround'
 Bundle 'OrgaChem/JavaScript-syntax'
 Bundle 'thinca/vim-qfreplace'
@@ -94,6 +95,11 @@ let g:netrw_altv=1
 let g:netrw_preview=1
 
 let g:neocomplcache_enable_at_startup=1
+
+" Neocomplcache-snippets-complete
+imap <C-e> <Plug>(neocomplcache_snippets_expand)
+smap <C-e> <Plug>(neocomplcache_snippets_expand)
+command! -nargs=0 Es NeoComplCacheEditSnippets
 
 " Misc
 set display=lastline
