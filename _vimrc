@@ -71,8 +71,8 @@ map <silent> e <Plug>CamelCaseMotion_e
 
 
 " Indent
-set tabstop=4
-set shiftwidth=4
+set tabstop=2
+set shiftwidth=2
 set list
 set listchars=tab:>\ 
 set autoindent
@@ -97,9 +97,9 @@ let g:netrw_preview=1
 let g:neocomplcache_enable_at_startup=1
 
 " Neocomplcache-snippets-complete
-imap <C-e> <Plug>(neocomplcache_snippets_expand)
-smap <C-e> <Plug>(neocomplcache_snippets_expand)
-command! -nargs=0 Es NeoComplCacheEditSnippets
+imap <expr><TAB> neocomplcache#sources#snippets_complete#expandable() ? "\<Plug>(neocomplcache_snippets_expand)" : pumvisible() ? "\<C-n>" : "\<TAB>"
+g:neocomplcache_snippets_dir='~/.vim/snippets'
+" command! -nargs=0 Es NeoComplCacheEditSnippets
 
 " Misc
 set display=lastline
