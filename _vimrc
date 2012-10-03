@@ -141,5 +141,9 @@ map N Nzz
 map * *zz
 map # #zz
 
+" Avoid error of BandleInstall! on Windows
+" https://github.com/gmarik/vundle/issues/192
+set shellxquote=""
+
 " Textile
 let g:TextileBrowser="Google Chrome"
