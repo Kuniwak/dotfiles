@@ -1,0 +1,118 @@
+snippet func
+alias   function
+  function ${1:function_name}(${2:argument}) {
+    ${0:// body...}
+  }
+
+snippet ctor
+alias constructor
+  /**
+   * @constructor
+   */
+
+snippet pa
+alias param
+  @param {${1:type}} ${2:name} ${3:desc}
+
+snippet ret
+alias return
+  @return {${1:type}} ${2:desc}
+
+snippet sub
+alias extends
+  /**
+   * @constructor
+   * @extends {${1:super}}
+   */
+  ${2:sub} = function(${3}) {
+    goog.base(this${4});
+    ${0}
+  };
+  goog.inherits($2, $1);
+
+snippet priv
+alias private
+  /** @private */
+
+snippet protec
+alias protected
+  /** @protected */
+
+snippet ov
+alias override
+  /** @override */
+
+snippet author
+  /**
+   * @author orga.chem.job@gmail.com (OrgaChem)
+   */
+
+snippet inh
+alias inherits
+  goog.inherits(${1:sub}, ${2:super});
+
+snippet req
+alias require
+  goog.require('${1}');
+
+snippet prov
+alias provide
+  goog.provide('${1}');
+
+snippet abs
+alias abstract
+  goog.abstractMethod
+
+snippet nf
+alias nullfunction
+  goog.nullFunction
+
+snippet di
+alias disposeInternal
+  disposeInternal = function() {
+    goog.base(this, 'disposeInternal');
+    ${0}
+  };
+
+snippet listen
+  .listen(
+  /* src  */ ${1},
+  /* type */ ${2},
+  /* capt */ ${3});
+
+snippet arr
+alias array
+  goog.array.${1}
+
+snippet obj
+alias object
+  goog.object.${0}
+
+snippet forEach
+alias each
+  goog.array.forEach(${1}, function(${2}) {
+    ${0}
+  });
+
+snippet map
+alias each
+  goog.array.forEach(${1}, function(${2}) {
+    ${0}
+  });
+
+snippet arrcontains
+alias array.contains
+  goog.array.contains(${1}, ${2});
+
+snippet arrrm
+alias array.remove
+  goog.array.remove(${1}, ${2});
+
+snippet log
+  console.log(${0});
+
+snippet assert
+  goog.assert.{0}
+
+snippet ins
+  instanceof

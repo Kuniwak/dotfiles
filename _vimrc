@@ -25,14 +25,15 @@ Bundle 'nanotech/jellybeans.vim'
 Bundle 'Shougo/vimfiler'
 Bundle 'Shougo/vimproc'
 Bundle 'Shougo/unite.vim'
-Bundle 'Shougo/neocomplcache'
-Bundle 'Shougo/neocomplcache-snippets-complete'
+Bundle 'Shougo/neocomplcache.git'
+Bundle 'Shougo/neosnippet.git'
 Bundle 'tpope/vim-surround'
 Bundle 'OrgaChem/JavaScript-syntax'
 Bundle 'thinca/vim-qfreplace'
 Bundle 'thinca/vim-quickrun'
 Bundle 'tomtom/tcomment_vim'
 Bundle 'timcharper/textile.vim'
+Bundle 'scrooloose/syntastic'
 
 filetype plugin indent on
 " }}}
@@ -96,10 +97,20 @@ let g:netrw_preview=1
 
 let g:neocomplcache_enable_at_startup=1
 
-" Neocomplcache-snippets-complete
-imap <expr><TAB> neocomplcache#sources#snippets_complete#expandable() ? "\<Plug>(neocomplcache_snippets_expand)" : pumvisible() ? "\<C-n>" : "\<TAB>"
-g:neocomplcache_snippets_dir='~/.vim/snippets'
-" command! -nargs=0 Es NeoComplCacheEditSnippets
+
+" https://github.com/Shougo/neosnippet
+" SuperTab like snippets behavior.
+imap <expr><TAB> neosnippet#expandable() ? "\<Plug>(neosnippet_expand_or_jump)" : pumvisible() ? "\<C-n>" : "\<TAB>"
+smap <expr><TAB> neosnippet#expandable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+
+" For snippet_complete marker.
+if has('conceal')
+  set conceallevel=2 concealcursor=i
+endif
+
+" Tell Neosnippet about the other snippets
+let g:neosnippet#snippets_directory='~/.vim/snippets'
+
 
 " Misc
 set display=lastline
@@ -147,3 +158,16 @@ set shellxquote=""
 
 " Textile
 let g:TextileBrowser="Google Chrome"
+
+" Syntastic
+" http://poozxxx.hatenablog.com/entry/2012/06/21/000914
+let g:syntastic_mode_map = { 'mode': 'active',
+  \ 'active_filetypes': [], 
+  \ 'passive_filetypes': ['html', 'javascript'] }
+let g:syntastic_auto_loc_list = 1 
+let g:syntastic_javascript_checker = 'gjslint'
+
+" Ignoring 2 errors
+"   0005 Illegal tab in white space
+"   0110 Line too long
+let g:syntastic_javascript_gjslint_conf = "--ignore_errors=5,110"
