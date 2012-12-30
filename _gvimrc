@@ -1,8 +1,4 @@
-set encoding=utf-8
 scriptencoding utf-8
-source $VIMRUNTIME/delmenu.vim
-set langmenu=ja_jp.utf-8
-source $VIMRUNTIME/menu.vim
 
 " Appearance
 if has('gui_macvim')
@@ -19,7 +15,8 @@ end
 
 if has("win32") || has("win64")
   set ambiwidth=double
-  set guifont=Consolas:h10
+  set guifont=Source_Code_Pro:h9
+  set guifontwide=Source_Code_Pro:h9
 end
 
 colorscheme jellybeans
