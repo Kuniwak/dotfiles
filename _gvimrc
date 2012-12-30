@@ -1,4 +1,8 @@
-scriptencoding utf-8 
+set encoding=utf-8
+scriptencoding utf-8
+source $VIMRUNTIME/delmenu.vim
+set langmenu=ja_jp.utf-8
+source $VIMRUNTIME/menu.vim
 
 " Appearance
 if has('gui_macvim')
