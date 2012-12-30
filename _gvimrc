@@ -16,7 +16,7 @@ end
 if has("win32") || has("win64")
   set ambiwidth=auto
   "let &guifont = iconv('Osaka－等幅:h10:cSHIFTJIS', &encoding, 'cp932')
-  set guifont = BDF_UM+:h9
+  set guifont=BDF_UM+:h9
 end
 
 colorscheme jellybeans
