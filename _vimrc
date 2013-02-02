@@ -7,35 +7,40 @@
 "set helpfile=$VIMRUNTIME/doc/help.txt
 "filetype plugin on
 
-" Vundle {{{
+" NeoVundle {{{
+"
 set nocompatible
 filetype off
 
-" Refer: http://d.hatena.ne.jp/holypp/20110516/1305552171
-if has("win32") || has("win64")
-  set rtp+=~/vimfiles/vundle.git/ 
-  call vundle#rc('~/vimfiles/bundle/')
-else
-  set rtp+=~/.vim/vundle.git/ 
-  call vundle#rc()
+if has('vim_starting')
+	set runtimepath+=~/vimfiles/bundle/neobundle.vim
 endif
 
-Bundle 'mattn/zencoding-vim'
-Bundle 'nanotech/jellybeans.vim'
-Bundle 'Shougo/vimfiler'
-Bundle 'Shougo/vimproc'
-Bundle 'Shougo/unite.vim'
-Bundle 'Shougo/neocomplcache.git'
-Bundle 'Shougo/neosnippet.git'
-Bundle 'tpope/vim-surround'
-Bundle 'OrgaChem/JavaScript-syntax'
-Bundle 'thinca/vim-qfreplace'
-Bundle 'thinca/vim-quickrun'
-Bundle 'tomtom/tcomment_vim'
-Bundle 'timcharper/textile.vim'
-Bundle 'scrooloose/syntastic'
+call neobundle#rc(expand('~/vimfiles/bundle'))
+
+NeoBundleFetch 'Shougo/neobundle.vim'
+
+NeoBundle "https://github.com/OrgaChem/JavaScript-syntax.git"
+NeoBundle "https://github.com/Shougo/neocomplcache.git"
+NeoBundle "https://github.com/Shougo/neosnippet.git"
+NeoBundle "https://github.com/Shougo/unite.vim.git"
+NeoBundle "https://github.com/Shougo/vimfiler.git"
+NeoBundle "https://github.com/Shougo/vimproc.git"
+NeoBundle "https://github.com/mattn/mkdpreview-vim.git"
+NeoBundle "https://github.com/mattn/zencoding-vim.git"
+NeoBundle "https://github.com/nanotech/jellybeans.vim.git"
+NeoBundle "https://github.com/scrooloose/syntastic.git"
+NeoBundle "https://github.com/thinca/vim-qfreplace.git"
+NeoBundle "https://github.com/thinca/vim-quickrun.git"
+NeoBundle "https://github.com/timcharper/textile.vim.git"
+NeoBundle "https://github.com/tomtom/tcomment_vim.git"
+NeoBundle "https://github.com/tpope/vim-surround.git"
+NeoBundle "https://github.com/h1mesuke/unite-outline.git"
 
 filetype plugin indent on
+
+NeoBundleCheck
+
 " }}}
 
 " 未使用のkaoriyaプラグインを無効化
@@ -89,27 +94,91 @@ set incsearch
 " Insert mode
 set completeopt=menu,menuone,preview
 
-" Netrw
+" Vimfiler {{{
+let g:vimfiler_as_default_explorer = 1
+"}}}
+
+" Netrw {{{
 " Vキーで垂直分割で開く際、右に展開
 let g:netrw_altv=1
 " プレビューで開く際、垂直分割
 let g:netrw_preview=1
+"}}}
 
-let g:neocomplcache_enable_at_startup=1
+" NeoCompleCache {{{
+" Disable AutoComplPop. Comment out this line if AutoComplPop is not installed.
+let g:acp_enableAtStartup = 0
+" Launches neocomplcache automatically on vim startup.
+let g:neocomplcache_enable_at_startup = 1
+" Use smartcase.
+let g:neocomplcache_enable_smart_case = 1
+" Use camel case completion.
+let g:neocomplcache_enable_camel_case_completion = 1
+" Use underscore completion.
+let g:neocomplcache_enable_underbar_completion = 1
+" Sets minimum char length of syntax keyword.
+let g:neocomplcache_min_syntax_length = 3
+" buffer file name pattern that locks neocomplcache. e.g. ku.vim or fuzzyfinder 
+"let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
 
+" Define file-type dependent dictionaries.
+let g:neocomplcache_dictionary_filetype_lists = {
+    \ 'default' : '',
+    \ 'vimshell' : $HOME.'/.vimshell_hist',
+    \ 'scheme' : $HOME.'/.gosh_completions'
+    \ }
 
-" https://github.com/Shougo/neosnippet
+" Define keyword, for minor languages
+if !exists('g:neocomplcache_keyword_patterns')
+  let g:neocomplcache_keyword_patterns = {}
+endif
+let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
+
+" Plugin key-mappings.
+imap <C-k>     <Plug>(neocomplcache_snippets_expand)
+smap <C-k>     <Plug>(neocomplcache_snippets_expand)
+inoremap <expr><C-g>     neocomplcache#undo_completion()
+inoremap <expr><C-l>     neocomplcache#complete_common_string()
+
 " SuperTab like snippets behavior.
-imap <expr><TAB> neosnippet#expandable() ? "\<Plug>(neosnippet_expand_or_jump)" : pumvisible() ? "\<C-n>" : "\<TAB>"
-smap <expr><TAB> neosnippet#expandable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+"imap <expr><TAB> neocomplcache#sources#snippets_complete#expandable() ? "\<Plug>(neocomplcache_snippets_expand)" : pumvisible() ? "\<C-n>" : "\<TAB>"
+
+" Recommended key-mappings.
+" <CR>: close popup and save indent.
+inoremap <expr><CR>  neocomplcache#smart_close_popup() . "\<CR>"
+" <TAB>: completion.
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+" <C-h>, <BS>: close popup and delete backword char.
+inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
+inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
+inoremap <expr><C-y>  neocomplcache#close_popup()
+inoremap <expr><C-e>  neocomplcache#cancel_popup()
+
+" Enable omni completion. Not required if they are already set elsewhere in .vimrc
+autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+"}}}
+
+" NeoSnippet {{{
+" Plugin key-mappings.
+imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+
+" SuperTab like snippets behavior.
+imap <expr><TAB> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : pumvisible() ? "\<C-n>" : "\<TAB>"
+smap <expr><TAB> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
 
 " For snippet_complete marker.
-if has('conceal')
+if has("conceal")
   set conceallevel=2 concealcursor=i
 endif
 
 " Tell Neosnippet about the other snippets
-let g:neosnippet#snippets_directory='~/.vim/snippets'
+let g:neosnippet#snippets_directory="~/.vim/snippets"
+"}}}
 
 
 " Misc
@@ -118,34 +187,10 @@ set nobackup
 set noswapfile
 set number
 
-
-" Plugins
-" git clone https://github.com/tpope/vim-pathogen
-" git clone https://github.com/vim-scripts/camelcasemotion
-" git clone https://github.com/vim-scripts/AutoComplPop
-" git clone https://github.com/MarcWeber/snipmate.vim
-" git clone https://github.com/thinca/vim-quickrun
-" git clone https://github.com/Shougo/vimproc 
-" git clone https://github.com/msanders/cocoa.vim
-" Colors
-" git clone https://github.com/nanotech/jellybeans.vim 
-" git clone https://github.com/vim-scripts/candyman.vim
-" Syntax
-" git clone https://github.com/vim-scripts/javascript.vim
-
 set cursorline
-
-" Keep indent
-"nnoremap o o<Left><Right>
-"nnoremap O O<Left><Right>
-"inoremap <Enter> <Enter>a<Backspace>
 
 set foldcolumn=3
 set foldmethod=marker
-
-" for GJsLint
-" http://d.hatena.ne.jp/eagletmt/20100910/1284136430
-autocmd QuickfixCmdPost make copen
 
 map n nzz
 map N Nzz
@@ -159,15 +204,16 @@ set shellxquote=""
 " Textile
 let g:TextileBrowser="Google Chrome"
 
-" Syntastic
+" Syntastic {{{
 " http://poozxxx.hatenablog.com/entry/2012/06/21/000914
-let g:syntastic_mode_map = { 'mode': 'active',
-  \ 'active_filetypes': [], 
-  \ 'passive_filetypes': ['html', 'javascript'] }
+let g:syntastic_mode_map = { "mode": "active",
+  \ "active_filetypes": [], 
+  \ "passive_filetypes": ["html", "javascript"] }
 let g:syntastic_auto_loc_list = 1 
-let g:syntastic_javascript_checker = 'gjslint'
+let g:syntastic_javascript_checker = "gjslint"
 
 " Ignoring 2 errors
 "   0005 Illegal tab in white space
 "   0110 Line too long
-let g:syntastic_javascript_gjslint_conf = "--ignore_errors=5,110"
+let g:syntastic_javascript_gjslint_conf = " --ignore_errors=5,110 --strict"
+"}}}
