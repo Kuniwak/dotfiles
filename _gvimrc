@@ -19,4 +19,4 @@ if has("win32") || has("win64")
   set guifont=BDF_UM+:h9
 end
 
-colorscheme jellybeans
+colorscheme hybrid

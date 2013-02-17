@@ -27,7 +27,13 @@ NeoBundle "https://github.com/Shougo/neocomplcache.git"
 NeoBundle "https://github.com/Shougo/neosnippet.git"
 NeoBundle "https://github.com/Shougo/unite.vim.git"
 NeoBundle "https://github.com/Shougo/vimfiler.git"
-NeoBundle "https://github.com/Shougo/vimproc.git"
+NeoBundle "https://github.com/Shougo/vimproc.git", {
+      \ 'build': {
+      \   'windows': 'make -f make_mingw64.mak',
+      \   'mac': 'make -f make_mac.mak',
+      \   'unix': 'make -f make_unix.mak'
+      \   }
+      \ }
 NeoBundle "https://github.com/h1mesuke/unite-outline.git"
 NeoBundle "https://github.com/mattn/mkdpreview-vim.git"
 NeoBundle "https://github.com/mattn/zencoding-vim.git"
@@ -37,7 +43,9 @@ NeoBundle "https://github.com/thinca/vim-qfreplace.git"
 NeoBundle "https://github.com/thinca/vim-quickrun.git"
 NeoBundle "https://github.com/timcharper/textile.vim.git"
 NeoBundle "https://github.com/tomtom/tcomment_vim.git"
+NeoBundle "https://github.com/tpope/vim-fugitive.git"
 NeoBundle "https://github.com/tpope/vim-surround.git"
+NeoBundle "https://github.com/vim-scripts/hybrid.vim.git"
 
 filetype plugin indent on
 
@@ -189,6 +197,10 @@ endif
 " Tell Neosnippet about the other snippets
 let g:neosnippet#snippets_directory="~/.vim/snippets"
 "}}}
+
+" Powerline {{{
+"let g:Powerline_colorscheme='skwp'
+" }}}
 
 
 " Misc
