@@ -107,6 +107,14 @@ let g:netrw_altv=1
 let g:netrw_preview=1
 "}}}
 
+" Unite {{{
+let g:unite_enable_start_insert = 0
+nnoremap <silent> ,ub :<C-u>Unite buffer<CR>
+nnoremap <silent> ,uf :<C-u>Unite file<CR>
+nnoremap <silent> ,um :<C-u>Unite -default-action=open file_mru<CR>
+nnoremap <silent> ,uo :<C-u>Unite outline<CR>
+" }}}
+
 " NeoCompleCache {{{
 " Disable AutoComplPop. Comment out this line if AutoComplPop is not installed.
 let g:acp_enableAtStartup = 0
