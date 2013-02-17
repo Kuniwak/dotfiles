@@ -20,12 +20,15 @@ call neobundle#rc(expand('~/.vim/bundle'))
 
 NeoBundleFetch 'Shougo/neobundle.vim'
 
+NeoBundle "https://github.com/Lokaltog/vim-easymotion.git"
+NeoBundle "https://github.com/Lokaltog/vim-powerline.git"
 NeoBundle "https://github.com/OrgaChem/JavaScript-syntax.git"
 NeoBundle "https://github.com/Shougo/neocomplcache.git"
 NeoBundle "https://github.com/Shougo/neosnippet.git"
 NeoBundle "https://github.com/Shougo/unite.vim.git"
 NeoBundle "https://github.com/Shougo/vimfiler.git"
 NeoBundle "https://github.com/Shougo/vimproc.git"
+NeoBundle "https://github.com/h1mesuke/unite-outline.git"
 NeoBundle "https://github.com/mattn/mkdpreview-vim.git"
 NeoBundle "https://github.com/mattn/zencoding-vim.git"
 NeoBundle "https://github.com/nanotech/jellybeans.vim.git"
@@ -35,7 +38,6 @@ NeoBundle "https://github.com/thinca/vim-quickrun.git"
 NeoBundle "https://github.com/timcharper/textile.vim.git"
 NeoBundle "https://github.com/tomtom/tcomment_vim.git"
 NeoBundle "https://github.com/tpope/vim-surround.git"
-NeoBundle "https://github.com/h1mesuke/unite-outline.git"
 
 filetype plugin indent on
 
