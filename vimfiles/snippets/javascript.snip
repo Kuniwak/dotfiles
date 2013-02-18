@@ -1,112 +1,135 @@
-snippet func
-alias   function
-  function ${1:function_name}(${2:argument}) {
-    ${0:// body...}
-  }
-
-snippet ctor
-alias constructor
+# Statement snippets {{{
+snippet interface
   /**
+   * Interface for ${1}.
+   * @interface
+   */
+   ${2} = function() {};
+
+snippet class
+  /**
+   * A class for ${1}.
    * @constructor
    */
-
-snippet pa
-alias param
-  @param {${1:type}} ${2:name} ${3:desc}
-
-snippet ret
-alias return
-  @return {${1:type}} ${2:desc}
+  ${2} = function(${3}) {
+    ${0}
+  };
 
 snippet sub
 alias extends
   /**
+   * A class for ${1}.
    * @constructor
-   * @extends {${1:super}}
+   * @extends {${2:super}}
    */
-  ${2:sub} = function(${3}) {
-    goog.base(this${4});
+  ${3:sub} = function(${4:args}) {
+    goog.base(this${5:super_args});
     ${0}
   };
-  goog.inherits($2, $1);
+  goog.inherits($3, $2);
 
-snippet priv
-alias private
-  /** @private */
-
-snippet protec
-alias protected
-  /** @protected */
-
-snippet ov
-alias override
-  /** @override */
-
-snippet author
-  /**
-   * @author orga.chem.job@gmail.com (OrgaChem)
-   */
-
-snippet inh
-alias inherits
+snippet inherits
   goog.inherits(${1:sub}, ${2:super});
+
+snippet singleton
+alias sing
+  goog.addSingletonGetter(${1});
+
+snippet extendsUiComponent
+alias extuicom
+  /**
+   * A class for ${1}.
+   * @param {goog.dom.DomHelper=} opt_domHelper Optional DOM helper, used for
+   *     document interaction.
+   * @constructor
+   * @extends {goog.ui.Component}
+   */
+  ${2:sub} = function(${3:args}opt_domHelper) {
+    goog.base(this, opt_domHelper);
+    ${0}
+  };
+  goog.inherits($2, goog.ui.Component);
+
+snippet extendsUiControl
+alias extuictrl
+  /**
+   * A class for ${1}.
+   * @param {goog.ui.ControlContent} content Text caption or DOM structure
+   *     to display as the content of the component (if any).
+   * @param {goog.ui.ControlRenderer=} opt_renderer Renderer used to render or
+   *     decorate the component; defaults to {@link goog.ui.ControlRenderer}.
+   * @param {goog.dom.DomHelper=} opt_domHelper Optional DOM helper, used for
+   *     document interaction.
+   * @constructor
+   * @extends {goog.ui.Control}
+   */
+  ${2:sub} = function(${3:args}opt_renderer, opt_domHelper) {
+    goog.base(this, content, opt_renderer, opt_domHelper);
+    ${0}
+  };
+  goog.inherits($2, goog.ui.Control);
 
 snippet req
 alias require
   goog.require('${1}');
 
-snippet prov
-alias provide
+snippet reqgoog
+  goog.require('goog.${1}');
+
+snippet reqarr
+  goog.require('goog.array');
+
+snippet reqobj
+  goog.require('goog.object');
+
+snippet reqdom
+  goog.require('goog.dom');
+
+snippet reqev
+  goog.require('goog.events${0}');
+
+snippet requi
+  goog.require('goog.ui${0}');
+
+snippet provide
+alias prov
   goog.provide('${1}');
 
-snippet abs
-alias abstract
+snippet abstract
+alias abs
   goog.abstractMethod
 
-snippet nf
-alias nullfunction
+snippet nullfunction
+alias nullfunc
   goog.nullFunction
 
-snippet di
-alias disposeInternal
-  disposeInternal = function() {
+snippet disposeInternal
+  /** @override */
+  ${1}.disposeInternal = function() {
     goog.base(this, 'disposeInternal');
     ${0}
   };
 
-snippet listen
-  .listen(
-  /* src  */ ${1},
-  /* type */ ${2},
-  /* capt */ ${3});
-
-snippet arr
-alias array
-  goog.array.${1}
-
-snippet obj
-alias object
-  goog.object.${0}
-
-snippet forEach
-alias each
-  goog.array.forEach(${1}, function(${2}) {
+snippet enterDocument
+  /** @override */
+  ${1}.enterDocument = function() {
+    goog.base(this, 'enterDocument');
     ${0}
-  });
+  };
 
-snippet map
-alias each
-  goog.array.forEach(${1}, function(${2}) {
+snippet exitDocument
+  /** @override */
+  ${1}.exitDocument = function() {
+    goog.base(this, 'exitDocument');
     ${0}
-  });
+  };
 
-snippet arrcontains
-alias array.contains
-  goog.array.contains(${1}, ${2});
-
-snippet arrrm
-alias array.remove
-  goog.array.remove(${1}, ${2});
+snippet decorateInternal
+  /** @override */
+  ${1}.decorateInternal = function(element) {
+    goog.base(this, 'decorateInternal', element);
+    ${0}
+  };
 
 snippet log
   console.log(${0});
@@ -114,5 +137,63 @@ snippet log
 snippet assert
   goog.assert.{0}
 
-snippet ins
-  instanceof
+snippet eventtype
+alias etp
+  /**
+   * Common events fired by ${1:class name}.
+   * @enum {$2:type}
+   */
+  ${3}.EventType = {
+    /** Dispatched ${4}. */
+    ${5}
+  };
+# }}}
+
+# Annotation snippets {{{
+snippet override
+  /** @override */
+
+snippet license
+  // This script licensed under the MIT.
+  // http://orgachem.mit-license.org
+
+snippet fileoverview
+  /**
+   * @fileoverview ${1}
+   * @author orga.chem.job@gmail.com (OrgaChem)
+   */
+
+snippet jsdoc
+  /**
+   * ${1}
+   */
+
+# Row tags {{{
+snippet supress
+alias sup
+  @supress {${1}}
+
+snippet supressVisibility
+alias supv
+  @supress {visibility}
+
+snippet constructor
+alias ctor
+  @constructor
+
+snippet param
+  @param {${1:type}} ${2:name} ${3:desc}
+
+snippet return
+  @return {${1:type}} ${2:desc}
+
+snippet private
+alias pv
+  @private
+
+snippet protected
+alias pt
+  @protected
+# }}}
+# }}}
+
