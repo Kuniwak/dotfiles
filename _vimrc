@@ -7,7 +7,7 @@
 "set helpfile=$VIMRUNTIME/doc/help.txt
 "filetype plugin on
 
-" NeoVundle {{{
+" NeoBundle {{{
 "
 set nocompatible
 filetype off
@@ -22,7 +22,6 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 
 NeoBundle "https://github.com/Lokaltog/vim-easymotion.git"
 NeoBundle "https://github.com/Lokaltog/vim-powerline.git"
-NeoBundle "https://github.com/OrgaChem/JavaScript-syntax.git"
 NeoBundle "https://github.com/Shougo/neocomplcache.git"
 NeoBundle "https://github.com/Shougo/neosnippet.git"
 NeoBundle "https://github.com/Shougo/unite.vim.git"
@@ -35,10 +34,14 @@ NeoBundle "https://github.com/Shougo/vimproc.git", {
       \   }
       \ }
 NeoBundle "https://github.com/h1mesuke/unite-outline.git"
+NeoBundle "https://github.com/hail2u/vim-css3-syntax.git"
+NeoBundle "https://github.com/OrgaChem/vim-javascript-syntax.git"
 NeoBundle "https://github.com/mattn/mkdpreview-vim.git"
+NeoBundle "https://github.com/mattn/webapi-vim.git"
 NeoBundle "https://github.com/mattn/zencoding-vim.git"
 NeoBundle "https://github.com/nanotech/jellybeans.vim.git"
 NeoBundle "https://github.com/scrooloose/syntastic.git"
+NeoBundle "https://github.com/taichouchou2/html5.vim.git"
 NeoBundle "https://github.com/thinca/vim-qfreplace.git"
 NeoBundle "https://github.com/thinca/vim-quickrun.git"
 NeoBundle "https://github.com/timcharper/textile.vim.git"
@@ -50,7 +53,6 @@ NeoBundle "https://github.com/vim-scripts/hybrid.vim.git"
 filetype plugin indent on
 
 NeoBundleCheck
-
 " }}}
 
 " 未使用のkaoriyaプラグインを無効化
@@ -123,7 +125,12 @@ nnoremap <silent> ,um :<C-u>Unite -default-action=open file_mru<CR>
 nnoremap <silent> ,uo :<C-u>Unite outline<CR>
 " }}}
 
+" Simple-Javascript-Indenter {{{
+let g:SimpleJsIndenter_BriefMode = 1
+" }}}
+
 " NeoCompleCache {{{
+
 " Disable AutoComplPop. Comment out this line if AutoComplPop is not installed.
 let g:acp_enableAtStartup = 0
 " Launches neocomplcache automatically on vim startup.
@@ -142,8 +149,7 @@ let g:neocomplcache_min_syntax_length = 3
 " Define file-type dependent dictionaries.
 let g:neocomplcache_dictionary_filetype_lists = {
     \ 'default' : '',
-    \ 'vimshell' : $HOME.'/.vimshell_hist',
-    \ 'scheme' : $HOME.'/.gosh_completions'
+    \ 'javascript' : '~/.vim/dictionary/closurelibrary.dict'
     \ }
 
 " Define keyword, for minor languages
@@ -178,7 +184,6 @@ autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-"}}}
 
 " NeoSnippet {{{
 " Plugin key-mappings.
@@ -202,6 +207,19 @@ let g:neosnippet#snippets_directory="~/.vim/snippets"
 "let g:Powerline_colorscheme='skwp'
 " }}}
 
+" Syntastic {{{
+" http://poozxxx.hatenablog.com/entry/2012/06/21/000914
+let g:syntastic_mode_map = { "mode": "active",
+  \ "active_filetypes": [], 
+  \ "passive_filetypes": ["html", "javascript"] }
+let g:syntastic_auto_loc_list = 1 
+let g:syntastic_javascript_checker = "gjslint"
+
+" Ignoring 2 errors
+"   0005 Illegal tab in white space
+"   0110 Line too long
+let g:syntastic_javascript_gjslint_conf = " --ignore_errors=5,110 --strict"
+"}}}
 
 " Misc
 set display=lastline
@@ -225,17 +243,3 @@ set shellxquote=""
 
 " Textile
 let g:TextileBrowser="Google Chrome"
-
-" Syntastic {{{
-" http://poozxxx.hatenablog.com/entry/2012/06/21/000914
-let g:syntastic_mode_map = { "mode": "active",
-  \ "active_filetypes": [], 
-  \ "passive_filetypes": ["html", "javascript"] }
-let g:syntastic_auto_loc_list = 1 
-let g:syntastic_javascript_checker = "gjslint"
-
-" Ignoring 2 errors
-"   0005 Illegal tab in white space
-"   0110 Line too long
-let g:syntastic_javascript_gjslint_conf = " --ignore_errors=5,110 --strict"
-"}}}
