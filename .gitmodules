@@ -1,0 +1,3 @@
+[submodule "vimfiles/include/closure-library"]
+	path = vimfiles/include/closure-library
+	url = https://github.com/jarib/google-closure-library.git
