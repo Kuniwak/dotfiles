@@ -97,38 +97,112 @@ alias prov
 
 snippet abstract
 alias abs
-  goog.abstractMethod
+  goog.abstractMethod;
 
 snippet nullfunction
 alias nullfunc
-  goog.nullFunction
+  goog.nullFunction;
 
 snippet disposeInternal
   /** @override */
-  ${1}.disposeInternal = function() {
+  ${1}.prototype.disposeInternal = function() {
     goog.base(this, 'disposeInternal');
     ${0}
   };
 
 snippet enterDocument
   /** @override */
-  ${1}.enterDocument = function() {
+  ${1}.prototype.enterDocument = function() {
     goog.base(this, 'enterDocument');
     ${0}
   };
 
 snippet exitDocument
   /** @override */
-  ${1}.exitDocument = function() {
+  ${1}.prototype.exitDocument = function() {
     goog.base(this, 'exitDocument');
     ${0}
   };
 
 snippet decorateInternal
   /** @override */
-  ${1}.decorateInternal = function(element) {
+  ${1}.prototype.decorateInternal = function(element) {
     goog.base(this, 'decorateInternal', element);
     ${0}
+  };
+
+snippet rendererSupport
+alias rdrsup
+  /**
+   * Returns the renderer used by this ${1:component} to render itself or to decorate
+   * an existing element.
+   * @return {${2}} Renderer used by the $1.
+   */
+  ${3}.prototype.getRenderer = function() {
+    return this.renderer_;
+  };
+
+
+  /**
+   * Registers the given renderer with the $1. Changing renderers after
+   * the $1 has already been rendered or decorated is an error.
+   * @param {$2} renderer Renderer used by the $1.
+   */
+  $3.prototype.setRenderer = function(renderer) {
+    if (this.getElement()) {
+      // Too late.
+      throw Error(goog.ui.Component.Error.ALREADY_RENDERED);
+    }
+  
+    this.renderer_ = renderer;
+  };
+
+
+  /**
+   * Creates the $1's DOM.
+   * @override
+   */
+  $3.prototype.createDom = function() {
+    // Delegate to renderer.
+    this.setElementInternal(this.renderer_.createDom(this));
+  };
+
+
+  /**
+   * Returns the DOM element into which child components are to be rendered,
+   * or null if the $1 itself hasn't been rendered yet.  Overrides
+   * {@link goog.ui.Component#getContentElement} by delegating to the renderer.
+   * @return {Element} Element to contain child elements (null if none).
+   * @override
+   */
+  $3.prototype.getContentElement = function() {
+    // Delegate to renderer.
+    return this.renderer_.getContentElement(this.getElement());
+  };
+  
+  
+  /**
+   * Returns true if the given element can be decorated by this $1.
+   * Overrides {@link goog.ui.Component#canDecorate}.
+   * @param {Element} element Element to decorate.
+   * @return {boolean} True iff the element can be decorated.
+   * @override
+   */
+  $3.prototype.canDecorate = function(element) {
+    // Delegate to renderer.
+    return this.renderer_.canDecorate(element);
+  };
+  
+  
+  /**
+   * Decorates the given element with this $1. Overrides {@link
+   * goog.ui.Component#decorateInternal}.  Considered protected.
+   * @param {Element} element Element to decorate.
+   * @override
+   */
+  $3.prototype.decorateInternal = function(element) {
+    // Delegate to renderer.
+    this.setElementInternal(this.renderer_.decorate(this, element));
   };
 
 snippet log
@@ -141,7 +215,7 @@ snippet eventtype
 alias etp
   /**
    * Common events fired by ${1:class name}.
-   * @enum {$2:type}
+   * @enum {string}
    */
   ${3}.EventType = {
     /** Dispatched ${4}. */
@@ -150,9 +224,6 @@ alias etp
 # }}}
 
 # Annotation snippets {{{
-snippet override
-  /** @override */
-
 snippet license
   // This script licensed under the MIT.
   // http://orgachem.mit-license.org
@@ -162,6 +233,10 @@ snippet fileoverview
    * @fileoverview ${1}
    * @author orga.chem.job@gmail.com (OrgaChem)
    */
+
+snippet override
+alias ov
+  /** @override */
 
 snippet setter
   /**
