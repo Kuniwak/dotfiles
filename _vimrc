@@ -92,7 +92,7 @@ map <silent> e <Plug>CamelCaseMotion_e
 set tabstop=2
 set shiftwidth=2
 set list
-set listchars=eol:¬,tab:▸\
+set listchars=eol:¬,tab:▸\ 
 set autoindent
 set nosmartindent
 autocmd FileType html set indentexpr&
