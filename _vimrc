@@ -35,7 +35,7 @@ NeoBundle "https://github.com/Shougo/vimproc.git", {
       \ }
 NeoBundle "https://github.com/h1mesuke/unite-outline.git"
 NeoBundle "https://github.com/hail2u/vim-css3-syntax.git"
-NeoBundle "https://github.com/OrgaChem/vim-javascript-syntax.git"
+NeoBundle "https://github.com/OrgaChem/JavaScript-syntax.git"
 NeoBundle "https://github.com/mattn/mkdpreview-vim.git"
 NeoBundle "https://github.com/mattn/webapi-vim.git"
 NeoBundle "https://github.com/mattn/zencoding-vim.git"
@@ -92,7 +92,7 @@ map <silent> e <Plug>CamelCaseMotion_e
 set tabstop=2
 set shiftwidth=2
 set list
-set listchars=tab:>\ 
+set listchars=eol:¬,tab:▸\
 set autoindent
 set nosmartindent
 autocmd FileType html set indentexpr&
@@ -228,9 +228,6 @@ set noswapfile
 set number
 
 set cursorline
-
-set foldcolumn=3
-set foldmethod=marker
 
 map n nzz
 map N Nzz
