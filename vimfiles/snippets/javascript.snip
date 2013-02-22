@@ -158,48 +158,28 @@ alias rdrsup
   };
 
 
-  /**
-   * Creates the $1's DOM.
-   * @override
-   */
+   /** @override */
   $3.prototype.createDom = function() {
     // Delegate to renderer.
     this.setElementInternal(this.renderer_.createDom(this));
   };
 
 
-  /**
-   * Returns the DOM element into which child components are to be rendered,
-   * or null if the $1 itself hasn't been rendered yet.  Overrides
-   * {@link goog.ui.Component#getContentElement} by delegating to the renderer.
-   * @return {Element} Element to contain child elements (null if none).
-   * @override
-   */
+   /** @override */
   $3.prototype.getContentElement = function() {
     // Delegate to renderer.
     return this.renderer_.getContentElement(this.getElement());
   };
   
   
-  /**
-   * Returns true if the given element can be decorated by this $1.
-   * Overrides {@link goog.ui.Component#canDecorate}.
-   * @param {Element} element Element to decorate.
-   * @return {boolean} True iff the element can be decorated.
-   * @override
-   */
+   /** @override */
   $3.prototype.canDecorate = function(element) {
     // Delegate to renderer.
     return this.renderer_.canDecorate(element);
   };
   
   
-  /**
-   * Decorates the given element with this $1. Overrides {@link
-   * goog.ui.Component#decorateInternal}.  Considered protected.
-   * @param {Element} element Element to decorate.
-   * @override
-   */
+   /** @override */
   $3.prototype.decorateInternal = function(element) {
     // Delegate to renderer.
     this.setElementInternal(this.renderer_.decorate(this, element));
