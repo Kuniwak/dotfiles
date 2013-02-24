@@ -1,12 +1,3 @@
-"" pathogenでパッケージを読込
-"filetype off
-"" syntax off
-"filetype indent off
-"call pathogen#runtime_append_all_bundles()
-"call pathogen#helptags()
-"set helpfile=$VIMRUNTIME/doc/help.txt
-"filetype plugin on
-
 " NeoBundle {{{
 "
 set nocompatible
@@ -82,11 +73,6 @@ nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>
 nnoremap <C-l> <C-w>l
-" 単語単位の移動をcamelcasemotionプラグインの動作に置き換え
-map <silent> w <Plug>CamelCaseMotion_w
-map <silent> b <Plug>CamelCaseMotion_b
-map <silent> e <Plug>CamelCaseMotion_e
-
 
 " Indent
 set tabstop=2
@@ -110,29 +96,17 @@ set completeopt=menu,menuone,preview
 let g:vimfiler_as_default_explorer = 1
 "}}}
 
-" Netrw {{{
-" Vキーで垂直分割で開く際、右に展開
-let g:netrw_altv=1
-" プレビューで開く際、垂直分割
-let g:netrw_preview=1
-"}}}
-
 " Unite {{{
 let g:unite_enable_start_insert = 0
 nnoremap <silent> ,ub :<C-u>Unite buffer<CR>
 nnoremap <silent> ,uf :<C-u>Unite file<CR>
 nnoremap <silent> ,um :<C-u>Unite -default-action=open file_mru<CR>
 nnoremap <silent> ,uo :<C-u>Unite outline<CR>
-" }}}
-
-" Simple-Javascript-Indenter {{{
-let g:SimpleJsIndenter_BriefMode = 1
+nnoremap <silent> ,ul :<C-u>Unite line<CR>
 " }}}
 
 " NeoCompleCache {{{
 
-" Disable AutoComplPop. Comment out this line if AutoComplPop is not installed.
-let g:acp_enableAtStartup = 0
 " Launches neocomplcache automatically on vim startup.
 let g:neocomplcache_enable_at_startup = 1
 " Use smartcase.
@@ -143,8 +117,6 @@ let g:neocomplcache_enable_camel_case_completion = 1
 let g:neocomplcache_enable_underbar_completion = 1
 " Sets minimum char length of syntax keyword.
 let g:neocomplcache_min_syntax_length = 3
-" buffer file name pattern that locks neocomplcache. e.g. ku.vim or fuzzyfinder 
-"let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
 
 " Define file-type dependent dictionaries.
 let g:neocomplcache_dictionary_filetype_lists = {
@@ -163,9 +135,6 @@ imap <C-k>     <Plug>(neocomplcache_snippets_expand)
 smap <C-k>     <Plug>(neocomplcache_snippets_expand)
 inoremap <expr><C-g>     neocomplcache#undo_completion()
 inoremap <expr><C-l>     neocomplcache#complete_common_string()
-
-" SuperTab like snippets behavior.
-"imap <expr><TAB> neocomplcache#sources#snippets_complete#expandable() ? "\<Plug>(neocomplcache_snippets_expand)" : pumvisible() ? "\<C-n>" : "\<TAB>"
 
 " Recommended key-mappings.
 " <CR>: close popup and save indent.
@@ -226,6 +195,7 @@ set display=lastline
 set nobackup
 set noswapfile
 set number
+set scrolloff=5
 
 set cursorline
 
