@@ -1,50 +1,56 @@
 # Statement snippets {{{
+snippet function
+alias f
+  function(${1:#:args}) {
+    ${0}
+  };
+
 snippet interface
   /**
-   * Interface for ${1}.
+   * Interface for ${1:#:interface_name}.
    * @interface
    */
-   ${2} = function() {};
+   ${2:#:interface} = function() {};
 
 snippet class
   /**
-   * A class for ${1}.
+   * A class for ${1:#:class_name}.
    * @constructor
    */
-  ${2} = function(${3}) {
+  ${2:#:class} = function(${3:#:args}) {
     ${0}
   };
 
 snippet sub
 alias extends
   /**
-   * A class for ${1}.
+   * A class for ${1:#:sub_class_name}.
    * @constructor
-   * @extends {${2:super}}
+   * @extends {${2:#:super_class}}
    */
-  ${3:sub} = function(${4:args}) {
-    goog.base(this${5:super_args});
+  ${3:sub_class} = function(${4:#:args}) {
+    goog.base(this${5:#:super_args});
     ${0}
   };
   goog.inherits($3, $2);
 
 snippet inherits
-  goog.inherits(${1:sub}, ${2:super});
+  goog.inherits(${1:#:sub_class}, ${2:#:super_class});
 
 snippet singleton
 alias sing
-  goog.addSingletonGetter(${1});
+  goog.addSingletonGetter(${1:#:singleton_class});
 
 snippet extendsUiComponent
 alias extuicom
   /**
-   * A class for ${1}.
+   * A class for ${1:#:sub_class_name}.
    * @param {goog.dom.DomHelper=} opt_domHelper Optional DOM helper, used for
    *     document interaction.
    * @constructor
    * @extends {goog.ui.Component}
    */
-  ${2:sub} = function(${3:args}opt_domHelper) {
+  ${2:#:sub_class} = function(${3:#:args}opt_domHelper) {
     goog.base(this, opt_domHelper);
     ${0}
   };
@@ -53,7 +59,7 @@ alias extuicom
 snippet extendsUiControl
 alias extuictrl
   /**
-   * A class for ${1}.
+   * A class for ${1:#:sub_class_name}.
    * @param {goog.ui.ControlContent} content Text caption or DOM structure
    *     to display as the content of the component (if any).
    * @param {goog.ui.ControlRenderer=} opt_renderer Renderer used to render or
@@ -63,7 +69,7 @@ alias extuictrl
    * @constructor
    * @extends {goog.ui.Control}
    */
-  ${2:sub} = function(${3:args}opt_renderer, opt_domHelper) {
+  ${2:#:sub_class} = function(${3:#:args}opt_renderer, opt_domHelper) {
     goog.base(this, content, opt_renderer, opt_domHelper);
     ${0}
   };
@@ -77,19 +83,19 @@ snippet reqgoog
   goog.require('goog.${1}');
 
 snippet reqarr
-  goog.require('goog.array');
+  goog.require('goog.array${1}');
 
 snippet reqobj
-  goog.require('goog.object');
+  goog.require('goog.object${1}');
 
 snippet reqdom
-  goog.require('goog.dom');
+  goog.require('goog.dom${1}');
 
 snippet reqev
-  goog.require('goog.events${0}');
+  goog.require('goog.events${1}');
 
 snippet requi
-  goog.require('goog.ui${0}');
+  goog.require('goog.ui${1}');
 
 snippet provide
 alias prov
@@ -97,11 +103,11 @@ alias prov
 
 snippet abstract
 alias abs
-  goog.abstractMethod;
+  goog.abstractMethod
 
 snippet nullfunction
 alias nullfunc
-  goog.nullFunction;
+  goog.nullFunction
 
 snippet disposeInternal
   /** @override */
@@ -136,9 +142,9 @@ alias rdrsup
   /**
    * Returns the renderer used by this ${1:component} to render itself or to decorate
    * an existing element.
-   * @return {${2}} Renderer used by the $1.
+   * @return {${2:#:renderer_type}} Renderer used by the $1.
    */
-  ${3}.prototype.getRenderer = function() {
+  ${3:#:renderer}.prototype.getRenderer = function() {
     return this.renderer_;
   };
 
@@ -194,12 +200,12 @@ snippet assert
 snippet eventtype
 alias etp
   /**
-   * Common events fired by ${1:class name}.
+   * Common events fired by ${1:#:class_name}.
    * @enum {string}
    */
-  ${3}.EventType = {
-    /** Dispatched ${4}. */
-    ${5}
+  ${2:#:event_target}.EventType = {
+    /** Dispatched ${3:#:firing_timing}. */
+    ${0}
   };
 # }}}
 
@@ -210,7 +216,7 @@ snippet license
 
 snippet fileoverview
   /**
-   * @fileoverview ${1}
+   * @fileoverview ${1:#:file_description}
    * @author orga.chem.job@gmail.com (OrgaChem)
    */
 
@@ -220,19 +226,19 @@ alias ov
 
 snippet setter
   /**
-   * Sets ${1:property}
-   * @param {${2:type}} ${3:desc}
+   * Sets ${1:a property.}
+   * @param {${2:type}} ${3:Property to set.}
    */
 
 snippet getter
   /**
-   * Returns ${1:property}
-   * @return {${2:type}} ${3:desc}
+   * Returns ${1:a property.}
+   * @return {${2:type}} ${3:Property.}
    */
 
 snippet whether
   /**
-   * Whether ${1:condition}
+   * Whether ${1:#:condition}
    * @return {boolean} Whether $1
    */
 
@@ -255,14 +261,18 @@ alias ctor
   @constructor
 
 snippet param
-  @param {${1:type}} ${2:name} ${3:desc}
+  @param {${1:#:type}} ${2:#:name} ${3:#:desc}
 
 snippet return
-  @return {${1:type}} ${2:desc}
+  @return {${1:#:type}} ${2:#:desc}
 
 snippet private
 alias pv
   @private
+
+snippet type
+alias tp
+  @type {${1:#:type}}
 
 snippet protected
 alias pt
