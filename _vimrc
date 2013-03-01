@@ -9,8 +9,6 @@ endif
 
 call neobundle#rc(expand('~/.vim/bundle'))
 
-NeoBundleFetch 'Shougo/neobundle.vim'
-
 NeoBundle "https://github.com/Lokaltog/vim-easymotion.git"
 NeoBundle "https://github.com/Lokaltog/vim-powerline.git"
 NeoBundle "https://github.com/Shougo/neocomplcache.git"
@@ -35,11 +33,13 @@ NeoBundle "https://github.com/scrooloose/syntastic.git"
 NeoBundle "https://github.com/taichouchou2/html5.vim.git"
 NeoBundle "https://github.com/thinca/vim-qfreplace.git"
 NeoBundle "https://github.com/thinca/vim-quickrun.git"
+NeoBundle "https://github.com/thinca/vim-ref.git"
 NeoBundle "https://github.com/timcharper/textile.vim.git"
 NeoBundle "https://github.com/tomtom/tcomment_vim.git"
 NeoBundle "https://github.com/tpope/vim-fugitive.git"
 NeoBundle "https://github.com/tpope/vim-surround.git"
 NeoBundle "https://github.com/vim-scripts/hybrid.vim.git"
+NeoBundle "https://github.com/vim-scripts/sudo.vim.git"
 
 filetype plugin indent on
 
@@ -73,6 +73,11 @@ nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>
 nnoremap <C-l> <C-w>l
+
+" .vimrcを開く
+nnoremap <Space>.  :<C-u>edit $MYVIMRC<CR>
+" source ~/.vimrc を実行する。
+nnoremap <Space>,  :<C-u>source $MYVIMRC<CR> 
 
 " Indent
 set tabstop=2
@@ -153,6 +158,7 @@ autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+"}}}
 
 " NeoSnippet {{{
 " Plugin key-mappings.
@@ -172,10 +178,6 @@ endif
 let g:neosnippet#snippets_directory="~/.vim/snippets"
 "}}}
 
-" Powerline {{{
-"let g:Powerline_colorscheme='skwp'
-" }}}
-
 " Syntastic {{{
 " http://poozxxx.hatenablog.com/entry/2012/06/21/000914
 let g:syntastic_mode_map = { "mode": "active",
@@ -190,12 +192,18 @@ let g:syntastic_javascript_checker = "gjslint"
 let g:syntastic_javascript_gjslint_conf = " --ignore_errors=5,110 --strict"
 "}}}
 
+" Fugitive {{{
+nnoremap <silent> ,gb :Gblame<CR>
+nnoremap <silent> ,gd :Gdiff<CR>
+nnoremap <silent> ,gs :Gstatus<CR>
+" }}}
+
 " Misc
 set display=lastline
 set nobackup
 set noswapfile
 set number
-set scrolloff=5
+set scrolloff=10
 
 set cursorline
 
