@@ -97,6 +97,24 @@ set incsearch
 " Insert mode
 set completeopt=menu,menuone,preview
 
+" Misc
+set display=lastline
+set nobackup
+set noswapfile
+set number
+set scrolloff=10
+
+set cursorline
+
+map n nzz
+map N Nzz
+map * *zz
+map # #zz
+
+" Avoid error of BandleInstall! on Windows
+" https://github.com/gmarik/vundle/issues/192
+set shellxquote=""
+
 " Vimfiler {{{
 let g:vimfiler_as_default_explorer = 1
 "}}}
@@ -197,24 +215,6 @@ nnoremap <silent> ,gb :Gblame<CR>
 nnoremap <silent> ,gd :Gdiff<CR>
 nnoremap <silent> ,gs :Gstatus<CR>
 " }}}
-
-" Misc
-set display=lastline
-set nobackup
-set noswapfile
-set number
-set scrolloff=10
-
-set cursorline
-
-map n nzz
-map N Nzz
-map * *zz
-map # #zz
-
-" Avoid error of BandleInstall! on Windows
-" https://github.com/gmarik/vundle/issues/192
-set shellxquote=""
 
 " Textile
 let g:TextileBrowser="Google Chrome"
