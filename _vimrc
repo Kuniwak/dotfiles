@@ -22,16 +22,18 @@ NeoBundle "https://github.com/Shougo/vimproc.git", {
       \   'unix': 'make -f make_unix.mak'
       \   }
       \ }
+NeoBundle "https://github.com/Shougo/vimshell.git"
 NeoBundle "https://github.com/h1mesuke/unite-outline.git"
 NeoBundle "https://github.com/hail2u/vim-css3-syntax.git"
-NeoBundle "https://github.com/OrgaChem/JavaScript-syntax.git"
 NeoBundle "https://github.com/mattn/mkdpreview-vim.git"
+NeoBundle "https://github.com/OrgaChem/vim-javascript.git"
 NeoBundle "https://github.com/mattn/webapi-vim.git"
 NeoBundle "https://github.com/mattn/zencoding-vim.git"
 NeoBundle "https://github.com/nanotech/jellybeans.vim.git"
 NeoBundle "https://github.com/scrooloose/syntastic.git"
 NeoBundle "https://github.com/taichouchou2/html5.vim.git"
 NeoBundle "https://github.com/thinca/vim-qfreplace.git"
+NeoBundle "https://github.com/supermomonga/vimshell-kawaii.vim.git", {'depends' : 'Shougo/vimshell'}
 NeoBundle "https://github.com/thinca/vim-quickrun.git"
 NeoBundle "https://github.com/thinca/vim-ref.git"
 NeoBundle "https://github.com/timcharper/textile.vim.git"
@@ -71,13 +73,16 @@ noremap <Up> gk
 " ウィンドウ切替
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>
+nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
 " .vimrcを開く
-nnoremap <Space>.  :<C-u>edit $MYVIMRC<CR>
+nnoremap ev :<C-u>edit $MYVIMRC<CR>
 " source ~/.vimrc を実行する。
-nnoremap <Space>,  :<C-u>source $MYVIMRC<CR> 
+nnoremap rv :<C-u>source $MYVIMRC<CR> 
+
+" tabnewのショートカット
+nnoremap tn :<C-u>tabnew<CR>
 
 " Indent
 set tabstop=2
@@ -111,12 +116,25 @@ map N Nzz
 map * *zz
 map # #zz
 
+" 縦分割したら新しいウィンドウは右に
+set splitright	
+
 " Avoid error of BandleInstall! on Windows
 " https://github.com/gmarik/vundle/issues/192
 set shellxquote=""
 
 " Vimfiler {{{
+" vimデフォルトのエクスプローラをvimfilerで置き換える
 let g:vimfiler_as_default_explorer = 1
+" セーフモードを無効にした状態で起動する
+let g:vimfiler_safe_mode_by_default = 0
+" 現在開いているバッファをIDE風に開く
+nnoremap <silent>vf :<C-u>VimFiler -split -simple -winwidth=35 -no-quit<CR>
+autocmd! FileType vimfiler call g:my_vimfiler_settings()
+function! g:my_vimfiler_settings()
+  nmap     <buffer><expr><Cr> vimfiler#smart_cursor_map("\<Plug>(vimfiler_expand_tree)", "\<Plug>(vimfiler_edit_file)")
+endfunction
+
 "}}}
 
 " Unite {{{
@@ -208,13 +226,29 @@ let g:syntastic_javascript_checker = "gjslint"
 "   0005 Illegal tab in white space
 "   0110 Line too long
 let g:syntastic_javascript_gjslint_conf = " --ignore_errors=5,110 --strict"
+
+nnoremap <silent> ,sc :<C-u>SyntasticCheck<CR>
 "}}}
 
 " Fugitive {{{
+"command-line completion
+set wildmenu
+set wildmode=list:longest
+
 nnoremap <silent> ,gb :Gblame<CR>
 nnoremap <silent> ,gd :Gdiff<CR>
 nnoremap <silent> ,gs :Gstatus<CR>
+nnoremap <silent> ,ge :Gedit 
 " }}}
+
+" VimShell {{{
+let g:vimshell_split_command = "vsplit"
+" 縦分割でVimShellを開く
+nnoremap vs :<C-u>VimShell -split %:p:h<CR>
+nnoremap vp :<C-u>VimShellPop %:p:h<CR>
+"}}}
 
 " Textile
 let g:TextileBrowser="Google Chrome"
+
+" vim: fdm=marker
