@@ -11,36 +11,32 @@ call neobundle#rc(expand('~/.vim/bundle'))
 
 NeoBundle "https://github.com/Lokaltog/vim-easymotion.git"
 NeoBundle "https://github.com/Lokaltog/vim-powerline.git"
+NeoBundle "https://github.com/OrgaChem/vim-javascript.git"
 NeoBundle "https://github.com/Shougo/neocomplcache.git"
 NeoBundle "https://github.com/Shougo/neosnippet.git"
 NeoBundle "https://github.com/Shougo/unite.vim.git"
 NeoBundle "https://github.com/Shougo/vimfiler.git"
-NeoBundle "https://github.com/Shougo/vimproc.git", {
-      \ 'build': {
-      \   'windows': 'make -f make_mingw64.mak',
-      \   'mac': 'make -f make_mac.mak',
-      \   'unix': 'make -f make_unix.mak'
-      \   }
-      \ }
+NeoBundle "https://github.com/Shougo/vimproc.git", {'build': {'windows': 'make -f make_mingw64.mak', 'mac': 'make -f make_mac.mak', 'unix': 'make -f make_unix.mak'}}
 NeoBundle "https://github.com/Shougo/vimshell.git"
 NeoBundle "https://github.com/h1mesuke/unite-outline.git"
 NeoBundle "https://github.com/hail2u/vim-css3-syntax.git"
 NeoBundle "https://github.com/mattn/mkdpreview-vim.git"
-NeoBundle "https://github.com/OrgaChem/vim-javascript.git"
 NeoBundle "https://github.com/mattn/webapi-vim.git"
 NeoBundle "https://github.com/mattn/zencoding-vim.git"
 NeoBundle "https://github.com/nanotech/jellybeans.vim.git"
 NeoBundle "https://github.com/scrooloose/syntastic.git"
+NeoBundle "https://github.com/supermomonga/vimshell-kawaii.vim.git", {'depends' : 'Shougo/vimshell'}
 NeoBundle "https://github.com/taichouchou2/html5.vim.git"
 NeoBundle "https://github.com/thinca/vim-qfreplace.git"
-NeoBundle "https://github.com/supermomonga/vimshell-kawaii.vim.git", {'depends' : 'Shougo/vimshell'}
 NeoBundle "https://github.com/thinca/vim-quickrun.git"
 NeoBundle "https://github.com/thinca/vim-ref.git"
 NeoBundle "https://github.com/timcharper/textile.vim.git"
 NeoBundle "https://github.com/tomtom/tcomment_vim.git"
 NeoBundle "https://github.com/tpope/vim-fugitive.git"
 NeoBundle "https://github.com/tpope/vim-surround.git"
+NeoBundle "https://github.com/tsaleh/vim-matchit.git"
 NeoBundle "https://github.com/vim-scripts/hybrid.vim.git"
+NeoBundle "https://github.com/vim-scripts/str2numchar.vim.git"
 NeoBundle "https://github.com/vim-scripts/sudo.vim.git"
 
 filetype plugin indent on
@@ -76,13 +72,14 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
-" .vimrcを開く
-nnoremap ev :<C-u>edit $MYVIMRC<CR>
-" source ~/.vimrc を実行する。
-nnoremap rv :<C-u>source $MYVIMRC<CR> 
+" 横幅を87桁にする
+" 87桁は80桁折り返しルールのときに都合がよい
+nnoremap <silent>,rw :<C-u>vertical resize 87<CR>
 
-" tabnewのショートカット
-nnoremap tn :<C-u>tabnew<CR>
+" .vimrcを開く
+nnoremap <silent>,ev :<C-u>tabnew $MYVIMRC<CR>
+" source ~/.vimrc を実行する。
+nnoremap <silent>,rv :<C-u>source $MYVIMRC<CR> 
 
 " Indent
 set tabstop=2
@@ -129,7 +126,7 @@ let g:vimfiler_as_default_explorer = 1
 " セーフモードを無効にした状態で起動する
 let g:vimfiler_safe_mode_by_default = 0
 " 現在開いているバッファをIDE風に開く
-nnoremap <silent>vf :<C-u>VimFiler -split -simple -winwidth=35 -no-quit<CR>
+nnoremap <silent>,vf :<C-u>VimFiler -split -simple -winwidth=35 -no-quit<CR>
 autocmd! FileType vimfiler call g:my_vimfiler_settings()
 function! g:my_vimfiler_settings()
   nmap     <buffer><expr><Cr> vimfiler#smart_cursor_map("\<Plug>(vimfiler_expand_tree)", "\<Plug>(vimfiler_edit_file)")
@@ -228,6 +225,7 @@ let g:syntastic_javascript_checker = "gjslint"
 let g:syntastic_javascript_gjslint_conf = " --ignore_errors=5,110 --strict"
 
 nnoremap <silent> ,sc :<C-u>SyntasticCheck<CR>
+nnoremap <silent> ,st :<C-u>SyntasticToggleMode<CR>
 "}}}
 
 " Fugitive {{{
@@ -244,8 +242,13 @@ nnoremap <silent> ,ge :Gedit
 " VimShell {{{
 let g:vimshell_split_command = "vsplit"
 " 縦分割でVimShellを開く
-nnoremap vs :<C-u>VimShell -split %:p:h<CR>
-nnoremap vp :<C-u>VimShellPop %:p:h<CR>
+nnoremap <silent> ,vs :<C-u>VimShell -split %:p:h<CR>
+nnoremap <silent> ,vp :<C-u>VimShellPop %:p:h<CR>
+"}}}
+
+" Str2Numchar {{{
+vmap <silent> ,sn :Str2NumChar<CR> 
+vmap <silent> ,sh :Str2HexLiteral<CR> 
 "}}}
 
 " Textile
