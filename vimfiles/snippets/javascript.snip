@@ -222,8 +222,8 @@ snippet fileoverview
    */
   ${0}
 
-snippet override
-alias ov
+snippet @override
+alias @ov
   /** @override */
 
 snippet setter
@@ -255,34 +255,38 @@ alias ojd
   /** ${1} */
 
 # Row tags {{{
-snippet supress
-alias sup
-  @supress {${1}}
+snippet @supress
+alias @sup
+  @supress {${1}}${0}
 
-snippet supressVisibility
-alias supv
+snippet @supressVisibility
+alias @supv
   @supress {visibility}
 
-snippet constructor
-alias ctor
+snippet @constructor
+alias @ctor
   @constructor
 
-snippet param
+snippet @param
   @param {${1:#:type}} ${2:#:name} ${3:#:desc}
 
-snippet return
+snippet @return
   @return {${1:#:type}} ${2:#:desc}
 
-snippet private
-alias pv
+snippet @private
+alias @pv
   @private
 
-snippet type
-alias tp
-  @type {${1:#:type}}
+snippet @type
+alias @tp
+  @type {${1:#:type}}${0}
 
-snippet protected
-alias pt
+snippet @protected
+alias @pt
   @protected
+
+snippet @extends
+alias @ext
+  @extends {${1}}${0}
 # }}}
 # }}}
