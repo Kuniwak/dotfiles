@@ -1,5 +1,6 @@
 " NeoBundle {{{
-"
+
+set encoding=utf-8
 set nocompatible
 filetype off
 
