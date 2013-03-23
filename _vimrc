@@ -21,10 +21,12 @@ NeoBundle "https://github.com/Shougo/vimproc.git", {'build': {'windows': 'make -
 NeoBundle "https://github.com/Shougo/vimshell.git"
 NeoBundle "https://github.com/h1mesuke/unite-outline.git"
 NeoBundle "https://github.com/hail2u/vim-css3-syntax.git"
+NeoBundle "https://github.com/lambdalisue/nodeunit.vim.git", {'depends' : 'reinh/vim-makegreen'}
 NeoBundle "https://github.com/mattn/mkdpreview-vim.git"
 NeoBundle "https://github.com/mattn/webapi-vim.git"
 NeoBundle "https://github.com/mattn/zencoding-vim.git"
 NeoBundle "https://github.com/nanotech/jellybeans.vim.git"
+NeoBundle "https://github.com/reinh/vim-makegreen.git"
 NeoBundle "https://github.com/scrooloose/syntastic.git"
 NeoBundle "https://github.com/supermomonga/vimshell-kawaii.vim.git", {'depends' : 'Shougo/vimshell'}
 NeoBundle "https://github.com/taichouchou2/html5.vim.git"
@@ -82,6 +84,9 @@ nnoremap <silent>,ev :<C-u>tabnew $MYVIMRC<CR>
 " source ~/.vimrc を実行する。
 nnoremap <silent>,rv :<C-u>source $MYVIMRC<CR> 
 
+" バッファのディレクトリに移動
+nnoremap <silent>,cd :<C-u>cd %:h<CR>
+
 " Indent
 set tabstop=2
 set shiftwidth=2
@@ -115,7 +120,7 @@ map * *zz
 map # #zz
 
 " 縦分割したら新しいウィンドウは右に
-set splitright	
+set splitright
 
 " Avoid error of BandleInstall! on Windows
 " https://github.com/gmarik/vundle/issues/192
@@ -126,22 +131,30 @@ set shellxquote=""
 let g:vimfiler_as_default_explorer = 1
 " セーフモードを無効にした状態で起動する
 let g:vimfiler_safe_mode_by_default = 0
+" 
+let g:vimfiler_enable_auto_cd = 1
 " 現在開いているバッファをIDE風に開く
-nnoremap <silent>,vf :<C-u>VimFiler -split -simple -winwidth=35 -no-quit<CR>
-autocmd! FileType vimfiler call g:my_vimfiler_settings()
-function! g:my_vimfiler_settings()
-  nmap     <buffer><expr><Cr> vimfiler#smart_cursor_map("\<Plug>(vimfiler_expand_tree)", "\<Plug>(vimfiler_edit_file)")
-endfunction
+nnoremap <silent>,vf :<C-u>VimFilerBufferDir -split -simple -winwidth=35 -no-quit<CR>
+nnoremap <silent>,vd :<C-u>VimFilerBufferDir -split -simple -winwidth=35 -no-quit -double<CR>
+"}}}
 
+" VimShell {{{
+let g:vimshell_split_command = "vsplit"
+" 縦分割でVimShellを開く
+nnoremap <silent> ,vs :<C-u>VimShellBufferDir -split<CR>
+nnoremap <silent> ,vp :<C-u>VimShellPop %:p:h<CR>
 "}}}
 
 " Unite {{{
 let g:unite_enable_start_insert = 0
+let g:unite_source_history_yank_enable = 1
 nnoremap <silent> ,ub :<C-u>Unite buffer<CR>
 nnoremap <silent> ,uf :<C-u>Unite file<CR>
+nnoremap <silent> ,ul :<C-u>Unite line<CR>
 nnoremap <silent> ,um :<C-u>Unite -default-action=open file_mru<CR>
 nnoremap <silent> ,uo :<C-u>Unite outline<CR>
-nnoremap <silent> ,ul :<C-u>Unite line<CR>
+nnoremap <silent> ,uy :<C-u>Unite history/yank<CR>
+nnoremap <silent> ,un :<C-u>Unite neobundle/install:!<CR>
 " }}}
 
 " NeoCompleCache {{{
@@ -195,6 +208,8 @@ autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 "}}}
 
 " NeoSnippet {{{
+set completeopt-=preview
+
 " Plugin key-mappings.
 imap <C-k>     <Plug>(neosnippet_expand_or_jump)
 smap <C-k>     <Plug>(neosnippet_expand_or_jump)
@@ -213,11 +228,11 @@ let g:neosnippet#snippets_directory="~/.vim/snippets"
 "}}}
 
 " Syntastic {{{
-" http://poozxxx.hatenablog.com/entry/2012/06/21/000914
-let g:syntastic_mode_map = { "mode": "active",
+let g:syntastic_mode_map = { "mode": "passive",
   \ "active_filetypes": [], 
   \ "passive_filetypes": ["html", "javascript"] }
-let g:syntastic_auto_loc_list = 1 
+let g:syntastic_loc_list_height = 3
+let g:syntastic_auto_loc_list = 1
 let g:syntastic_javascript_checker = "gjslint"
 
 " Ignoring 2 errors
@@ -239,13 +254,6 @@ nnoremap <silent> ,gd :Gdiff<CR>
 nnoremap <silent> ,gs :Gstatus<CR>
 nnoremap <silent> ,ge :Gedit 
 " }}}
-
-" VimShell {{{
-let g:vimshell_split_command = "vsplit"
-" 縦分割でVimShellを開く
-nnoremap <silent> ,vs :<C-u>VimShell -split %:p:h<CR>
-nnoremap <silent> ,vp :<C-u>VimShellPop %:p:h<CR>
-"}}}
 
 " Str2Numchar {{{
 vmap <silent> ,sn :Str2NumChar<CR> 
