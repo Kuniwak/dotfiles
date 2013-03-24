@@ -252,7 +252,8 @@ set wildmode=list:longest
 nnoremap <silent> ,gb :Gblame<CR>
 nnoremap <silent> ,gd :Gdiff<CR>
 nnoremap <silent> ,gs :Gstatus<CR>
-nnoremap <silent> ,ge :Gedit 
+nnoremap <silent> ,gpl :Git pull<CR>
+nnoremap <silent> ,gps :Git push<CR>
 " }}}
 
 " Str2Numchar {{{
