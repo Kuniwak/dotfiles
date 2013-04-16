@@ -12,6 +12,7 @@ call neobundle#rc(expand('~/.vim/bundle'))
 
 NeoBundle "https://github.com/Lokaltog/vim-easymotion.git"
 NeoBundle "https://github.com/Lokaltog/vim-powerline.git"
+NeoBundle "https://github.com/OrgaChem/tsumekusa-syntax.vim.git"
 NeoBundle "https://github.com/OrgaChem/vim-javascript.git"
 NeoBundle "https://github.com/Shougo/neocomplcache.git"
 NeoBundle "https://github.com/Shougo/neosnippet.git"
@@ -21,6 +22,7 @@ NeoBundle "https://github.com/Shougo/vimproc.git", {'build': {'windows': 'make -
 NeoBundle "https://github.com/Shougo/vimshell.git"
 NeoBundle "https://github.com/h1mesuke/unite-outline.git"
 NeoBundle "https://github.com/hail2u/vim-css3-syntax.git"
+NeoBundle "https://github.com/itchyny/thumbnail.vim"
 NeoBundle "https://github.com/lambdalisue/nodeunit.vim.git", {'depends' : 'reinh/vim-makegreen'}
 NeoBundle "https://github.com/mattn/mkdpreview-vim.git"
 NeoBundle "https://github.com/mattn/webapi-vim.git"
@@ -232,7 +234,7 @@ let g:syntastic_mode_map = { "mode": "passive",
   \ "active_filetypes": [], 
   \ "passive_filetypes": ["html", "javascript"] }
 let g:syntastic_loc_list_height = 3
-let g:syntastic_auto_loc_list = 1
+let g:syntastic_auto_loc_list = 2
 let g:syntastic_javascript_checker = "gjslint"
 
 " Ignoring 2 errors
@@ -252,8 +254,8 @@ set wildmode=list:longest
 nnoremap <silent> ,gb :Gblame<CR>
 nnoremap <silent> ,gd :Gdiff<CR>
 nnoremap <silent> ,gs :Gstatus<CR>
-nnoremap <silent> ,gpl :Git pull<CR>
-nnoremap <silent> ,gps :Git push<CR>
+nnoremap <silent> ,gp :Git pull<CR>
+nnoremap <silent> ,gP :Git push<CR>
 " }}}
 
 " Str2Numchar {{{
@@ -263,5 +265,7 @@ vmap <silent> ,sh :Str2HexLiteral<CR>
 
 " Textile
 let g:TextileBrowser="Google Chrome"
+
+au BufNewFile,BufRead *.tsumekusa setf tsumekusa
 
 " vim: fdm=marker
