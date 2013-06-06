@@ -136,8 +136,8 @@ let g:vimfiler_safe_mode_by_default = 0
 " 
 let g:vimfiler_enable_auto_cd = 1
 " 現在開いているバッファをIDE風に開く
-nnoremap <silent>,vf :<C-u>VimFilerBufferDir -split -simple -winwidth=35 -no-quit<CR>
-nnoremap <silent>,vd :<C-u>VimFilerBufferDir -split -simple -winwidth=35 -no-quit -double<CR>
+nnoremap <silent>,vf :<C-u>VimFilerBufferDir -split -simple -no-quit -winwidth=35<CR>
+nnoremap <silent>,vd :<C-u>VimFilerBufferDir -split -simple -no-quit -winwidth=35 -double<CR>
 "}}}
 
 " VimShell {{{
@@ -156,7 +156,7 @@ nnoremap <silent> ,ul :<C-u>Unite line<CR>
 nnoremap <silent> ,um :<C-u>Unite -default-action=open file_mru<CR>
 nnoremap <silent> ,uo :<C-u>Unite outline<CR>
 nnoremap <silent> ,uy :<C-u>Unite history/yank<CR>
-nnoremap <silent> ,un :<C-u>Unite neobundle/install:!<CR>
+nnoremap <silent> ,un :<C-u>Unite neobundle/update<CR>
 " }}}
 
 " NeoCompleCache {{{
@@ -267,5 +267,6 @@ vmap <silent> ,sh :Str2HexLiteral<CR>
 let g:TextileBrowser="Google Chrome"
 
 au BufNewFile,BufRead *.tsumekusa setf tsumekusa
+au BufNewFile,BufRead *.pac setf javascript
 
 " vim: fdm=marker
