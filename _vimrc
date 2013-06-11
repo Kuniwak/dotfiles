@@ -95,15 +95,15 @@ nnoremap <C-l> <C-w>l
 
 " 横幅を87桁にする
 " 87桁は80桁折り返しルールで、行数が1000未満のときに都合がよい
-nnoremap <silent><Leader>rw :<C-u>vertical resize 87<CR>
+nnoremap <silent> <Leader>rw :<C-u>vertical resize 87<CR>
 
 " .vimrcを開く
-nnoremap <silent><Leader>ev :<C-u>tabnew $MYVIMRC<CR>
+nnoremap <silent> <Leader>ev :<C-u>tabnew $MYVIMRC<CR>
 " source ~/.vimrc を実行する。
-nnoremap <silent><Leader>rv :<C-u>source $MYVIMRC<CR> 
+nnoremap <silent> <Leader>rv :<C-u>source $MYVIMRC<CR> 
 
 " バッファのディレクトリに移動
-nnoremap <silent><Leader>cd :<C-u>cd %:h<CR>
+nnoremap <silent> <Leader>cd :<C-u>cd %:h<CR>
 
 " タブ幅:2, インデント幅:2
 set tabstop=2
@@ -178,8 +178,8 @@ let g:vimfiler_safe_mode_by_default = 0
 " 
 let g:vimfiler_enable_auto_cd = 1
 " 現在開いているバッファをIDE風に開く
-nnoremap <silent><Leader>vf :<C-u>VimFilerBufferDir -split -simple -no-quit -winwidth=35<CR>
-nnoremap <silent><Leader>vd :<C-u>VimFilerBufferDir -split -simple -no-quit -winwidth=35 -double<CR>
+nnoremap <silent> <Leader>vf :<C-u>VimFilerBufferDir -split -simple -no-quit -winwidth=35<CR>
+nnoremap <silent> <Leader>vd :<C-u>VimFilerBufferDir -split -simple -no-quit -winwidth=35 -double<CR>
 "}}}
 
 " VimShell {{{
