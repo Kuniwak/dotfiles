@@ -55,6 +55,9 @@ filetype plugin indent on
 " 未使用のkaoriyaプラグインを無効化
 let plugin_dicwin_disable=1
 
+" <Leader> を , に指定
+let g:mapleader = ','
+
 " Key
 " Disable Ctrl+@
 imap <C-@> <Nop>
@@ -92,15 +95,15 @@ nnoremap <C-l> <C-w>l
 
 " 横幅を87桁にする
 " 87桁は80桁折り返しルールで、行数が1000未満のときに都合がよい
-nnoremap <silent>,rw :<C-u>vertical resize 87<CR>
+nnoremap <silent><Leader>rw :<C-u>vertical resize 87<CR>
 
 " .vimrcを開く
-nnoremap <silent>,ev :<C-u>tabnew $MYVIMRC<CR>
+nnoremap <silent><Leader>ev :<C-u>tabnew $MYVIMRC<CR>
 " source ~/.vimrc を実行する。
-nnoremap <silent>,rv :<C-u>source $MYVIMRC<CR> 
+nnoremap <silent><Leader>rv :<C-u>source $MYVIMRC<CR> 
 
 " バッファのディレクトリに移動
-nnoremap <silent>,cd :<C-u>cd %:h<CR>
+nnoremap <silent><Leader>cd :<C-u>cd %:h<CR>
 
 " タブ幅:2, インデント幅:2
 set tabstop=2
@@ -121,7 +124,9 @@ autocmd FileType js set indentexpr&
 autocmd FileType xhtml set indentexpr&
 
 " 検索時にケースインセンティブにする
+" ただし検索条件に大文字が含まれる場合のみケースセンシティブにする
 set noignorecase
+set smartcase
 
 " インクリメンタル検索（逐次検索）を有効にする
 set incsearch
@@ -141,8 +146,8 @@ set noswapfile
 " 行番号を表示
 set number
 
-" カーソルが上下10行以内にいかないようにする
-set scrolloff=10
+" カーソルが上下20行以内にいかないようにする
+set scrolloff=20
 
 " カーソル行を強調
 set cursorline
@@ -162,7 +167,7 @@ let g:quickrun_config = {}
 " JavaScript の実行環境を Node.js に指定
 let g:quickrun_config['javascript'] = {'type': 'javascript/nodejs'}
 
-nnoremap <silent> ,l :<C-u>QuickRun<CR>
+nnoremap <silent> <Leader>l :<C-u>QuickRun<CR>
 "}}}
 
 " Vimfiler {{{
@@ -173,29 +178,29 @@ let g:vimfiler_safe_mode_by_default = 0
 " 
 let g:vimfiler_enable_auto_cd = 1
 " 現在開いているバッファをIDE風に開く
-nnoremap <silent>,vf :<C-u>VimFilerBufferDir -split -simple -no-quit -winwidth=35<CR>
-nnoremap <silent>,vd :<C-u>VimFilerBufferDir -split -simple -no-quit -winwidth=35 -double<CR>
+nnoremap <silent><Leader>vf :<C-u>VimFilerBufferDir -split -simple -no-quit -winwidth=35<CR>
+nnoremap <silent><Leader>vd :<C-u>VimFilerBufferDir -split -simple -no-quit -winwidth=35 -double<CR>
 "}}}
 
 " VimShell {{{
 let g:vimshell_split_command = "vsplit"
 " 縦分割でVimShellを開く
-nnoremap <silent> ,vs :<C-u>VimShellBufferDir -split<CR>
-nnoremap <silent> ,vp :<C-u>VimShellPop %:p:h<CR>
+nnoremap <silent> <Leader>vs :<C-u>VimShellBufferDir -split<CR>
+nnoremap <silent> <Leader>vp :<C-u>VimShellPop %:p:h<CR>
 "}}}
 
 " Unite {{{
 let g:unite_enable_start_insert = 0
 let g:unite_source_history_yank_enable = 1
-nnoremap <silent> ,ub :<C-u>Unite buffer<CR>
-nnoremap <silent> ,uf :<C-u>Unite file<CR>
-nnoremap <silent> ,ul :<C-u>Unite line<CR>
-nnoremap <silent> ,um :<C-u>Unite -default-action=open file_mru<CR>
-nnoremap <silent> ,uo :<C-u>Unite outline<CR>
-nnoremap <silent> ,uy :<C-u>Unite history/yank<CR>
-nnoremap <silent> ,uc :<C-u>Unite neobundle/check<CR>
-nnoremap <silent> ,uu :<C-u>Unite neobundle/update<CR>
-nnoremap <silent> ,us :<C-u>Unite neobundle/search<CR>
+nnoremap <silent> <Leader>ub :<C-u>Unite buffer<CR>
+nnoremap <silent> <Leader>uf :<C-u>Unite file<CR>
+nnoremap <silent> <Leader>ul :<C-u>Unite line<CR>
+nnoremap <silent> <Leader>um :<C-u>Unite -default-action=open file_mru<CR>
+nnoremap <silent> <Leader>uo :<C-u>Unite outline<CR>
+nnoremap <silent> <Leader>uy :<C-u>Unite history/yank<CR>
+nnoremap <silent> <Leader>uc :<C-u>Unite neobundle/check<CR>
+nnoremap <silent> <Leader>uu :<C-u>Unite neobundle/update<CR>
+nnoremap <silent> <Leader>us :<C-u>Unite neobundle/search<CR>
 " }}}
 
 " NeoCompleCache {{{
@@ -311,8 +316,8 @@ let g:syntastic_javascript_checker = "gjslint"
 
 let g:syntastic_javascript_gjslint_conf = " --ignore_errors=5,110 --strict"
 
-nnoremap <silent> ,sc :<C-u>SyntasticCheck<CR>
-nnoremap <silent> ,st :<C-u>SyntasticToggleMode<CR>
+nnoremap <silent> <Leader>sc :<C-u>SyntasticCheck<CR>
+nnoremap <silent> <Leader>st :<C-u>SyntasticToggleMode<CR>
 "}}}
 
 " Fugitive {{{
@@ -320,17 +325,17 @@ nnoremap <silent> ,st :<C-u>SyntasticToggleMode<CR>
 set wildmenu
 set wildmode=list:longest
 
-nnoremap <silent> ,gb :Gblame<CR>
-nnoremap <silent> ,gd :Gdiff<CR>
-nnoremap <silent> ,gs :Gstatus<CR>
-nnoremap <silent> ,gp :Git pull<CR>
-nnoremap <silent> ,gP :Git push<CR>
+nnoremap <silent> <Leader>gb :Gblame<CR>
+nnoremap <silent> <Leader>gd :Gdiff<CR>
+nnoremap <silent> <Leader>gs :Gstatus<CR>
+nnoremap <silent> <Leader>gp :Git pull<CR>
+nnoremap <silent> <Leader>gP :Git push<CR>
 " }}}
 
 " Str2Numchar {{{
 " 選択文字列をHTMLの実態文字参照に変換
-vmap <silent> ,sn :Str2NumChar<CR> 
-vmap <silent> ,sh :Str2HexLiteral<CR> 
+vmap <silent> <Leader>sn :Str2NumChar<CR> 
+vmap <silent> <Leader>sh :Str2HexLiteral<CR> 
 "}}}
 
 au BufNewFile,BufRead *.tsumekusa setf tsumekusa
