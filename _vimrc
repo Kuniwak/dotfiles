@@ -22,12 +22,12 @@ NeoBundle "https://github.com/Shougo/vimproc.git", {'build': {'windows': 'make -
 NeoBundle "https://github.com/Shougo/vimshell.git"
 NeoBundle "https://github.com/h1mesuke/unite-outline.git"
 NeoBundle "https://github.com/hail2u/vim-css3-syntax.git"
+NeoBundle "https://github.com/helino/vim-json.git"
 NeoBundle "https://github.com/itchyny/thumbnail.vim"
 NeoBundle "https://github.com/lambdalisue/nodeunit.vim.git", {'depends' : 'reinh/vim-makegreen'}
 NeoBundle "https://github.com/mattn/mkdpreview-vim.git"
 NeoBundle "https://github.com/mattn/webapi-vim.git"
 NeoBundle "https://github.com/mattn/zencoding-vim.git"
-NeoBundle "https://github.com/nanotech/jellybeans.vim.git"
 NeoBundle "https://github.com/reinh/vim-makegreen.git"
 NeoBundle "https://github.com/scrooloose/syntastic.git"
 NeoBundle "https://github.com/supermomonga/vimshell-kawaii.vim.git", {'depends' : 'Shougo/vimshell'}
@@ -35,18 +35,21 @@ NeoBundle "https://github.com/taichouchou2/html5.vim.git"
 NeoBundle "https://github.com/thinca/vim-qfreplace.git"
 NeoBundle "https://github.com/thinca/vim-quickrun.git"
 NeoBundle "https://github.com/thinca/vim-ref.git"
-NeoBundle "https://github.com/timcharper/textile.vim.git"
+NeoBundle "https://github.com/thinca/vim-scouter.git"
 NeoBundle "https://github.com/tomtom/tcomment_vim.git"
 NeoBundle "https://github.com/tpope/vim-fugitive.git"
 NeoBundle "https://github.com/tpope/vim-surround.git"
 NeoBundle "https://github.com/tsaleh/vim-matchit.git"
-NeoBundle "https://github.com/vim-scripts/hybrid.vim.git"
 NeoBundle "https://github.com/vim-scripts/str2numchar.vim.git"
 NeoBundle "https://github.com/vim-scripts/sudo.vim.git"
 
-filetype plugin indent on
+NeoBundle "https://github.com/altercation/solarized.git"
+NeoBundle "https://github.com/fugalh/desert.vim.git"
+NeoBundle "https://github.com/nanotech/jellybeans.vim.git"
+NeoBundle "https://github.com/tomasr/molokai.git"
+NeoBundle "https://github.com/vim-scripts/hybrid.vim.git"
 
-NeoBundleCheck
+filetype plugin indent on
 " }}}
 
 " 未使用のkaoriyaプラグインを無効化
@@ -55,22 +58,32 @@ let plugin_dicwin_disable=1
 " Key
 " Disable Ctrl+@
 imap <C-@> <Nop>
+
 " ESCキー2度押しでハイライトを消去
 nmap <ESC><ESC> :nohlsearch<CR><ESC>
 nmap <C-[><C-[> :nohlsearch<CR><ESC>
+
 " Insertモードを抜けるときIMEをOff
 set noimdisable
 set iminsert=0 imsearch=0
 set noimcmdline
 inoremap <silent> <ESC> <ESC>:set iminsert=0<CR>
 inoremap <silent> <C-[> <C-[>:set iminsert=0<CR>
-" Intuitive cursor movement if `:set wrap`
+
+" 日本語の行連結のときに空白を入力しない
+set formatoptions+=mB
+
+" 全角文字を半角に判定されることを回避
+set ambiwidth=double
+
+" カーソルを表示行で移動
 noremap j gj
 noremap gj j
 noremap k gk
 noremap gk k
 noremap <Down> gj
 noremap <Up> gk
+
 " ウィンドウ切替
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
@@ -78,7 +91,7 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
 " 横幅を87桁にする
-" 87桁は80桁折り返しルールのときに都合がよい
+" 87桁は80桁折り返しルールで、行数が1000未満のときに都合がよい
 nnoremap <silent>,rw :<C-u>vertical resize 87<CR>
 
 " .vimrcを開く
@@ -89,33 +102,52 @@ nnoremap <silent>,rv :<C-u>source $MYVIMRC<CR>
 " バッファのディレクトリに移動
 nnoremap <silent>,cd :<C-u>cd %:h<CR>
 
-" Indent
+" タブ幅:2, インデント幅:2
 set tabstop=2
 set shiftwidth=2
+
+" 編集記号を表示
 set list
 set listchars=eol:¬,tab:▸\ 
+
+" 改行後もインデントを維持
 set autoindent
+
+" インデントは各プラグインにまかせる
 set nosmartindent
+
 autocmd FileType html set indentexpr&
 autocmd FileType js set indentexpr&
 autocmd FileType xhtml set indentexpr&
 
-" Search
+" 検索時にケースインセンティブにする
 set noignorecase
+
+" インクリメンタル検索（逐次検索）を有効にする
 set incsearch
 
-" Insert mode
+" 補完をポップアップ表示する
 set completeopt=menu,menuone,preview
 
-" Misc
+" 長すぎる行も最後まで表示
 set display=lastline
+
+" バックアップファイルをつくらない
 set nobackup
+
+" スワップファイルをつくらない
 set noswapfile
+
+" 行番号を表示
 set number
+
+" カーソルが上下10行以内にいかないようにする
 set scrolloff=10
 
+" カーソル行を強調
 set cursorline
 
+" 検索結果を画面の中央に表示させる
 map n nzz
 map N Nzz
 map * *zz
@@ -124,9 +156,14 @@ map # #zz
 " 縦分割したら新しいウィンドウは右に
 set splitright
 
-" Avoid error of BandleInstall! on Windows
-" https://github.com/gmarik/vundle/issues/192
-set shellxquote=""
+" QuickRun {{{
+let g:quickrun_config = {}
+
+" JavaScript の実行環境を Node.js に指定
+let g:quickrun_config['javascript'] = {'type': 'javascript/nodejs'}
+
+nnoremap <silent> ,l :<C-u>QuickRun<CR>
+"}}}
 
 " Vimfiler {{{
 " vimデフォルトのエクスプローラをvimfilerで置き換える
@@ -156,7 +193,9 @@ nnoremap <silent> ,ul :<C-u>Unite line<CR>
 nnoremap <silent> ,um :<C-u>Unite -default-action=open file_mru<CR>
 nnoremap <silent> ,uo :<C-u>Unite outline<CR>
 nnoremap <silent> ,uy :<C-u>Unite history/yank<CR>
-nnoremap <silent> ,un :<C-u>Unite neobundle/update<CR>
+nnoremap <silent> ,uc :<C-u>Unite neobundle/check<CR>
+nnoremap <silent> ,uu :<C-u>Unite neobundle/update<CR>
+nnoremap <silent> ,us :<C-u>Unite neobundle/search<CR>
 " }}}
 
 " NeoCompleCache {{{
@@ -240,6 +279,36 @@ let g:syntastic_javascript_checker = "gjslint"
 " Ignoring 2 errors
 "   0005 Illegal tab in white space
 "   0110 Line too long
+"
+" エラー回避できるようにgjslintをビルドし直すこと
+"
+" https://codereview.appspot.com/4291044/patch/1/2 {{{
+" Index: errorrules.py
+" ===================================================================
+" --- errorrules.py	(revision 7)
+" +++ errorrules.py	(working copy)
+" @@ -25,6 +25,7 @@
+"  FLAGS = flags.FLAGS
+"  flags.DEFINE_boolean('jsdoc', True,
+"                       'Whether to report errors for missing JsDoc.')
+" +flags.DEFINE_list('ignore_errors', [], 'List of error codes to ignore.')
+"  
+"  
+"  def ShouldReportError(error):
+" @@ -34,9 +35,9 @@
+"      True for all errors except missing documentation errors.  For these,
+"      it returns the value of the jsdoc flag.
+"    """
+" -  return FLAGS.jsdoc or error not in (
+" +  return (FLAGS.jsdoc or error not in (
+"        errors.MISSING_PARAMETER_DOCUMENTATION,
+"        errors.MISSING_RETURN_DOCUMENTATION,
+"        errors.MISSING_MEMBER_DOCUMENTATION,
+"        errors.MISSING_PRIVATE,
+" -      errors.MISSING_JSDOC_TAG_THIS)
+" +      errors.MISSING_JSDOC_TAG_THIS)) and str(error) not in FLAGS.ignore_errors
+""}}}
+
 let g:syntastic_javascript_gjslint_conf = " --ignore_errors=5,110 --strict"
 
 nnoremap <silent> ,sc :<C-u>SyntasticCheck<CR>
@@ -259,14 +328,14 @@ nnoremap <silent> ,gP :Git push<CR>
 " }}}
 
 " Str2Numchar {{{
+" 選択文字列をHTMLの実態文字参照に変換
 vmap <silent> ,sn :Str2NumChar<CR> 
 vmap <silent> ,sh :Str2HexLiteral<CR> 
 "}}}
 
-" Textile
-let g:TextileBrowser="Google Chrome"
-
 au BufNewFile,BufRead *.tsumekusa setf tsumekusa
 au BufNewFile,BufRead *.pac setf javascript
+
+colorscheme hybrid
 
 " vim: fdm=marker
