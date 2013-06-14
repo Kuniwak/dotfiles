@@ -161,10 +161,10 @@ set scrolloff=20
 set cursorline
 
 " 検索結果を画面の中央に表示させる
-map n nzz
-map N Nzz
-map * *zz
-map # #zz
+noremap n nzz
+noremap N Nzz
+noremap * *zz
+noremap # #zz
 
 " 縦分割したら新しいウィンドウは右に
 set splitright
