@@ -109,6 +109,10 @@ nnoremap <silent> <Leader>rv :<C-u>source $MYVIMRC<CR>
 " バッファのディレクトリに移動
 nnoremap <silent> <Leader>cd :<C-u>cd %:h<CR>
 
+" インデント操作後も行選択を保つ
+vnoremap > >gv
+vnoremap < <gv
+
 " タブ幅:2, インデント幅:2
 set tabstop=2
 set shiftwidth=2
