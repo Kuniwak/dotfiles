@@ -43,10 +43,14 @@ NeoBundle "https://github.com/tsaleh/vim-matchit.git"
 NeoBundle "https://github.com/vim-scripts/str2numchar.vim.git"
 NeoBundle "https://github.com/vim-scripts/sudo.vim.git"
 
-NeoBundle "https://github.com/altercation/solarized.git"
+NeoBundle "https://github.com/altercation/vim-colors-solarized.git"
 NeoBundle "https://github.com/fugalh/desert.vim.git"
 NeoBundle "https://github.com/nanotech/jellybeans.vim.git"
+NeoBundle "https://github.com/therubymug/vim-pyte.git"
 NeoBundle "https://github.com/tomasr/molokai.git"
+NeoBundle "https://github.com/vim-scripts/Zenburn.git"
+NeoBundle "https://github.com/vim-scripts/chlordane.vim.git"
+NeoBundle "https://github.com/vim-scripts/dw_colors.git"
 NeoBundle "https://github.com/vim-scripts/hybrid.vim.git"
 
 filetype plugin indent on
@@ -198,7 +202,6 @@ nnoremap <silent> <Leader>ul :<C-u>Unite line<CR>
 nnoremap <silent> <Leader>um :<C-u>Unite -default-action=open file_mru<CR>
 nnoremap <silent> <Leader>uo :<C-u>Unite outline<CR>
 nnoremap <silent> <Leader>uy :<C-u>Unite history/yank<CR>
-nnoremap <silent> <Leader>uc :<C-u>Unite neobundle/check<CR>
 nnoremap <silent> <Leader>uu :<C-u>Unite neobundle/update<CR>
 nnoremap <silent> <Leader>us :<C-u>Unite neobundle/search<CR>
 " }}}
@@ -341,6 +344,7 @@ vmap <silent> <Leader>sh :Str2HexLiteral<CR>
 au BufNewFile,BufRead *.tsumekusa setf tsumekusa
 au BufNewFile,BufRead *.pac setf javascript
 
+set background=dark
 colorscheme hybrid
 
 " vim: fdm=marker
