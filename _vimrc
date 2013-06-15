@@ -12,6 +12,8 @@ call neobundle#rc(expand('~/.vim/bundle'))
 
 NeoBundle "https://github.com/Lokaltog/vim-easymotion.git"
 NeoBundle "https://github.com/Lokaltog/vim-powerline.git"
+" let g:Powerline_symbols = 'compatible" が効くようになるまで更新しない
+" NeoBundle "https://github.com/Lokaltog/powerline.git", {'rtp' : 'powerline/bindings/vim'}
 NeoBundle "https://github.com/OrgaChem/tsumekusa-syntax.vim.git"
 NeoBundle "https://github.com/OrgaChem/vim-javascript.git"
 NeoBundle "https://github.com/Shougo/neocomplcache.git"
@@ -31,6 +33,7 @@ NeoBundle "https://github.com/mattn/zencoding-vim.git"
 NeoBundle "https://github.com/reinh/vim-makegreen.git"
 NeoBundle "https://github.com/scrooloose/syntastic.git"
 NeoBundle "https://github.com/supermomonga/vimshell-kawaii.vim.git", {'depends' : 'Shougo/vimshell'}
+NeoBundle "https://github.com/taichouchou2/alpaca_powertabline.git"
 NeoBundle "https://github.com/taichouchou2/html5.vim.git"
 NeoBundle "https://github.com/thinca/vim-qfreplace.git"
 NeoBundle "https://github.com/thinca/vim-quickrun.git"
@@ -103,8 +106,13 @@ nnoremap <silent> <Leader>rw :<C-u>vertical resize 87<CR>
 
 " .vimrcを開く
 nnoremap <silent> <Leader>ev :<C-u>tabnew $MYVIMRC<CR>
-" source ~/.vimrc を実行する。
+" .vimrc を適用する
 nnoremap <silent> <Leader>rv :<C-u>source $MYVIMRC<CR> 
+
+" .gvimrcを開く
+nnoremap <silent> <Leader>eg :<C-u>tabnew $MYGVIMRC<CR>
+" .gvimrc を適用する
+nnoremap <silent> <Leader>rg :<C-u>source $MYGVIMRC<CR> 
 
 " バッファのディレクトリに移動
 nnoremap <silent> <Leader>cd :<C-u>cd %:h<CR>
@@ -168,6 +176,9 @@ noremap # #zz
 
 " 縦分割したら新しいウィンドウは右に
 set splitright
+
+" 常にステータス行を表示
+set laststatus=2
 
 " QuickRun {{{
 let g:quickrun_config = {}
@@ -343,6 +354,10 @@ nnoremap <silent> <Leader>gP :Git push<CR>
 " 選択文字列をHTMLの実態文字参照に変換
 vmap <silent> <Leader>sn :Str2NumChar<CR> 
 vmap <silent> <Leader>sh :Str2HexLiteral<CR> 
+"}}}
+
+" Powerline {{{
+let g:Powerline_symbols = 'compatible'
 "}}}
 
 au BufNewFile,BufRead *.tsumekusa setf tsumekusa
