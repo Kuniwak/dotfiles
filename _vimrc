@@ -367,6 +367,7 @@ au BufNewFile,BufRead *.pac setf javascript
 set background=dark
 colorscheme hybrid
 
+" 起動時にフルスクリーンにする
 if has("gui_running")
   set fuoptions=maxvert,maxhorz
   au GUIEnter * set fullscreen
