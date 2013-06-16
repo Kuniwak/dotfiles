@@ -11,9 +11,7 @@ endif
 call neobundle#rc(expand('~/.vim/bundle'))
 
 NeoBundle "https://github.com/Lokaltog/vim-easymotion.git"
-NeoBundle "https://github.com/Lokaltog/vim-powerline.git"
-" let g:Powerline_symbols = 'compatible" が効くようになるまで更新しない
-" NeoBundle "https://github.com/Lokaltog/powerline.git", {'rtp' : 'powerline/bindings/vim'}
+NeoBundle "https://github.com/Lokaltog/powerline.git", {'rtp' : 'powerline/bindings/vim'}
 NeoBundle "https://github.com/OrgaChem/tsumekusa-syntax.vim.git"
 NeoBundle "https://github.com/OrgaChem/vim-javascript.git"
 NeoBundle "https://github.com/Shougo/neocomplcache.git"
@@ -42,7 +40,7 @@ NeoBundle "https://github.com/thinca/vim-scouter.git"
 NeoBundle "https://github.com/tomtom/tcomment_vim.git"
 NeoBundle "https://github.com/tpope/vim-fugitive.git"
 NeoBundle "https://github.com/tpope/vim-surround.git"
-NeoBundle "https://github.com/tsaleh/vim-matchit.git"
+NeoBundle "https://github.com/vim-scripts/ViewOutput.git"
 NeoBundle "https://github.com/vim-scripts/str2numchar.vim.git"
 NeoBundle "https://github.com/vim-scripts/sudo.vim.git"
 
@@ -116,6 +114,8 @@ nnoremap <silent> <Leader>rg :<C-u>source $MYGVIMRC<CR>
 
 " バッファのディレクトリに移動
 nnoremap <silent> <Leader>cd :<C-u>cd %:h<CR>
+
+nnoremap <silent> <Leader>ff :<C-u>ScreenMode 
 
 " インデント操作後も行選択を保つ
 vnoremap > >gv
@@ -356,14 +356,15 @@ vmap <silent> <Leader>sn :Str2NumChar<CR>
 vmap <silent> <Leader>sh :Str2HexLiteral<CR> 
 "}}}
 
-" Powerline {{{
-let g:Powerline_symbols = 'compatible'
-"}}}
-
 au BufNewFile,BufRead *.tsumekusa setf tsumekusa
 au BufNewFile,BufRead *.pac setf javascript
 
 set background=dark
 colorscheme hybrid
+
+if has("gui_running")
+  set fuoptions=maxvert,maxhorz
+  au GUIEnter * set fullscreen
+endif
 
 " vim: fdm=marker
