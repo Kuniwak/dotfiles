@@ -24,11 +24,9 @@ NeoBundle "https://github.com/h1mesuke/unite-outline.git"
 NeoBundle "https://github.com/hail2u/vim-css3-syntax.git"
 NeoBundle "https://github.com/helino/vim-json.git"
 NeoBundle "https://github.com/itchyny/thumbnail.vim"
-NeoBundle "https://github.com/lambdalisue/nodeunit.vim.git", {'depends' : 'reinh/vim-makegreen'}
 NeoBundle "https://github.com/mattn/mkdpreview-vim.git"
 NeoBundle "https://github.com/mattn/webapi-vim.git"
 NeoBundle "https://github.com/mattn/zencoding-vim.git"
-NeoBundle "https://github.com/reinh/vim-makegreen.git"
 NeoBundle "https://github.com/scrooloose/syntastic.git"
 NeoBundle "https://github.com/supermomonga/vimshell-kawaii.vim.git", {'depends' : 'Shougo/vimshell'}
 NeoBundle "https://github.com/taichouchou2/alpaca_powertabline.git"
@@ -37,6 +35,7 @@ NeoBundle "https://github.com/thinca/vim-qfreplace.git"
 NeoBundle "https://github.com/thinca/vim-quickrun.git"
 NeoBundle "https://github.com/thinca/vim-ref.git"
 NeoBundle "https://github.com/thinca/vim-scouter.git"
+NeoBundle "https://github.com/thinca/vim-visualstar.git"
 NeoBundle "https://github.com/tomtom/tcomment_vim.git"
 NeoBundle "https://github.com/tpope/vim-fugitive.git"
 NeoBundle "https://github.com/tpope/vim-surround.git"
@@ -104,8 +103,8 @@ nnoremap <silent> <Leader>rw :<C-u>vertical resize 87<CR>
 
 " .vimrcを開く
 nnoremap <silent> <Leader>ev :<C-u>tabnew $MYVIMRC<CR>
-" .vimrc を適用する
-nnoremap <silent> <Leader>rv :<C-u>source $MYVIMRC<CR> 
+" .vimrc を適用する（.gvimrcも）
+nnoremap <silent> <Leader>rv :<C-u>source $MYVIMRC<CR>:<C-u>source $MYGVIMRC<CR> 
 
 " .gvimrcを開く
 nnoremap <silent> <Leader>eg :<C-u>tabnew $MYGVIMRC<CR>
@@ -115,7 +114,7 @@ nnoremap <silent> <Leader>rg :<C-u>source $MYGVIMRC<CR>
 " バッファのディレクトリに移動
 nnoremap <silent> <Leader>cd :<C-u>cd %:h<CR>
 
-nnoremap <silent> <Leader>ff :<C-u>ScreenMode 
+nnoremap <silent> <Leader>ff :<C-u>FullScreen<CR>
 
 " インデント操作後も行選択を保つ
 vnoremap > >gv
@@ -180,6 +179,11 @@ set splitright
 " 常にステータス行を表示
 set laststatus=2
 
+" VimsualStar {{{
+map * <Plug>(visualstar-*)N
+map # <Plug>(visualstar-#)N
+"}}}
+
 " QuickRun {{{
 let g:quickrun_config = {}
 
@@ -217,6 +221,7 @@ nnoremap <silent> <Leader>ul :<C-u>Unite line<CR>
 nnoremap <silent> <Leader>um :<C-u>Unite -default-action=open file_mru<CR>
 nnoremap <silent> <Leader>uo :<C-u>Unite outline<CR>
 nnoremap <silent> <Leader>uy :<C-u>Unite history/yank<CR>
+nnoremap <silent> <Leader>ui :<C-u>Unite neobundle/install<CR>
 nnoremap <silent> <Leader>uu :<C-u>Unite neobundle/update<CR>
 nnoremap <silent> <Leader>us :<C-u>Unite neobundle/search<CR>
 " }}}
