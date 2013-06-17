@@ -103,6 +103,7 @@ nnoremap <silent> <Leader>rw :<C-u>vertical resize 87<CR>
 
 " .vimrcを開く
 nnoremap <silent> <Leader>ev :<C-u>tabnew $MYVIMRC<CR>
+
 " .vimrc を適用する（.gvimrcも）
 nnoremap <silent> <Leader>rv :<C-u>source $MYVIMRC<CR>:<C-u>source $MYGVIMRC<CR> 
 
@@ -113,8 +114,6 @@ nnoremap <silent> <Leader>rg :<C-u>source $MYGVIMRC<CR>
 
 " バッファのディレクトリに移動
 nnoremap <silent> <Leader>cd :<C-u>cd %:h<CR>
-
-nnoremap <silent> <Leader>ff :<C-u>FullScreen<CR>
 
 " インデント操作後も行選択を保つ
 vnoremap > >gv
