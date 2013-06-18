@@ -141,8 +141,7 @@ autocmd FileType xhtml set indentexpr&
 
 " 検索時にケースインセンティブにする
 " ただし検索条件に大文字が含まれる場合のみケースセンシティブにする
-set ignorecase
-set smartcase
+set noignorecase
 
 " インクリメンタル検索（逐次検索）を有効にする
 set incsearch
