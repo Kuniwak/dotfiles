@@ -10,8 +10,8 @@ endif
 
 call neobundle#rc(expand('~/.vim/bundle'))
 
-NeoBundle "https://github.com/Lokaltog/vim-easymotion.git"
 NeoBundle "https://github.com/Lokaltog/powerline.git", {'rtp' : 'powerline/bindings/vim'}
+NeoBundle "https://github.com/Lokaltog/vim-easymotion.git"
 NeoBundle "https://github.com/OrgaChem/tsumekusa-syntax.vim.git"
 NeoBundle "https://github.com/OrgaChem/vim-javascript.git"
 NeoBundle "https://github.com/Shougo/neocomplcache.git"
@@ -24,6 +24,7 @@ NeoBundle "https://github.com/h1mesuke/unite-outline.git"
 NeoBundle "https://github.com/hail2u/vim-css3-syntax.git"
 NeoBundle "https://github.com/helino/vim-json.git"
 NeoBundle "https://github.com/itchyny/thumbnail.vim"
+NeoBundle "https://github.com/juanpabloaj/ShowMarks.git"
 NeoBundle "https://github.com/mattn/mkdpreview-vim.git"
 NeoBundle "https://github.com/mattn/webapi-vim.git"
 NeoBundle "https://github.com/mattn/zencoding-vim.git"
@@ -39,6 +40,7 @@ NeoBundle "https://github.com/thinca/vim-visualstar.git"
 NeoBundle "https://github.com/tomtom/tcomment_vim.git"
 NeoBundle "https://github.com/tpope/vim-fugitive.git"
 NeoBundle "https://github.com/tpope/vim-surround.git"
+NeoBundle 'https://github.com/tpope/vim-abolish' " abolish.vim: easily search for, substitute, and abbreviate multiple variants of a word
 NeoBundle "https://github.com/vim-scripts/ViewOutput.git"
 NeoBundle "https://github.com/vim-scripts/str2numchar.vim.git"
 NeoBundle "https://github.com/vim-scripts/sudo.vim.git"
@@ -105,12 +107,12 @@ nnoremap <silent> <Leader>rw :<C-u>vertical resize 87<CR>
 nnoremap <silent> <Leader>ev :<C-u>tabnew $MYVIMRC<CR>
 
 " .vimrc を適用する（.gvimrcも）
-nnoremap <silent> <Leader>rv :<C-u>source $MYVIMRC<CR>:<C-u>source $MYGVIMRC<CR> 
+nnoremap <silent> <Leader>rv :<C-u>source $MYVIMRC<CR>:<C-u>source $MYGVIMRC<CR>
 
 " .gvimrcを開く
 nnoremap <silent> <Leader>eg :<C-u>tabnew $MYGVIMRC<CR>
 " .gvimrc を適用する
-nnoremap <silent> <Leader>rg :<C-u>source $MYGVIMRC<CR> 
+nnoremap <silent> <Leader>rg :<C-u>source $MYGVIMRC<CR>
 
 " バッファのディレクトリに移動
 nnoremap <silent> <Leader>cd :<C-u>cd %:h<CR>
@@ -125,7 +127,7 @@ set shiftwidth=2
 
 " 編集記号を表示
 set list
-set listchars=eol:¬,tab:▸\ 
+set listchars=eol:¬,tab:▸\
 
 " 改行後もインデントを維持
 set autoindent
@@ -197,7 +199,7 @@ nnoremap <silent> <Leader>l :<C-u>QuickRun<CR>
 let g:vimfiler_as_default_explorer = 1
 " セーフモードを無効にした状態で起動する
 let g:vimfiler_safe_mode_by_default = 0
-" 
+"
 let g:vimfiler_enable_auto_cd = 1
 " 現在開いているバッファをIDE風に開く
 nnoremap <silent> <Leader>vf :<C-u>VimFilerBufferDir -split -simple -no-quit -winwidth=35<CR>
@@ -297,7 +299,7 @@ let g:neosnippet#snippets_directory="~/.vim/snippets"
 
 " Syntastic {{{
 let g:syntastic_mode_map = { "mode": "passive",
-  \ "active_filetypes": [], 
+  \ "active_filetypes": [],
   \ "passive_filetypes": ["html", "javascript"] }
 let g:syntastic_loc_list_height = 3
 let g:syntastic_auto_loc_list = 2
@@ -319,8 +321,8 @@ let g:syntastic_javascript_checker = "gjslint"
 "  flags.DEFINE_boolean('jsdoc', True,
 "                       'Whether to report errors for missing JsDoc.')
 " +flags.DEFINE_list('ignore_errors', [], 'List of error codes to ignore.')
-"  
-"  
+"
+"
 "  def ShouldReportError(error):
 " @@ -34,9 +35,9 @@
 "      True for all errors except missing documentation errors.  For these,
@@ -356,8 +358,17 @@ nnoremap <silent> <Leader>gP :Git push<CR>
 
 " Str2Numchar {{{
 " 選択文字列をHTMLの実態文字参照に変換
-vmap <silent> <Leader>sn :Str2NumChar<CR> 
-vmap <silent> <Leader>sh :Str2HexLiteral<CR> 
+vmap <silent> <Leader>sn :Str2NumChar<CR>
+vmap <silent> <Leader>sh :Str2HexLiteral<CR>
+"}}}
+
+"Showmarks{{{
+" 英字のマークのみ表示
+let showmarks_include = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+"}}}
+
+"Abolish{{{
+
 "}}}
 
 au BufNewFile,BufRead *.tsumekusa setf tsumekusa
@@ -371,5 +382,14 @@ if has("gui_running")
   set fuoptions=maxvert,maxhorz
   au GUIEnter * set fullscreen
 endif
+
+" 保存時に行末の空白を除去する
+function! s:remove_dust()
+  let cursor = getpos(".")
+  %s/\s\+$//ge
+  call setpos(".", cursor)
+  unlet cursor
+endfunction
+autocmd BufWritePre * call <SID>remove_dust()
 
 " vim: fdm=marker
