@@ -55,6 +55,21 @@ NeoBundle "https://github.com/vim-scripts/hybrid.vim.git"
 NeoBundle "https://github.com/vim-scripts/str2numchar.vim.git"
 NeoBundle "https://github.com/vim-scripts/sudo.vim.git"
 
+if has("ruby")
+  NeoBundle 'taichouchou2/alpaca_english', {
+        \ 'rev' : 'development',
+        \ 'build' : {
+        \   "mac" : "bundle",
+        \   "unix" : "bundle",
+        \   "other" : "bundle"
+        \ },
+        \ 'autoload' : {
+        \   'commands' : ["AlpacaEnglishDisable", "AlpacaEnglishEnable", "AlpacaEnglishSay"],
+        \   'unite_sources': ['english_dictionary', 'english_example', 'english_thesaurus']
+        \ }
+        \ }
+endif
+
 filetype plugin indent on
 " }}}
 
@@ -375,6 +390,23 @@ let showmarks_include = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
 "Abolish{{{
 
+"}}}
+
+"Alpaca-english{{{
+let g:alpaca_english_enable=1
+let g:alpaca_english_max_candidates=100
+let g:alpaca_english_enable_duplicate_candidates=1
+
+" 補完を有効にするファイルタイプを追加
+"let g:neocomplcache_text_mode_filetypes = {
+"  \ 'markdown' : 1,
+"  \ 'gitcommit' : 1,
+"  \ 'text' : 1,
+"  \ }
+
+" DEVELOPMENT VERSION
+let g:alpaca_english_web_search_url = 'http://eow.alc.co.jp/%s/UTF-8/'
+let g:alpaca_english_web_search_xpath = "div[@id='resultsList']/ul/li"
 "}}}
 
 au BufNewFile,BufRead *.tsumekusa setf tsumekusa
