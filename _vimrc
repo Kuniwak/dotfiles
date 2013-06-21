@@ -190,6 +190,27 @@ let g:quickrun_config = {}
 " JavaScript の実行環境を Node.js に指定
 let g:quickrun_config['javascript'] = {'type': 'javascript/nodejs'}
 
+"let g:quickrun_config['javascript/nodeunit'] = {
+"      \ 'command': 'nodeunit',
+"      \ 'cmdopt': '--reporter machineout',
+"      \ 'tempfile': '%{tempname()}.js'
+"      \ }
+
+let g:quickrun_config['javascript/nodeunit'] = {
+      \ 'command': 'nodeunit',
+      \ 'cmdopt': '--reporter machineout',
+      \ 'tempfile': '%{tempname()}.js',
+      \ 'outputter': 'quickfix',
+      \ 'outputter/quickfix/errorformat': "%EFail:%s:%f:%l:%c:%m,%Z,%IError:%s::::%m,%Z"
+      \ }
+
+
+let g:quickrun_config['javascript/mocha'] = {
+      \ 'command': 'mocha',
+      \ 'cmdopt': '',
+      \ 'tempfile': '%{tempname()}.js'
+      \ }
+
 nnoremap <silent> <Leader>l :<C-u>QuickRun<CR>
 "}}}
 
