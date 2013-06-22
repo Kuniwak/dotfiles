@@ -25,12 +25,12 @@ NeoBundle "https://github.com/hail2u/vim-css3-syntax.git"
 NeoBundle "https://github.com/helino/vim-json.git"
 NeoBundle "https://github.com/itchyny/thumbnail.vim"
 NeoBundle "https://github.com/juanpabloaj/ShowMarks.git"
-NeoBundle "https://github.com/mattn/mkdpreview-vim.git"
+NeoBundle "https://github.com/mattn/gist-vim.git", {'depends' : 'https://github.com/mattn/webapi-vim.git'}
 NeoBundle "https://github.com/mattn/webapi-vim.git"
 NeoBundle "https://github.com/mattn/zencoding-vim.git"
 NeoBundle "https://github.com/nanotech/jellybeans.vim.git"
 NeoBundle "https://github.com/scrooloose/syntastic.git"
-NeoBundle "https://github.com/supermomonga/vimshell-kawaii.vim.git", {'depends' : 'Shougo/vimshell'}
+NeoBundle "https://github.com/supermomonga/vimshell-kawaii.vim.git", {'depends' : 'https://github.com/Shougo/vimshell.git'}
 NeoBundle "https://github.com/taichouchou2/alpaca_powertabline.git"
 NeoBundle "https://github.com/taichouchou2/html5.vim.git"
 NeoBundle "https://github.com/therubymug/vim-pyte.git"
@@ -53,20 +53,20 @@ NeoBundle "https://github.com/vim-scripts/hybrid.vim.git"
 NeoBundle "https://github.com/vim-scripts/str2numchar.vim.git"
 NeoBundle "https://github.com/vim-scripts/sudo.vim.git"
 
-if has("ruby")
-  NeoBundle 'taichouchou2/alpaca_english', {
-        \ 'rev' : 'development',
-        \ 'build' : {
-        \   "mac" : "bundle",
-        \   "unix" : "bundle",
-        \   "other" : "bundle"
-        \ },
-        \ 'autoload' : {
-        \   'commands' : ["AlpacaEnglishDisable", "AlpacaEnglishEnable", "AlpacaEnglishSay"],
-        \   'unite_sources': ['english_dictionary', 'english_example', 'english_thesaurus']
-        \ }
-        \ }
-endif
+" if has("ruby")
+"   NeoBundle 'taichouchou2/alpaca_english', {
+"         \ 'rev' : 'development',
+"         \ 'build' : {
+"         \   "mac" : "bundle",
+"         \   "unix" : "bundle",
+"         \   "other" : "bundle"
+"         \ },
+"         \ 'autoload' : {
+"         \   'commands' : ["AlpacaEnglishDisable", "AlpacaEnglishEnable", "AlpacaEnglishSay"],
+"         \   'unite_sources': ['english_dictionary', 'english_example', 'english_thesaurus']
+"         \ }
+"         \ }
+" endif
 
 filetype plugin indent on
 
@@ -404,10 +404,6 @@ vmap <silent> <Leader>sh :Str2HexLiteral<CR>
 let showmarks_include = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
 "}}}
 
-"Abolish{{{
-
-"}}}
-
 "Alpaca-english{{{
 let g:alpaca_english_enable=1
 let g:alpaca_english_max_candidates=100
@@ -425,7 +421,12 @@ let g:alpaca_english_web_search_url = 'http://eow.alc.co.jp/%s/UTF-8/'
 let g:alpaca_english_web_search_xpath = "div[@id='resultsList']/ul/li"
 "}}}
 
+"Gist-vim{{{
+let g:gist_detect_filetype = 1
+vnoremap <Leader>g :Gist<CR>
+"}}}
+
 set background=dark
 colorscheme hybrid
 
-" vim: fdm=marker
+" vim: fdm=marker tw=0
