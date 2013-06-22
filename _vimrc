@@ -1,5 +1,3 @@
-" NeoBundle {{{
-
 set encoding=utf-8
 set nocompatible
 filetype off
@@ -43,9 +41,9 @@ NeoBundle "https://github.com/thinca/vim-scouter.git"
 NeoBundle "https://github.com/thinca/vim-visualstar.git"
 NeoBundle "https://github.com/tomasr/molokai.git"
 NeoBundle "https://github.com/tomtom/tcomment_vim.git"
-NeoBundle "https://github.com/tpope/vim-abolish" " abolish.vim: easily search for, substitute, and abbreviate multiple variants of a word
+NeoBundle "https://github.com/tpope/vim-abolish"
 NeoBundle "https://github.com/tpope/vim-fugitive.git"
-NeoBundle "https://github.com/tpope/vim-repeat" " repeat.vim: enable repeating supported plugin maps with '.'
+NeoBundle "https://github.com/tpope/vim-repeat"
 NeoBundle "https://github.com/tpope/vim-surround.git"
 NeoBundle "https://github.com/vim-scripts/ViewOutput.git"
 NeoBundle "https://github.com/vim-scripts/Zenburn.git"
@@ -71,7 +69,6 @@ if has("ruby")
 endif
 
 filetype plugin indent on
-" }}}
 
 " 未使用のkaoriyaプラグインを無効化
 let plugin_dicwin_disable=1
@@ -193,6 +190,25 @@ set splitright
 
 " 常にステータス行を表示
 set laststatus=2
+
+" 起動時にフルスクリーンにする
+if has("gui_running")
+  set fuoptions=maxvert,maxhorz
+  au GUIEnter * set fullscreen
+endif
+
+" 保存時に行末の空白を除去する
+function! s:remove_dust()
+  let cursor = getpos(".")
+  %s/\s\+$//ge
+  call setpos(".", cursor)
+  unlet cursor
+endfunction
+autocmd BufWritePre * call <SID>remove_dust()
+
+
+au BufNewFile,BufRead *.tsumekusa setf tsumekusa
+au BufNewFile,BufRead *.pac setf javascript
 
 " VimsualStar {{{
 map * <Plug>(visualstar-*)N
@@ -409,25 +425,7 @@ let g:alpaca_english_web_search_url = 'http://eow.alc.co.jp/%s/UTF-8/'
 let g:alpaca_english_web_search_xpath = "div[@id='resultsList']/ul/li"
 "}}}
 
-au BufNewFile,BufRead *.tsumekusa setf tsumekusa
-au BufNewFile,BufRead *.pac setf javascript
-
 set background=dark
 colorscheme hybrid
-
-" 起動時にフルスクリーンにする
-if has("gui_running")
-  set fuoptions=maxvert,maxhorz
-  au GUIEnter * set fullscreen
-endif
-
-" 保存時に行末の空白を除去する
-function! s:remove_dust()
-  let cursor = getpos(".")
-  %s/\s\+$//ge
-  call setpos(".", cursor)
-  unlet cursor
-endfunction
-autocmd BufWritePre * call <SID>remove_dust()
 
 " vim: fdm=marker
