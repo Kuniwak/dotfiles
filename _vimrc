@@ -8,7 +8,10 @@ endif
 
 call neobundle#rc(expand('~/.vim/bundle'))
 
-NeoBundle "https://github.com/Lokaltog/powerline.git", {'rtp' : 'powerline/bindings/vim'}
+if has("mac")
+" https://powerline.readthedocs.org/en/latest/installation/linux.html#i-get-e858-e860-error-in-vim-eval-did-not-return-a-valid-python-object
+  NeoBundle "https://github.com/Lokaltog/powerline.git", {'rtp' : 'powerline/bindings/vim'}
+endif
 NeoBundle "https://github.com/Lokaltog/vim-easymotion.git"
 NeoBundle "https://github.com/OrgaChem/tsumekusa-syntax.vim.git"
 NeoBundle "https://github.com/OrgaChem/vim-javascript.git"
@@ -116,15 +119,15 @@ nnoremap <C-l> <C-w>l
 nnoremap <silent> <Leader>rw :<C-u>vertical resize 87<CR>
 
 " .vimrcを開く
-nnoremap <silent> <Leader>ev :<C-u>tabnew $MYVIMRC<CR>
+nnoremap <silent> <Leader>ev :<C-u>tabnew $HOME/.orgachem-vim/_vimrc<CR>
 
 " .vimrc を適用する（.gvimrcも）
-nnoremap <silent> <Leader>rv :<C-u>source $MYVIMRC<CR>:<C-u>source $MYGVIMRC<CR>
+nnoremap <silent> <Leader>rv :<C-u>source $HOME/.orgachem-vim/_vimrc<CR>:<C-u>source $HOME/.orgachem-vim/_gvimrc<CR>
 
 " .gvimrcを開く
-nnoremap <silent> <Leader>eg :<C-u>tabnew $MYGVIMRC<CR>
+nnoremap <silent> <Leader>eg :<C-u>tabnew $HOME/.orgachem-vim/_gvimrc<CR>
 " .gvimrc を適用する
-nnoremap <silent> <Leader>rg :<C-u>source $MYGVIMRC<CR>
+nnoremap <silent> <Leader>rg :<C-u>source $HOME/.orgachem-vim/_gvimrc<CR>
 
 " バッファのディレクトリに移動
 nnoremap <silent> <Leader>cd :<C-u>cd %:h<CR>
@@ -192,9 +195,13 @@ set splitright
 set laststatus=2
 
 " 起動時にフルスクリーンにする
-if has("gui_running")
+if has("mac") && has("gui_running")
   set fuoptions=maxvert,maxhorz
   au GUIEnter * set fullscreen
+endif
+
+if has("win32") && has("win64")
+  cd $HOME
 endif
 
 " 保存時に行末の空白を除去する
@@ -428,4 +435,4 @@ let g:alpaca_english_web_search_xpath = "div[@id='resultsList']/ul/li"
 set background=dark
 colorscheme hybrid
 
-" vim: fdm=marker
+" vim: fdm=marker et tw=0
