@@ -133,13 +133,17 @@ nnoremap <silent> <Leader>cd :<C-u>cd %:h<CR>
 vnoremap > >gv
 vnoremap < <gv
 
-" タブ幅:2, インデント幅:2
+" Ctrl+hでBS
+inoremap <C-h> <Backspace>
+
+" タブ幅:2, インデント幅:2, 折り返し幅:無効
 set tabstop=2
 set shiftwidth=2
+set textwidth=0
 
 " 編集記号を表示
 set list
-set listchars=eol:¬,tab:▸\
+set listchars=eol:¬,tab:▸\ 
 
 " 改行後もインデントを維持
 set autoindent
@@ -204,7 +208,7 @@ function! s:remove_dust()
   call setpos(".", cursor)
   unlet cursor
 endfunction
-autocmd BufWritePre * call <SID>remove_dust()
+autocmd BufWritePre *.js call <SID>remove_dust()
 
 
 au BufNewFile,BufRead *.tsumekusa setf tsumekusa
