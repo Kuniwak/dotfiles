@@ -8,10 +8,13 @@ endif
 
 call neobundle#rc(expand('~/.vim/bundle'))
 
-if has("mac")
+if has("win32") || has("win64")
+  NeoBundle "https://github.com/Lokaltog/vim-powerline.git"
+else
 " https://powerline.readthedocs.org/en/latest/installation/linux.html#i-get-e858-e860-error-in-vim-eval-did-not-return-a-valid-python-object
   NeoBundle "https://github.com/Lokaltog/powerline.git", {'rtp' : 'powerline/bindings/vim'}
 endif
+
 NeoBundle "https://github.com/Lokaltog/vim-easymotion.git"
 NeoBundle "https://github.com/OrgaChem/tsumekusa-syntax.vim.git"
 NeoBundle "https://github.com/OrgaChem/vim-javascript.git"
