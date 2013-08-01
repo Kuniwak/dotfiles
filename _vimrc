@@ -138,10 +138,6 @@ nnoremap <silent> <Leader>rg :<C-u>source $HOME/.orgachem-vim/_gvimrc<CR>
 " バッファのディレクトリに移動
 nnoremap <silent> <Leader>cd :<C-u>cd %:h<CR>
 
-" インデント操作後も行選択を保つ
-vnoremap > >gv
-vnoremap < <gv
-
 " Ctrl+hでBS
 inoremap <C-h> <Backspace>
 
