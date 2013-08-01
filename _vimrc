@@ -30,7 +30,9 @@ NeoBundle "https://github.com/h1mesuke/unite-outline.git"
 NeoBundle "https://github.com/hail2u/vim-css3-syntax.git"
 NeoBundle "https://github.com/helino/vim-json.git"
 NeoBundle "https://github.com/itchyny/thumbnail.vim"
+NeoBundle "https://github.com/jonathanfilip/vim-lucius.git"
 NeoBundle "https://github.com/juanpabloaj/ShowMarks.git"
+NeoBundle "https://github.com/matthewtodd/vim-twilight.git"
 NeoBundle "https://github.com/mattn/gist-vim.git", {'depends' : 'https://github.com/mattn/webapi-vim.git'}
 NeoBundle "https://github.com/mattn/webapi-vim.git"
 NeoBundle "https://github.com/mattn/zencoding-vim.git"
@@ -269,7 +271,7 @@ nnoremap <silent> <Leader>vp :<C-u>VimShellPop %:p:h<CR>
 let g:unite_enable_start_insert = 0
 let g:unite_source_history_yank_enable = 1
 nnoremap <silent> <Leader>ub :<C-u>Unite buffer<CR>
-nnoremap <silent> <Leader>uc :<C-u>Unite colorscheme<CR>
+nnoremap <silent> <Leader>uc :<C-u>Unite colorscheme -auto-preview<CR>
 nnoremap <silent> <Leader>uf :<C-u>Unite file<CR>
 nnoremap <silent> <Leader>ul :<C-u>Unite line<CR>
 nnoremap <silent> <Leader>um :<C-u>Unite -default-action=open file_mru<CR>
