@@ -51,6 +51,8 @@ NeoBundle "https://github.com/tpope/vim-abolish"
 NeoBundle "https://github.com/tpope/vim-fugitive.git"
 NeoBundle "https://github.com/tpope/vim-repeat"
 NeoBundle "https://github.com/tpope/vim-surround.git"
+NeoBundle "https://github.com/tyru/restart.vim.git"
+NeoBundle "https://github.com/ujihisa/unite-colorscheme.git"
 NeoBundle "https://github.com/vim-scripts/ViewOutput.git"
 NeoBundle "https://github.com/vim-scripts/Zenburn.git"
 NeoBundle "https://github.com/vim-scripts/chlordane.vim.git"
@@ -267,14 +269,15 @@ nnoremap <silent> <Leader>vp :<C-u>VimShellPop %:p:h<CR>
 let g:unite_enable_start_insert = 0
 let g:unite_source_history_yank_enable = 1
 nnoremap <silent> <Leader>ub :<C-u>Unite buffer<CR>
+nnoremap <silent> <Leader>uc :<C-u>Unite colorscheme<CR>
 nnoremap <silent> <Leader>uf :<C-u>Unite file<CR>
 nnoremap <silent> <Leader>ul :<C-u>Unite line<CR>
 nnoremap <silent> <Leader>um :<C-u>Unite -default-action=open file_mru<CR>
 nnoremap <silent> <Leader>uo :<C-u>Unite outline<CR>
-nnoremap <silent> <Leader>uy :<C-u>Unite history/yank<CR>
 nnoremap <silent> <Leader>ui :<C-u>Unite neobundle/install<CR>
-nnoremap <silent> <Leader>uu :<C-u>Unite neobundle/update<CR>
 nnoremap <silent> <Leader>us :<C-u>Unite neobundle/search<CR>
+nnoremap <silent> <Leader>uu :<C-u>Unite neobundle/update<CR>
+nnoremap <silent> <Leader>uy :<C-u>Unite history/yank<CR>
 " }}}
 
 " NeoCompleCache {{{
