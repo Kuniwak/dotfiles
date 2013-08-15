@@ -34,9 +34,9 @@ NeoBundle "https://github.com/itchyny/thumbnail.vim"
 NeoBundle "https://github.com/jonathanfilip/vim-lucius.git"
 NeoBundle "https://github.com/juanpabloaj/ShowMarks.git"
 NeoBundle "https://github.com/matthewtodd/vim-twilight.git"
+NeoBundle "https://github.com/mattn/emmet-vim.git"
 NeoBundle "https://github.com/mattn/gist-vim.git", {'depends' : 'https://github.com/mattn/webapi-vim.git'}
 NeoBundle "https://github.com/mattn/webapi-vim.git"
-NeoBundle "https://github.com/mattn/zencoding-vim.git"
 NeoBundle "https://github.com/nanotech/jellybeans.vim.git"
 NeoBundle "https://github.com/scrooloose/syntastic.git"
 NeoBundle "https://github.com/supermomonga/vimshell-kawaii.vim.git", {'depends' : 'https://github.com/Shougo/vimshell.git'}
