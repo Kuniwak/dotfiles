@@ -441,6 +441,11 @@ let g:gist_detect_filetype = 1
 vnoremap <Leader>g :Gist<CR>
 "}}}
 
+" Restart.vim {{{
+" 終了時に保存するセッションオプションを設定する
+let g:restart_sessionoptions = 'blank,buffers,curdir,folds,help,localoptions,tabpages'
+"}}}
+
 set background=dark
 colorscheme hybrid
 
