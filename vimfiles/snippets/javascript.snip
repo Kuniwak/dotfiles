@@ -1,290 +1,290 @@
 # Statement snippets {{{
 snippet function
 alias f
-  function(${1:#:args}) {
-    ${0}
-  };
+	function(${1:#:args}) {
+	  ${0}
+	};
 
 snippet interface
-  /**
-   * Interface for ${1:#:interface_name}.
-   * @interface
-   */
-   ${2:#:interface} = function() {};
+	/**
+	 * Interface for ${1:#:interface_name}.
+	 * @interface
+	 */
+	 ${2:#:interface} = function() {};
 
 snippet class
-  /**
-   * A class for ${1:#:class_name}.
-   * @constructor
-   */
-  ${2:#:class} = function(${3:#:args}) {
-    ${0}
-  };
+	/**
+	 * A class for ${1:#:class_name}.
+	 * @constructor
+	 */
+	${2:#:class} = function(${3:#:args}) {
+	  ${0}
+	};
 
 snippet sub
 alias extends
-  /**
-   * A class for ${1:#:sub_class_name}.
-   * @constructor
-   * @extends {${2:#:super_class}}
-   */
-  ${3:sub_class} = function(${4:#:args}) {
-    goog.base(this${5:#:super_args});
-    ${0}
-  };
-  goog.inherits($3, $2);
+	/**
+	 * A class for ${1:#:sub_class_name}.
+	 * @constructor
+	 * @extends {${2:#:super_class}}
+	 */
+	${3:sub_class} = function(${4:#:args}) {
+	  goog.base(this${5:#:super_args});
+	  ${0}
+	};
+	goog.inherits($3, $2);
 
 snippet inherits
-  goog.inherits(${1:#:sub_class}, ${2:#:super_class});
+	goog.inherits(${1:#:sub_class}, ${2:#:super_class});
 
 snippet singleton
 alias sing
-  goog.addSingletonGetter(${1:#:singleton_class});
+	goog.addSingletonGetter(${1:#:singleton_class});
 
 snippet extendsUiComponent
 alias extuicom
-  /**
-   * A class for ${1:#:sub_class_name}.
-   * @param {goog.dom.DomHelper=} opt_domHelper Optional DOM helper, used for
-   *     document interaction.
-   * @constructor
-   * @extends {goog.ui.Component}
-   */
-  ${2:#:sub_class} = function(${3:#:args}opt_domHelper) {
-    goog.base(this, opt_domHelper);
-    ${0}
-  };
-  goog.inherits($2, goog.ui.Component);
+	/**
+	 * A class for ${1:#:sub_class_name}.
+	 * @param {goog.dom.DomHelper=} opt_domHelper Optional DOM helper, used for
+	 *     document interaction.
+	 * @constructor
+	 * @extends {goog.ui.Component}
+	 */
+	${2:#:sub_class} = function(${3:#:args}opt_domHelper) {
+	  goog.base(this, opt_domHelper);
+	  ${0}
+	};
+	goog.inherits($2, goog.ui.Component);
 
 snippet extendsUiControl
 alias extuictrl
-  /**
-   * A class for ${1:#:sub_class_name}.
-   * @param {goog.ui.ControlContent} content Text caption or DOM structure
-   *     to display as the content of the component (if any).
-   * @param {goog.ui.ControlRenderer=} opt_renderer Renderer used to render or
-   *     decorate the component; defaults to {@link goog.ui.ControlRenderer}.
-   * @param {goog.dom.DomHelper=} opt_domHelper Optional DOM helper, used for
-   *     document interaction.
-   * @constructor
-   * @extends {goog.ui.Control}
-   */
-  ${2:#:sub_class} = function(${3:#:args}opt_renderer, opt_domHelper) {
-    goog.base(this, content, opt_renderer, opt_domHelper);
-    ${0}
-  };
-  goog.inherits($2, goog.ui.Control);
+	/**
+	 * A class for ${1:#:sub_class_name}.
+	 * @param {goog.ui.ControlContent} content Text caption or DOM structure
+	 *     to display as the content of the component (if any).
+	 * @param {goog.ui.ControlRenderer=} opt_renderer Renderer used to render or
+	 *     decorate the component; defaults to {@link goog.ui.ControlRenderer}.
+	 * @param {goog.dom.DomHelper=} opt_domHelper Optional DOM helper, used for
+	 *     document interaction.
+	 * @constructor
+	 * @extends {goog.ui.Control}
+	 */
+	${2:#:sub_class} = function(${3:#:args}opt_renderer, opt_domHelper) {
+	  goog.base(this, content, opt_renderer, opt_domHelper);
+	  ${0}
+	};
+	goog.inherits($2, goog.ui.Control);
 
 snippet req
 alias require
-  goog.require('${1}');
+	goog.require('${1}');
 
 snippet reqgoog
-  goog.require('goog.${1}');
+	goog.require('goog.${1}');
 
 snippet reqarr
-  goog.require('goog.array${1}');
+	goog.require('goog.array${1}');
 
 snippet reqobj
-  goog.require('goog.object${1}');
+	goog.require('goog.object${1}');
 
 snippet reqdom
-  goog.require('goog.dom${1}');
+	goog.require('goog.dom${1}');
 
 snippet reqev
-  goog.require('goog.events${1}');
+	goog.require('goog.events${1}');
 
 snippet requi
-  goog.require('goog.ui${1}');
+	goog.require('goog.ui${1}');
 
 snippet provide
 alias prov
-  goog.provide('${1}');
+	goog.provide('${1}');
 
 snippet abstract
 alias abs
-  goog.abstractMethod
+	goog.abstractMethod
 
 snippet nullfunction
 alias nullfunc
-  goog.nullFunction
+	goog.nullFunction
 
 snippet disposeInternal
-  /** @override */
-  ${1}.prototype.disposeInternal = function() {
-    goog.base(this, 'disposeInternal');
-    ${0}
-  };
+	/** @override */
+	${1}.prototype.disposeInternal = function() {
+	  goog.base(this, 'disposeInternal');
+	  ${0}
+	};
 
 snippet enterDocument
-  /** @override */
-  ${1}.prototype.enterDocument = function() {
-    goog.base(this, 'enterDocument');
-    ${0}
-  };
+	/** @override */
+	${1}.prototype.enterDocument = function() {
+	  goog.base(this, 'enterDocument');
+	  ${0}
+	};
 
 snippet exitDocument
-  /** @override */
-  ${1}.prototype.exitDocument = function() {
-    goog.base(this, 'exitDocument');
-    ${0}
-  };
+	/** @override */
+	${1}.prototype.exitDocument = function() {
+	  goog.base(this, 'exitDocument');
+	  ${0}
+	};
 
 snippet decorateInternal
-  /** @override */
-  ${1}.prototype.decorateInternal = function(element) {
-    goog.base(this, 'decorateInternal', element);
-    ${0}
-  };
+	/** @override */
+	${1}.prototype.decorateInternal = function(element) {
+	  goog.base(this, 'decorateInternal', element);
+	  ${0}
+	};
 
 snippet rendererSupport
 alias rdrsup
-  /**
-   * Returns the renderer used by this ${1:component} to render itself or to decorate
-   * an existing element.
-   * @return {${2:#:renderer_type}} Renderer used by the $1.
-   */
-  ${3:#:renderer}.prototype.getRenderer = function() {
-    return this.renderer_;
-  };
+	/**
+	 * Returns the renderer used by this ${1:component} to render itself or to decorate
+	 * an existing element.
+	 * @return {${2:#:renderer_type}} Renderer used by the $1.
+	 */
+	${3:#:renderer}.prototype.getRenderer = function() {
+	  return this.renderer_;
+	};
 
 
-  /**
-   * Registers the given renderer with the $1. Changing renderers after
-   * the $1 has already been rendered or decorated is an error.
-   * @param {$2} renderer Renderer used by the $1.
-   */
-  $3.prototype.setRenderer = function(renderer) {
-    if (this.getElement()) {
-      // Too late.
-      throw Error(goog.ui.Component.Error.ALREADY_RENDERED);
-    }
-  
-    this.renderer_ = renderer;
-  };
+	/**
+	 * Registers the given renderer with the $1. Changing renderers after
+	 * the $1 has already been rendered or decorated is an error.
+	 * @param {$2} renderer Renderer used by the $1.
+	 */
+	$3.prototype.setRenderer = function(renderer) {
+	  if (this.getElement()) {
+	    // Too late.
+	    throw Error(goog.ui.Component.Error.ALREADY_RENDERED);
+	  }
+	
+	  this.renderer_ = renderer;
+	};
 
 
-   /** @override */
-  $3.prototype.createDom = function() {
-    // Delegate to renderer.
-    this.setElementInternal(this.renderer_.createDom(this));
-  };
+	 /** @override */
+	$3.prototype.createDom = function() {
+	  // Delegate to renderer.
+	  this.setElementInternal(this.renderer_.createDom(this));
+	};
 
 
-   /** @override */
-  $3.prototype.getContentElement = function() {
-    // Delegate to renderer.
-    return this.renderer_.getContentElement(this.getElement());
-  };
-  
-  
-   /** @override */
-  $3.prototype.canDecorate = function(element) {
-    // Delegate to renderer.
-    return this.renderer_.canDecorate(element);
-  };
-  
-  
-   /** @override */
-  $3.prototype.decorateInternal = function(element) {
-    // Delegate to renderer.
-    this.setElementInternal(this.renderer_.decorate(this, element));
-  };
+	 /** @override */
+	$3.prototype.getContentElement = function() {
+	  // Delegate to renderer.
+	  return this.renderer_.getContentElement(this.getElement());
+	};
+	
+	
+	 /** @override */
+	$3.prototype.canDecorate = function(element) {
+	  // Delegate to renderer.
+	  return this.renderer_.canDecorate(element);
+	};
+	
+	
+	 /** @override */
+	$3.prototype.decorateInternal = function(element) {
+	  // Delegate to renderer.
+	  this.setElementInternal(this.renderer_.decorate(this, element));
+	};
 
 snippet log
-  console.log(${0});
+	console.log(${0});
 
 snippet assert
-  goog.assert.{0}
+	goog.assert.{0}
 
 snippet eventtype
 alias etp
-  /**
-   * Common events fired by ${1:#:class_name}.
-   * @enum {string}
-   */
-  ${2:#:event_target}.EventType = {
-    /** Dispatched ${3:#:firing_timing}. */
-    ${0}
-  };
+	/**
+	 * Common events fired by ${1:#:class_name}.
+	 * @enum {string}
+	 */
+	${2:#:event_target}.EventType = {
+	  /** Dispatched ${3:#:firing_timing}. */
+	  ${0}
+	};
 # }}}
 
 # Annotation snippets {{{
 snippet license
-  // This script licensed under the MIT.
-  // http://orgachem.mit-license.org
+	// This script licensed under the MIT.
+	// http://orgachem.mit-license.org
 
 snippet @fileoverview
-  /**
-   * @fileoverview ${1:#:file_description}
-   * @author orga.chem.job@gmail.com (OrgaChem)
-   */
+	/**
+	 * @fileoverview ${1:#:file_description}
+	 * @author orga.chem.job@gmail.com (OrgaChem)
+	 */
 
 snippet @override
 alias @ov
-  /** @override */
+	/** @override */
 
 snippet setter
-  /**
-   * Sets ${1:a property.}
-   * @param {${2:type}} ${3:Property to set.}
-   */
+	/**
+	 * Sets ${1:a property.}
+	 * @param {${2:type}} ${3:Property to set.}
+	 */
 
 snippet getter
-  /**
-   * Returns ${1:a property.}
-   * @return {${2:type}} ${3:Property.}
-   */
+	/**
+	 * Returns ${1:a property.}
+	 * @return {${2:type}} ${3:Property.}
+	 */
 
 snippet whether
-  /**
-   * Whether ${1:#:condition}
-   * @return {boolean} Whether $1
-   */
+	/**
+	 * Whether ${1:#:condition}
+	 * @return {boolean} Whether $1
+	 */
 
 snippet jsdoc
 alias jd
-  /**
-   * ${1}
-   */
+	/**
+	 * ${1}
+	 */
 
 snippet onelinerjsdoc
 alias ojd
-  /** ${1} */
+	/** ${1} */
 
 # Row tags {{{
 snippet @supress
 alias @sup
-  @supress {${1}}${0}
+	@supress {${1}}${0}
 
 snippet @supressVisibility
 alias @supv
-  @supress {visibility}
+	@supress {visibility}
 
 snippet @constructor
 alias @ctor
-  @constructor
+	@constructor
 
 snippet @param
-  @param {${1:#:type}} ${2:#:name} ${3:#:desc}
+	@param {${1:#:type}} ${2:#:name} ${3:#:desc}
 
 snippet @return
-  @return {${1:#:type}} ${2:#:desc}
+	@return {${1:#:type}} ${2:#:desc}
 
 snippet @private
 alias @pv
-  @private
+	@private
 
 snippet @type
 alias @tp
-  @type {${1:#:type}}${0}
+	@type {${1:#:type}}${0}
 
 snippet @protected
 alias @pt
-  @protected
+	@protected
 
 snippet @extends
 alias @ext
-  @extends {${1}}${0}
+	@extends {${1}}${0}
 # }}}
 # }}}
