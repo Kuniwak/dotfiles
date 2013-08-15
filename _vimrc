@@ -443,6 +443,10 @@ vnoremap <Leader>g :Gist<CR>
 
 " Restart.vim {{{
 " 終了時に保存するセッションオプションを設定する
+" このオプションはMacVimだと動かない
+"
+" ま た M a c V i m か
+"
 let g:restart_sessionoptions = 'blank,buffers,curdir,folds,help,localoptions,tabpages'
 "}}}
 
