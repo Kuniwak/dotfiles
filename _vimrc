@@ -8,13 +8,6 @@ endif
 
 call neobundle#rc(expand('~/.vim/bundle'))
 
-if has("win32") || has("win64")
-  NeoBundle "https://github.com/Lokaltog/vim-powerline.git"
-else
-" https://powerline.readthedocs.org/en/latest/installation/linux.html#i-get-e858-e860-error-in-vim-eval-did-not-return-a-valid-python-object
-  NeoBundle "https://github.com/Lokaltog/powerline.git", {'rtp' : 'powerline/bindings/vim'}
-endif
-
 NeoBundle "https://github.com/Lokaltog/vim-easymotion.git"
 NeoBundle "https://github.com/OrgaChem/tsumekusa-syntax.vim.git"
 NeoBundle "https://github.com/OrgaChem/vim-javascript.git"
@@ -25,12 +18,15 @@ NeoBundle "https://github.com/Shougo/vimfiler.git"
 NeoBundle "https://github.com/Shougo/vimproc.git", {'build': {'windows': 'make -f make_mingw64.mak', 'mac': 'make -f make_mac.mak', 'unix': 'make -f make_unix.mak'}}
 NeoBundle "https://github.com/Shougo/vimshell.git"
 NeoBundle "https://github.com/altercation/vim-colors-solarized.git"
+NeoBundle "https://github.com/cocopon/lightline-hybrid.vim.git"
 NeoBundle "https://github.com/deris/vim-duzzle.git"
 NeoBundle "https://github.com/fugalh/desert.vim.git"
 NeoBundle "https://github.com/h1mesuke/unite-outline.git"
 NeoBundle "https://github.com/hail2u/vim-css3-syntax.git"
 NeoBundle "https://github.com/helino/vim-json.git"
+NeoBundle "https://github.com/itchyny/lightline.vim.git"
 NeoBundle "https://github.com/itchyny/thumbnail.vim"
+NeoBundle "https://github.com/joker1007/vim-markdown-quote-syntax.git"
 NeoBundle "https://github.com/jonathanfilip/vim-lucius.git"
 NeoBundle "https://github.com/juanpabloaj/ShowMarks.git"
 NeoBundle "https://github.com/matthewtodd/vim-twilight.git"
@@ -38,6 +34,7 @@ NeoBundle "https://github.com/mattn/emmet-vim.git"
 NeoBundle "https://github.com/mattn/gist-vim.git", {'depends' : 'https://github.com/mattn/webapi-vim.git'}
 NeoBundle "https://github.com/mattn/webapi-vim.git"
 NeoBundle "https://github.com/nanotech/jellybeans.vim.git"
+NeoBundle "https://github.com/plasticboy/vim-markdown.git"
 NeoBundle "https://github.com/scrooloose/syntastic.git"
 NeoBundle "https://github.com/supermomonga/vimshell-kawaii.vim.git", {'depends' : 'https://github.com/Shougo/vimshell.git'}
 NeoBundle "https://github.com/taichouchou2/alpaca_powertabline.git"
@@ -62,6 +59,7 @@ NeoBundle "https://github.com/vim-scripts/chlordane.vim.git"
 NeoBundle "https://github.com/vim-scripts/hybrid.vim.git"
 NeoBundle "https://github.com/vim-scripts/str2numchar.vim.git"
 NeoBundle "https://github.com/vim-scripts/sudo.vim.git"
+NeoBundle "https://github.com/wannesm/wmgraphviz.vim.git"
 
 " if has("ruby")
 "   NeoBundle 'taichouchou2/alpaca_english', {
@@ -449,6 +447,51 @@ vnoremap <Leader>g :Gist<CR>
 "
 let g:restart_sessionoptions = 'blank,buffers,curdir,folds,help,localoptions,tabpages'
 "}}}
+
+
+" Lightline {{{
+let g:lightline = {
+    \   'colorscheme': 'hybrid',
+    \   'active': {
+    \     'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename' ] ],
+    \     'right': [ [ 'syntastic', 'lineinfo' ], ['percent'], [ 'fileformat', 'fileencoding', 'filetype' ] ]
+    \   },
+    \   'component_function': {
+    \     'fugitive': 'MyFugitive'
+    \   },
+    \   'component_expand': {
+    \     'syntastic': 'SyntasticStatuslineFlag',
+    \   },
+    \   'component_type': {
+    \     'syntastic': 'error',
+    \   }
+    \ }
+
+function! MyFugitive()
+  try
+    if expand('%:t') !~? 'Tagbar\|Gundo\|NERD' && &ft !~? 'vimfiler' && exists('*fugitive#head')
+      let mark = ''  " edit here for cool mark
+      let _ = fugitive#head()
+      return strlen(_) ? mark._ : ''
+    endif
+  catch
+  endtry
+  return ''
+endfunction
+
+augroup AutoSyntastic
+  autocmd!
+  autocmd BufWritePost *.c,*.cpp call s:syntastic()
+augroup END
+function! s:syntastic()
+  SyntasticCheck
+  call lightline#update()
+endfunction
+
+let g:unite_force_overwrite_statusline = 0
+let g:vimfiler_force_overwrite_statusline = 0
+let g:vimshell_force_overwrite_statusline = 0
+" }}}
 
 set background=dark
 colorscheme hybrid
