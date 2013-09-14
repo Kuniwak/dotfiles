@@ -17,6 +17,7 @@ NeoBundle "https://github.com/Shougo/unite.vim.git"
 NeoBundle "https://github.com/Shougo/vimfiler.git"
 NeoBundle "https://github.com/Shougo/vimproc.git", {'build': {'windows': 'make -f make_mingw64.mak', 'mac': 'make -f make_mac.mak', 'unix': 'make -f make_unix.mak'}}
 NeoBundle "https://github.com/Shougo/vimshell.git"
+NeoBundle "https://github.com/airblade/vim-gitgutter.git"
 NeoBundle "https://github.com/altercation/vim-colors-solarized.git"
 NeoBundle "https://github.com/cocopon/lightline-hybrid.vim.git"
 NeoBundle "https://github.com/deris/vim-duzzle.git"
@@ -448,12 +449,11 @@ vnoremap <Leader>g :Gist<CR>
 let g:restart_sessionoptions = 'blank,buffers,curdir,folds,help,localoptions,tabpages'
 "}}}
 
-
 " Lightline {{{
 let g:lightline = {
     \   'colorscheme': 'hybrid',
     \   'active': {
-    \     'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename' ] ],
+    \     'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'readonly', 'filename', 'modified' ] ],
     \     'right': [ [ 'syntastic', 'lineinfo' ], ['percent'], [ 'fileformat', 'fileencoding', 'filetype' ] ]
     \   },
     \   'component_function': {
@@ -491,6 +491,11 @@ endfunction
 let g:unite_force_overwrite_statusline = 0
 let g:vimfiler_force_overwrite_statusline = 0
 let g:vimshell_force_overwrite_statusline = 0
+" }}}
+
+" GitGutter{{{
+nnoremap <silent> <Leader>gg :<C-u>GitGutterToggle<CR>
+nnoremap <silent> <Leader>gh :<C-u>GitGutterLineHighlightsToggle<CR>
 " }}}
 
 set background=dark
