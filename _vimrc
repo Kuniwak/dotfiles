@@ -220,6 +220,8 @@ endfunction
 autocmd BufWritePre *.js call <SID>remove_dust()
 
 
+au BufNewFile,BufRead *.js.map setf json
+au BufNewFile,BufRead *.webapp setf json
 au BufNewFile,BufRead *.tsumekusa setf tsumekusa
 au BufNewFile,BufRead *.pac setf javascript
 
@@ -350,11 +352,9 @@ let g:neosnippet#snippets_directory="~/.vim/snippets"
 
 " Syntastic {{{
 let g:syntastic_mode_map = { "mode": "passive",
-  \ "active_filetypes": [],
-  \ "passive_filetypes": ["html", "javascript"] }
-let g:syntastic_loc_list_height = 3
-let g:syntastic_auto_loc_list = 2
-let g:syntastic_javascript_checker = "gjslint"
+                           \ "active_filetypes": [],
+                           \ "passive_filetypes": ["html", "javascript"] }
+let g:syntastic_javascript_checkers = ["gjslint"]
 
 " Ignoring 2 errors
 "   0005 Illegal tab in white space
