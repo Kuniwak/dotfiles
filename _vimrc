@@ -62,21 +62,6 @@ NeoBundle "https://github.com/vim-scripts/str2numchar.vim.git"
 NeoBundle "https://github.com/vim-scripts/sudo.vim.git"
 NeoBundle "https://github.com/wannesm/wmgraphviz.vim.git"
 
-" if has("ruby")
-"   NeoBundle 'taichouchou2/alpaca_english', {
-"         \ 'rev' : 'development',
-"         \ 'build' : {
-"         \   "mac" : "bundle",
-"         \   "unix" : "bundle",
-"         \   "other" : "bundle"
-"         \ },
-"         \ 'autoload' : {
-"         \   'commands' : ["AlpacaEnglishDisable", "AlpacaEnglishEnable", "AlpacaEnglishSay"],
-"         \   'unite_sources': ['english_dictionary', 'english_example', 'english_thesaurus']
-"         \ }
-"         \ }
-" endif
-
 filetype plugin indent on
 
 " 未使用のkaoriyaプラグインを無効化
