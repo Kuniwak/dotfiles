@@ -357,6 +357,8 @@ let g:syntastic_mode_map = { "mode": "passive",
 let g:syntastic_javascript_checkers = ["gjslint"]
 
 let g:syntastic_javascript_gjslint_conf = " --disable 5,110 --strict"
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_loc_list_height = 3
 
 nnoremap <silent> <Leader>sc :<C-u>SyntasticCheck<CR>
 nnoremap <silent> <Leader>st :<C-u>SyntasticToggleMode<CR>
