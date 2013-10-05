@@ -219,6 +219,41 @@ function! s:remove_dust()
 endfunction
 autocmd BufWritePre *.js call <SID>remove_dust()
 
+" Font size {{{
+function! FontLarger()
+  let size = s:get_size()
+  call s:set_size(size + 1)
+endfunction
+
+function! FontSmaller()
+  let size = s:get_size()
+  call s:set_size(size - 1)
+endfunction
+
+function! FontSize(size)
+  call s:set_size(a:size)
+endfunction
+
+function! s:get_size()
+  let guifont = &guifont
+  let comps = split(guifont, ':')
+  let hsize = comps[1]
+  let matches = matchlist(hsize, 'h\(\d\+\)')
+
+  return str2nr(matches[1])
+endfunction
+
+function! s:set_size(new_size)
+  let guifont = &guifont
+  let comps = split(guifont, ':')
+  let font_name = comps[0]
+  let new_guifont = printf('%s:h%d', font_name, a:new_size)
+  let &guifont = new_guifont
+endfunction
+
+noremap <Leader>f+ :call FontLarger()<CR>
+noremap <Leader>f- :call FontSmaller()<CR>
+"}}}
 
 au BufNewFile,BufRead *.js.map setf json
 au BufNewFile,BufRead *.webapp setf json
