@@ -35,7 +35,6 @@ NeoBundle "https://github.com/mattn/emmet-vim.git"
 NeoBundle "https://github.com/mattn/gist-vim.git", {'depends' : 'https://github.com/mattn/webapi-vim.git'}
 NeoBundle "https://github.com/mattn/webapi-vim.git"
 NeoBundle "https://github.com/nanotech/jellybeans.vim.git"
-NeoBundle "https://github.com/plasticboy/vim-markdown.git"
 NeoBundle "https://github.com/scrooloose/syntastic.git"
 NeoBundle "https://github.com/supermomonga/vimshell-kawaii.vim.git", {'depends' : 'https://github.com/Shougo/vimshell.git'}
 NeoBundle "https://github.com/taichouchou2/alpaca_powertabline.git"
@@ -50,6 +49,7 @@ NeoBundle "https://github.com/tomasr/molokai.git"
 NeoBundle "https://github.com/tomtom/tcomment_vim.git"
 NeoBundle "https://github.com/tpope/vim-abolish"
 NeoBundle "https://github.com/tpope/vim-fugitive.git"
+NeoBundle "https://github.com/tpope/vim-markdown"
 NeoBundle "https://github.com/tpope/vim-repeat"
 NeoBundle "https://github.com/tpope/vim-surround.git"
 NeoBundle "https://github.com/tyru/restart.vim.git"
@@ -353,43 +353,10 @@ let g:neosnippet#snippets_directory="~/.vim/snippets"
 " Syntastic {{{
 let g:syntastic_mode_map = { "mode": "passive",
                            \ "active_filetypes": [],
-                           \ "passive_filetypes": ["html", "javascript"] }
+                           \ "passive_filetypes": ["html", "javascript", "python"] }
 let g:syntastic_javascript_checkers = ["gjslint"]
 
-" Ignoring 2 errors
-"   0005 Illegal tab in white space
-"   0110 Line too long
-"
-" エラー回避できるようにgjslintをビルドし直すこと
-"
-" https://codereview.appspot.com/4291044/patch/1/2 {{{
-" Index: errorrules.py
-" ===================================================================
-" --- errorrules.py	(revision 7)
-" +++ errorrules.py	(working copy)
-" @@ -25,6 +25,7 @@
-"  FLAGS = flags.FLAGS
-"  flags.DEFINE_boolean('jsdoc', True,
-"                       'Whether to report errors for missing JsDoc.')
-" +flags.DEFINE_list('ignore_errors', [], 'List of error codes to ignore.')
-"
-"
-"  def ShouldReportError(error):
-" @@ -34,9 +35,9 @@
-"      True for all errors except missing documentation errors.  For these,
-"      it returns the value of the jsdoc flag.
-"    """
-" -  return FLAGS.jsdoc or error not in (
-" +  return (FLAGS.jsdoc or error not in (
-"        errors.MISSING_PARAMETER_DOCUMENTATION,
-"        errors.MISSING_RETURN_DOCUMENTATION,
-"        errors.MISSING_MEMBER_DOCUMENTATION,
-"        errors.MISSING_PRIVATE,
-" -      errors.MISSING_JSDOC_TAG_THIS)
-" +      errors.MISSING_JSDOC_TAG_THIS)) and str(error) not in FLAGS.ignore_errors
-""}}}
-
-let g:syntastic_javascript_gjslint_conf = " --ignore_errors=5,110 --strict"
+let g:syntastic_javascript_gjslint_conf = " --disable 5,110 --strict"
 
 nnoremap <silent> <Leader>sc :<C-u>SyntasticCheck<CR>
 nnoremap <silent> <Leader>st :<C-u>SyntasticToggleMode<CR>
