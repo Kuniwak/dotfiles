@@ -25,6 +25,7 @@ NeoBundle "https://github.com/fugalh/desert.vim.git"
 NeoBundle "https://github.com/h1mesuke/unite-outline.git"
 NeoBundle "https://github.com/hail2u/vim-css3-syntax.git"
 NeoBundle "https://github.com/helino/vim-json.git"
+NeoBundle "https://github.com/hynek/vim-python-pep8-indent.git"
 NeoBundle "https://github.com/itchyny/lightline.vim.git"
 NeoBundle "https://github.com/itchyny/thumbnail.vim"
 NeoBundle "https://github.com/joker1007/vim-markdown-quote-syntax.git"
@@ -375,10 +376,13 @@ let g:syntastic_mode_map = { "mode": "passive",
                            \ "active_filetypes": [],
                            \ "passive_filetypes": ["html", "javascript", "python"] }
 let g:syntastic_javascript_checkers = ["gjslint"]
-
 let g:syntastic_javascript_gjslint_conf = " --disable 5,110 --strict"
+
+let g:syntastic_python_checkers = ['flake8']
+let g:syntastic_python_flake8_args = '--ignore=E501'
+
 let g:syntastic_auto_loc_list = 1
-let g:syntastic_loc_list_height = 3
+let g:syntastic_loc_list_height = 5
 
 nnoremap <silent> <Leader>sc :<C-u>SyntasticCheck<CR>
 nnoremap <silent> <Leader>st :<C-u>SyntasticToggleMode<CR>
