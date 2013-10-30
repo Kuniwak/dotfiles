@@ -11,13 +11,16 @@ call neobundle#rc(expand('~/.vim/bundle'))
 NeoBundle "https://github.com/Lokaltog/vim-easymotion.git"
 NeoBundle "https://github.com/OrgaChem/tsumekusa-syntax.vim.git"
 NeoBundle "https://github.com/OrgaChem/vim-javascript.git"
+NeoBundle "https://github.com/Shougo/neobundle.vim.git"
 NeoBundle "https://github.com/Shougo/neocomplcache.git"
 NeoBundle "https://github.com/Shougo/neosnippet.git"
 NeoBundle "https://github.com/Shougo/unite.vim.git"
 NeoBundle "https://github.com/Shougo/vimfiler.git"
 NeoBundle "https://github.com/Shougo/vimproc.git", {'build': {'windows': 'make -f make_mingw64.mak', 'mac': 'make -f make_mac.mak', 'unix': 'make -f make_unix.mak'}}
 NeoBundle "https://github.com/Shougo/vimshell.git"
-NeoBundle "https://github.com/airblade/vim-gitgutter.git"
+if has('mac')
+    NeoBundle "https://github.com/airblade/vim-gitgutter.git"
+endif
 NeoBundle "https://github.com/altercation/vim-colors-solarized.git"
 NeoBundle "https://github.com/cocopon/lightline-hybrid.vim.git"
 NeoBundle "https://github.com/deris/vim-duzzle.git"
@@ -243,6 +246,8 @@ noremap <Leader>f- :call FontSmaller()<CR>
 
 au BufNewFile,BufRead *.js.map setf json
 au BufNewFile,BufRead *.webapp setf json
+au BufNewFile,BufRead .jshintrc setf json
+au BufNewFile,BufRead .googkit setf config
 au BufNewFile,BufRead *.tsumekusa setf tsumekusa
 au BufNewFile,BufRead *.pac setf javascript
 
@@ -293,7 +298,7 @@ nnoremap <silent> <Leader>ub :<C-u>Unite buffer<CR>
 nnoremap <silent> <Leader>uc :<C-u>Unite colorscheme -auto-preview<CR>
 nnoremap <silent> <Leader>uf :<C-u>Unite file<CR>
 nnoremap <silent> <Leader>ul :<C-u>Unite line<CR>
-nnoremap <silent> <Leader>um :<C-u>Unite -default-action=open file_mru<CR>
+nnoremap <silent> <Leader>um :<C-u>Unite -default-action=open file_mru:all<CR>
 nnoremap <silent> <Leader>uo :<C-u>Unite outline<CR>
 nnoremap <silent> <Leader>ui :<C-u>Unite neobundle/install<CR>
 nnoremap <silent> <Leader>us :<C-u>Unite neobundle/search<CR>
@@ -379,7 +384,7 @@ let g:syntastic_javascript_checkers = ["gjslint"]
 let g:syntastic_javascript_gjslint_conf = " --disable 5,110 --strict"
 
 let g:syntastic_python_checkers = ['flake8']
-let g:syntastic_python_flake8_args = '--ignore=E501'
+let g:syntastic_python_flake8_args = '--ignore=E501,E303'
 
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_loc_list_height = 5
