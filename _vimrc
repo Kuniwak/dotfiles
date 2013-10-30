@@ -379,12 +379,14 @@ let g:neosnippet#snippets_directory="~/.vim/snippets"
 " Syntastic {{{
 let g:syntastic_mode_map = { "mode": "passive",
                            \ "active_filetypes": [],
-                           \ "passive_filetypes": ["html", "javascript", "python"] }
+                           \ "passive_filetypes": ["html", "javascript", "python", "json"] }
 let g:syntastic_javascript_checkers = ["gjslint"]
 let g:syntastic_javascript_gjslint_conf = " --disable 5,110 --strict"
 
 let g:syntastic_python_checkers = ['flake8']
 let g:syntastic_python_flake8_args = '--ignore=E501,E303'
+
+let g:syntastic_json_checkers = ['jsonlint']
 
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_loc_list_height = 5
