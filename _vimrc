@@ -499,9 +499,14 @@ let g:vimfiler_force_overwrite_statusline = 0
 let g:vimshell_force_overwrite_statusline = 0
 " }}}
 
-" GitGutter{{{
+" GitGutter {{{
 nnoremap <silent> <Leader>gg :<C-u>GitGutterToggle<CR>
 nnoremap <silent> <Leader>gh :<C-u>GitGutterLineHighlightsToggle<CR>
+" }}}
+
+" Vim Indent Guides {{{
+let g:indent_guides_start_level = 2
+let g:indent_guides_guide_size = 1
 " }}}
 
 set background=dark
