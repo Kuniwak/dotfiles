@@ -38,7 +38,9 @@ NeoBundle "https://github.com/matthewtodd/vim-twilight.git"
 NeoBundle "https://github.com/mattn/emmet-vim.git"
 NeoBundle "https://github.com/mattn/gist-vim.git", {'depends' : 'https://github.com/mattn/webapi-vim.git'}
 NeoBundle "https://github.com/mattn/webapi-vim.git"
+NeoBundle "https://github.com/davidhalter/jedi-vim.git"
 NeoBundle "https://github.com/nanotech/jellybeans.vim.git"
+NeoBundle "https://github.com/nathanaelkane/vim-indent-guides.git"
 NeoBundle "https://github.com/scrooloose/syntastic.git"
 NeoBundle "https://github.com/supermomonga/vimshell-kawaii.vim.git", {'depends' : 'https://github.com/Shougo/vimshell.git'}
 NeoBundle "https://github.com/taichouchou2/html5.vim.git"
@@ -352,7 +354,9 @@ inoremap <expr><C-e>  neocomplcache#cancel_popup()
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+autocmd FileType python setlocal omnifunc=jedi#completions
+let g:jedi#auto_vim_configuration = 0
+let g:neocomplcache_force_omni_patterns.python = '[^. \t]\.\w*'
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 "}}}
 
@@ -379,14 +383,16 @@ let g:neosnippet#snippets_directory="~/.vim/snippets"
 " Syntastic {{{
 let g:syntastic_mode_map = { "mode": "passive",
                            \ "active_filetypes": [],
-                           \ "passive_filetypes": ["html", "javascript", "python", "json"] }
-let g:syntastic_javascript_checkers = ["gjslint"]
+                           \ "passive_filetypes": ["html", "css", "javascript", "python", "json"] }
+let g:syntastic_javascript_checkers = ["gjslint", "jshint"]
 let g:syntastic_javascript_gjslint_conf = " --disable 5,110 --strict"
 
 let g:syntastic_python_checkers = ['flake8']
 let g:syntastic_python_flake8_args = '--ignore=E501,E303'
 
 let g:syntastic_json_checkers = ['jsonlint']
+
+let g:syntastic_css_checkers = ['csslint']
 
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_loc_list_height = 5
