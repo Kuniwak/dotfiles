@@ -22,6 +22,7 @@ if has('mac')
     NeoBundle "https://github.com/airblade/vim-gitgutter.git"
 endif
 NeoBundle "https://github.com/altercation/vim-colors-solarized.git"
+NeoBundle "https://github.com/cocopon/colorswatch.vim.git"
 NeoBundle "https://github.com/cocopon/lightline-hybrid.vim.git"
 NeoBundle "https://github.com/deris/vim-duzzle.git"
 NeoBundle "https://github.com/fugalh/desert.vim.git"
