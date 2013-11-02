@@ -313,8 +313,8 @@ nnoremap <silent> <Leader>uy :<C-u>Unite history/yank<CR>
 
 " Launches neocomplcache automatically on vim startup.
 let g:neocomplcache_enable_at_startup = 1
-" Use smartcase.
-let g:neocomplcache_enable_smart_case = 1
+" Unuse smartcase.
+let g:neocomplcache_enable_smart_case = 0
 " Use camel case completion.
 let g:neocomplcache_enable_camel_case_completion = 1
 " Use underscore completion.
@@ -355,7 +355,7 @@ inoremap <expr><C-e>  neocomplcache#cancel_popup()
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType python setlocal omnifunc=jedi#completions
+autocmd FileType python setlocal omnifunc=pythoncomplete#CompletePython
 let g:jedi#auto_vim_configuration = 0
 let g:neocomplcache_force_omni_patterns.python = '[^. \t]\.\w*'
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
@@ -508,6 +508,11 @@ nnoremap <silent> <Leader>gh :<C-u>GitGutterLineHighlightsToggle<CR>
 " Vim Indent Guides {{{
 let g:indent_guides_start_level = 2
 let g:indent_guides_guide_size = 1
+
+let g:indent_guides_auto_colors = 0
+let g:indent_guides_color_change_percent = 5
+autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg='#282a2e'
+autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg='#282a2e'
 " }}}
 
 set background=dark
