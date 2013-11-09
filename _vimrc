@@ -272,6 +272,9 @@ let g:quickrun_config['javascript/mocha'] = {
       \ 'tempfile': '%{tempname()}.js'
       \ }
 
+" Python 3をつかう
+let g:quickrun_config['python'] = {'command' : 'python3'}
+
 nnoremap <silent> <Leader>l :<C-u>QuickRun<CR>
 "}}}
 
@@ -355,11 +358,22 @@ inoremap <expr><C-e>  neocomplcache#cancel_popup()
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-"let g:jedi#auto_vim_configuration = 0
-"let g:neocomplcache_force_omni_patterns.python = '[^. \t]\.\w*'
+let g:neocomplcache_force_omni_patterns = {
+                        \         'python': '\h\w*\|[^. \t]\.\w*'
+                        \ }
+let g:neocomplcache_omni_functions = {
+                        \         'python': 'jedi#completions'
+                        \ }
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 "}}}
+
+" Jedi {{{
+let g:jedi#auto_vim_configuration = 0
+let g:jedi#popup_on_dot = 0
+let g:jedi#popup_select_first = 0
+let g:jedi#rename_command = '<leader>R'
+autocmd FileType python let b:did_ftplugin = 1
+" }}}
 
 " NeoSnippet {{{
 set completeopt-=preview
