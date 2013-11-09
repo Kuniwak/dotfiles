@@ -259,8 +259,11 @@ map * <Plug>(visualstar-*)N
 map # <Plug>(visualstar-#)N
 "}}}
 
-" QuickRun {{{
+" Quickrun {{{
 let g:quickrun_config = {}
+
+" Vimproc で Quickrun
+let g:quickrun_config['*'] = {'runner': 'vimproc'}
 
 " JavaScript の実行環境を Node.js に指定
 let g:quickrun_config['javascript'] = {'type': 'javascript/nodejs'}
