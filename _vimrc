@@ -24,6 +24,7 @@ endif
 NeoBundle "https://github.com/altercation/vim-colors-solarized.git"
 NeoBundle "https://github.com/cocopon/colorswatch.vim.git"
 NeoBundle "https://github.com/cocopon/lightline-hybrid.vim.git"
+NeoBundle "https://github.com/davidhalter/jedi-vim.git"
 NeoBundle "https://github.com/deris/vim-duzzle.git"
 NeoBundle "https://github.com/fugalh/desert.vim.git"
 NeoBundle "https://github.com/h1mesuke/unite-outline.git"
@@ -35,11 +36,11 @@ NeoBundle "https://github.com/itchyny/thumbnail.vim"
 NeoBundle "https://github.com/joker1007/vim-markdown-quote-syntax.git"
 NeoBundle "https://github.com/jonathanfilip/vim-lucius.git"
 NeoBundle "https://github.com/juanpabloaj/ShowMarks.git"
+NeoBundle "https://github.com/marijnh/tern_for_vim.git", {'build': {'others': 'npm install'}}
 NeoBundle "https://github.com/matthewtodd/vim-twilight.git"
 NeoBundle "https://github.com/mattn/emmet-vim.git"
 NeoBundle "https://github.com/mattn/gist-vim.git", {'depends' : 'https://github.com/mattn/webapi-vim.git'}
 NeoBundle "https://github.com/mattn/webapi-vim.git"
-NeoBundle "https://github.com/davidhalter/jedi-vim.git"
 NeoBundle "https://github.com/nanotech/jellybeans.vim.git"
 NeoBundle "https://github.com/nathanaelkane/vim-indent-guides.git"
 NeoBundle "https://github.com/scrooloose/syntastic.git"
@@ -263,7 +264,10 @@ map # <Plug>(visualstar-#)N
 let g:quickrun_config = {}
 
 " Vimproc で Quickrun
-let g:quickrun_config['*'] = {'runner': 'vimproc'}
+let g:quickrun_config['_'] = {
+      \ 'runner': 'vimproc',
+\       "runner/vimproc/updatetime" : 100
+      \ }
 
 " JavaScript の実行環境を Node.js に指定
 let g:quickrun_config['javascript'] = {'type': 'javascript/nodejs'}
@@ -360,14 +364,14 @@ inoremap <expr><C-e>  neocomplcache#cancel_popup()
 " Enable omni completion. Not required if they are already set elsewhere in .vimrc
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+autocmd FileType python setlocal omnifunc=jedi#completions
 let g:neocomplcache_force_omni_patterns = {
                         \         'python': '\h\w*\|[^. \t]\.\w*'
                         \ }
-let g:neocomplcache_omni_functions = {
-                        \         'python': 'jedi#completions'
-                        \ }
-autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+"let g:neocomplcache_omni_functions = {
+"                        \         'python': 'jedi#completions'
+"                        \ }
 "}}}
 
 " Jedi {{{
