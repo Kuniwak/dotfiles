@@ -194,16 +194,6 @@ set splitright
 " 常にステータス行を表示
 set laststatus=2
 
-" 起動時にフルスクリーンにする
-if has("mac") && has("gui_running")
-  set fuoptions=maxvert,maxhorz
-  au GUIEnter * set fullscreen
-endif
-
-if has("win32") && has("win64")
-  cd $HOME
-endif
-
 " 保存時に行末の空白を除去する
 function! s:remove_dust()
   let cursor = getpos(".")
@@ -538,6 +528,7 @@ autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg='#282a2e'
 " }}}
 
 " Splash {{{
+let g:splash#path = $HOME . '/.vim/splashes/start.txt'
 command! SplashMyProfile :Splash $HOME/.vim/splashes/profile.txt
 command! SplashJavaScriptOperatorPriorityTable :Splash $HOME/.vim/splashes/js_op_priority.txt
 command! SplashPullRequestManner :Splash $HOME/.vim/splashes/pull_request_manner.markdown
@@ -546,5 +537,6 @@ command! SplashPullRequestManner :Splash $HOME/.vim/splashes/pull_request_manner
 
 set background=dark
 colorscheme hybrid
+cd $HOME
 
 " vim: fdm=marker et tw=0

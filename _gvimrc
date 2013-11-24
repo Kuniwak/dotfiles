@@ -2,20 +2,27 @@ scriptencoding utf-8
 
 " Appearance
 if has('gui_macvim')
-  "colorscheme darkburn
+	"colorscheme darkburn
 
-  set showtabline=2
-  set transparency=3
-  set guioptions-=T
+	set showtabline=2
+	set transparency=3
+	set guioptions-=T
 	set guifont=SourceCodePro-Regular:h9
 	set guifontwide=HiraMaruPro-W4:h9
 
-  set transparency=10
+	set transparency=10
+
+	"set lines=40
+	"set columns=130
+
+	" 起動時にフルスクリーンにする
+	set fuoptions=maxvert,maxhorz
+	au GUIEnter * set fullscreen
 end
 
 if has("win32") || has("win64")
-  set ambiwidth=auto
-  set guifont=BDF_UM+:h9
+	set ambiwidth=auto
+	set guifont=BDF_UM+:h9
 end
 
 set background=dark
