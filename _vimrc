@@ -51,6 +51,7 @@ NeoBundle "https://github.com/thinca/vim-qfreplace.git"
 NeoBundle "https://github.com/thinca/vim-quickrun.git"
 NeoBundle "https://github.com/thinca/vim-ref.git"
 NeoBundle "https://github.com/thinca/vim-scouter.git"
+NeoBundle "https://github.com/thinca/vim-splash.git"
 NeoBundle "https://github.com/thinca/vim-visualstar.git"
 NeoBundle "https://github.com/tomasr/molokai.git"
 NeoBundle "https://github.com/tomtom/tcomment_vim.git"
@@ -535,6 +536,13 @@ let g:indent_guides_color_change_percent = 5
 autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg='#282a2e'
 autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg='#282a2e'
 " }}}
+
+" Splash {{{
+command! SplashMyProfile :Splash $HOME/.vim/splashes/profile.txt
+command! SplashJavaScriptOperatorPriorityTable :Splash $HOME/.vim/splashes/js_op_priority.txt
+command! SplashPullRequestManner :Splash $HOME/.vim/splashes/pull_request_manner.markdown
+" }}}
+
 
 set background=dark
 colorscheme hybrid
