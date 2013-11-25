@@ -23,6 +23,7 @@ if has('mac')
 endif
 NeoBundle "https://github.com/altercation/vim-colors-solarized.git"
 NeoBundle "https://github.com/cocopon/colorswatch.vim.git"
+NeoBundle "https://github.com/cocopon/googkit.vim.git"
 NeoBundle "https://github.com/cocopon/lightline-hybrid.vim.git"
 NeoBundle "https://github.com/davidhalter/jedi-vim.git"
 NeoBundle "https://github.com/deris/vim-duzzle.git"
@@ -529,7 +530,7 @@ autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg='#282a2e'
 
 " Splash {{{
 let g:splash#path = $HOME . '/.vim/splashes/start.txt'
-command! SplashMyProfile :Splash $HOME/.vim/splashes/profile.txt
+command! OrgaChem :Splash $HOME/.vim/splashes/profile_white.txt
 command! SplashJavaScriptOperatorPriorityTable :Splash $HOME/.vim/splashes/js_op_priority.txt
 command! SplashPullRequestManner :Splash $HOME/.vim/splashes/pull_request_manner.markdown
 " }}}

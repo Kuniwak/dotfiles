@@ -1,30 +1,29 @@
-                                             ---
-                                           ======- ====-
-                                           ==============
-                                           ==============
-                                            -==========
-                                             -======-
-                                              ===
-                        MMMMMMMMMMM
-                   OMMMM?'       '?MMMMO
-                MMMM                   MMMM
-              NMM                         MMM
-            8MM   EEEEEEE         EEEEEEE   MM8
-           MM     EEEEEEE         EEEEEEE     MM
-          MM                                   MM
-         MM       .MMMMMMMM.   .MMMMMMMM.       MM
-         MM      MMM'.....MMM MMM.....'MMM      MM
-         MM     NM?........'MMM'........?MN     MM
-         MM     MM...........M...........MM     MM
-         MM     MM.......................MM     MM
-          MM.    MM:...................:MM    .MM
-           MM..   MMD:::::::::::::::::DMM   ..MM
-            MMM....  MMM===========MMM  ....MMM
-              MMMM::::::OMMMMMMMMMO:::::::MMM
-                NMMMM==================MMMN
-                   MMMMMEEEEEEEEEEEMMMMM
-                        MMMMMMMMMMM
-
+                                                            
+                                           ,=====           
+                                           ======= ====:    
+                                           ==============   
+                                           ,=============   
+                                            ,==========-    
+                                             :======-       
+                    _,.;EMFMMMMMFE;.,_        ~=-           
+                 .:MMMF"``       ``"FMMM:.                  
+              .IMMF`                   `FMM7.               
+            .MMM'                         'MMM.             
+           :MM'   #######         #######   'MM:            
+          $MF     #######         #######     FMZ           
+         +MM                                   MMI          
+        ,MM`      ,;MMMMM:.     .:MMMMM;,      `MM,         
+        :MM     ,8MF:.....MM: :MM.....:FMN,     MM:         
+        :MM    !NM.........'MMM'.........MN!    MM:         
+        'MM.   !MM..........."...........MM!   .MM'         
+         MMN    MM.......................MM    ZMM          
+          MM$.  `MM.....................MM`  .7MM           
+           MMM:.  "MM:::::::::::::::::MM"  .:MMM            
+            'MM7:..:MMMM===========MMM:...:7MM'             
+              'MM7:::::ffMMMMMMMMMff:::::7MM'               
+                `"MMMM===============MMMM"`                 
+                    `""MMMMMMMMMMMMM""`                     
+                                                            
    ____                                _
   / __ \  ___  _ __ __ _  __ _     ___| |__   ___ _ __ ___
  / / _` |/ _ \| '__/ _` |/ _` |   / __| '_ \ / _ \ '_ ` _ \
