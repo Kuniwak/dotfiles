@@ -11,6 +11,7 @@ call neobundle#rc(expand('~/.vim/bundle'))
 NeoBundle "https://github.com/Lokaltog/vim-easymotion.git"
 NeoBundle "https://github.com/OrgaChem/tsumekusa-syntax.vim.git"
 NeoBundle "https://github.com/OrgaChem/vim-javascript.git"
+NeoBundle "https://github.com/OrgaChem/vim-qrcode.git"
 NeoBundle "https://github.com/Shougo/neobundle.vim.git"
 NeoBundle "https://github.com/Shougo/neocomplcache.git"
 NeoBundle "https://github.com/Shougo/neosnippet.git"
@@ -535,7 +536,8 @@ command! SplashJavaScriptOperatorPriorityTable :Splash $HOME/.vim/splashes/js_op
 command! SplashPullRequestManner :Splash $HOME/.vim/splashes/pull_request_manner.markdown
 " }}}
 
-
+" ビープの代わりにフラッシュ
+set visualbell
 set background=dark
 colorscheme hybrid
 cd $HOME

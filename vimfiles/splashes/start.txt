@@ -1,22 +1,23 @@
 
-                                           ..
-                                         .::::.
-                            ___________.:;;;;;;L___________
-                            |---------| ?????? \----------/
-                              |+++++| :7777777' :++++++r 
-                              |=====| :$$$$$" .=======" ,
-                             .|=====. :$$$" .=======' .OOD.
-                           .7D|~~~~~| :$" .~~~~~~~' .OOO888N.
-                          GDDD|IIIII| " .IIIIIII' .OO8DDDDDNNN.
-                          'DDO|IIIII| .IIIIIII' .DDDDDDDDNNNN
-                            'D|IIIIIIIIIIIII' .DDDDDDDDNNNN
-                              |IIIIIIIIIII' .DDDDDDDNNNNN
-                              |IIIIIIIII' .DDDDDDDDNNNN
-                              |IIIIII7' .DDDDDDDDNNNN
-                              |7777$'',DDDDDDDNNNNN
-                              |EEE'    'DNNNNNNN'
-                              '''        'MMMM'
-                                           ``
+                                            ..
+                                          .::::.
+                             ___________ :;;;;:`____________
+                             \_________/ ?????L \__________/
+                               |.....| ????????> :.......'
+                               |:::::| $$$$$$"`.:::::::' ,
+                              ,|:::::| $$$$"`.:::::::' .OOS.
+                            ,7D|;;;;;| $$"`.;;;;;;;' .OOO888S.
+                          .GDDD|;;;;;| ?`.;;;;;;;' .OO8DDDDDNNS.
+                           'DDO|IIIII| .7IIIII7' .DDDDDDDDNNNF`
+                             'D|IIIIII7IIIII7' .DDDDDDDDNNNF`
+                               |EEEEEEEEEE7' .DDDDDDDNNNNF`
+                               |EEEEEEEEZ' .DDDDDDDDNNNF`
+                               |888888Z' .DDDDDDDDNNNF`
+                               |8888Z' ,DDDDDDDNNNNF`
+                               |88Z'    "DNNNNNNN"
+                               '"'        "MMMM"
+                                            ""
+
     ___    ____                                            __   _         _    ________  ___
    /   |  / / /  __  ______  __  __   ____  ___  ___  ____/ /  (_)____   | |  / /  _/  |/  /
   / /| | / / /  / / / / __ \/ / / /  / __ \/ _ \/ _ \/ __  /  / / ___/   | | / // // /|_/ /
