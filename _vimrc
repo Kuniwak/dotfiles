@@ -13,7 +13,7 @@ NeoBundle "https://github.com/OrgaChem/tsumekusa-syntax.vim.git"
 NeoBundle "https://github.com/OrgaChem/vim-javascript.git"
 NeoBundle "https://github.com/OrgaChem/vim-qrcode.git"
 NeoBundle "https://github.com/Shougo/neobundle.vim.git"
-NeoBundle "https://github.com/Shougo/neocomplcache.git"
+NeoBundle "https://github.com/Shougo/neocomplete.git"
 NeoBundle "https://github.com/Shougo/neosnippet.git"
 NeoBundle "https://github.com/Shougo/unite.vim.git"
 NeoBundle "https://github.com/Shougo/vimfiler.git"
@@ -312,37 +312,23 @@ nnoremap <silent> <Leader>uu :<C-u>Unite neobundle/update<CR>
 nnoremap <silent> <Leader>uy :<C-u>Unite history/yank<CR>
 " }}}
 
-" NeoCompleCache {{{
+" NeoComplete {{{
+let g:neocomplete#enable_at_start_up = 1
+let g:neocomplete#manual_completion_start_length = 3
 
-" Launches neocomplcache automatically on vim startup.
-let g:neocomplcache_enable_at_startup = 1
-let g:neocomplcache_enable_ignore_case = 1
-let g:neocomplcache_enable_smart_case = 1
-let g:neocomplcache_enable_camel_case_completion = 1
-let g:neocomplcache_enable_underbar_completion = 1
-let g:neocomplcache_min_syntax_length = 4
-let g:neocomplcache_min_keyword_length = 3
+call neocomplete#custom_source('buffer', 'converters', ['converter_delimiter', 'converter_remove_next_keyword', 'converter_abbr'])
 
-" Define file-type dependent dictionaries.
-let g:neocomplcache_dictionary_filetype_lists = {
-    \ 'default' : '',
-    \ 'javascript' : '~/.vim/dictionary/closurelibrary.dict'
-    \ }
-
-" Define keyword, for minor languages
-if !exists('g:neocomplcache_keyword_patterns')
-  let g:neocomplcache_keyword_patterns = {}
+if !exists('g:neocomplete#sources#omni#input_patterns')
+  let g:neocomplete#sources#omni#input_patterns = {}
 endif
-let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
 
-" Enable omni completion. Not required if they are already set elsewhere in .vimrc
-autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+" For tern
+let g:neocomplete#force_omni_input_patterns.javascript = '[^. \t]\.\w*'
+
+" For Jedi
 autocmd FileType python setlocal omnifunc=jedi#completions
-let g:neocomplcache_force_omni_patterns = {
-                        \         'python': '\h\w*\|[^. \t]\.\w*'
-                        \ }
+let g:neocomplete#force_omni_input_patterns.python =
+\ '\%([^. \t]\.\|^\s*@\|^\s*from\s.\+import \|^\s*from \|^\s*import \)\w*'
 "}}}
 
 " Jedi {{{
