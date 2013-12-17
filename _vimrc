@@ -19,9 +19,6 @@ NeoBundle "https://github.com/Shougo/unite.vim.git"
 NeoBundle "https://github.com/Shougo/vimfiler.git"
 NeoBundle "https://github.com/Shougo/vimproc.git", {'build': {'windows': 'make -f make_mingw64.mak', 'mac': 'make -f make_mac.mak', 'unix': 'make -f make_unix.mak'}}
 NeoBundle "https://github.com/Shougo/vimshell.git"
-if has('mac')
-    NeoBundle "https://github.com/airblade/vim-gitgutter.git"
-endif
 NeoBundle "https://github.com/altercation/vim-colors-solarized.git"
 NeoBundle "https://github.com/cocopon/colorswatch.vim.git"
 NeoBundle "https://github.com/cocopon/googkit.vim.git"
@@ -31,6 +28,7 @@ NeoBundle "https://github.com/deris/vim-duzzle.git"
 NeoBundle "https://github.com/fugalh/desert.vim.git"
 NeoBundle "https://github.com/h1mesuke/unite-outline.git"
 NeoBundle "https://github.com/hail2u/vim-css3-syntax.git"
+NeoBundle "https://github.com/hdima/python-syntax.git"
 NeoBundle "https://github.com/helino/vim-json.git"
 NeoBundle "https://github.com/hynek/vim-python-pep8-indent.git"
 NeoBundle "https://github.com/itchyny/lightline.vim.git"
@@ -72,6 +70,10 @@ NeoBundle "https://github.com/vim-scripts/hybrid.vim.git"
 NeoBundle "https://github.com/vim-scripts/str2numchar.vim.git"
 NeoBundle "https://github.com/vim-scripts/sudo.vim.git"
 NeoBundle "https://github.com/wannesm/wmgraphviz.vim.git"
+
+if has('mac')
+    NeoBundle "https://github.com/airblade/vim-gitgutter.git"
+endif
 
 filetype plugin indent on
 
