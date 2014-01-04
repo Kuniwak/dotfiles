@@ -513,7 +513,7 @@ nnoremap <Leader>s :Switch<CR>
 " ビープの代わりにフラッシュ
 set visualbell
 set background=dark
-colorscheme hybrid
+colorscheme iceberg
 cd $HOME
 
 " vim: fdm=marker et tw=0
