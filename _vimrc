@@ -38,6 +38,9 @@ NeoBundle "https://github.com/itchyny/thumbnail.vim"
 NeoBundle "https://github.com/joker1007/vim-markdown-quote-syntax.git"
 NeoBundle "https://github.com/jonathanfilip/vim-lucius.git"
 NeoBundle "https://github.com/juanpabloaj/ShowMarks.git"
+NeoBundle "https://github.com/kana/vim-submode.git"
+NeoBundle "https://github.com/kana/vim-textobj-user.git"
+NeoBundle "https://github.com/koron/codic-vim.git"
 NeoBundle "https://github.com/marijnh/tern_for_vim.git", {'build': {'others': 'npm install'}}
 NeoBundle "https://github.com/matthewtodd/vim-twilight.git"
 NeoBundle "https://github.com/mattn/emmet-vim.git"
@@ -242,6 +245,11 @@ function! s:set_size(new_size)
   let new_guifont = printf('%s:h%d', font_name, a:new_size)
   let &guifont = new_guifont
 endfunction
+
+call submode#enter_with('fontsize', 'n', '', '<Leader>f+', ':call FontLarger()<CR>')
+call submode#enter_with('fontsize', 'n', '', '<Leader>f-', ':call FontSmaller()<CR>')
+call submode#map('fontsize', 'n', '', '+', ':call FontLarger()<CR>')
+call submode#map('fontsize', 'n', '', '-', ':call FontSmaller()<CR>')
 
 noremap <Leader>f+ :call FontLarger()<CR>
 noremap <Leader>f- :call FontSmaller()<CR>
