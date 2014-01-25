@@ -20,21 +20,6 @@ if has("win32") || has("win64")
 end
 
 " Submode {{{
-function! FontLarger()
-	let size = s:get_size()
-	call s:set_size(size + 1)
-endfunction
-
-function! FontSmaller()
-	let size = s:get_size()
-	call s:set_size(size - 1)
-endfunction
-
-let s:default_size = s:get_size()
-function! FontDefault()
-	call s:set_size(s:default_size)
-endfunction
-
 function! s:get_size()
 	let guifont = &guifont
 	let comps = split(guifont, ':')
@@ -52,6 +37,29 @@ function! s:set_size(new_size)
 	let &guifont = new_guifont
 endfunction
 
+let s:default_size = s:get_size()
+let s:current_size = s:get_size()
+
+function! s:apply_size()
+	call s:set_size(s:current_size)
+endfunction
+
+function! FontLarger()
+	let s:current_size += 1
+	call s:apply_size()
+endfunction
+
+function! FontSmaller()
+	let s:current_size -= 1
+	call s:apply_size()
+endfunction
+
+function! FontDefault()
+	let s:current_size = s:default_size
+	call s:apply_size()
+endfunction
+
+" うまく動いてくれぬうがー
 call submode#enter_with('fontsize', 'n', '', '<Leader>F', ':call FontLarger()<CR>')
 call submode#enter_with('fontsize', 'n', '', '<Leader>f', ':call FontSmaller()<CR>')
 call submode#map('fontsize', 'n', '', 'F', ':call FontLarger()<CR>')
