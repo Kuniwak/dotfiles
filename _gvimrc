@@ -1,27 +1,65 @@
 scriptencoding utf-8
 
-" Appearance
+set lines=40
+set columns=130
+set showtabline=2
+set guioptions-=T
+
 if has('gui_macvim')
-	set showtabline=2
-	set transparency=3
-	set guioptions-=T
 	set guifont=SourceCodePro-Regular:h10
 	set guifontwide=HiraMaruPro-W4:h10
 
-	set transparency=10
-
 	" 起動時にフルスクリーンにする
 	set fuoptions=maxvert,maxhorz
-	au GUIEnter * set fullscreen
+	nnoremap <Leader>fs :set fullscreen<CR>
 end
 
 if has("win32") || has("win64")
 	set ambiwidth=auto
 	set guifont=BDF_UM+:h9
-
-	set lines=40
-	set columns=130
 end
+
+" Submode {{{
+function! FontLarger()
+	let size = s:get_size()
+	call s:set_size(size + 1)
+endfunction
+
+function! FontSmaller()
+	let size = s:get_size()
+	call s:set_size(size - 1)
+endfunction
+
+let s:default_size = s:get_size()
+function! FontDefault()
+	call s:set_size(s:default_size)
+endfunction
+
+function! s:get_size()
+	let guifont = &guifont
+	let comps = split(guifont, ':')
+	let hsize = comps[1]
+	let matches = matchlist(hsize, 'h\(\d\+\)')
+
+	return str2nr(matches[1])
+endfunction
+
+function! s:set_size(new_size)
+	let guifont = &guifont
+	let comps = split(guifont, ':')
+	let font_name = comps[0]
+	let new_guifont = printf('%s:h%d', font_name, a:new_size)
+	let &guifont = new_guifont
+endfunction
+
+call submode#enter_with('fontsize', 'n', '', '<Leader>F', ':call FontLarger()<CR>')
+call submode#enter_with('fontsize', 'n', '', '<Leader>f', ':call FontSmaller()<CR>')
+call submode#map('fontsize', 'n', '', 'F', ':call FontLarger()<CR>')
+call submode#map('fontsize', 'n', '', 'f', ':call FontSmaller()<CR>')
+call submode#map('fontsize', 'n', '', '0', ':call FontDefault()<CR>')
+" }}}
 
 set background=dark
 colorscheme iceberg
+
+" vim: fdm=marker noet tw=0

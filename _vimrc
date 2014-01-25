@@ -80,7 +80,7 @@ NeoBundle "https://github.com/vim-scripts/sudo.vim.git"
 NeoBundle "https://github.com/wannesm/wmgraphviz.vim.git"
 
 if has('mac')
-    NeoBundle "https://github.com/airblade/vim-gitgutter.git"
+	NeoBundle "https://github.com/airblade/vim-gitgutter.git"
 endif
 
 filetype plugin indent on
@@ -208,10 +208,10 @@ set laststatus=2
 
 " 保存時に行末の空白を除去する
 function! s:remove_dust()
-  let cursor = getpos(".")
-  %s/\s\+$//ge
-  call setpos(".", cursor)
-  unlet cursor
+	let cursor = getpos(".")
+	%s/\s\+$//ge
+	call setpos(".", cursor)
+	unlet cursor
 endfunction
 autocmd BufWritePre *.js call <SID>remove_dust()
 
@@ -232,19 +232,19 @@ let g:quickrun_config = {}
 
 " Vimproc で Quickrun
 let g:quickrun_config['_'] = {
-      \ 'runner': 'vimproc',
-\       "runner/vimproc/updatetime" : 100
-      \ }
+			\ 'runner': 'vimproc',
+			\       "runner/vimproc/updatetime" : 100
+			\ }
 
 " JavaScript の実行環境を Node.js に指定
 let g:quickrun_config['javascript'] = {'type': 'javascript/nodejs'}
 
 " mocha の設定を追加
 let g:quickrun_config['javascript/mocha'] = {
-      \ 'command': 'mocha',
-      \ 'cmdopt': '',
-      \ 'tempfile': '%{tempname()}.js'
-      \ }
+			\ 'command': 'mocha',
+			\ 'cmdopt': '',
+			\ 'tempfile': '%{tempname()}.js'
+			\ }
 
 " Python 3をつかう
 let g:quickrun_config['python'] = {'command' : 'python'}
@@ -293,7 +293,7 @@ let g:neocomplete#manual_completion_start_length = 3
 call neocomplete#custom_source('buffer', 'converters', ['converter_delimiter', 'converter_remove_next_keyword', 'converter_abbr'])
 
 if !exists('g:neocomplete#sources#omni#input_patterns')
-  let g:neocomplete#sources#omni#input_patterns = {}
+	let g:neocomplete#sources#omni#input_patterns = {}
 endif
 
 " For tern
@@ -302,7 +302,7 @@ let g:neocomplete#force_omni_input_patterns.javascript = '[^. \t]\.\w*'
 " For Jedi
 autocmd FileType python setlocal omnifunc=jedi#completions
 let g:neocomplete#force_omni_input_patterns.python =
-\ '\%([^. \t]\.\|^\s*@\|^\s*from\s.\+import \|^\s*from \|^\s*import \)\w*'
+			\ '\%([^. \t]\.\|^\s*@\|^\s*from\s.\+import \|^\s*from \|^\s*import \)\w*'
 "}}}
 
 " Jedi {{{
@@ -326,7 +326,7 @@ smap <expr><TAB> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expan
 
 " For snippet_complete marker.
 if has("conceal")
-  set conceallevel=2 concealcursor=i
+	set conceallevel=2 concealcursor=i
 endif
 
 " Tell Neosnippet about the other snippets
@@ -335,8 +335,8 @@ let g:neosnippet#snippets_directory="~/.vim/snippets"
 
 " Syntastic {{{
 let g:syntastic_mode_map = { "mode": "passive",
-                           \ "active_filetypes": [],
-                           \ "passive_filetypes": ["html", "css", "javascript", "python", "json"] }
+			\ "active_filetypes": [],
+			\ "passive_filetypes": ["html", "css", "javascript", "python", "json"] }
 let g:syntastic_javascript_checkers = ["gjslint", "jshint"]
 let g:syntastic_javascript_gjslint_conf = " --disable 5,110 --strict"
 
@@ -410,41 +410,41 @@ let g:restart_sessionoptions = 'blank,buffers,curdir,folds,help,localoptions,tab
 
 " Lightline {{{
 let g:lightline = {
-    \   'colorscheme': 'hybrid',
-    \   'active': {
-    \     'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'readonly', 'filename', 'modified' ] ],
-    \     'right': [ [ 'syntastic', 'lineinfo' ], ['percent'], [ 'fileformat', 'fileencoding', 'filetype' ] ]
-    \   },
-    \   'component_function': {
-    \     'fugitive': 'MyFugitive'
-    \   },
-    \   'component_expand': {
-    \     'syntastic': 'SyntasticStatuslineFlag',
-    \   },
-    \   'component_type': {
-    \     'syntastic': 'error',
-    \   }
-    \ }
+			\   'colorscheme': 'hybrid',
+			\   'active': {
+			\     'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'readonly', 'filename', 'modified' ] ],
+			\     'right': [ [ 'syntastic', 'lineinfo' ], ['percent'], [ 'fileformat', 'fileencoding', 'filetype' ] ]
+			\   },
+			\   'component_function': {
+			\     'fugitive': 'MyFugitive'
+			\   },
+			\   'component_expand': {
+			\     'syntastic': 'SyntasticStatuslineFlag',
+			\   },
+			\   'component_type': {
+			\     'syntastic': 'error',
+			\   }
+			\ }
 
 function! MyFugitive()
-  try
-    if expand('%:t') !~? 'Tagbar\|Gundo\|NERD' && &ft !~? 'vimfiler' && exists('*fugitive#head')
-      let mark = ''  " edit here for cool mark
-      let _ = fugitive#head()
-      return strlen(_) ? mark._ : ''
-    endif
-  catch
-  endtry
-  return ''
+	try
+		if expand('%:t') !~? 'Tagbar\|Gundo\|NERD' && &ft !~? 'vimfiler' && exists('*fugitive#head')
+			let mark = ''  " edit here for cool mark
+			let _ = fugitive#head()
+			return strlen(_) ? mark._ : ''
+		endif
+	catch
+	endtry
+	return ''
 endfunction
 
 augroup AutoSyntastic
-  autocmd!
-  autocmd BufWritePost *.c,*.cpp call s:syntastic()
+	autocmd!
+	autocmd BufWritePost *.c,*.cpp call s:syntastic()
 augroup END
 function! s:syntastic()
-  SyntasticCheck
-  call lightline#update()
+	SyntasticCheck
+	call lightline#update()
 endfunction
 
 let g:unite_force_overwrite_statusline = 0
@@ -483,45 +483,6 @@ call submode#enter_with('changetab', 'n', '', 'gt', 'gt')
 call submode#enter_with('changetab', 'n', '', 'gT', 'gT')
 call submode#map('changetab', 'n', '', 't', 'gt')
 call submode#map('changetab', 'n', '', 'T', 'gT')
-
-function! FontLarger()
-  let size = s:get_size()
-  call s:set_size(size + 1)
-endfunction
-
-function! FontSmaller()
-  let size = s:get_size()
-  call s:set_size(size - 1)
-endfunction
-
-function! FontSize(size)
-  call s:set_size(a:size)
-endfunction
-
-function! s:get_size()
-  let guifont = &guifont
-  let comps = split(guifont, ':')
-  let hsize = comps[1]
-  let matches = matchlist(hsize, 'h\(\d\+\)')
-
-  return str2nr(matches[1])
-endfunction
-
-function! s:set_size(new_size)
-  let guifont = &guifont
-  let comps = split(guifont, ':')
-  let font_name = comps[0]
-  let new_guifont = printf('%s:h%d', font_name, a:new_size)
-  let &guifont = new_guifont
-endfunction
-
-call submode#enter_with('fontsize', 'n', '', '<Leader>F', ':call FontLarger()<CR>')
-call submode#enter_with('fontsize', 'n', '', '<Leader>f', ':call FontSmaller()<CR>')
-call submode#map('fontsize', 'n', '', 'F', ':call FontLarger()<CR>')
-call submode#map('fontsize', 'n', '', 'f', ':call FontSmaller()<CR>')
-
-noremap <Leader>f+ :call FontLarger()<CR>
-noremap <Leader>f- :call FontSmaller()<CR>
 "}}}
 
 " ビープの代わりにフラッシュ
@@ -530,4 +491,4 @@ set background=dark
 colorscheme iceberg
 cd $HOME
 
-" vim: fdm=marker et tw=0
+" vim: fdm=marker noet tw=0
