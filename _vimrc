@@ -8,6 +8,7 @@ endif
 
 call neobundle#rc(expand('~/.vim/bundle'))
 
+NeoBundle "https://github.com/osyo-manga/vim-over.git"
 NeoBundle "https://github.com/AndrewRadev/switch.vim.git"
 NeoBundle "https://github.com/Lokaltog/vim-easymotion.git"
 NeoBundle "https://github.com/OrgaChem/tsumekusa-syntax.vim.git"
@@ -16,6 +17,7 @@ NeoBundle "https://github.com/OrgaChem/vim-qrcode.git"
 NeoBundle "https://github.com/Shougo/neobundle.vim.git"
 NeoBundle "https://github.com/Shougo/neocomplete.git"
 NeoBundle "https://github.com/Shougo/neosnippet.git"
+NeoBundle "https://github.com/Shougo/neosnippet-snippets.git"
 NeoBundle "https://github.com/Shougo/unite-outline.git"
 NeoBundle "https://github.com/Shougo/unite.vim.git"
 NeoBundle "https://github.com/Shougo/vimfiler.git"
@@ -214,47 +216,6 @@ function! s:remove_dust()
 endfunction
 autocmd BufWritePre *.js call <SID>remove_dust()
 
-" Font size {{{
-function! FontLarger()
-  let size = s:get_size()
-  call s:set_size(size + 1)
-endfunction
-
-function! FontSmaller()
-  let size = s:get_size()
-  call s:set_size(size - 1)
-endfunction
-
-function! FontSize(size)
-  call s:set_size(a:size)
-endfunction
-
-function! s:get_size()
-  let guifont = &guifont
-  let comps = split(guifont, ':')
-  let hsize = comps[1]
-  let matches = matchlist(hsize, 'h\(\d\+\)')
-
-  return str2nr(matches[1])
-endfunction
-
-function! s:set_size(new_size)
-  let guifont = &guifont
-  let comps = split(guifont, ':')
-  let font_name = comps[0]
-  let new_guifont = printf('%s:h%d', font_name, a:new_size)
-  let &guifont = new_guifont
-endfunction
-
-call submode#enter_with('fontsize', 'n', '', '<Leader>f+', ':call FontLarger()<CR>')
-call submode#enter_with('fontsize', 'n', '', '<Leader>f-', ':call FontSmaller()<CR>')
-call submode#map('fontsize', 'n', '', '+', ':call FontLarger()<CR>')
-call submode#map('fontsize', 'n', '', '-', ':call FontSmaller()<CR>')
-
-noremap <Leader>f+ :call FontLarger()<CR>
-noremap <Leader>f- :call FontSmaller()<CR>
-"}}}
-
 au BufNewFile,BufRead *.js.map setf json
 au BufNewFile,BufRead *.webapp setf json
 au BufNewFile,BufRead .jshintrc setf json
@@ -287,7 +248,7 @@ let g:quickrun_config['javascript/mocha'] = {
       \ }
 
 " Python 3をつかう
-let g:quickrun_config['python'] = {'command' : 'python3'}
+let g:quickrun_config['python'] = {'command' : 'python'}
 
 nnoremap <silent> <Leader>l :<C-u>QuickRun<CR>
 "}}}
@@ -517,6 +478,52 @@ command! SplashPullRequestManner :Splash $HOME/.vim/splashes/pull_request_manner
 " Switch {{{
 nnoremap <Leader>s :Switch<CR>
 " }}}
+
+" Submode {{{
+call submode#enter_with('changetab', 'n', '', 'gt', 'gt')
+call submode#enter_with('changetab', 'n', '', 'gT', 'gT')
+call submode#map('changetab', 'n', '', 't', 'gt')
+call submode#map('changetab', 'n', '', 'T', 'gT')
+
+function! FontLarger()
+  let size = s:get_size()
+  call s:set_size(size + 1)
+endfunction
+
+function! FontSmaller()
+  let size = s:get_size()
+  call s:set_size(size - 1)
+endfunction
+
+function! FontSize(size)
+  call s:set_size(a:size)
+endfunction
+
+function! s:get_size()
+  let guifont = &guifont
+  let comps = split(guifont, ':')
+  let hsize = comps[1]
+  let matches = matchlist(hsize, 'h\(\d\+\)')
+
+  return str2nr(matches[1])
+endfunction
+
+function! s:set_size(new_size)
+  let guifont = &guifont
+  let comps = split(guifont, ':')
+  let font_name = comps[0]
+  let new_guifont = printf('%s:h%d', font_name, a:new_size)
+  let &guifont = new_guifont
+endfunction
+
+call submode#enter_with('fontsize', 'n', '', '<Leader>F', ':call FontLarger()<CR>')
+call submode#enter_with('fontsize', 'n', '', '<Leader>f', ':call FontSmaller()<CR>')
+call submode#map('fontsize', 'n', '', 'F', ':call FontLarger()<CR>')
+call submode#map('fontsize', 'n', '', 'f', ':call FontSmaller()<CR>')
+
+noremap <Leader>f+ :call FontLarger()<CR>
+noremap <Leader>f- :call FontSmaller()<CR>
+"}}}
 
 " ビープの代わりにフラッシュ
 set visualbell
