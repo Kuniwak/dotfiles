@@ -8,7 +8,6 @@ endif
 
 call neobundle#rc(expand('~/.vim/bundle'))
 
-NeoBundle "https://github.com/osyo-manga/vim-over.git"
 NeoBundle "https://github.com/AndrewRadev/switch.vim.git"
 NeoBundle "https://github.com/Lokaltog/vim-easymotion.git"
 NeoBundle "https://github.com/OrgaChem/tsumekusa-syntax.vim.git"
@@ -16,8 +15,8 @@ NeoBundle "https://github.com/OrgaChem/vim-javascript.git"
 NeoBundle "https://github.com/OrgaChem/vim-qrcode.git"
 NeoBundle "https://github.com/Shougo/neobundle.vim.git"
 NeoBundle "https://github.com/Shougo/neocomplete.git"
-NeoBundle "https://github.com/Shougo/neosnippet.git"
 NeoBundle "https://github.com/Shougo/neosnippet-snippets.git"
+NeoBundle "https://github.com/Shougo/neosnippet.git"
 NeoBundle "https://github.com/Shougo/unite-outline.git"
 NeoBundle "https://github.com/Shougo/unite.vim.git"
 NeoBundle "https://github.com/Shougo/vimfiler.git"
@@ -51,6 +50,8 @@ NeoBundle "https://github.com/mattn/webapi-vim.git"
 NeoBundle "https://github.com/modsound/macdict-vim.git"
 NeoBundle "https://github.com/nanotech/jellybeans.vim.git"
 NeoBundle "https://github.com/nathanaelkane/vim-indent-guides.git"
+NeoBundle "https://github.com/osyo-manga/vim-over.git"
+NeoBundle "https://github.com/popkirby/lightline-iceberg.git"
 NeoBundle "https://github.com/scrooloose/syntastic.git"
 NeoBundle "https://github.com/supermomonga/vimshell-kawaii.vim.git", {'depends' : 'https://github.com/Shougo/vimshell.git'}
 NeoBundle "https://github.com/taichouchou2/html5.vim.git"
