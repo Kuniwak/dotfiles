@@ -9,7 +9,6 @@ endif
 call neobundle#rc(expand('~/.vim/bundle'))
 
 NeoBundle "https://github.com/AndrewRadev/switch.vim.git"
-NeoBundle "https://github.com/Lokaltog/vim-easymotion.git"
 NeoBundle "https://github.com/OrgaChem/tsumekusa-syntax.vim.git"
 NeoBundle "https://github.com/OrgaChem/vim-javascript.git"
 NeoBundle "https://github.com/OrgaChem/vim-qrcode.git"
@@ -21,7 +20,6 @@ NeoBundle "https://github.com/Shougo/unite-outline.git"
 NeoBundle "https://github.com/Shougo/unite.vim.git"
 NeoBundle "https://github.com/Shougo/vimfiler.git"
 NeoBundle "https://github.com/Shougo/vimproc.git", {'build': {'windows': 'make -f make_mingw64.mak', 'mac': 'make -f make_mac.mak', 'unix': 'make -f make_unix.mak'}}
-NeoBundle "https://github.com/Shougo/vimshell.git"
 NeoBundle "https://github.com/altercation/vim-colors-solarized.git"
 NeoBundle "https://github.com/cocopon/colorswatch.vim.git"
 NeoBundle "https://github.com/cocopon/googkit.vim.git"
@@ -35,15 +33,12 @@ NeoBundle "https://github.com/hdima/python-syntax.git"
 NeoBundle "https://github.com/helino/vim-json.git"
 NeoBundle "https://github.com/hynek/vim-python-pep8-indent.git"
 NeoBundle "https://github.com/itchyny/lightline.vim.git"
-NeoBundle "https://github.com/itchyny/thumbnail.vim"
 NeoBundle "https://github.com/joker1007/vim-markdown-quote-syntax.git"
 NeoBundle "https://github.com/jonathanfilip/vim-lucius.git"
 NeoBundle "https://github.com/juanpabloaj/ShowMarks.git"
 NeoBundle "https://github.com/kana/vim-submode.git"
 NeoBundle "https://github.com/kana/vim-textobj-user.git"
-NeoBundle "https://github.com/koron/codic-vim.git"
 NeoBundle "https://github.com/marijnh/tern_for_vim.git", {'build': {'others': 'npm install'}}
-NeoBundle "https://github.com/matthewtodd/vim-twilight.git"
 NeoBundle "https://github.com/mattn/emmet-vim.git"
 NeoBundle "https://github.com/mattn/gist-vim.git", {'depends' : 'https://github.com/mattn/webapi-vim.git'}
 NeoBundle "https://github.com/mattn/webapi-vim.git"
@@ -53,7 +48,6 @@ NeoBundle "https://github.com/nathanaelkane/vim-indent-guides.git"
 NeoBundle "https://github.com/osyo-manga/vim-over.git"
 NeoBundle "https://github.com/popkirby/lightline-iceberg.git"
 NeoBundle "https://github.com/scrooloose/syntastic.git"
-NeoBundle "https://github.com/supermomonga/vimshell-kawaii.vim.git", {'depends' : 'https://github.com/Shougo/vimshell.git'}
 NeoBundle "https://github.com/taichouchou2/html5.vim.git"
 NeoBundle "https://github.com/therubymug/vim-pyte.git"
 NeoBundle "https://github.com/thinca/vim-qfreplace.git"
@@ -71,7 +65,6 @@ NeoBundle "https://github.com/tpope/vim-repeat"
 NeoBundle "https://github.com/tpope/vim-surround.git"
 NeoBundle "https://github.com/tyru/restart.vim.git"
 NeoBundle "https://github.com/ujihisa/unite-colorscheme.git"
-NeoBundle "https://github.com/ujihisa/unite-font.git"
 NeoBundle "https://github.com/vim-scripts/ViewOutput.git"
 NeoBundle "https://github.com/vim-scripts/Zenburn.git"
 NeoBundle "https://github.com/vim-scripts/chlordane.vim.git"
@@ -411,7 +404,7 @@ let g:restart_sessionoptions = 'blank,buffers,curdir,folds,help,localoptions,tab
 
 " Lightline {{{
 let g:lightline = {
-			\   'colorscheme': 'hybrid',
+			\   'colorscheme': 'iceberg',
 			\   'active': {
 			\     'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'readonly', 'filename', 'modified' ] ],
 			\     'right': [ [ 'syntastic', 'lineinfo' ], ['percent'], [ 'fileformat', 'fileencoding', 'filetype' ] ]
