@@ -24,7 +24,6 @@ NeoBundle "https://github.com/altercation/vim-colors-solarized.git"
 NeoBundle "https://github.com/cocopon/colorswatch.vim.git"
 NeoBundle "https://github.com/cocopon/googkit.vim.git"
 NeoBundle "https://github.com/cocopon/iceberg.vim.git"
-NeoBundle "https://github.com/cocopon/lightline-hybrid.vim.git"
 NeoBundle "https://github.com/davidhalter/jedi-vim.git",  {'build': {'others': 'pip install jedi'}}
 NeoBundle "https://github.com/deris/vim-duzzle.git"
 NeoBundle "https://github.com/fugalh/desert.vim.git"
@@ -33,7 +32,6 @@ NeoBundle "https://github.com/hdima/python-syntax.git"
 NeoBundle "https://github.com/helino/vim-json.git"
 NeoBundle "https://github.com/hynek/vim-python-pep8-indent.git"
 NeoBundle "https://github.com/itchyny/lightline.vim.git"
-NeoBundle "https://github.com/joker1007/vim-markdown-quote-syntax.git"
 NeoBundle "https://github.com/jonathanfilip/vim-lucius.git"
 NeoBundle "https://github.com/juanpabloaj/ShowMarks.git"
 NeoBundle "https://github.com/kana/vim-submode.git"
@@ -60,18 +58,12 @@ NeoBundle "https://github.com/tomasr/molokai.git"
 NeoBundle "https://github.com/tomtom/tcomment_vim.git"
 NeoBundle "https://github.com/tpope/vim-abolish"
 NeoBundle "https://github.com/tpope/vim-fugitive.git"
-NeoBundle "https://github.com/tpope/vim-markdown"
-NeoBundle "https://github.com/tpope/vim-repeat"
 NeoBundle "https://github.com/tpope/vim-surround.git"
 NeoBundle "https://github.com/tyru/restart.vim.git"
 NeoBundle "https://github.com/ujihisa/unite-colorscheme.git"
-NeoBundle "https://github.com/vim-scripts/ViewOutput.git"
 NeoBundle "https://github.com/vim-scripts/Zenburn.git"
 NeoBundle "https://github.com/vim-scripts/chlordane.vim.git"
 NeoBundle "https://github.com/vim-scripts/hybrid.vim.git"
-NeoBundle "https://github.com/vim-scripts/str2numchar.vim.git"
-NeoBundle "https://github.com/vim-scripts/sudo.vim.git"
-NeoBundle "https://github.com/wannesm/wmgraphviz.vim.git"
 
 if has('mac')
 	NeoBundle "https://github.com/airblade/vim-gitgutter.git"
@@ -156,9 +148,12 @@ set autoindent
 " インデントは各プラグインにまかせる
 set nosmartindent
 
-autocmd FileType html set indentexpr&
-autocmd FileType js set indentexpr&
-autocmd FileType xhtml set indentexpr&
+augroup MyIndent
+	au!
+	au FileType html set indentexpr&
+	au FileType js set indentexpr&
+	au FileType xhtml set indentexpr&
+augroup END
 
 " 検索時にケースインセンティブにする
 " ただし検索条件に大文字が含まれる場合のみケースセンシティブにする
@@ -200,6 +195,13 @@ set splitright
 " 常にステータス行を表示
 set laststatus=2
 
+"command-line completion
+set wildmenu
+set wildmode=list:longest
+
+" Uniteのカーソルライン 
+setlocal updatetime=40
+
 " 保存時に行末の空白を除去する
 function! s:remove_dust()
 	let cursor = getpos(".")
@@ -209,12 +211,16 @@ function! s:remove_dust()
 endfunction
 autocmd BufWritePre *.js call <SID>remove_dust()
 
-au BufNewFile,BufRead *.js.map setf json
-au BufNewFile,BufRead *.webapp setf json
-au BufNewFile,BufRead .jshintrc setf json
-au BufNewFile,BufRead .googkit setf config
-au BufNewFile,BufRead *.tsumekusa setf tsumekusa
-au BufNewFile,BufRead *.pac setf javascript
+augroup MyFileType
+	au!
+	au BufNewFile,BufRead *.md setf markdown
+	au BufNewFile,BufRead *.js.map setf json
+	au BufNewFile,BufRead *.webapp setf json
+	au BufNewFile,BufRead .jshintrc setf json
+	au BufNewFile,BufRead .googkit setf config
+	au BufNewFile,BufRead *.tsumekusa setf tsumekusa
+	au BufNewFile,BufRead *.pac setf javascript
+augroup END
 
 " VimsualStar {{{
 map * <Plug>(visualstar-*)N
@@ -256,13 +262,6 @@ let g:vimfiler_enable_auto_cd = 1
 " 現在開いているバッファをIDE風に開く
 nnoremap <silent> <Leader>vf :<C-u>VimFilerBufferDir -split -simple -no-quit -winwidth=35<CR>
 nnoremap <silent> <Leader>vd :<C-u>VimFilerBufferDir -split -simple -no-quit -winwidth=35 -double<CR>
-"}}}
-
-" VimShell {{{
-let g:vimshell_split_command = "vsplit"
-" 縦分割でVimShellを開く
-nnoremap <silent> <Leader>vs :<C-u>VimShellBufferDir -split<CR>
-nnoremap <silent> <Leader>vp :<C-u>VimShellPop %:p:h<CR>
 "}}}
 
 " Unite {{{
@@ -349,10 +348,6 @@ nnoremap <silent> <Leader>st :<C-u>SyntasticToggleMode<CR>
 "}}}
 
 " Fugitive {{{
-"command-line completion
-set wildmenu
-set wildmode=list:longest
-
 nnoremap <silent> <Leader>gb :Gblame<CR>
 nnoremap <silent> <Leader>gd :Gdiff<CR>
 nnoremap <silent> <Leader>gs :Gstatus<CR>
@@ -360,32 +355,9 @@ nnoremap <silent> <Leader>gp :Git pull<CR>
 nnoremap <silent> <Leader>gP :Git push<CR>
 " }}}
 
-" Str2Numchar {{{
-" 選択文字列をHTMLの実態文字参照に変換
-vmap <silent> <Leader>sn :Str2NumChar<CR>
-vmap <silent> <Leader>sh :Str2HexLiteral<CR>
-"}}}
-
 "Showmarks{{{
 " 英字のマークのみ表示
 let showmarks_include = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
-"}}}
-
-"Alpaca-english{{{
-let g:alpaca_english_enable=1
-let g:alpaca_english_max_candidates=100
-let g:alpaca_english_enable_duplicate_candidates=1
-
-" 補完を有効にするファイルタイプを追加
-"let g:neocomplcache_text_mode_filetypes = {
-"  \ 'markdown' : 1,
-"  \ 'gitcommit' : 1,
-"  \ 'text' : 1,
-"  \ }
-
-" DEVELOPMENT VERSION
-let g:alpaca_english_web_search_url = 'http://eow.alc.co.jp/%s/UTF-8/'
-let g:alpaca_english_web_search_xpath = "div[@id='resultsList']/ul/li"
 "}}}
 
 "Gist-vim{{{
@@ -457,8 +429,12 @@ let g:indent_guides_guide_size = 1
 
 let g:indent_guides_auto_colors = 0
 let g:indent_guides_color_change_percent = 5
-autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg='#282a2e'
-autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg='#282a2e'
+
+augroup MyIndentColor
+	au!
+	au VimEnter,Colorscheme * :hi IndentGuidesEven guibg='#282a2e'
+	au VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg='#282a2e'
+augroup END
 " }}}
 
 " Splash {{{
@@ -479,10 +455,16 @@ call submode#map('changetab', 'n', '', 't', 'gt')
 call submode#map('changetab', 'n', '', 'T', 'gT')
 "}}}
 
+" MacDict {{{
+nnoremap <Leader>d :MacDictCWord<CR>
+" }}}
+
 " ビープの代わりにフラッシュ
 set visualbell
 set background=dark
 colorscheme iceberg
+
+" Windows 用
 cd $HOME
 
 " vim: fdm=marker noet tw=0
