@@ -56,7 +56,7 @@ NeoBundle "https://github.com/thinca/vim-splash.git"
 NeoBundle "https://github.com/thinca/vim-visualstar.git"
 NeoBundle "https://github.com/tomasr/molokai.git"
 NeoBundle "https://github.com/tomtom/tcomment_vim.git"
-NeoBundle "https://github.com/tpope/vim-abolish"
+NeoBundle "https://github.com/tpope/vim-abolish.git"
 NeoBundle "https://github.com/tpope/vim-fugitive.git"
 NeoBundle "https://github.com/tpope/vim-surround.git"
 NeoBundle "https://github.com/tyru/restart.vim.git"
@@ -145,16 +145,6 @@ set listchars=eol:¬,tab:▸\
 " 改行後もインデントを維持
 set autoindent
 
-" インデントは各プラグインにまかせる
-set nosmartindent
-
-augroup MyIndent
-	au!
-	au FileType html set indentexpr&
-	au FileType js set indentexpr&
-	au FileType xhtml set indentexpr&
-augroup END
-
 " 検索時にケースインセンティブにする
 " ただし検索条件に大文字が含まれる場合のみケースセンシティブにする
 set noignorecase
@@ -202,25 +192,9 @@ set wildmode=list:longest
 " Uniteのカーソルライン 
 setlocal updatetime=40
 
-" 保存時に行末の空白を除去する
-function! s:remove_dust()
-	let cursor = getpos(".")
-	%s/\s\+$//ge
-	call setpos(".", cursor)
-	unlet cursor
-endfunction
-autocmd BufWritePre *.js call <SID>remove_dust()
+set background=dark
+colorscheme iceberg
 
-augroup MyFileType
-	au!
-	au BufNewFile,BufRead *.md setf markdown
-	au BufNewFile,BufRead *.js.map setf json
-	au BufNewFile,BufRead *.webapp setf json
-	au BufNewFile,BufRead .jshintrc setf json
-	au BufNewFile,BufRead .googkit setf config
-	au BufNewFile,BufRead *.tsumekusa setf tsumekusa
-	au BufNewFile,BufRead *.pac setf javascript
-augroup END
 
 " VimsualStar {{{
 map * <Plug>(visualstar-*)N
@@ -430,7 +404,7 @@ let g:indent_guides_guide_size = 1
 let g:indent_guides_auto_colors = 0
 let g:indent_guides_color_change_percent = 5
 
-augroup MyIndentColor
+augroup my_indent_color
 	au!
 	au VimEnter,Colorscheme * :hi IndentGuidesEven guibg='#282a2e'
 	au VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg='#282a2e'
@@ -459,10 +433,29 @@ call submode#map('changetab', 'n', '', 'T', 'gT')
 nnoremap <Leader>d :MacDictCWord<CR>
 " }}}
 
-" ビープの代わりにフラッシュ
-set visualbell
-set background=dark
-colorscheme iceberg
+" 保存時に行末の空白を除去する
+function! s:remove_dust()
+	let cursor = getpos(".")
+	%s/\s\+$//ge
+	call setpos(".", cursor)
+	unlet cursor
+endfunction
+
+augroup remove_dust
+	autocmd BufWritePre *.js call <SID>remove_dust()
+augroup END
+
+augroup my_file_type
+	autocmd!
+	autocmd BufNewFile,BufRead *.js.map setf json
+	autocmd BufNewFile,BufRead *.webapp setf json
+	autocmd BufNewFile,BufRead .jshintrc setf json
+	autocmd BufNewFile,BufRead .googkit setf config
+	autocmd BufNewFile,BufRead *.tsumekusa setf tsumekusa
+	autocmd BufNewFile,BufRead *.pac setf javascript
+	" setf を上書きするために set filetype=markdown で強制的に ft 変更
+	autocmd BufNewFile,BufRead *.md set filetype=markdown
+augroup END
 
 " Windows 用
 cd $HOME
