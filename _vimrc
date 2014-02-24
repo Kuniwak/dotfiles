@@ -106,6 +106,9 @@ noremap gk k
 noremap <Down> gj
 noremap <Up> gk
 
+" Yで行末までヤンク
+noremap Y y$
+
 " ウィンドウ切替
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
