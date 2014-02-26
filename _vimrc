@@ -134,6 +134,11 @@ nnoremap <silent> <Leader>rg :<C-u>source $HOME/.orgachem-vim/_gvimrc<CR>
 " バッファのディレクトリに移動
 nnoremap <silent> <Leader>cd :<C-u>cd %:h<CR>
 
+" ファイルタイプ変更
+nnoremap <silent> <Leader>sfp :<C-u>set filetype=python<CR>
+nnoremap <silent> <Leader>sfj :<C-u>set filetype=javascript<CR>
+nnoremap <silent> <Leader>sfm :<C-u>set filetype=markdown<CR>
+
 " Ctrl+hでBS
 inoremap <C-h> <Backspace>
 
@@ -447,6 +452,7 @@ endfunction
 
 augroup remove_dust
 	autocmd BufWritePre *.js call <SID>remove_dust()
+	autocmd BufWritePre *.py call <SID>remove_dust()
 augroup END
 
 augroup my_file_type
