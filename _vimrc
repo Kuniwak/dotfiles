@@ -135,9 +135,9 @@ nnoremap <silent> <Leader>rg :<C-u>source $HOME/.orgachem-vim/_gvimrc<CR>
 nnoremap <silent> <Leader>cd :<C-u>cd %:h<CR>
 
 " ファイルタイプ変更
-nnoremap <silent> <Leader>sfp :<C-u>set filetype=python<CR>
-nnoremap <silent> <Leader>sfj :<C-u>set filetype=javascript<CR>
-nnoremap <silent> <Leader>sfm :<C-u>set filetype=markdown<CR>
+nnoremap <silent> <Leader>ftp :<C-u>set filetype=python<CR>
+nnoremap <silent> <Leader>ftj :<C-u>set filetype=javascript<CR>
+nnoremap <silent> <Leader>ftm :<C-u>set filetype=markdown<CR>
 
 " Ctrl+hでBS
 inoremap <C-h> <Backspace>
