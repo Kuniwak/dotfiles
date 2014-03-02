@@ -201,6 +201,8 @@ set wildmode=list:longest
 " Uniteのカーソルライン 
 setlocal updatetime=40
 
+set diffopt+=vertical
+
 set background=dark
 colorscheme iceberg
 
@@ -230,7 +232,7 @@ let g:quickrun_config['javascript/mocha'] = {
 			\ }
 
 " Python 3をつかう
-let g:quickrun_config['python'] = {'command' : 'python'}
+let g:quickrun_config['python'] = {'command' : 'python3'}
 
 nnoremap <silent> <Leader>l :<C-u>QuickRun<CR>
 "}}}
