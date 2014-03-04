@@ -137,6 +137,7 @@ nnoremap <silent> <Leader>cd :<C-u>cd %:h<CR>
 nnoremap <silent> <Leader>ftp :<C-u>set filetype=python<CR>
 nnoremap <silent> <Leader>ftj :<C-u>set filetype=javascript<CR>
 nnoremap <silent> <Leader>ftm :<C-u>set filetype=markdown<CR>
+nnoremap <silent> <Leader>fth :<C-u>set filetype=html<CR>
 
 " Ctrl+hでBS
 inoremap <C-h> <Backspace>
