@@ -201,7 +201,11 @@ set wildmode=list:longest
 " Uniteのカーソルライン 
 setlocal updatetime=40
 
+" Diffsplit を横分割に変更
 set diffopt+=vertical
+
+" Beep を消す
+set visualbell t_vb=
 
 set background=dark
 colorscheme iceberg
