@@ -446,6 +446,9 @@ call submode#map('changetab', 'n', '', 'T', 'gT')
 
 " MacDict {{{
 nnoremap <Leader>d :MacDictCWord<CR>
+
+" q で閉じる
+autocmd BufEnter MacDictBuffer nnoremap <buffer><silent> q :q<CR>
 " }}}
 
 " 保存時に行末の空白を除去する
