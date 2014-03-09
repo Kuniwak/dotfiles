@@ -188,6 +188,14 @@ noremap N Nzz
 noremap * *zz
 noremap # #zz
 
+" 対応するリテラルの生成
+inoremap ( ()<Left>
+inoremap [ []<Left>
+inoremap { {}<Left>
+inoremap ' ''<Left>
+inoremap " ""<Left>
+inoremap ` ``<Left>
+
 " 縦分割したら新しいウィンドウは右に
 set splitright
 
