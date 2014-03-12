@@ -196,6 +196,11 @@ inoremap ' ''<Left>
 inoremap " ""<Left>
 inoremap ` ``<Left>
 
+" 閉じ括弧で直後の閉じ括弧の後に移動
+inoremap ) <ESC>f)a
+inoremap ] <ESC>f]a
+inoremap } <ESC>f}a
+
 " 縦分割したら新しいウィンドウは右に
 set splitright
 
@@ -252,13 +257,15 @@ nnoremap <silent> <Leader>l :<C-u>QuickRun<CR>
 " Vimfiler {{{
 " vimデフォルトのエクスプローラをvimfilerで置き換える
 let g:vimfiler_as_default_explorer = 1
+
 " セーフモードを無効にした状態で起動する
 let g:vimfiler_safe_mode_by_default = 0
-"
+
+" VimFiler で開いているディレクトリをカレントディレクトリにする
 let g:vimfiler_enable_auto_cd = 1
+
 " 現在開いているバッファをIDE風に開く
-nnoremap <silent> <Leader>vf :<C-u>VimFilerBufferDir -split -simple -no-quit -winwidth=35<CR>
-nnoremap <silent> <Leader>vd :<C-u>VimFilerBufferDir -split -simple -no-quit -winwidth=35 -double<CR>
+nnoremap <silent> <Leader>vf :<C-u>VimFilerBufferDir<CR>
 "}}}
 
 " Unite {{{
