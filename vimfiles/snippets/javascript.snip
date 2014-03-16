@@ -35,14 +35,15 @@ alias extends
 	goog.inherits($3, $2);
 
 snippet inherits
+alias inh
 	goog.inherits(${1:#:sub_class}, ${2:#:super_class});
 
 snippet singleton
 alias sing
 	goog.addSingletonGetter(${1:#:singleton_class});
 
-snippet extendsUiComponent
-alias extuicom
+snippet UiComponent
+alias uicomp
 	/**
 	 * A class for ${1:#:sub_class_name}.
 	 * @param {goog.dom.DomHelper=} opt_domHelper Optional DOM helper, used for
@@ -56,8 +57,8 @@ alias extuicom
 	};
 	goog.inherits($2, goog.ui.Component);
 
-snippet extendsUiControl
-alias extuictrl
+snippet UiControl
+alias uictrl
 	/**
 	 * A class for ${1:#:sub_class_name}.
 	 * @param {goog.ui.ControlContent} content Text caption or DOM structure
@@ -106,10 +107,11 @@ alias abs
 	goog.abstractMethod
 
 snippet nullfunction
-alias nullfunc
+alias nullf
 	goog.nullFunction
 
 snippet disposeInternal
+snippet disp
 	/** @override */
 	${1}.prototype.disposeInternal = function() {
 	  goog.base(this, 'disposeInternal');
@@ -117,6 +119,7 @@ snippet disposeInternal
 	};
 
 snippet enterDocument
+alias entdoc
 	/** @override */
 	${1}.prototype.enterDocument = function() {
 	  goog.base(this, 'enterDocument');
@@ -124,6 +127,7 @@ snippet enterDocument
 	};
 
 snippet exitDocument
+alias exitdoc
 	/** @override */
 	${1}.prototype.exitDocument = function() {
 	  goog.base(this, 'exitDocument');
@@ -131,6 +135,7 @@ snippet exitDocument
 	};
 
 snippet decorateInternal
+alias deco
 	/** @override */
 	${1}.prototype.decorateInternal = function(element) {
 	  goog.base(this, 'decorateInternal', element);
@@ -210,15 +215,20 @@ alias etp
 # }}}
 
 # Annotation snippets {{{
-snippet license
+snippet //license
+alias //li
 	// This script licensed under the MIT.
 	// http://orgachem.mit-license.org
+	${0}
 
 snippet @fileoverview
+alias @file
+alias @f
 	/**
 	 * @fileoverview ${1:#:file_description}
 	 * @author orga.chem.job@gmail.com (OrgaChem)
 	 */
+	${0}
 
 snippet @override
 alias @ov
@@ -229,18 +239,21 @@ snippet setter
 	 * Sets ${1:a property.}
 	 * @param {${2:type}} ${3:Property to set.}
 	 */
+	${0}
 
 snippet getter
 	/**
 	 * Returns ${1:a property.}
 	 * @return {${2:type}} ${3:Property.}
 	 */
+	${0}
 
 snippet whether
 	/**
 	 * Whether ${1:#:condition}
 	 * @return {boolean} Whether $1
 	 */
+	${0}
 
 snippet jsdoc
 alias jd
@@ -266,18 +279,20 @@ alias @ctor
 	@constructor
 
 snippet @param
+alias @pm
 	@param {${1:#:type}} ${2:#:name} ${3:#:desc}
 
 snippet @return
+alias @ret
 	@return {${1:#:type}} ${2:#:desc}
-
-snippet @private
-alias @pv
-	@private
 
 snippet @type
 alias @tp
 	@type {${1:#:type}}${0}
+
+snippet @private
+alias @pv
+	@private
 
 snippet @protected
 alias @pt
