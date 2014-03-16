@@ -28,7 +28,6 @@ NeoBundle "https://github.com/davidhalter/jedi-vim.git",  {'build': {'others': '
 NeoBundle "https://github.com/deris/vim-duzzle.git"
 NeoBundle "https://github.com/fugalh/desert.vim.git"
 NeoBundle "https://github.com/hail2u/vim-css3-syntax.git"
-NeoBundle "https://github.com/hdima/python-syntax.git"
 NeoBundle "https://github.com/helino/vim-json.git"
 NeoBundle "https://github.com/hynek/vim-python-pep8-indent.git"
 NeoBundle "https://github.com/itchyny/lightline.vim.git"
@@ -334,6 +333,7 @@ let g:neosnippet#snippets_directory="~/.vim/snippets"
 let g:syntastic_mode_map = { "mode": "passive",
 			\ "active_filetypes": [],
 			\ "passive_filetypes": ["html", "css", "javascript", "python", "json"] }
+
 let g:syntastic_javascript_checkers = ["gjslint", "jshint"]
 let g:syntastic_javascript_gjslint_conf = " --disable 5,110 --strict"
 
@@ -375,7 +375,9 @@ vnoremap <Leader>g :Gist<CR>
 "
 " ま た M a c V i m か
 "
-let g:restart_sessionoptions = 'blank,buffers,curdir,folds,help,localoptions,tabpages'
+if !has("mac")
+	let g:restart_sessionoptions = 'blank,buffers,curdir,folds,help,localoptions,tabpages'
+endif
 "}}}
 
 " Lightline {{{
