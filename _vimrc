@@ -53,9 +53,11 @@ NeoBundle "https://github.com/thinca/vim-ref.git"
 NeoBundle "https://github.com/thinca/vim-scouter.git"
 NeoBundle "https://github.com/thinca/vim-splash.git"
 NeoBundle "https://github.com/thinca/vim-visualstar.git"
+NeoBundle "https://github.com/thoughbot/vim-rspec.git"
 NeoBundle "https://github.com/tomasr/molokai.git"
 NeoBundle "https://github.com/tomtom/tcomment_vim.git"
 NeoBundle "https://github.com/tpope/vim-abolish.git"
+NeoBundle "https://github.com/tpope/vim-dispatch.git"
 NeoBundle "https://github.com/tpope/vim-fugitive.git"
 NeoBundle "https://github.com/tpope/vim-surround.git"
 NeoBundle "https://github.com/tyru/restart.vim.git"
@@ -63,6 +65,10 @@ NeoBundle "https://github.com/ujihisa/unite-colorscheme.git"
 NeoBundle "https://github.com/vim-scripts/Zenburn.git"
 NeoBundle "https://github.com/vim-scripts/chlordane.vim.git"
 NeoBundle "https://github.com/vim-scripts/hybrid.vim.git"
+
+" Unstable plugins :-(
+"NeoBundle 'tpope/vim-dispatch'
+"NeoBundle 'thoughbot/vim-rspec'
 
 if has('mac')
 	NeoBundle "https://github.com/airblade/vim-gitgutter.git"
@@ -191,6 +197,9 @@ noremap # #zz
 inoremap ( ()<Left>
 inoremap [ []<Left>
 inoremap { {}<Left>
+inoremap (<Enter> (<C-m><C-m>)<Up><Tab>
+inoremap [<Enter> [<C-m><C-m>]<Up><Tab>
+inoremap {<Enter> {<C-m><C-m>}<Up><Tab>
 inoremap ' ''<Left>
 inoremap " ""<Left>
 inoremap ` ``<Left>
@@ -293,7 +302,7 @@ if !exists('g:neocomplete#sources#omni#input_patterns')
 endif
 
 " For tern
-let g:neocomplete#force_omni_input_patterns.javascript = '[^. \t]\.\w*'
+"let g:neocomplete#force_omni_input_patterns.javascript = '[^. \t]\.\w*'
 
 " For Jedi
 "autocmd FileType python setlocal omnifunc=jedi#completions
@@ -332,18 +341,24 @@ let g:neosnippet#snippets_directory="~/.vim/snippets"
 " Syntastic {{{
 let g:syntastic_mode_map = { "mode": "passive",
 			\ "active_filetypes": [],
-			\ "passive_filetypes": ["html", "css", "javascript", "python", "json"] }
+			\ "passive_filetypes": ["html", "css", "javascript", "python", "json", "perl", "ruby"] }
 
 "let g:syntastic_javascript_checkers = ["gjslint", "jshint"]
 "let g:syntastic_javascript_gjslint_conf = " --disable 5,110 --strict"
 let g:syntastic_javascript_checkers = ["jshint"]
 
 let g:syntastic_python_checkers = ['flake8']
-let g:syntastic_python_flake8_args = '--ignore=E501,E303'
+let gvsyntastic_python_flake8_args = '--ignore=E501,E303'
 
 let g:syntastic_json_checkers = ['jsonlint']
 
 let g:syntastic_css_checkers = ['csslint']
+
+let g:syntastic_enable_perl_checker = 1
+let g:syntastic_perl_checkers = ['perl']
+let g:syntastic_perl_perl_args = '-wc'
+
+let g:syntastic_ruby_checkers = ['rubocop']
 
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_loc_list_height = 5
@@ -491,6 +506,7 @@ augroup my_file_type
 	autocmd BufNewFile,BufRead .googkit setf config
 	autocmd BufNewFile,BufRead *.tsumekusa setf tsumekusa
 	autocmd BufNewFile,BufRead *.pac setf javascript
+	autocmd BufNewFile,BufRead Guardfile setf ruby
 	" setf を上書きするために set filetype=markdown で強制的に ft 変更
 	autocmd BufNewFile,BufRead *.md set filetype=markdown
 augroup END
