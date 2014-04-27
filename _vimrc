@@ -197,12 +197,9 @@ noremap # #zz
 inoremap ( ()<Left>
 inoremap [ []<Left>
 inoremap { {}<Left>
-inoremap (<Enter> (<C-m><C-m>)<Up><Tab>
-inoremap [<Enter> [<C-m><C-m>]<Up><Tab>
-inoremap {<Enter> {<C-m><C-m>}<Up><Tab>
-inoremap ' ''<Left>
-inoremap " ""<Left>
-inoremap ` ``<Left>
+inoremap (<Enter> (<C-m>)<Esc>O
+inoremap [<Enter> [<C-m>]<Esc>O
+inoremap {<Enter> {<C-m>}<Esc>O
 
 " 閉じ括弧で直後の閉じ括弧の後に移動
 inoremap ) <ESC>f)a
