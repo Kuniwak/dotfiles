@@ -24,7 +24,7 @@ NeoBundle "https://github.com/altercation/vim-colors-solarized.git"
 NeoBundle "https://github.com/cocopon/colorswatch.vim.git"
 NeoBundle "https://github.com/cocopon/googkit.vim.git"
 NeoBundle "https://github.com/cocopon/iceberg.vim.git"
-NeoBundle "https://github.com/davidhalter/jedi-vim.git",  {'build': {'others': 'pip install jedi'}}
+"NeoBundle "https://github.com/davidhalter/jedi-vim.git",  {'build': {'others': 'pip install jedi'}}
 NeoBundle "https://github.com/deris/vim-duzzle.git"
 NeoBundle "https://github.com/fugalh/desert.vim.git"
 NeoBundle "https://github.com/hail2u/vim-css3-syntax.git"
@@ -35,7 +35,7 @@ NeoBundle "https://github.com/jonathanfilip/vim-lucius.git"
 NeoBundle "https://github.com/juanpabloaj/ShowMarks.git"
 NeoBundle "https://github.com/kana/vim-submode.git"
 NeoBundle "https://github.com/kana/vim-textobj-user.git"
-""NeoBundle "https://github.com/marijnh/tern_for_vim.git", {'build': {'others': 'npm install'}}
+"NeoBundle "https://github.com/marijnh/tern_for_vim.git", {'build': {'others': 'npm install'}}
 NeoBundle "https://github.com/mattn/emmet-vim.git"
 NeoBundle "https://github.com/mattn/gist-vim.git", {'depends' : 'https://github.com/mattn/webapi-vim.git'}
 NeoBundle "https://github.com/mattn/webapi-vim.git"
@@ -296,17 +296,17 @@ endif
 let g:neocomplete#force_omni_input_patterns.javascript = '[^. \t]\.\w*'
 
 " For Jedi
-autocmd FileType python setlocal omnifunc=jedi#completions
-let g:neocomplete#force_omni_input_patterns.python =
-			\ '\%([^. \t]\.\|^\s*@\|^\s*from\s.\+import \|^\s*from \|^\s*import \)\w*'
+"autocmd FileType python setlocal omnifunc=jedi#completions
+"let g:neocomplete#force_omni_input_patterns.python =
+"			\ '\%([^. \t]\.\|^\s*@\|^\s*from\s.\+import \|^\s*from \|^\s*import \)\w*'
 "}}}
 
 " Jedi {{{
-let g:jedi#auto_vim_configuration = 0
-let g:jedi#popup_on_dot = 0
-let g:jedi#popup_select_first = 0
-let g:jedi#rename_command = '<leader>R'
-autocmd FileType python let b:did_ftplugin = 1
+"let g:jedi#auto_vim_configuration = 0
+"let g:jedi#popup_on_dot = 0
+"let g:jedi#popup_select_first = 0
+"let g:jedi#rename_command = '<leader>R'
+"autocmd FileType python let b:did_ftplugin = 1
 " }}}
 
 " NeoSnippet {{{
