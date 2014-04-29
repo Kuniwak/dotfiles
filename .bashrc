@@ -40,8 +40,10 @@ if [[ -d "/usr/local/googkit" ]]; then
 fi
 
 # Stting anyenv
-export PATH="${HOME}/.anyenv/bin:${PATH}"
-eval "$(anyenv init -)"
+if [[ -d "${HOME}/.anyenv" ]]; then
+    export PATH="${HOME}/.anyenv/bin:${PATH}"
+    eval "$(anyenv init -)"
+fi
 
 # Setting PATH for inkexport
 export INKEXPORT="/opt/inkexport"
@@ -58,6 +60,10 @@ if which git > /dev/null; then
     GIT_PS1_SHOWDIRTYSTATE=true
     PS1='\[\033[32m\]\u\[\033[2;32m\]@\[\033[0m\]\[\033[32m\]\h \[\033[36m\]\w \[\033[31m\]$(__git_ps1 "[%s]")\[\033[00m\] \[\033[0m\]\[\033[2;37m\]`date +"%Y/%m/%d %p %H:%M:%S"` \[\033[0m\]\n\\$ '
     export PS1=${PS1}
+fi
+
+if which hub > /dev/null; then
+    source "/usr/local/etc/bash_completion.d/hub.bash_completion.sh"
 fi
 
 # vim: et ts=4 sw=4
