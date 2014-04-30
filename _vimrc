@@ -51,7 +51,7 @@ NeoBundle "https://github.com/thinca/vim-ref.git"
 NeoBundle "https://github.com/thinca/vim-scouter.git"
 NeoBundle "https://github.com/thinca/vim-splash.git"
 NeoBundle "https://github.com/thinca/vim-visualstar.git"
-NeoBundle "https://github.com/thoughbot/vim-rspec.git"
+NeoBundle "https://github.com/thoughtbot/vim-rspec.git", {'depends' : 'https://github.com/tpope/vim-dispatch.git'}
 NeoBundle "https://github.com/tomasr/molokai.git"
 NeoBundle "https://github.com/tomtom/tcomment_vim.git"
 NeoBundle "https://github.com/tpope/vim-abolish.git"
@@ -111,6 +111,9 @@ noremap <Up> gk
 
 " Yで行末までヤンク
 noremap Y y$
+
+" Yで行末までヤンク
+noremap S Di
 
 " ウィンドウ切替
 nnoremap <C-h> <C-w>h
@@ -266,9 +269,6 @@ let g:vimfiler_as_default_explorer = 1
 
 " セーフモードを無効にした状態で起動する
 let g:vimfiler_safe_mode_by_default = 0
-
-" VimFiler で開いているディレクトリをカレントディレクトリにする
-let g:vimfiler_enable_auto_cd = 1
 
 " 現在開いているバッファをIDE風に開く
 nnoremap <silent> <Leader>vf :<C-u>VimFilerBufferDir<CR>
@@ -480,8 +480,17 @@ nnoremap <Leader>d :MacDictCWord<CR>
 
 " q で閉じる
 autocmd BufEnter MacDictBuffer nnoremap <buffer><silent> q :q<CR>
-" }}}
+" }}} 
 
+" vim-rspec {{{
+let g:rspec_command = "Dispatch rspec {spec}"
+
+map <Leader>rt :call RunCurrentSpecFile()<CR>
+map <Leader>rs :call RunNearestSpec()<CR>
+map <Leader>rl :call RunLastSpec()<CR>
+map <Leader>ra :call RunAllSpecs()<CR>
+" }}} 
+      
 " 保存時に行末の空白を除去する
 function! s:remove_dust()
 	let cursor = getpos(".")
