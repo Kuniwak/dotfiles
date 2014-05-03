@@ -114,9 +114,6 @@ noremap <Up> gk
 " Yで行末までヤンク
 noremap Y y$
 
-" Yで行末までヤンク
-noremap S Di
-
 " ウィンドウ切替
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
@@ -180,6 +177,9 @@ set nobackup
 
 " スワップファイルをつくらない
 set noswapfile
+
+" undoファイルをつくらない
+set noundofile
 
 " 行番号を表示
 set number
