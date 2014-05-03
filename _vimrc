@@ -172,15 +172,6 @@ set completeopt=menu,menuone,preview
 " 長すぎる行も最後まで表示
 set display=lastline
 
-" バックアップファイルをつくらない
-set nobackup
-
-" スワップファイルをつくらない
-set noswapfile
-
-" undoファイルをつくらない
-set noundofile
-
 " 行番号を表示
 set number
 
