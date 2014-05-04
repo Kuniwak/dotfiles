@@ -260,6 +260,9 @@ let g:vimfiler_as_default_explorer = 1
 " セーフモードを無効にした状態で起動する
 let g:vimfiler_safe_mode_by_default = 0
 
+" バックアップファイルとかを無視する
+let g:vimfiler_ignore_pattern = '\~$'
+
 " 現在開いているバッファをIDE風に開く
 nnoremap <silent> <Leader>vf :<C-u>VimFilerBufferDir<CR>
 "}}}
