@@ -24,7 +24,6 @@ NeoBundle "https://github.com/altercation/vim-colors-solarized.git"
 NeoBundle "https://github.com/cocopon/colorswatch.vim.git"
 NeoBundle "https://github.com/cocopon/googkit.vim.git"
 NeoBundle "https://github.com/cocopon/iceberg.vim.git"
-"NeoBundle "https://github.com/davidhalter/jedi-vim.git",  {'build': {'others': 'pip install jedi'}}
 NeoBundle "https://github.com/deris/vim-duzzle.git"
 NeoBundle "https://github.com/fugalh/desert.vim.git"
 NeoBundle "https://github.com/hail2u/vim-css3-syntax.git"
@@ -35,13 +34,14 @@ NeoBundle "https://github.com/jonathanfilip/vim-lucius.git"
 NeoBundle "https://github.com/juanpabloaj/ShowMarks.git"
 NeoBundle "https://github.com/kana/vim-submode.git"
 NeoBundle "https://github.com/kana/vim-textobj-user.git"
-"NeoBundle "https://github.com/marijnh/tern_for_vim.git", {'build': {'others': 'npm install'}}
 NeoBundle "https://github.com/mattn/emmet-vim.git"
 NeoBundle "https://github.com/mattn/gist-vim.git", {'depends' : 'https://github.com/mattn/webapi-vim.git'}
 NeoBundle "https://github.com/mattn/webapi-vim.git"
 NeoBundle "https://github.com/modsound/macdict-vim.git"
+NeoBundle "https://github.com/moll/vim-node.git"
 NeoBundle "https://github.com/nanotech/jellybeans.vim.git"
 NeoBundle "https://github.com/nathanaelkane/vim-indent-guides.git"
+NeoBundle "https://github.com/nylen/vim-node-require-helper", {'depends' : 'https://github.com/moll/vim-node.git'}
 NeoBundle "https://github.com/osyo-manga/vim-over.git"
 NeoBundle "https://github.com/popkirby/lightline-iceberg.git"
 NeoBundle "https://github.com/scrooloose/syntastic.git"
@@ -241,14 +241,14 @@ let g:quickrun_config['_'] = {
 let g:quickrun_config['javascript'] = {'type': 'javascript/nodejs'}
 
 " mocha の設定を追加
-let g:quickrun_config['javascript/mocha'] = {
+let g:quickrun_config['javascript.mocha'] = {
 			\ 'command': 'mocha',
-			\ 'cmdopt': '',
+			\ 'cmdopt': '-R tap',
 			\ 'tempfile': '%{tempname()}.js'
 			\ }
 
 " Python 3をつかう
-let g:quickrun_config['python'] = {'command' : 'python3'}
+let g:quickrun_config['python.python3'] = {'command' : 'python3'}
 
 nnoremap <silent> <Leader>l :<C-u>QuickRun<CR>
 "}}}
@@ -285,12 +285,20 @@ nnoremap <silent> <Leader>uy :<C-u>Unite history/yank<CR>
 " NeoComplete {{{
 let g:neocomplete#enable_at_start_up = 1
 let g:neocomplete#manual_completion_start_length = 3
+let g:neocomplete#use_vimproc = 1
 
 call neocomplete#custom_source('buffer', 'converters', ['converter_delimiter', 'converter_remove_next_keyword', 'converter_abbr'])
 
 if !exists('g:neocomplete#sources#omni#input_patterns')
 	let g:neocomplete#sources#omni#input_patterns = {}
 endif
+
+let g:neocomplete#sources#dictionary#dictionaries = {
+    \ 'default' : '',
+    \ 'javascript' : $HOME.'/.vim/dictionary/javascript.dict',
+    \ 'javascript.mocha' : $HOME.'/.vim/dictionary/javascript.mocha.dict',
+    \ 'javascript.closure' : $HOME.'/.vim/dictionary/javascript.closure.dict'
+    \ }
 
 " For tern
 "let g:neocomplete#force_omni_input_patterns.javascript = '[^. \t]\.\w*'
