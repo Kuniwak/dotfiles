@@ -29,7 +29,7 @@ if has vim; then
   symlink "$vimfiles/_vimrc" "$HOME/.vimrc"
   symlink "$vimfiles/_gvimrc" "$HOME/.gvimrc"
   symlink "$vimfiles/vimfiles" "$HOME/.vim"
-  git clone https://github.com/Shougo/neobundle.vim "$vimfiles/bundle/neobundle.vim"
+  git clone https://github.com/Shougo/neobundle.vim "$HOME/.vim/bundle/neobundle.vim"
 fi
 
 if [ -f "$HOME/.bashrc" ]; then
