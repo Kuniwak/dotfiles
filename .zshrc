@@ -26,15 +26,15 @@ zstyle ':vcs_info:git:*' check-for-changes true
 zstyle ':vcs_info:git:*' stagedstr "+"
 zstyle ':vcs_info:git:*' unstagedstr "-"
 
-zstyle ':vcs_info:*' formats '[%b]'
+zstyle ':vcs_info:*' formats '[%b%m%u%c]'
 zstyle ':vcs_info:*' actionformats '[%b|%a]'
 precmd () {
 	psvar=()
 	LANG=en_US.UTF-8 vcs_info
 	[[ -n "$vcs_info_msg_0_" ]] && psvar[1]="$vcs_info_msg_0_"
 
-	PROMPT="[%D{%m/%d %T}] → " 
-	RPROMPT="%1(v|%F{red}%1v%f|) %F{cyan}%d%f %F{green}%n%f"
+	PROMPT="%F{green}[%D{%m/%d %T}]%f → " 
+	RPROMPT="%1(v|%F{red}%1v%f|) %F{cyan}%d%f %F{magenta}%n%f"
 }
 # }}}
 
@@ -67,6 +67,10 @@ alias la='ls -a'
 alias ll='ls -la'
 # }}}
 
+# Zsh completions (https://github.com/zsh-users/zsh-completions)
+if [ -r /usr/local/share/zsh-completions ]; then
+	fpath=(/usr/local/share/zsh-completions $fpath)
+fi
 
 if [ -r ~/.zshrc.local ]; then
   . ~/.zshrc.local
