@@ -29,6 +29,9 @@ export PATH="/usr/local/share/npm/bin:${PATH}"
 # Setting PATH for nodebrew
 export PATH="${HOME}/.nodebrew/current/bin:${PATH}"
 
+# Perl5 Settings
+export PERL5LIB="${PERL5LIB}:lib"
+
 # Setting PATH for googkit
 if [[ -d "/usr/local/googkit" ]]; then
     export GOOGKIT_HOME="/usr/local/googkit"
@@ -36,9 +39,16 @@ if [[ -d "/usr/local/googkit" ]]; then
     source "${GOOGKIT_HOME}/etc/completion/googkit.bash"
 fi
 
+# Setting inkexport
+export PATH="/opt/inkexport/bin:${PATH}"
+
 # Stting anyenv
 export PATH="${HOME}/.anyenv/bin:${PATH}"
 eval "$(anyenv init -)"
+for D in `ls $HOME/.anyenv/envs`
+do
+    export PATH="$HOME/.anyenv/envs/$D/shims:$PATH"
+done
 
 # Setting rbenv
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
