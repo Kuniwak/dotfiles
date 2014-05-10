@@ -34,7 +34,7 @@ precmd () {
 	[[ -n "$vcs_info_msg_0_" ]] && psvar[1]="$vcs_info_msg_0_"
 
 	PROMPT="[%D{%m/%d %T}] → " 
-	RPROMPT="%F{green}%n%f %F{cyan}%d%f %1(v|%F{red}%1v%f|)"
+	RPROMPT="%1(v|%F{red}%1v%f|) %F{cyan}%d%f %F{green}%n%f"
 }
 # }}}
 
@@ -54,6 +54,15 @@ bindkey "^n" history-beginning-search-forward-end
 
 
 # Aliases {{{
+case "${OSTYPE}" in
+freebsd*|darwin*)
+	alias ls="ls -FG"
+	;;
+linux*)
+	alias ls="ls -F --color"
+	;;
+esac
+
 alias la='ls -a'
 alias ll='ls -la'
 # }}}
