@@ -3,7 +3,7 @@
 	email = orga.chem.job@gmail.com
 [core]
 	editor = /usr/bin/vim
-	excludesfile = /Users/OrgaChem/.gitignore_global
+	excludesfile = ~/.gitignore_global
 [github]
 	user = OrgaChem
 [credential]
