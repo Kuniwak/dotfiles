@@ -34,7 +34,7 @@ precmd () {
 	[[ -n "$vcs_info_msg_0_" ]] && psvar[1]="$vcs_info_msg_0_"
 
 	PROMPT="[%D{%m/%d %T}] → " 
-	RPROMPT="%F{green}%f%n %F{cyan}%d%f %1(v|%F{red}%1v%f|)"
+	RPROMPT="%F{green}%n%f %F{cyan}%d%f %1(v|%F{red}%1v%f|)"
 }
 # }}}
 
