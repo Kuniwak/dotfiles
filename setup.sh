@@ -21,7 +21,7 @@ else
 fi
 
 has git && symlink "$dotfiles/.gitconfig" "$HOME/.gitconfig"
-has git && symlink "$dotfiles/.gitignore_global" "$HOME/.gitignore_global"
+has git && symlink "$dotfiles/.gitignore.global" "$HOME/.gitignore.global"
 
 if has vim; then
   vimfiles=$HOME/.orgachem-vim
@@ -32,8 +32,6 @@ if has vim; then
   git clone https://github.com/Shougo/neobundle.vim "$HOME/.vim/bundle/neobundle.vim"
 fi
 
-if [ -f "$HOME/.bashrc" ]; then
-  mv "$HOME/.bashrc" "$HOME/.bashrc.org" 
-fi
-
-has git && symlink "$dotfiles/.bashrc" "$HOME/.bashrc"
+has git && symlink "$dotfiles/.zshrc" "$HOME/.zshrc"
+has git && symlink "$dotfiles/.zshenv" "$HOME/.zshenv"
+has git && symlink "$dotfiles/.zshprofile" "$HOME/.zshprofile"
