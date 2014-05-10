@@ -7,7 +7,6 @@ endif
 
 call neobundle#rc(expand('~/.vim/bundle'))
 
-NeoBundle "https://github.com/AndrewRadev/switch.vim.git"
 NeoBundle "https://github.com/OrgaChem/tsumekusa-syntax.vim.git"
 NeoBundle "https://github.com/OrgaChem/vim-javascript.git"
 NeoBundle "https://github.com/OrgaChem/vim-qrcode.git"
@@ -33,10 +32,13 @@ NeoBundle "https://github.com/itchyny/lightline.vim.git"
 NeoBundle "https://github.com/jonathanfilip/vim-lucius.git"
 NeoBundle "https://github.com/juanpabloaj/ShowMarks.git"
 NeoBundle "https://github.com/kana/vim-submode.git"
+NeoBundle "https://github.com/kana/vim-textobj-indent.git"
+NeoBundle "https://github.com/kana/vim-textobj-underscore.git"
 NeoBundle "https://github.com/kana/vim-textobj-user.git"
 NeoBundle "https://github.com/mattn/emmet-vim.git"
 NeoBundle "https://github.com/mattn/gist-vim.git", {'depends' : 'https://github.com/mattn/webapi-vim.git'}
 NeoBundle "https://github.com/mattn/webapi-vim.git"
+NeoBundle "https://github.com/mjbrownie/html-textobjects.git"
 NeoBundle "https://github.com/modsound/macdict-vim.git"
 NeoBundle "https://github.com/moll/vim-node.git"
 NeoBundle "https://github.com/nanotech/jellybeans.vim.git"
@@ -52,7 +54,7 @@ NeoBundle "https://github.com/thinca/vim-quickrun.git"
 NeoBundle "https://github.com/thinca/vim-ref.git"
 NeoBundle "https://github.com/thinca/vim-scouter.git"
 NeoBundle "https://github.com/thinca/vim-splash.git"
-NeoBundle "https://github.com/thinca/vim-visualstar.git"
+NeoBundle "https://github.com/thinca/vim-textobj-function-javascript.git"
 NeoBundle "https://github.com/thoughtbot/vim-rspec.git", {'depends' : 'https://github.com/tpope/vim-dispatch.git'}
 NeoBundle "https://github.com/tomasr/molokai.git"
 NeoBundle "https://github.com/tomtom/tcomment_vim.git"
@@ -62,10 +64,10 @@ NeoBundle "https://github.com/tpope/vim-fugitive.git"
 NeoBundle "https://github.com/tpope/vim-surround.git"
 NeoBundle "https://github.com/tyru/restart.vim.git"
 NeoBundle "https://github.com/ujihisa/unite-colorscheme.git"
+NeoBundle "https://github.com/vim-scripts/VimIRC.vim.git"
 NeoBundle "https://github.com/vim-scripts/Zenburn.git"
 NeoBundle "https://github.com/vim-scripts/chlordane.vim.git"
 NeoBundle "https://github.com/vim-scripts/hybrid.vim.git"
-
 " Unstable plugins :-(
 "NeoBundle 'tpope/vim-dispatch'
 "NeoBundle 'thoughbot/vim-rspec'
@@ -292,6 +294,7 @@ call neocomplete#custom_source('buffer', 'converters', ['converter_delimiter', '
 if !exists('g:neocomplete#sources#omni#input_patterns')
 	let g:neocomplete#sources#omni#input_patterns = {}
 endif
+let g:neocomplete#keyword_patterns['default'] = '\h\w*'
 
 let g:neocomplete#sources#dictionary#dictionaries = {
     \ 'default' : '',
@@ -299,6 +302,12 @@ let g:neocomplete#sources#dictionary#dictionaries = {
     \ 'javascript.mocha' : $HOME.'/.vim/dictionary/javascript.mocha.dict',
     \ 'javascript.closure' : $HOME.'/.vim/dictionary/javascript.closure.dict'
     \ }
+
+autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
 " For tern
 "let g:neocomplete#force_omni_input_patterns.javascript = '[^. \t]\.\w*'
@@ -518,6 +527,10 @@ augroup my_file_type
 	" setf を上書きするために set filetype=markdown で強制的に ft 変更
 	autocmd BufNewFile,BufRead *.md set filetype=markdown
 augroup END
+
+if filereadable(expand('~/.vimrc.local'))
+  source ~/.vimrc.local
+endif
 
 " Windows 用
 cd $HOME
