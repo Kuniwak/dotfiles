@@ -25,11 +25,15 @@ has git && symlink "$dotfiles/.gitignore.global" "$HOME/.gitignore.global"
 
 if has vim; then
   vimfiles=$HOME/.orgachem-vim
-  git clone https://github.com/OrgaChem/OrgaChem-Vim-Configurations "$vimfiles"
-  symlink "$vimfiles/_vimrc" "$HOME/.vimrc"
-  symlink "$vimfiles/_gvimrc" "$HOME/.gvimrc"
-  symlink "$vimfiles/vimfiles" "$HOME/.vim"
-  git clone https://github.com/Shougo/neobundle.vim "$HOME/.vim/bundle/neobundle.vim"
+  if [ -d "$vimfiles" ]; then
+    (cd "$vimfiles" && git pull --rebase)
+  else
+    git clone https://github.com/OrgaChem/OrgaChem-Vim-Configurations "$vimfiles"
+    symlink "$vimfiles/_vimrc" "$HOME/.vimrc"
+    symlink "$vimfiles/_gvimrc" "$HOME/.gvimrc"
+    symlink "$vimfiles/vimfiles" "$HOME/.vim"
+    git clone https://github.com/Shougo/neobundle.vim "$HOME/.vim/bundle/neobundle.vim"
+  fi
 fi
 
 has git && symlink "$dotfiles/.zshrc" "$HOME/.zshrc"
