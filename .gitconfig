@@ -16,3 +16,5 @@
 	trustExitCode = true
 [push]
 	default = simple
+[hub]
+	protocol = https
