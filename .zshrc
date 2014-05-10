@@ -48,14 +48,14 @@ setopt hist_ignore_dups
 setopt hist_ignore_space
 setopt share_history
 
-bindkey '^P' history-beginning-search-backward
+bindkey "^p" history-beginning-search-backward-end
+bindkey "^n" history-beginning-search-forward-end
 # }}}
 
 
 # Aliases {{{
 alias la='ls -a'
-alias ll='ls -l'
-alias lla='ls -al'
+alias ll='ls -la'
 # }}}
 
 
