@@ -7,7 +7,6 @@ endif
 
 call neobundle#rc(expand('~/.vim/bundle'))
 
-NeoBundle "https://github.com/AndrewRadev/switch.vim.git"
 NeoBundle "https://github.com/OrgaChem/tsumekusa-syntax.vim.git"
 NeoBundle "https://github.com/OrgaChem/vim-javascript.git"
 NeoBundle "https://github.com/OrgaChem/vim-qrcode.git"
@@ -24,7 +23,6 @@ NeoBundle "https://github.com/altercation/vim-colors-solarized.git"
 NeoBundle "https://github.com/cocopon/colorswatch.vim.git"
 NeoBundle "https://github.com/cocopon/googkit.vim.git"
 NeoBundle "https://github.com/cocopon/iceberg.vim.git"
-"NeoBundle "https://github.com/davidhalter/jedi-vim.git",  {'build': {'others': 'pip install jedi'}}
 NeoBundle "https://github.com/deris/vim-duzzle.git"
 NeoBundle "https://github.com/fugalh/desert.vim.git"
 NeoBundle "https://github.com/hail2u/vim-css3-syntax.git"
@@ -34,14 +32,18 @@ NeoBundle "https://github.com/itchyny/lightline.vim.git"
 NeoBundle "https://github.com/jonathanfilip/vim-lucius.git"
 NeoBundle "https://github.com/juanpabloaj/ShowMarks.git"
 NeoBundle "https://github.com/kana/vim-submode.git"
+NeoBundle "https://github.com/kana/vim-textobj-indent.git"
+NeoBundle "https://github.com/kana/vim-textobj-underscore.git"
 NeoBundle "https://github.com/kana/vim-textobj-user.git"
-"NeoBundle "https://github.com/marijnh/tern_for_vim.git", {'build': {'others': 'npm install'}}
 NeoBundle "https://github.com/mattn/emmet-vim.git"
 NeoBundle "https://github.com/mattn/gist-vim.git", {'depends' : 'https://github.com/mattn/webapi-vim.git'}
 NeoBundle "https://github.com/mattn/webapi-vim.git"
+NeoBundle "https://github.com/mjbrownie/html-textobjects.git"
 NeoBundle "https://github.com/modsound/macdict-vim.git"
+NeoBundle "https://github.com/moll/vim-node.git"
 NeoBundle "https://github.com/nanotech/jellybeans.vim.git"
 NeoBundle "https://github.com/nathanaelkane/vim-indent-guides.git"
+NeoBundle "https://github.com/nylen/vim-node-require-helper", {'depends' : 'https://github.com/moll/vim-node.git'}
 NeoBundle "https://github.com/osyo-manga/vim-over.git"
 NeoBundle "https://github.com/popkirby/lightline-iceberg.git"
 NeoBundle "https://github.com/scrooloose/syntastic.git"
@@ -52,8 +54,8 @@ NeoBundle "https://github.com/thinca/vim-quickrun.git"
 NeoBundle "https://github.com/thinca/vim-ref.git"
 NeoBundle "https://github.com/thinca/vim-scouter.git"
 NeoBundle "https://github.com/thinca/vim-splash.git"
-NeoBundle "https://github.com/thinca/vim-visualstar.git"
-NeoBundle "https://github.com/thoughbot/vim-rspec.git"
+NeoBundle "https://github.com/thinca/vim-textobj-function-javascript.git"
+NeoBundle "https://github.com/thoughtbot/vim-rspec.git", {'depends' : 'https://github.com/tpope/vim-dispatch.git'}
 NeoBundle "https://github.com/tomasr/molokai.git"
 NeoBundle "https://github.com/tomtom/tcomment_vim.git"
 NeoBundle "https://github.com/tpope/vim-abolish.git"
@@ -62,10 +64,10 @@ NeoBundle "https://github.com/tpope/vim-fugitive.git"
 NeoBundle "https://github.com/tpope/vim-surround.git"
 NeoBundle "https://github.com/tyru/restart.vim.git"
 NeoBundle "https://github.com/ujihisa/unite-colorscheme.git"
+NeoBundle "https://github.com/vim-scripts/VimIRC.vim.git"
 NeoBundle "https://github.com/vim-scripts/Zenburn.git"
 NeoBundle "https://github.com/vim-scripts/chlordane.vim.git"
 NeoBundle "https://github.com/vim-scripts/hybrid.vim.git"
-
 " Unstable plugins :-(
 "NeoBundle 'tpope/vim-dispatch'
 "NeoBundle 'thoughbot/vim-rspec'
@@ -172,12 +174,6 @@ set completeopt=menu,menuone,preview
 " 長すぎる行も最後まで表示
 set display=lastline
 
-" バックアップファイルをつくらない
-set nobackup
-
-" スワップファイルをつくらない
-set noswapfile
-
 " 行番号を表示
 set number
 
@@ -244,14 +240,14 @@ let g:quickrun_config['_'] = {
 let g:quickrun_config['javascript'] = {'type': 'javascript/nodejs'}
 
 " mocha の設定を追加
-let g:quickrun_config['javascript/mocha'] = {
+let g:quickrun_config['javascript.mocha'] = {
 			\ 'command': 'mocha',
-			\ 'cmdopt': '',
+			\ 'cmdopt': '-R tap',
 			\ 'tempfile': '%{tempname()}.js'
 			\ }
 
 " Python 3をつかう
-let g:quickrun_config['python'] = {'command' : 'python3'}
+let g:quickrun_config['python.python3'] = {'command' : 'python3'}
 
 nnoremap <silent> <Leader>l :<C-u>QuickRun<CR>
 "}}}
@@ -263,8 +259,8 @@ let g:vimfiler_as_default_explorer = 1
 " セーフモードを無効にした状態で起動する
 let g:vimfiler_safe_mode_by_default = 0
 
-" VimFiler で開いているディレクトリをカレントディレクトリにする
-let g:vimfiler_enable_auto_cd = 1
+" バックアップファイルとかを無視する
+let g:vimfiler_ignore_pattern = '\~$'
 
 " 現在開いているバッファをIDE風に開く
 nnoremap <silent> <Leader>vf :<C-u>VimFilerBufferDir<CR>
@@ -288,12 +284,27 @@ nnoremap <silent> <Leader>uy :<C-u>Unite history/yank<CR>
 " NeoComplete {{{
 let g:neocomplete#enable_at_start_up = 1
 let g:neocomplete#manual_completion_start_length = 3
+let g:neocomplete#use_vimproc = 1
 
 call neocomplete#custom_source('buffer', 'converters', ['converter_delimiter', 'converter_remove_next_keyword', 'converter_abbr'])
 
 if !exists('g:neocomplete#sources#omni#input_patterns')
 	let g:neocomplete#sources#omni#input_patterns = {}
 endif
+let g:neocomplete#keyword_patterns['default'] = '\h\w*'
+
+let g:neocomplete#sources#dictionary#dictionaries = {
+    \ 'default' : '',
+    \ 'javascript' : $HOME.'/.vim/dictionary/javascript.dict',
+    \ 'javascript.mocha' : $HOME.'/.vim/dictionary/javascript.mocha.dict',
+    \ 'javascript.closure' : $HOME.'/.vim/dictionary/javascript.closure.dict'
+    \ }
+
+autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
 " For tern
 "let g:neocomplete#force_omni_input_patterns.javascript = '[^. \t]\.\w*'
@@ -476,8 +487,17 @@ nnoremap <Leader>d :MacDictCWord<CR>
 
 " q で閉じる
 autocmd BufEnter MacDictBuffer nnoremap <buffer><silent> q :q<CR>
-" }}}
+" }}} 
 
+" vim-rspec {{{
+let g:rspec_command = "Dispatch rspec {spec}"
+
+map <Leader>rt :call RunCurrentSpecFile()<CR>
+map <Leader>rs :call RunNearestSpec()<CR>
+map <Leader>rl :call RunLastSpec()<CR>
+map <Leader>ra :call RunAllSpecs()<CR>
+" }}} 
+      
 " 保存時に行末の空白を除去する
 function! s:remove_dust()
 	let cursor = getpos(".")
@@ -509,6 +529,10 @@ augroup END
 syntax enable
 set background=dark
 colorscheme iceberg
+
+if filereadable(expand('~/.vimrc.local'))
+  source ~/.vimrc.local
+endif
 
 " Windows 用
 cd $HOME
