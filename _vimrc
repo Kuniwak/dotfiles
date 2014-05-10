@@ -225,9 +225,6 @@ set diffopt+=vertical
 " Beep を消す
 set visualbell t_vb=
 
-set background=dark
-colorscheme iceberg
-
 
 " VimsualStar {{{
 map * <Plug>(visualstar-*)N
@@ -504,9 +501,14 @@ augroup my_file_type
 	autocmd BufNewFile,BufRead *.tsumekusa setf tsumekusa
 	autocmd BufNewFile,BufRead *.pac setf javascript
 	autocmd BufNewFile,BufRead Guardfile setf ruby
+	autocmd BufNewFile,BufRead Gruntfile setf javascript
 	" setf を上書きするために set filetype=markdown で強制的に ft 変更
 	autocmd BufNewFile,BufRead *.md set filetype=markdown
 augroup END
+
+syntax enable
+set background=dark
+colorscheme iceberg
 
 " Windows 用
 cd $HOME
