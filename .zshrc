@@ -1,18 +1,25 @@
-# .zshrc is sourced in interactive shells.
-# It should contain commands to set up aliases,
-# functions, options, key bindings, etc.
-#
+# emacsキーバインドを使用
+bindkey -e
+
+setopt ignore_eof
 
 autoload -U compinit
 compinit
 
-#allow tab completion in the middle of a word
+autoload -U colors
+colors
+
+# 補完
 setopt COMPLETE_IN_WORD
 
-setopt PROMPT_SUBST
+# コピペ時PROMPTを消す
 setopt TRANSIENT_RPROMPT
 
+# BEEPを消す
+setopt NO_BEEP
 
+# Prompt {{{
+setopt PROMPT_SUBST
 autoload -Uz vcs_info
 zstyle ':vcs_info:*' enable git
 zstyle ':vcs_info:git:*' check-for-changes true
@@ -27,28 +34,33 @@ precmd () {
 	[[ -n "$vcs_info_msg_0_" ]] && psvar[1]="$vcs_info_msg_0_"
 
 	PROMPT="[%D{%m/%d %T}] → " 
-	RPROMPT="%F{green}%f%n %F{cyan}%d%f %1(v|%F{red}%1v%f|)"                                                                                                                                                                             
+	RPROMPT="%F{green}%f%n %F{cyan}%d%f %1(v|%F{red}%1v%f|)"
 }
+# }}}
 
-## keep background processes at full speed
-#setopt NOBGNICE
-## restart running processes on exit
-#setopt HUP
 
-## history
-#setopt APPEND_HISTORY
-## for sharing history between zsh processes
-#setopt INC_APPEND_HISTORY
-#setopt SHARE_HISTORY
+# History {{{
+HISTFILE=~/.zsh_history
+HISTSIZE=100000000
+SAVEHIST=$HISTSIZE
 
-## never ever beep ever
-#setopt NO_BEEP
+setopt hist_ignore_dups
+setopt hist_ignore_space
+setopt share_history
 
-## automatically decide when to page a list of completions
-#LISTMAX=0
+bindkey '^P' history-beginning-search-backward
+# }}}
 
-## disable mail checking
-#MAILCHECK=0
 
-# autoload -U colors
-#colors
+# Aliases {{{
+alias la='ls -a'
+alias ll='ls -l'
+alias lla='ls -al'
+# }}}
+
+
+if [ -r ~/.zshrc.local ]; then
+  . ~/.zshrc.local
+fi
+
+# vim: fdm=marker
