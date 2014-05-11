@@ -42,7 +42,7 @@ precmd () {
 # History {{{
 HISTFILE=~/.zsh_history
 HISTSIZE=100000000
-SAVEHIST=$HISTSIZE
+SAVEHIST=${HISTSIZE}
 
 setopt hist_ignore_dups
 setopt hist_ignore_space
