@@ -23,8 +23,11 @@ setup() {
 
 	has git && symlink "$dotfiles/.gitconfig" "$HOME/.gitconfig"
 	has git && symlink "$dotfiles/.gitignore.global" "$HOME/.gitignore.global"
-
 	has curl && symlink "$dotfiles/.curlrc" "$HOME/.curlrc"
+	has tig && symlink "$dotfiles/.tigrc" "$HOME/.tigrc"
+	has git && symlink "$dotfiles/.zshrc" "$HOME/.zshrc"
+	has git && symlink "$dotfiles/.zshenv" "$HOME/.zshenv"
+	has git && symlink "$dotfiles/.zshprofile" "$HOME/.zshprofile"
 
 	if has vim; then
 		vimfiles=$HOME/.orgachem-vim
@@ -38,10 +41,6 @@ setup() {
 			git clone https://github.com/Shougo/neobundle.vim "$HOME/.vim/bundle/neobundle.vim"
 		fi
 	fi
-
-	has git && symlink "$dotfiles/.zshrc" "$HOME/.zshrc"
-	has git && symlink "$dotfiles/.zshenv" "$HOME/.zshenv"
-	has git && symlink "$dotfiles/.zshprofile" "$HOME/.zshprofile"
 }
 
 setup
