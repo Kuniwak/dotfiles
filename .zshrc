@@ -68,7 +68,8 @@ linux*)
 esac
 
 alias la='ls -a'
-alias ll='ls -la'
+alias ll='ls -l'
+alias lla='ls -la'
 # }}}
 
 # Zsh completions (https://github.com/zsh-users/zsh-completions)
