@@ -24,6 +24,8 @@ setup() {
 	has git && symlink "$dotfiles/.gitconfig" "$HOME/.gitconfig"
 	has git && symlink "$dotfiles/.gitignore.global" "$HOME/.gitignore.global"
 
+	has curl && symlink "$dotfiles/.curlrc" "$HOME/.curlrc"
+
 	if has vim; then
 		vimfiles=$HOME/.orgachem-vim
 		if [ -d "$vimfiles" ]; then
