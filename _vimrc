@@ -68,6 +68,7 @@ NeoBundle "https://github.com/vim-scripts/VimIRC.vim.git"
 NeoBundle "https://github.com/vim-scripts/Zenburn.git"
 NeoBundle "https://github.com/vim-scripts/chlordane.vim.git"
 NeoBundle "https://github.com/vim-scripts/hybrid.vim.git"
+NeoBundle "https://github.com/vim-scripts/nginx.vim.git"
 " Unstable plugins :-(
 "NeoBundle 'tpope/vim-dispatch'
 "NeoBundle 'thoughbot/vim-rspec'
