@@ -33,10 +33,10 @@ setup() {
 	fi
 
 	if has vim; then
-		symlink "$vimfiles/.vimrc" "$HOME/.vimrc"
-		symlink "$vimfiles/.gvimrc" "$HOME/.gvimrc"
-		symlink "$vimfiles/vimfiles" "$HOME/.vim"
-		git clone https://github.com/Shougo/neobundle.vim "$HOME/.vim/bundle/neobundle.vim"
+		symlink "$dotfiles/.vimrc" "$HOME/.vimrc"
+		symlink "$dotfiles/.gvimrc" "$HOME/.gvimrc"
+		symlink "$dotfiles/.vim" "$HOME/.vim"
+		git clone https://github.com/Shougo/neobundle.vim "$dotfiles/.vim/bundle/neobundle.vim"
 	fi
 }
 
