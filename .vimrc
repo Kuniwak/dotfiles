@@ -2,16 +2,20 @@ set encoding=utf-8
 filetype off
 
 if has('vim_starting')
+	set nocompatible
 	set runtimepath+=~/.vim/bundle/neobundle.vim
 endif
 
-source ~/.vim
-
 call neobundle#begin(expand('~/.vim/bundle'))
+	let s:bundle_file = '~/.vimrc.bundle'
+	if filereadable(expand(s:bundle_file))
+		exec ':source '.s:bundle_file
+	endif
 
-source ~/.vim.bundle
-source ~/.vim.bundle.local
-
+	let s:bundle_file_local = '~/.vimrc.bundle.local'
+	if filereadable(expand(s:bundle_file_local))
+		exec ':source '.s:bundle_file_local
+	endif
 call neobundle#end()
 filetype plugin indent on
 
@@ -66,13 +70,16 @@ nnoremap <silent> <Leader>rw :<C-u>vertical resize 87<CR>
 " .vimrcを開く
 nnoremap <silent> <Leader>ev :<C-u>tabnew $HOME/.dotfiles/.vimrc<CR>
 
-" .vimrc を適用する（表示崩れること多いので.gvimrcも）
-nnoremap <silent> <Leader>rv :<C-u>source $MYVIMRC<CR>:<C-u>source $MYGVIMRC<CR>
+" .vimrc を適用する
+nnoremap <silent> <Leader>rv :<C-u>source $MYVIMRC<CR>
 
 " .gvimrcを開く
 nnoremap <silent> <Leader>eg :<C-u>tabnew $HOME/.dotfiles/.gvimrc<CR>
 " .gvimrc を適用する
 nnoremap <silent> <Leader>rg :<C-u>source $MYGVIMRC<CR>
+
+nnoremap <silent> <Leader>eb :<C-u>tabnew ~/.dotfiles/.vimrc.bundle<CR>
+nnoremap <silent> <Leader>elb :<C-u>tabnew ~/.dotfiles.local/.vimrc.bundle.local<CR>
 
 " バッファのディレクトリに移動
 nnoremap <silent> <Leader>cd :<C-u>cd %:h<CR>
@@ -158,11 +165,39 @@ set diffopt+=vertical
 " Beep を消す
 set visualbell t_vb=
 
+" 保存時に行末の空白を除去する {{{
+function! s:remove_dust()
+	let cursor = getpos(".")
+	%s/\s\+$//ge
+	call setpos(".", cursor)
+	unlet cursor
+endfunction
 
-" VimsualStar {{{
-map * <Plug>(visualstar-*)N
-map # <Plug>(visualstar-#)N
-"}}}
+augroup remove_dust
+	autocmd BufWritePre *.js call <SID>remove_dust()
+	autocmd BufWritePre *.py call <SID>remove_dust()
+	autocmd BufWritePre *.pl call <SID>remove_dust()
+	autocmd BufWritePre *.t call <SID>remove_dust()
+augroup END
+" }}}
+"
+" ファイルタイプ設定 {{{
+augroup my_file_type
+	autocmd!
+	autocmd BufNewFile,BufRead *.js.map setf json
+	autocmd BufNewFile,BufRead *.webapp setf json
+	autocmd BufNewFile,BufRead .jshintrc setf json
+	autocmd BufNewFile,BufRead .watsonrc setf json
+	autocmd BufNewFile,BufRead .googkit setf config
+	autocmd BufNewFile,BufRead *.tsumekusa setf tsumekusa
+	autocmd BufNewFile,BufRead *.pac setf javascript
+	autocmd BufNewFile,BufRead Guardfile setf ruby
+	autocmd BufNewFile,BufRead Gruntfile setf javascript
+	" setf を上書きするために set filetype=markdown で強制的に ft 変更
+	autocmd BufNewFile,BufRead *.md set filetype=markdown
+augroup END
+" }}}
+
 
 " Quickrun {{{
 let g:quickrun_config = {}
@@ -435,40 +470,14 @@ map <Leader>rl :call RunLastSpec()<CR>
 map <Leader>ra :call RunAllSpecs()<CR>
 " }}} 
       
-" 保存時に行末の空白を除去する
-function! s:remove_dust()
-	let cursor = getpos(".")
-	%s/\s\+$//ge
-	call setpos(".", cursor)
-	unlet cursor
-endfunction
-
-augroup remove_dust
-	autocmd BufWritePre *.js call <SID>remove_dust()
-	autocmd BufWritePre *.py call <SID>remove_dust()
-augroup END
-
-augroup my_file_type
-	autocmd!
-	autocmd BufNewFile,BufRead *.js.map setf json
-	autocmd BufNewFile,BufRead *.webapp setf json
-	autocmd BufNewFile,BufRead .jshintrc setf json
-	autocmd BufNewFile,BufRead .watsonrc setf json
-	autocmd BufNewFile,BufRead .googkit setf config
-	autocmd BufNewFile,BufRead *.tsumekusa setf tsumekusa
-	autocmd BufNewFile,BufRead *.pac setf javascript
-	autocmd BufNewFile,BufRead Guardfile setf ruby
-	autocmd BufNewFile,BufRead Gruntfile setf javascript
-	" setf を上書きするために set filetype=markdown で強制的に ft 変更
-	autocmd BufNewFile,BufRead *.md set filetype=markdown
-augroup END
-
 syntax enable
 set background=dark
 colorscheme iceberg
 
-if filereadable(expand('~/.vimrc.local'))
-  source ~/.vimrc.local
+let s:vimrc_local = '~/.vimrc.local'
+if filereadable(expand(s:vimrc_local))
+	exec ':source '.s:vimrc_local
+	nnoremap <Leader>elv :<C-u>tabnew ~/.dotfiles.local/.vimrc.local<CR>
 endif
 
 " Windows 用
