@@ -5,82 +5,18 @@ if has('vim_starting')
 	set runtimepath+=~/.vim/bundle/neobundle.vim
 endif
 
-call neobundle#rc(expand('~/.vim/bundle'))
+source ~/.vim
 
-NeoBundle "https://github.com/OrgaChem/tsumekusa-syntax.vim.git"
-NeoBundle "https://github.com/OrgaChem/vim-javascript.git"
-NeoBundle "https://github.com/OrgaChem/vim-qrcode.git"
-NeoBundle "https://github.com/Shougo/neobundle.vim.git"
-NeoBundle "https://github.com/Shougo/neocomplete.git"
-NeoBundle "https://github.com/Shougo/neomru.vim.git"
-NeoBundle "https://github.com/Shougo/neosnippet-snippets.git"
-NeoBundle "https://github.com/Shougo/neosnippet.git"
-NeoBundle "https://github.com/Shougo/unite-outline.git"
-NeoBundle "https://github.com/Shougo/unite.vim.git"
-NeoBundle "https://github.com/Shougo/vimfiler.git"
-NeoBundle "https://github.com/Shougo/vimproc.git", {'build': {'windows': 'make -f make_mingw64.mak', 'mac': 'make -f make_mac.mak', 'unix': 'make -f make_unix.mak'}}
-NeoBundle "https://github.com/altercation/vim-colors-solarized.git"
-NeoBundle "https://github.com/cocopon/colorswatch.vim.git"
-NeoBundle "https://github.com/cocopon/googkit.vim.git"
-NeoBundle "https://github.com/cocopon/iceberg.vim.git"
-NeoBundle "https://github.com/deris/vim-duzzle.git"
-NeoBundle "https://github.com/fugalh/desert.vim.git"
-NeoBundle "https://github.com/hail2u/vim-css3-syntax.git"
-NeoBundle "https://github.com/helino/vim-json.git"
-NeoBundle "https://github.com/hynek/vim-python-pep8-indent.git"
-NeoBundle "https://github.com/itchyny/lightline.vim.git"
-NeoBundle "https://github.com/jonathanfilip/vim-lucius.git"
-NeoBundle "https://github.com/juanpabloaj/ShowMarks.git"
-NeoBundle "https://github.com/kana/vim-submode.git"
-NeoBundle "https://github.com/kana/vim-textobj-indent.git"
-NeoBundle "https://github.com/kana/vim-textobj-underscore.git"
-NeoBundle "https://github.com/kana/vim-textobj-user.git"
-NeoBundle "https://github.com/mattn/emmet-vim.git"
-NeoBundle "https://github.com/mattn/gist-vim.git", {'depends' : 'https://github.com/mattn/webapi-vim.git'}
-NeoBundle "https://github.com/mattn/webapi-vim.git"
-NeoBundle "https://github.com/mjbrownie/html-textobjects.git"
-NeoBundle "https://github.com/modsound/macdict-vim.git"
-NeoBundle "https://github.com/moll/vim-node.git"
-NeoBundle "https://github.com/nanotech/jellybeans.vim.git"
-NeoBundle "https://github.com/nathanaelkane/vim-indent-guides.git"
-NeoBundle "https://github.com/nylen/vim-node-require-helper", {'depends' : 'https://github.com/moll/vim-node.git'}
-NeoBundle "https://github.com/osyo-manga/vim-over.git"
-NeoBundle "https://github.com/popkirby/lightline-iceberg.git"
-NeoBundle "https://github.com/scrooloose/syntastic.git"
-NeoBundle "https://github.com/taichouchou2/html5.vim.git"
-NeoBundle "https://github.com/therubymug/vim-pyte.git"
-NeoBundle "https://github.com/thinca/vim-qfreplace.git"
-NeoBundle "https://github.com/thinca/vim-quickrun.git"
-NeoBundle "https://github.com/thinca/vim-ref.git"
-NeoBundle "https://github.com/thinca/vim-scouter.git"
-NeoBundle "https://github.com/thinca/vim-splash.git"
-NeoBundle "https://github.com/thinca/vim-textobj-function-javascript.git"
-NeoBundle "https://github.com/thoughtbot/vim-rspec.git", {'depends' : 'https://github.com/tpope/vim-dispatch.git'}
-NeoBundle "https://github.com/tomasr/molokai.git"
-NeoBundle "https://github.com/tomtom/tcomment_vim.git"
-NeoBundle "https://github.com/tpope/vim-abolish.git"
-NeoBundle "https://github.com/tpope/vim-dispatch.git"
-NeoBundle "https://github.com/tpope/vim-fugitive.git"
-NeoBundle "https://github.com/tpope/vim-surround.git"
-NeoBundle "https://github.com/tyru/restart.vim.git"
-NeoBundle "https://github.com/ujihisa/unite-colorscheme.git"
-NeoBundle "https://github.com/vim-scripts/VimIRC.vim.git"
-NeoBundle "https://github.com/vim-scripts/Zenburn.git"
-NeoBundle "https://github.com/vim-scripts/chlordane.vim.git"
-NeoBundle "https://github.com/vim-scripts/hybrid.vim.git"
-NeoBundle "https://github.com/vim-scripts/nginx.vim.git"
-" Unstable plugins :-(
-"NeoBundle 'tpope/vim-dispatch'
-"NeoBundle 'thoughbot/vim-rspec'
+call neobundle#begin(expand('~/.vim/bundle'))
 
-if has('mac')
-	NeoBundle "https://github.com/airblade/vim-gitgutter.git"
-endif
+source ~/.vim.bundle
+source ~/.vim.bundle.local
 
+call neobundle#end()
 filetype plugin indent on
 
 " 未使用のkaoriyaプラグインを無効化
-let plugin_dicwin_disable=1
+let plugin_dicwin_disable = 1
 
 " <Leader> を , に指定
 let g:mapleader = ','
@@ -128,15 +64,15 @@ nnoremap <C-l> <C-w>l
 nnoremap <silent> <Leader>rw :<C-u>vertical resize 87<CR>
 
 " .vimrcを開く
-nnoremap <silent> <Leader>ev :<C-u>tabnew $HOME/.orgachem-vim/_vimrc<CR>
+nnoremap <silent> <Leader>ev :<C-u>tabnew $HOME/.dotfiles/.vimrc<CR>
 
-" .vimrc を適用する（.gvimrcも）
-nnoremap <silent> <Leader>rv :<C-u>source $HOME/.orgachem-vim/_vimrc<CR>:<C-u>source $HOME/.orgachem-vim/_gvimrc<CR>
+" .vimrc を適用する（表示崩れること多いので.gvimrcも）
+nnoremap <silent> <Leader>rv :<C-u>source $MYVIMRC<CR>:<C-u>source $MYGVIMRC<CR>
 
 " .gvimrcを開く
-nnoremap <silent> <Leader>eg :<C-u>tabnew $HOME/.orgachem-vim/_gvimrc<CR>
+nnoremap <silent> <Leader>eg :<C-u>tabnew $HOME/.dotfiles/.gvimrc<CR>
 " .gvimrc を適用する
-nnoremap <silent> <Leader>rg :<C-u>source $HOME/.orgachem-vim/_gvimrc<CR>
+nnoremap <silent> <Leader>rg :<C-u>source $MYGVIMRC<CR>
 
 " バッファのディレクトリに移動
 nnoremap <silent> <Leader>cd :<C-u>cd %:h<CR>
