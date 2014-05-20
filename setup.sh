@@ -33,11 +33,16 @@ setup() {
 	fi
 
 	if has vim; then
+		neobundle="$dotfiles/.vim/bundle"
+		symlink "$dotfiles/.vim" "$HOME/.vim"
 		symlink "$dotfiles/.vimrc" "$HOME/.vimrc"
 		symlink "$dotfiles/.vimrc.bundle" "$HOME/.vimrc.bundle"
 		symlink "$dotfiles/.gvimrc" "$HOME/.gvimrc"
-		symlink "$dotfiles/.vim" "$HOME/.vim"
-		git clone https://github.com/Shougo/neobundle.vim "$dotfiles/.vim/bundle/neobundle.vim"
+		if [ -d "$neobundle" ]; then
+			(cd "$neobundle" && git pull --rebase)
+		else
+			git clone https://github.com/Shougo/neobundle.vim "$neobundle/neobundle.vim"
+		fi
 	fi
 }
 
