@@ -1,4 +1,4 @@
-set fileencodings=euc-jp,cp932,ucs-bom,utf-8,default,latin1
+set fileencodings=utf-8,euc-jp,cp932
 set encoding=utf-8
 filetype off
 
