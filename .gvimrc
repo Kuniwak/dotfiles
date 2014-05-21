@@ -94,13 +94,6 @@ function! FontDefault()
 	let s:current_guifontwide_size = s:default_guifontwide_size
 	call s:apply_guifont_size()
 endfunction
-
-" うまく動いてくれぬうがー
-call submode#enter_with('fontsize', 'n', '', '<Leader>F', ':call FontLarger()<CR>')
-call submode#enter_with('fontsize', 'n', '', '<Leader>f', ':call FontSmaller()<CR>')
-call submode#map('fontsize', 'n', '', 'F', ':call FontLarger()<CR>')
-call submode#map('fontsize', 'n', '', 'f', ':call FontSmaller()<CR>')
-call submode#map('fontsize', 'n', '', '0', ':call FontDefault()<CR>')
 " }}}
 
 set background=dark

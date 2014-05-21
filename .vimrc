@@ -1,3 +1,4 @@
+set fileencodings=euc-jp,cp932,ucs-bom,utf-8,default,latin1
 set encoding=utf-8
 filetype off
 
@@ -239,7 +240,7 @@ nnoremap <silent> <Leader>vf :<C-u>VimFilerBufferDir<CR>
 "}}}
 
 " Unite {{{
-let g:unite_enable_start_insert = 0
+let g:unite_enable_start_insert = 1
 let g:unite_source_history_yank_enable = 1
 nnoremap <silent> <Leader>ub :<C-u>Unite buffer<CR>
 nnoremap <silent> <Leader>uc :<C-u>Unite colorscheme -auto-preview<CR>
