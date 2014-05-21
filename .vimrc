@@ -141,6 +141,9 @@ inoremap { {}<Left>
 inoremap (<Enter> (<C-m>)<Esc>O
 inoremap [<Enter> [<C-m>]<Esc>O
 inoremap {<Enter> {<C-m>}<Esc>O
+inoremap (<Space> (<Space><Space>)<Left><Left>
+inoremap [<Space> [<Space><Space>]<Left><Left>
+inoremap {<Space> {<Space><Space>}<Left><Left>
 
 " 閉じ括弧で直後の閉じ括弧の後に移動
 inoremap ) <ESC>f)a
@@ -175,6 +178,7 @@ function! s:remove_dust()
 endfunction
 
 augroup remove_dust
+	autocmd!
 	autocmd BufWritePre *.js call <SID>remove_dust()
 	autocmd BufWritePre *.py call <SID>remove_dust()
 	autocmd BufWritePre *.pl call <SID>remove_dust()
@@ -182,6 +186,7 @@ augroup remove_dust
 augroup END
 
 augroup force_utf8
+	autocmd!
 	autocmd FileType gitcommit set fileencoding=utf8
 augroup END
 " }}}
@@ -259,29 +264,42 @@ nnoremap <silent> <Leader>uy :<C-u>Unite history/yank<CR>
 " }}}
 
 " NeoComplete {{{
-let g:neocomplete#enable_at_start_up = 1
+let g:neocomplete#enable_at_startup = 1
 let g:neocomplete#manual_completion_start_length = 3
 let g:neocomplete#use_vimproc = 1
-
-call neocomplete#custom_source('buffer', 'converters', ['converter_delimiter', 'converter_remove_next_keyword', 'converter_abbr'])
 
 if !exists('g:neocomplete#sources#omni#input_patterns')
 	let g:neocomplete#sources#omni#input_patterns = {}
 endif
+
+if !exists('g:neocomplete#keyword_patterns')
+	let g:neocomplete#keyword_patterns = {}
+endif
 let g:neocomplete#keyword_patterns['default'] = '\h\w*'
 
 let g:neocomplete#sources#dictionary#dictionaries = {
-    \ 'default' : '',
-    \ 'javascript' : $HOME.'/.vim/dictionary/javascript.dict',
-    \ 'javascript.mocha' : $HOME.'/.vim/dictionary/javascript.mocha.dict',
-    \ 'javascript.closure' : $HOME.'/.vim/dictionary/javascript.closure.dict'
-    \ }
+			\ 'default' : '',
+			\ 'javascript' : $HOME.'/.vim/dictionary/javascript.dict',
+			\ 'javascript.mocha' : $HOME.'/.vim/dictionary/javascript.mocha.dict',
+			\ 'javascript.closure' : $HOME.'/.vim/dictionary/javascript.closure.dict'
+			\ }
 
-autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+call g:neocomplete#custom#source('buffer',
+			\ 'converters',
+			\ ['converter_delimiter', 'converter_remove_next_keyword', 'converter_abbr'])
+
+call g:neocomplete#custom#source('include',
+			\ 'disabled_filetypes',
+			\ { 'perl': 1 })
+
+augroup my_omni_completion
+	autocmd!
+	autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+	autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+	autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+	autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+	autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+augroup END
 
 " For tern
 "let g:neocomplete#force_omni_input_patterns.javascript = '[^. \t]\.\w*'
@@ -311,6 +329,8 @@ smap <C-k>     <Plug>(neosnippet_expand_or_jump)
 imap <expr><TAB> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : pumvisible() ? "\<C-n>" : "\<TAB>"
 smap <expr><TAB> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
 
+nnoremap <Leader>ens :<C-u>NeoSnippetEdit -split -vertical<CR>
+
 " For snippet_complete marker.
 if has("conceal")
 	set conceallevel=2 concealcursor=i
@@ -318,6 +338,11 @@ endif
 
 " Tell Neosnippet about the other snippets
 let g:neosnippet#snippets_directory="~/.vim/snippets"
+
+augroup my_neosnippet
+	autocmd!
+	autocmd InsertLeave * NeoSnippetClearMarkers
+augroup END
 "}}}
 
 " Syntastic {{{
@@ -435,9 +460,9 @@ let g:indent_guides_auto_colors = 0
 let g:indent_guides_color_change_percent = 5
 
 augroup my_indent_color
-	au!
-	au VimEnter,Colorscheme * :hi IndentGuidesEven guibg='#282a2e'
-	au VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg='#282a2e'
+	autocmd!
+	autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg='#282a2e'
+	autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg='#282a2e'
 augroup END
 " }}}
 
