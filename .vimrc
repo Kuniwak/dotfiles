@@ -180,6 +180,10 @@ augroup remove_dust
 	autocmd BufWritePre *.pl call <SID>remove_dust()
 	autocmd BufWritePre *.t call <SID>remove_dust()
 augroup END
+
+augroup force_utf8
+	autocmd FileType gitcommit set fileencoding=utf8
+augroup END
 " }}}
 "
 " ファイルタイプ設定 {{{
