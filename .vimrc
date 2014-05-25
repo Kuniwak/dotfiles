@@ -277,20 +277,21 @@ if !exists('g:neocomplete#keyword_patterns')
 endif
 let g:neocomplete#keyword_patterns['default'] = '\h\w*'
 
+if !exists('g:neocomplete#sources#file_include#exprs')
+	let g:neocomplete#sources#file_include#exprs = {}
+endif
+let g:neocomplete#sources#file_include#exprs.perl =
+			\ 'fnamemodify(substitute(v:fname, "/", "::", "g"), ":r")'
+
+let g:neocomplete#sources#omni#input_patterns.perl =
+			\ '[^. \t]->\%(\h\w*\)\?\|\h\w*::\%(\h\w*\)\?'
+
 let g:neocomplete#sources#dictionary#dictionaries = {
 			\ 'default' : '',
 			\ 'javascript' : $HOME.'/.vim/dictionary/javascript.dict',
 			\ 'javascript.mocha' : $HOME.'/.vim/dictionary/javascript.mocha.dict',
 			\ 'javascript.closure' : $HOME.'/.vim/dictionary/javascript.closure.dict'
 			\ }
-
-call g:neocomplete#custom#source('buffer',
-			\ 'converters',
-			\ ['converter_delimiter', 'converter_remove_next_keyword', 'converter_abbr'])
-
-call g:neocomplete#custom#source('include',
-			\ 'disabled_filetypes',
-			\ { 'perl': 1 })
 
 augroup my_omni_completion
 	autocmd!
@@ -299,6 +300,11 @@ augroup my_omni_completion
 	autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 	autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 	autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+augroup END
+
+augroup my_neocomplete
+	autocmd!
+	autocmd VimEnter call neocomplete#initialize()
 augroup END
 
 " For tern
@@ -477,18 +483,16 @@ command! SplashPullRequestManner :Splash $HOME/.vim/splashes/pull_request_manner
 nnoremap <Leader>s :Switch<CR>
 " }}}
 
-" Submode {{{
-call submode#enter_with('changetab', 'n', '', 'gt', 'gt')
-call submode#enter_with('changetab', 'n', '', 'gT', 'gT')
-call submode#map('changetab', 'n', '', 't', 'gt')
-call submode#map('changetab', 'n', '', 'T', 'gT')
-"}}}
-
 " MacDict {{{
-nnoremap <Leader>d :MacDictCWord<CR>
+if has('mac')
+	nnoremap <Leader>d :MacDictCWord<CR>
 
-" q で閉じる
-autocmd BufEnter MacDictBuffer nnoremap <buffer><silent> q :q<CR>
+	augroup my_macdict
+		autocmd!
+		" q でMacDictを閉じる
+		autocmd BufEnter MacDictBuffer nnoremap <buffer><silent> q :q<CR>
+	augroup END
+endif
 " }}} 
 
 " vim-rspec {{{
