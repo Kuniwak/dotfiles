@@ -520,7 +520,4 @@ if filereadable(expand(s:vimrc_local))
 	nnoremap <Leader>elv :<C-u>tabnew ~/.dotfiles.local/.vimrc.local<CR>
 endif
 
-" Windows 用
-cd $HOME
-
 " vim: fdm=marker noet tw=0
