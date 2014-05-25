@@ -1,11 +1,11 @@
 [user]
-	name = OrgaChem
+	name = Kuniwak
 	email = orga.chem.job@gmail.com
 [core]
 	editor = /usr/bin/vim
 	excludesfile = ~/.gitignore.global
 [github]
-	user = OrgaChem
+	user = Kuniwak
 [credential]
 	helper = osxkeychain
 	trustExitCode = true
