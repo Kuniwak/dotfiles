@@ -10,6 +10,7 @@ NeoBundle "https://github.com/Shougo/unite.vim.git"
 NeoBundle "https://github.com/Shougo/vimfiler.git"
 NeoBundle "https://github.com/Shougo/vimproc.git", { 'build': { 'windows': 'make -f make_mingw64.mak', 'mac': 'make -f make_mac.mak', 'unix': 'make -f make_unix.mak' } }
 NeoBundle "https://github.com/airblade/vim-gitgutter.git"
+NeoBundle "https://github.com/airblade/vim-rooter.git"
 NeoBundle "https://github.com/altercation/vim-colors-solarized.git"
 NeoBundle "https://github.com/c9s/perlomni.vim.git"
 NeoBundle "https://github.com/cocopon/colorswatch.vim.git"
