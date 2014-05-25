@@ -25,6 +25,7 @@ setup() {
 	has git && symlink "$dotfiles/.gitignore.global" "$HOME/.gitignore.global"
 	has curl && symlink "$dotfiles/.curlrc" "$HOME/.curlrc"
 	has tig && symlink "$dotfiles/.tigrc" "$HOME/.tigrc"
+	has tmux && symlink "$dotfiles/.tmux.conf" "$HOME/.tmux.conf"
 
 	if has zsh; then
 		symlink "$dotfiles/.zshrc" "$HOME/.zshrc"
