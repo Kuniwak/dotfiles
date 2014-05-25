@@ -6,6 +6,3 @@ bind generic ^b move-page-up
 
 # Set
 set show-rev-graph = yes
-
-# Commit encoding
-set commit-encoding = "UTF-8"
