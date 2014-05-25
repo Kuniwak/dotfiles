@@ -496,9 +496,10 @@ endif
 
 " neorspec {{{
 function! s:load_rspec_settings()
-  nnoremap <buffer>,rc  :<C-U>RSpecCurrent<CR>
+  nnoremap <buffer>,rc :<C-U>RSpecCurrent<CR>
   nnoremap <buffer>,rn :<C-U>RSpecNearest<CR>
   nnoremap <buffer>,ra :<C-U>RSpecAll<CR>
+	Rooter
 endfunction
 
 augroup my_neorspec
@@ -506,7 +507,7 @@ augroup my_neorspec
   autocmd BufEnter *.rb call s:load_rspec_settings()
 augroup END
 
-let g:neorspec_command = 'Dispatch rspec {spec}'
+let g:neorspec_command = 'Dispatch bundle exec rspec {spec}'
 " }}} 
       
 syntax enable
