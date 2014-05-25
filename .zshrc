@@ -76,6 +76,7 @@ alias lla='ls -la'
 if [ -r /usr/local/share/zsh-completions ]; then
 	fpath=(/usr/local/share/zsh-completions $fpath)
 fi
+eval "$(hub alias -s)"
 
 if [ -r ~/.zshrc.local ]; then
   . ~/.zshrc.local
