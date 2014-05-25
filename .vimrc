@@ -84,9 +84,6 @@ nnoremap <silent> <Leader>rg :<C-u>source $MYGVIMRC<CR>
 nnoremap <silent> <Leader>eb :<C-u>tabnew ~/.dotfiles/.vimrc.bundle<CR>
 nnoremap <silent> <Leader>elb :<C-u>tabnew ~/.dotfiles.local/.vimrc.bundle.local<CR>
 
-" バッファのディレクトリに移動
-nnoremap <silent> <Leader>cd :<C-u>cd %:h<CR>
-
 " ファイルタイプ変更
 nnoremap <silent> <Leader>ftp :<C-u>set filetype=python<CR>
 nnoremap <silent> <Leader>ftj :<C-u>set filetype=javascript<CR>
