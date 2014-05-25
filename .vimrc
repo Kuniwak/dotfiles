@@ -494,13 +494,19 @@ if has('mac')
 endif
 " }}} 
 
-" vim-rspec {{{
-let g:rspec_command = "Dispatch rspec {spec}"
+" neorspec {{{
+function! s:load_rspec_settings()
+  nnoremap <buffer>,rc  :<C-U>RSpecCurrent<CR>
+  nnoremap <buffer>,rn :<C-U>RSpecNearest<CR>
+  nnoremap <buffer>,ra :<C-U>RSpecAll<CR>
+endfunction
 
-map <Leader>rt :call RunCurrentSpecFile()<CR>
-map <Leader>rs :call RunNearestSpec()<CR>
-map <Leader>rl :call RunLastSpec()<CR>
-map <Leader>ra :call RunAllSpecs()<CR>
+augroup my_neorspec
+  autocmd!
+  autocmd BufEnter *.rb call s:load_rspec_settings()
+augroup END
+
+let g:neorspec_command = 'Dispatch rspec {spec}'
 " }}} 
       
 syntax enable
