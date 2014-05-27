@@ -231,9 +231,9 @@ let g:quickrun_config["javascript.mocha"] = {
 " Python 3をつかう
 let g:quickrun_config["python.python3"] = {"command" : "python3"}
 
-let g:quickrun_config["perl/carton"] = {
+let g:quickrun_config["perl.carton"] = {
 \   "cmdopt": "-Ilib",
-\   "exec": "carton exec %o -- perl %s:p %a",
+\   "exec": "carton exec perl %o %s:p %a",
 \}
 
 nnoremap <silent> <Leader>l :<C-u>QuickRun<CR>
