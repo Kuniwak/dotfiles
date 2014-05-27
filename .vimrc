@@ -202,6 +202,7 @@ augroup my_file_type
 	autocmd BufNewFile,BufRead *.pac setf javascript
 	autocmd BufNewFile,BufRead Guardfile setf ruby
 	autocmd BufNewFile,BufRead Gruntfile setf javascript
+	autocmd BufNewFile,BufRead cpanfile setf perl
 	" setf を上書きするために set filetype=markdown で強制的に ft 変更
 	autocmd BufNewFile,BufRead *.md set filetype=markdown
 augroup END
