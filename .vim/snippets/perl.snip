@@ -1,3 +1,68 @@
 snippet dump
 alias d
   warn Data::Dumper::Dumper ${0}
+
+snippet pm:5.14
+  package ${1};
+  use 5.14;
+  use warnings;
+  use utf8;
+
+  ${0}
+
+  1;
+
+snippet constant
+alias cons
+alias c
+  use constant {
+    ${0}
+  };
+
+snippet new
+alias n
+  sub new {
+    ${0}
+    return bless {
+    }, $class;
+  }
+
+snippet method
+alias m
+  sub ${1} {
+    ${0}
+  }
+
+snippet class
+alias c
+  my $class = shift;
+
+snippet class_list
+alias cl
+  my ($class, ${0}) = @_;
+
+snippet self
+alias s
+  my $self = shift;
+
+snippet self_list
+alias sl
+  my ($self, ${0}) = @_;
+
+snippet test
+alias t
+  use strict;
+  use warnings;
+  use utf8;
+  use Test::More;
+
+  ${0}
+
+  done_testing;
+
+snippet subtest
+alias st
+  subtest "${1}" => sub {
+    ${0}
+    done_testing;
+  };
