@@ -368,8 +368,8 @@ let g:syntastic_json_checkers = ['jsonlint']
 let g:syntastic_css_checkers = ['csslint']
 
 let g:syntastic_enable_perl_checker = 1
-let g:syntastic_perl_checkers = ['perl']
-let g:syntastic_perl_perl_args = '-wc'
+let g:syntastic_perl_checkers = ['perl', 'perlcritic', 'podchecker']
+let g:syntastic_perl_lib_path = 'lib,local/lib,/home/yuki.kokubun/deps-list-up/lib,/home/yuki.kokubun/deps-list-up/local/lib'
 
 let g:syntastic_ruby_checkers = ['rubocop']
 
