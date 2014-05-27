@@ -2,20 +2,20 @@ set fileencodings=utf-8,euc-jp,cp932
 set encoding=utf-8
 filetype off
 
-if has('vim_starting')
+if has("vim_starting")
 	set nocompatible
 	set runtimepath+=~/.vim/bundle/neobundle.vim
 endif
 
-call neobundle#begin(expand('~/.vim/bundle'))
-	let s:bundle_file = '~/.vimrc.bundle'
+call neobundle#begin(expand("~/.vim/bundle"))
+	let s:bundle_file = "~/.vimrc.bundle"
 	if filereadable(expand(s:bundle_file))
-		exec ':source '.s:bundle_file
+		exec ":source ".s:bundle_file
 	endif
 
-	let s:bundle_file_local = '~/.vimrc.bundle.local'
+	let s:bundle_file_local = "~/.vimrc.bundle.local"
 	if filereadable(expand(s:bundle_file_local))
-		exec ':source '.s:bundle_file_local
+		exec ":source ".s:bundle_file_local
 	endif
 call neobundle#end()
 filetype plugin indent on
@@ -26,7 +26,7 @@ NeoBundleCheck
 let plugin_dicwin_disable = 1
 
 " <Leader> を , に指定
-let g:mapleader = ','
+let g:mapleader = ","
 
 " Key
 " Disable Ctrl+@
@@ -213,27 +213,27 @@ augroup END
 let g:quickrun_config = {}
 
 " Vimproc で Quickrun
-let g:quickrun_config['_'] = {
-			\ 'runner': 'vimproc',
+let g:quickrun_config["_"] = {
+			\ "runner": "vimproc",
 			\       "runner/vimproc/updatetime" : 100
 			\ }
 
 " JavaScript の実行環境を Node.js に指定
-let g:quickrun_config['javascript'] = {'type': 'javascript/nodejs'}
+let g:quickrun_config["javascript"] = {"type": "javascript/nodejs"}
 
 " mocha の設定を追加
-let g:quickrun_config['javascript.mocha'] = {
-			\ 'command': 'mocha',
-			\ 'cmdopt': '-R tap',
-			\ 'tempfile': '%{tempname()}.js'
+let g:quickrun_config["javascript.mocha"] = {
+			\ "command": "mocha",
+			\ "cmdopt": "-R tap",
+			\ "tempfile": '%{tempname()}.js'
 			\ }
 
 " Python 3をつかう
-let g:quickrun_config['python.python3'] = {'command' : 'python3'}
+let g:quickrun_config["python.python3"] = {"command" : "python3"}
 
-let g:quickrun_config['perl/carton'] = {
-\   'cmdopt': '-Ilib',
-\   'exec': 'carton exec %o -- perl %s:p %a',
+let g:quickrun_config["perl/carton"] = {
+\   "cmdopt": "-Ilib",
+\   "exec": "carton exec %o -- perl %s:p %a",
 \}
 
 nnoremap <silent> <Leader>l :<C-u>QuickRun<CR>
@@ -247,7 +247,7 @@ let g:vimfiler_as_default_explorer = 1
 let g:vimfiler_safe_mode_by_default = 0
 
 " バックアップファイルとかを無視する
-let g:vimfiler_ignore_pattern = '\~$'
+let g:vimfiler_ignore_pattern = "\~$"
 
 " 現在開いているバッファをIDE風に開く
 nnoremap <silent> <Leader>vf :<C-u>VimFilerBufferDir<CR>
@@ -273,29 +273,29 @@ let g:neocomplete#enable_at_startup = 1
 let g:neocomplete#manual_completion_start_length = 3
 let g:neocomplete#use_vimproc = 1
 
-if !exists('g:neocomplete#sources#omni#input_patterns')
+if !exists("g:neocomplete#sources#omni#input_patterns")
 	let g:neocomplete#sources#omni#input_patterns = {}
 endif
 
-if !exists('g:neocomplete#keyword_patterns')
+if !exists("g:neocomplete#keyword_patterns")
 	let g:neocomplete#keyword_patterns = {}
 endif
-let g:neocomplete#keyword_patterns['default'] = '\h\w*'
+let g:neocomplete#keyword_patterns["default"] = "\h\w*"
 
-if !exists('g:neocomplete#sources#file_include#exprs')
+if !exists("g:neocomplete#sources#file_include#exprs")
 	let g:neocomplete#sources#file_include#exprs = {}
 endif
 let g:neocomplete#sources#file_include#exprs.perl =
-			\ 'fnamemodify(substitute(v:fname, "/", "::", "g"), ":r")'
+			\ "fnamemodify(substitute(v:fname, '/', '::', 'g'), ':r')"
 
 let g:neocomplete#sources#omni#input_patterns.perl =
-			\ '[^. \t]->\%(\h\w*\)\?\|\h\w*::\%(\h\w*\)\?'
+			\ "[^. \t]->\%(\h\w*\)\?\|\h\w*::\%(\h\w*\)\?"
 
 let g:neocomplete#sources#dictionary#dictionaries = {
-			\ 'default' : '',
-			\ 'javascript' : $HOME.'/.vim/dictionary/javascript.dict',
-			\ 'javascript.mocha' : $HOME.'/.vim/dictionary/javascript.mocha.dict',
-			\ 'javascript.closure' : $HOME.'/.vim/dictionary/javascript.closure.dict'
+			\ "default" : "",
+			\ "javascript" : $HOME."/.vim/dictionary/javascript.dict",
+			\ "javascript.mocha" : $HOME."/.vim/dictionary/javascript.mocha.dict",
+			\ "javascript.closure" : $HOME."/.vim/dictionary/javascript.closure.dict"
 			\ }
 
 augroup my_omni_completion
@@ -313,19 +313,19 @@ augroup my_neocomplete
 augroup END
 
 " For tern
-"let g:neocomplete#force_omni_input_patterns.javascript = '[^. \t]\.\w*'
+"let g:neocomplete#force_omni_input_patterns.javascript = "[^. \t]\.\w*"
 
 " For Jedi
 "autocmd FileType python setlocal omnifunc=jedi#completions
 "let g:neocomplete#force_omni_input_patterns.python =
-"			\ '\%([^. \t]\.\|^\s*@\|^\s*from\s.\+import \|^\s*from \|^\s*import \)\w*'
+"			\ "\%([^. \t]\.\|^\s*@\|^\s*from\s.\+import \|^\s*from \|^\s*import \)\w*"
 "}}}
 
 " Jedi {{{
 "let g:jedi#auto_vim_configuration = 0
 "let g:jedi#popup_on_dot = 0
 "let g:jedi#popup_select_first = 0
-"let g:jedi#rename_command = '<leader>R'
+"let g:jedi#rename_command = "<leader>R"
 "autocmd FileType python let b:did_ftplugin = 1
 " }}}
 
@@ -365,18 +365,18 @@ let g:syntastic_mode_map = { "mode": "passive",
 "let g:syntastic_javascript_gjslint_conf = " --disable 5,110 --strict"
 let g:syntastic_javascript_checkers = ["jshint"]
 
-let g:syntastic_python_checkers = ['flake8']
-let gvsyntastic_python_flake8_args = '--ignore=E501,E303'
+let g:syntastic_python_checkers = ["flake8"]
+let gvsyntastic_python_flake8_args = "--ignore=E501,E303"
 
-let g:syntastic_json_checkers = ['jsonlint']
+let g:syntastic_json_checkers = ["jsonlint"]
 
-let g:syntastic_css_checkers = ['csslint']
+let g:syntastic_css_checkers = ["csslint"]
 
 let g:syntastic_enable_perl_checker = 1
-let g:syntastic_perl_checkers = ['perl', 'perlcritic', 'podchecker']
-let g:syntastic_perl_lib_path = 'lib,local/lib/perl5'
+let g:syntastic_perl_checkers = ["perl", "perlcritic", "podchecker"]
+let g:syntastic_perl_lib_path = ["lib", "local/lib/perl5", "local/lib/perl5/x86_64-linux"]
 
-let g:syntastic_ruby_checkers = ['rubocop']
+let g:syntastic_ruby_checkers = ["rubocop"]
 
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_loc_list_height = 5
@@ -410,38 +410,38 @@ vnoremap <Leader>g :Gist<CR>
 " ま た M a c V i m か
 "
 if !has("mac")
-	let g:restart_sessionoptions = 'blank,buffers,curdir,folds,help,localoptions,tabpages'
+	let g:restart_sessionoptions = "blank,buffers,curdir,folds,help,localoptions,tabpages"
 endif
 "}}}
 
 " Lightline {{{
 let g:lightline = {
-			\   'colorscheme': 'iceberg',
-			\   'active': {
-			\     'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'readonly', 'filename', 'modified' ] ],
-			\     'right': [ [ 'syntastic', 'lineinfo' ], ['percent'], [ 'fileformat', 'fileencoding', 'filetype' ] ]
+			\   "colorscheme": "iceberg",
+			\   "active": {
+			\     "left": [ [ "mode", "paste" ], [ "fugitive", "readonly", "filename", "modified" ] ],
+			\     "right": [ [ "syntastic", "lineinfo" ], ["percent"], [ "fileformat", "fileencoding", "filetype" ] ]
 			\   },
-			\   'component_function': {
-			\     'fugitive': 'MyFugitive'
+			\   "component_function": {
+			\     "fugitive": "MyFugitive"
 			\   },
-			\   'component_expand': {
-			\     'syntastic': 'SyntasticStatuslineFlag',
+			\   "component_expand": {
+			\     "syntastic": "SyntasticStatuslineFlag",
 			\   },
-			\   'component_type': {
-			\     'syntastic': 'error',
+			\   "component_type": {
+			\     "syntastic": "error",
 			\   }
 			\ }
 
 function! MyFugitive()
 	try
-		if expand('%:t') !~? 'Tagbar\|Gundo\|NERD' && &ft !~? 'vimfiler' && exists('*fugitive#head')
-			let mark = ''  " edit here for cool mark
+		if expand("%:t") !~? "Tagbar\|Gundo\|NERD" && &ft !~? "vimfiler" && exists("*fugitive#head")
+			let mark = ""  " edit here for cool mark
 			let _ = fugitive#head()
-			return strlen(_) ? mark._ : ''
+			return strlen(_) ? mark._ : ""
 		endif
 	catch
 	endtry
-	return ''
+	return ""
 endfunction
 
 augroup AutoSyntastic
@@ -478,7 +478,7 @@ augroup END
 " }}}
 
 " Splash {{{
-let g:splash#path = $HOME . '/.vim/splashes/start.txt'
+let g:splash#path = $HOME . "/.vim/splashes/start.txt"
 command! OrgaChem :Splash $HOME/.vim/splashes/profile_white.txt
 command! SplashJavaScriptOperatorPriorityTable :Splash $HOME/.vim/splashes/js_op_priority.txt
 command! SplashPullRequestManner :Splash $HOME/.vim/splashes/pull_request_manner.markdown
@@ -489,7 +489,7 @@ nnoremap <Leader>s :Switch<CR>
 " }}}
 
 " MacDict {{{
-if has('mac')
+if has("mac")
 	nnoremap <Leader>d :MacDictCWord<CR>
 
 	augroup my_macdict
@@ -515,15 +515,15 @@ augroup END
 
 let g:neorspec_command = "QuickRun ruby.neorspec"
 
-let g:quickrun_config['ruby.neorspec'] = {
-			\ 'command': 'bundle',
-			\ 'cmdopt': 'exec rspec',
-			\ 'tempfile': '{spec}',
+let g:quickrun_config["ruby.neorspec"] = {
+			\ "command": "bundle",
+			\ "cmdopt": "exec rspec",
+			\ "tempfile": "{spec}",
 			\ }
 
-let g:quickrun_config['ruby.rspec'] = {
-			\ 'command': 'bundle',
-			\ 'cmdopt': 'exec rspec',
+let g:quickrun_config["ruby.rspec"] = {
+			\ "command": "bundle",
+			\ "cmdopt": "exec rspec",
 			\ }
 " }}} 
 
@@ -531,9 +531,9 @@ syntax enable
 set background=dark
 colorscheme iceberg
 
-let s:vimrc_local = '~/.vimrc.local'
+let s:vimrc_local = "~/.vimrc.local"
 if filereadable(expand(s:vimrc_local))
-	exec ':source '.s:vimrc_local
+	exec ":source ".s:vimrc_local
 	nnoremap <Leader>elv :<C-u>tabnew ~/.dotfiles.local/.vimrc.local<CR>
 endif
 
