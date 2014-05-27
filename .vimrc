@@ -231,6 +231,11 @@ let g:quickrun_config['javascript.mocha'] = {
 " Python 3をつかう
 let g:quickrun_config['python.python3'] = {'command' : 'python3'}
 
+let g:quickrun_config['perl/carton'] = {
+\   'cmdopt': '-Ilib',
+\   'exec': 'carton exec %o -- perl %s:p %a',
+\}
+
 nnoremap <silent> <Leader>l :<C-u>QuickRun<CR>
 "}}}
 
@@ -369,7 +374,7 @@ let g:syntastic_css_checkers = ['csslint']
 
 let g:syntastic_enable_perl_checker = 1
 let g:syntastic_perl_checkers = ['perl', 'perlcritic', 'podchecker']
-let g:syntastic_perl_lib_path = 'lib,local/lib,/home/yuki.kokubun/deps-list-up/lib,/home/yuki.kokubun/deps-list-up/local/lib'
+let g:syntastic_perl_lib_path = 'lib,local/lib/perl5'
 
 let g:syntastic_ruby_checkers = ['rubocop']
 
