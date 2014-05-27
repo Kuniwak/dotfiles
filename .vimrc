@@ -247,7 +247,7 @@ let g:vimfiler_as_default_explorer = 1
 let g:vimfiler_safe_mode_by_default = 0
 
 " バックアップファイルとかを無視する
-let g:vimfiler_ignore_pattern = "\~$"
+let g:vimfiler_ignore_pattern = '\~$'
 
 " 現在開いているバッファをIDE風に開く
 nnoremap <silent> <Leader>vf :<C-u>VimFilerBufferDir<CR>
@@ -372,9 +372,10 @@ let g:syntastic_json_checkers = ["jsonlint"]
 
 let g:syntastic_css_checkers = ["csslint"]
 
-let g:syntastic_enable_perl_checker = 1
 let g:syntastic_perl_checkers = ["perl", "perlcritic", "podchecker"]
+let g:syntastic_enable_perl_checker = 1
 let g:syntastic_perl_lib_path = ["lib", "local/lib/perl5", "local/lib/perl5/x86_64-linux"]
+let g:syntastic_perl_perlcritic_args = "--harsh"
 
 let g:syntastic_ruby_checkers = ["rubocop"]
 
@@ -434,7 +435,7 @@ let g:lightline = {
 
 function! MyFugitive()
 	try
-		if expand("%:t") !~? "Tagbar\|Gundo\|NERD" && &ft !~? "vimfiler" && exists("*fugitive#head")
+		if expand("%:t") !~? 'Tagbar\|Gundo\|NERD' && &ft !~? "vimfiler" && exists("*fugitive#head")
 			let mark = ""  " edit here for cool mark
 			let _ = fugitive#head()
 			return strlen(_) ? mark._ : ""
