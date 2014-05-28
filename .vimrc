@@ -203,6 +203,7 @@ augroup my_file_type
 	autocmd BufNewFile,BufRead Guardfile setf ruby
 	autocmd BufNewFile,BufRead Gruntfile setf javascript
 	autocmd BufNewFile,BufRead cpanfile setf perl
+	autocmd BufNewFile,BufRead *.pm set filetype=perl.carton
 	" setf を上書きするために set filetype=markdown で強制的に ft 変更
 	autocmd BufNewFile,BufRead *.md set filetype=markdown
 augroup END
@@ -358,8 +359,8 @@ augroup END
 
 " Syntastic {{{
 let g:syntastic_mode_map = { "mode": "passive",
-			\ "active_filetypes": [],
-			\ "passive_filetypes": ["html", "css", "javascript", "python", "json", "perl", "ruby"] }
+			\ "active_filetypes": ["perl"],
+			\ "passive_filetypes": ["html", "css", "javascript", "python", "json", "ruby"] }
 
 "let g:syntastic_javascript_checkers = ["gjslint", "jshint"]
 "let g:syntastic_javascript_gjslint_conf = " --disable 5,110 --strict"
