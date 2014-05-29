@@ -42,6 +42,7 @@ NeoBundle 'https://github.com/nathanaelkane/vim-indent-guides.git'
 NeoBundle 'https://github.com/nylen/vim-node-require-helper', { 'depends': 'https://github.com/moll/vim-node.git' }
 NeoBundle 'https://github.com/osyo-manga/vim-over.git'
 NeoBundle 'https://github.com/popkirby/lightline-iceberg.git'
+NeoBundle 'https://github.com/rking/ag.vim.git'
 NeoBundle 'https://github.com/scrooloose/syntastic.git'
 NeoBundle 'https://github.com/taichouchou2/html5.vim.git'
 NeoBundle 'https://github.com/therubymug/vim-pyte.git'
