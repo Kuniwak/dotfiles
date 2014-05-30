@@ -70,6 +70,16 @@ esac
 alias la='ls -a'
 alias ll='ls -l'
 alias lla='ls -la'
+
+alias ev='vi ~/.vimrc'
+alias eb='vi ~/.vimrc.bundle'
+alias elv='vi ~/.vimrc.local'
+alias elb='vi ~/.vimrc.bundle.local'
+
+alias ez='vi ~/.zshrc'
+alias ee'vi ~/.zshenv'
+alias elz='vi ~/.zshrc.local'
+alias ele='vi ~/.zshenv.local'
 # }}}
 
 # Zsh completions (https://github.com/zsh-users/zsh-completions)

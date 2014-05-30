@@ -90,6 +90,8 @@ nnoremap <silent> <Leader>ftj :<C-u>set filetype=javascript<CR>
 nnoremap <silent> <Leader>ftm :<C-u>set filetype=markdown<CR>
 nnoremap <silent> <Leader>fth :<C-u>set filetype=html<CR>
 
+nnoremap <Leader>p :echo expand('%')<CR>
+
 " Ctrl+hでBS
 inoremap <C-h> <Backspace>
 
