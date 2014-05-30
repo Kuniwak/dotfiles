@@ -132,8 +132,6 @@ set cursorline
 " 検索結果を画面の中央に表示させる
 noremap n nzz
 noremap N Nzz
-noremap * *zz
-noremap # #zz
 
 " 対応するリテラルの生成
 inoremap ( ()<Left>
@@ -361,8 +359,8 @@ augroup END
 
 " Syntastic {{{
 let g:syntastic_mode_map = { "mode": "passive",
-			\ "active_filetypes": ["perl"],
-			\ "passive_filetypes": ["html", "css", "javascript", "python", "json", "ruby"] }
+			\ "active_filetypes": ["perl", "ruby"],
+			\ "passive_filetypes": ["html", "css", "javascript", "python", "json"] }
 
 "let g:syntastic_javascript_checkers = ["gjslint", "jshint"]
 "let g:syntastic_javascript_gjslint_conf = " --disable 5,110 --strict"
