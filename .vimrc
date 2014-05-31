@@ -370,8 +370,9 @@ let g:syntastic_mode_map = { "mode": "passive",
 			\ "active_filetypes": ["perl", "ruby"],
 			\ "passive_filetypes": ["html", "css", "javascript", "python", "json"] }
 
-"let g:syntastic_javascript_checkers = ["gjslint", "jshint"]
-"let g:syntastic_javascript_gjslint_conf = " --disable 5,110 --strict"
+let g:syntastic_closure_library_checkers = ["gjslint"]
+let g:syntastic_closure_library_gjslint_conf = " --disable 5,110 --strict"
+
 let g:syntastic_javascript_checkers = ["jshint"]
 
 let g:syntastic_python_checkers = ["flake8"]
