@@ -57,6 +57,15 @@ noremap gk k
 noremap <Down> gj
 noremap <Up> gk
 
+" コマンドモードでemacsキーバインドを使えるようにする
+cnoremap <C-a> <Home>
+cnoremap <C-b> <Left>
+cnoremap <C-d> <Del>
+cnoremap <C-f> <Right>
+cnoremap <C-k> <C-\>e getcmdpos() == 1 ? '' : getcmdline()[:getcmdpos()-2]<CR>
+cnoremap <C-n> <Down>
+cnoremap <C-p> <Up>
+
 " Yで行末までヤンク
 noremap Y y$
 
@@ -75,7 +84,6 @@ nnoremap <silent> <Leader>ev :<C-u>tabnew $HOME/.dotfiles/.vimrc<CR>
 
 " .vimrc を適用する
 nnoremap <silent> <Leader>rv :<C-u>source $MYVIMRC<CR>
-
 " .gvimrcを開く
 nnoremap <silent> <Leader>eg :<C-u>tabnew $HOME/.dotfiles/.gvimrc<CR>
 " .gvimrc を適用する
