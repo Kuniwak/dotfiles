@@ -157,6 +157,9 @@ inoremap ) <ESC>f)a
 inoremap ] <ESC>f]a
 inoremap } <ESC>f}a
 
+" jj で ESC
+inoremap jj <ESC>
+
 " 縦分割したら新しいウィンドウは右に
 set splitright
 
@@ -217,6 +220,12 @@ augroup my_file_type
 augroup END
 " }}}
 
+" Quick quit {{{
+augroup my_quick_quit
+	autocmd!
+	autocmd FileType help,qf,MacDictBuffer nnoremap q :<C-u>q<CR>
+augroup END
+" }}}
 
 " Quickrun {{{
 let g:quickrun_config = {}
@@ -502,12 +511,6 @@ nnoremap <Leader>s :Switch<CR>
 " MacDict {{{
 if has("mac")
 	nnoremap <Leader>d :MacDictCWord<CR>
-
-	augroup my_macdict
-		autocmd!
-		" q でMacDictを閉じる
-		autocmd BufEnter MacDictBuffer nnoremap <buffer><silent> q :q<CR>
-	augroup END
 endif
 " }}} 
 
