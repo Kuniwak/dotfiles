@@ -538,6 +538,14 @@ let g:quickrun_config["ruby.rspec"] = {
 			\ }
 " }}} 
 
+" Perl lib {{{
+let g:rooter_use_lcd = 1
+augroup my_perl_lib_path
+	autocmd!
+	autocmd FileType perl PerlLocalLibPath
+augroup END
+" }}}
+
 syntax enable
 set background=dark
 colorscheme iceberg
