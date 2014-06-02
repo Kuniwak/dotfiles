@@ -23,6 +23,14 @@ if [ -d $MY_NDENV ]; then
 	eval "$(ndenv init -)"
 fi
 
+MY_PYENV="$HOME/.pyenv"
+if [ -d $MY_PYENV ]; then
+	export PATH="$MY_PYENV/bin:$PATH"
+	eval "$(pyenv init -)"
+fi
+
+#eval "$(hub alias -s)"
+
 if [ -r ~/.zshenv.local ]; then
 	. ~/.zshenv.local
 fi
