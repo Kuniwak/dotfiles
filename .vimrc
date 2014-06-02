@@ -108,6 +108,9 @@ set tabstop=2
 set shiftwidth=2
 set textwidth=0
 
+" 検索結果文字列のハイライトを有効にする
+set hlsearch
+
 " 編集記号を表示
 set list
 set listchars=eol:¬,tab:▸\ 
