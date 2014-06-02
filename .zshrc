@@ -85,8 +85,9 @@ alias rz='exec $SHELL -l'
 # }}}
 
 # Zsh completions (https://github.com/zsh-users/zsh-completions)
-if [ -d /usr/local/share/zsh-completions ]; then
-	fpath=(/usr/local/share/zsh-completions $fpath)
+ZSH_COMPLETIONS=/usr/local/share/zsh-completions
+if [ -d $ZSH_COMPLETIONS ]; then
+	fpath=("$ZSH_COMPLETIONS/src" $fpath)
 fi
 
 eval "$(hub alias -s)"
