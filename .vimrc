@@ -291,7 +291,7 @@ nnoremap <silent> <Leader>uy :<C-u>Unite history/yank<CR>
 
 " NeoComplete {{{
 let g:neocomplete#enable_at_startup = 1
-let g:neocomplete#manual_completion_start_length = 3
+let g:neocomplete#manual_completion_start_length = 2
 let g:neocomplete#use_vimproc = 1
 
 if !exists("g:neocomplete#sources#omni#input_patterns")
