@@ -3,12 +3,6 @@ bindkey -e
 
 setopt ignore_eof
 
-autoload -U compinit
-compinit
-
-autoload -U colors
-colors
-
 # 補完
 setopt COMPLETE_IN_WORD
 
@@ -17,6 +11,9 @@ setopt TRANSIENT_RPROMPT
 
 # BEEPを消す
 setopt NO_BEEP
+
+autoload -U colors; colors
+autoload -U compinit; compinit
 
 # Prompt {{{
 setopt PROMPT_SUBST
@@ -84,13 +81,13 @@ alias ele='vi ~/.zshenv.local'
 alias rz='exec $SHELL -l'
 # }}}
 
-# Zsh completions (https://github.com/zsh-users/zsh-completions)
+
 ZSH_COMPLETIONS=/usr/local/share/zsh-completions
 if [ -d $ZSH_COMPLETIONS ]; then
 	fpath=("$ZSH_COMPLETIONS/src" $fpath)
 fi
 
-eval "$(hub alias -s)"
+#eval "$(hub alias -s)"
 
 if [ -r ~/.zshrc.local ]; then
   . ~/.zshrc.local
