@@ -62,7 +62,29 @@ alias t
 
 snippet subtest
 alias st
-  subtest "${1}" => sub {
+  subtest '${1}' => sub {
     ${0}
-    done_testing;
   };
+
+snippet use_ok
+alias uok
+    BEGIN {
+        use_ok qw/${0}/;
+    }
+
+snippet can_ok
+alias cok
+    can_ok(
+        '${1:class_name}',
+        qw/
+            ${0},
+        /
+    );
+
+snippet skip
+alias sk
+    plan skip_all => '${1:reason}';
+
+snippet no_critic
+alias noc
+    ## no critic (${1:policy_name})
