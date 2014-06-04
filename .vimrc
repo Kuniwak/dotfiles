@@ -235,6 +235,7 @@ let g:quickrun_config = {}
 
 " Vimproc で Quickrun
 let g:quickrun_config["_"] = {
+			\ "split": "vertical",
 			\ "runner": "vimproc",
 			\       "runner/vimproc/updatetime" : 100
 			\ }
