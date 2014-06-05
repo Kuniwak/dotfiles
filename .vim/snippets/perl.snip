@@ -88,3 +88,42 @@ alias sk
 snippet no_critic
 alias noc
     ## no critic (${1:policy_name})
+
+snippet podhead
+alias podh
+    =encoding utf-8
+
+    =head1 NAME
+
+    ${1:NAME}
+
+    =head1 SYNOPSIS
+
+    ${0}
+
+    =head1 DESCRIPTION
+
+    =head1 CONFIGURATION AND ENVIRONMENT
+
+    =head1 INTERFACE
+
+    =head2 CLASSMETHODS
+
+    =head2 METHODS
+
+    =cut
+
+snippet podtail
+alias podt
+    =head1 SEE ALSO
+
+    =head1 BUGS AND LIMITATION
+
+    このモジュールには既知のバグは含まれていません。
+    何か問題があった場合は修正して頂くか、 L</AUTHOR> にご連絡ください。
+
+    =head1 AUTHOR
+
+    Kuniwak (yuki.kokubun@mixi.co.jp)
+
+    =cut
