@@ -15,6 +15,10 @@ setopt NO_BEEP
 autoload -U colors; colors
 autoload -U compinit; compinit
 
+has() {
+	type "$1" > /dev/null 2>&1
+}
+
 # Prompt {{{
 setopt PROMPT_SUBST
 autoload -Uz vcs_info
@@ -81,16 +85,15 @@ alias ele='vi ~/.zshenv.local'
 alias rz='exec $SHELL -l'
 # }}}
 
-
 ZSH_COMPLETIONS=/usr/local/share/zsh-completions
 if [ -d $ZSH_COMPLETIONS ]; then
 	fpath=("$ZSH_COMPLETIONS/src" $fpath)
 fi
 
-#eval "$(hub alias -s)"
-
 if [ -r ~/.zshrc.local ]; then
   . ~/.zshrc.local
 fi
+
+alias g='git'
 
 # vim: fdm=marker

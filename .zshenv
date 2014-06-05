@@ -29,6 +29,11 @@ if [ -d $MY_PYENV ]; then
 	eval "$(pyenv init -)"
 fi
 
+MY_CABAL="$HOME/.cabal"
+if [ -d $MY_CABAL ]; then
+	export PATH="$MY_CABAL/bin:$PATH"
+fi
+
 #eval "$(hub alias -s)"
 
 if [ -r ~/.zshenv.local ]; then

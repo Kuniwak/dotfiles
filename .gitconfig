@@ -13,3 +13,10 @@
 	default = simple
 [hub]
 	protocol = https
+	host = github.lo.mixi.jp
+[alias]
+	mend = commit --amend -v
+	ci = commit -v
+	co = checkout
+	ready = rebase -i @{u}
+	st = status -s -b
