@@ -11,5 +11,11 @@
 	trustExitCode = true
 [push]
 	default = simple
-[hub]
-	protocol = https
+[alias]
+	amend = commit --amend -v
+	c = commit -v
+	o = checkout
+	ready = rebase -i @{u}
+	s = status -s -b
+[include]
+  path = ~/.gitconfig.local
