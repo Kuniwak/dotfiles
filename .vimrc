@@ -114,6 +114,12 @@ set hlsearch
 " 編集記号を表示
 set list
 set listchars=eol:¬,tab:▸\ 
+set foldtext=MyFold()
+function! MyFold()
+    let line = getline(v:foldstart)
+    let sub = substitute(line, '{{{', '', 'g') "}}}
+    return ' ⇳ '.sub
+endfunction
 
 " 改行後もインデントを維持
 set autoindent
@@ -218,6 +224,7 @@ augroup my_file_type
 	autocmd BufNewFile,BufRead Gruntfile setf javascript
 	autocmd BufNewFile,BufRead cpanfile setf perl
 	autocmd BufNewFile,BufRead *.pm set filetype=perl.carton
+	autocmd BufNewFile,BufRead *.t set filetype=perl.prove
 	" setf を上書きするために set filetype=markdown で強制的に ft 変更
 	autocmd BufNewFile,BufRead *.md set filetype=markdown
 augroup END
@@ -254,9 +261,16 @@ let g:quickrun_config["javascript.mocha"] = {
 let g:quickrun_config["python.python3"] = {"command" : "python3"}
 
 let g:quickrun_config["perl.carton"] = {
-\   "cmdopt": "-Ilib",
-\   "exec": "carton exec perl %o %s:p %a",
-\}
+			\ "cmdopt": "-Ilib",
+			\ "exec": "carton exec perl %o %s:p %a",
+			\ }
+
+let g:quickrun_config["perl.prove"] = {
+			\ "cmdopt": "-lvfm",
+			\ "exec": 'carton exec "prove %o %s:p %a"',
+			\ "outputter/buffer/filetype": "prove",
+			\ "shebang": 0,
+			\ }
 
 nnoremap <silent> <Leader>l :<C-u>QuickRun<CR>
 "}}}
@@ -483,8 +497,7 @@ let g:vimshell_force_overwrite_statusline = 0
 " }}}
 
 " GitGutter {{{
-nnoremap <silent> <Leader>gg :<C-u>GitGutterToggle<CR>
-nnoremap <silent> <Leader>gh :<C-u>GitGutterLineHighlightsToggle<CR>
+let g:gitgutter_realtime = 0
 " }}}
 
 " Vim Indent Guides {{{
