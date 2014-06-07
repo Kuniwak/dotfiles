@@ -1,7 +1,7 @@
 NeoBundle 'Kuniwak/tsumekusa-syntax.vim'
 NeoBundle 'Kuniwak/vim-javascript'
 NeoBundle 'Kuniwak/vim-qrcode'
-NeoBundle 'Kuniwak/vim-syntax-prove'
+NeoBundle 'Kuniwak/vim-prove-syntax'
 NeoBundle 'Shougo/neocomplete'
 NeoBundle 'Shougo/neomru.vim'
 NeoBundle 'Shougo/neosnippet'
