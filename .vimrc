@@ -411,7 +411,7 @@ let g:syntastic_css_checkers = ["csslint"]
 
 let g:syntastic_perl_checkers = ["perl", "perlcritic", "podchecker"]
 let g:syntastic_enable_perl_checker = 1
-let g:syntastic_perl_lib_path = ["lib", "local/lib/perl5", "local/lib/perl5/x86_64-linux"]
+let g:syntastic_perl_lib_path = ['./lib', './local/lib/perl5', './local/lib/perl5/x86_64-linux']
 let g:syntastic_perl_perlcritic_args = "--harsh"
 
 let g:syntastic_ruby_checkers = ["rubocop"]
