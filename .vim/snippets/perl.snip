@@ -94,10 +94,10 @@ snippet ok
     ok(${1:target}, '${2:message}') or diag explain $1;${0}
 
 snippet is
-    is(${1:expected}, ${2:actual}, '${3:message}') or diag explain $2;${0}
+    is(${1:actual}, ${2:expected}, '${3:message}') or diag explain $1;${0}
 
 snippet is_deeply
-    is_deeply(${1:expected}, ${2:actual}, '${3:message}') or diag explain $2;${0}
+    is_deeply(${1:actual}, ${2:expected}, '${3:message}') or diag explain $1;${0}
 
 snippet skip
 alias sk
