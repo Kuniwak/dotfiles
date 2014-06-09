@@ -77,17 +77,18 @@ alias cok
     can_ok(
         '${1:class_name}',
         qw/
-            ${0},
+            ${0}
         /
     );
 
 snippet ok
-    ok(${1:target}, '${2:message}') or diag explain $1;
-    ${0}
+    ok(${1:target}, '${2:message}') or diag explain $1;${0}
 
-snippet is 
-    is(${1:expected}, ${2:actual}, '${3:message}') or diag explain $2;
-    ${0}
+snippet is
+    is(${1:expected}, ${2:actual}, '${3:message}') or diag explain $2;${0}
+
+snippet is_deeply
+    is_deeply(${1:expected}, ${2:actual}, '${3:message}') or diag explain $2;${0}
 
 snippet skip
 alias sk
@@ -96,6 +97,26 @@ alias sk
 snippet no_critic
 alias noc
     ## no critic (${1:policy_name})
+
+snippet podmethod
+alias podm
+    =head3 C<<${1}>>
+
+    =head4 PARAMETERS
+
+    =over 4
+
+    =item C<>
+
+    =back
+
+    =head4 RETURN VALUE
+
+    =over 4
+
+    =item C<>
+
+    =back
 
 snippet podhead
 alias podh
