@@ -260,16 +260,23 @@ let g:quickrun_config["javascript.mocha"] = {
 " Python 3をつかう
 let g:quickrun_config["python.python3"] = {"command" : "python3"}
 
-let g:quickrun_config["perl.carton"] = {
-			\ "cmdopt": "-Ilib",
-			\ "exec": "carton exec perl %o %s:p %a",
+let g:quickrun_config['perl.prove'] = {
+			\ 'cmdopt': '-lvfm',
+			\ 'command': 'prove',
+			\ 'outputter/buffer/filetype': 'prove-output',
+			\ 'shebang': 0,
 			\ }
 
-let g:quickrun_config["perl.prove"] = {
-			\ "cmdopt": "-lvfm",
-			\ "exec": 'carton exec "prove %o %s:p %a"',
-			\ "outputter/buffer/filetype": "prove-output",
-			\ "shebang": 0,
+let g:quickrun_config['perl.carton'] = {
+			\ 'cmdopt': '-Ilib',
+			\ 'exec': 'carton exec "perl %o %s:p %a"',
+			\ }
+
+let g:quickrun_config['perl.carton-prove'] = {
+			\ 'cmdopt': '-lvfm',
+			\ 'exec': 'carton exec "prove %o %s:p %a"',
+			\ 'outputter/buffer/filetype': 'prove-output',
+			\ 'shebang': 0,
 			\ }
 
 nnoremap <silent> <Leader>l :<C-u>QuickRun<CR>
