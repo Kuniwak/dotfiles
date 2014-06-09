@@ -6,15 +6,13 @@
 	excludesfile = ~/.gitignore.global
 [github]
 	user = Kuniwak
-[credential]
-	helper = osxkeychain
-	trustExitCode = true
 [push]
 	default = simple
 [alias]
 	amend = commit --amend -v
 	c = commit -v
 	o = checkout
+	b = checkout -b
 	ready = rebase -i @{u}
 	s = status -s -b
 [include]

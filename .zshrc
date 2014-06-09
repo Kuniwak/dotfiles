@@ -72,17 +72,22 @@ alias la='ls -a'
 alias ll='ls -l'
 alias lla='ls -la'
 
-alias ev='vi ~/.vimrc'
-alias eb='vi ~/.vimrc.bundle'
-alias elv='vi ~/.vimrc.local'
-alias elb='vi ~/.vimrc.bundle.local'
+dotfiles="$HOME/.dotfiles"
+dotfiles_local="$HOME/.dotfiles"
 
-alias ez='vi ~/.zshrc'
-alias ee'vi ~/.zshenv'
-alias elz='vi ~/.zshrc.local'
-alias ele='vi ~/.zshenv.local'
+alias ev="vi $dotfiles/.vimrc"
+alias eb="vi $dotfiles/.vimrc.bundle"
+alias elv="vi $dotfiles_local/.vimrc.local"
+alias elb="vi $dotfiles_local/.vimrc.bundle.local"
 
-alias rz='exec $SHELL -l'
+alias ez="vi $dotfiles/.zshrc"
+alias ee"vi $dotfiles/zshenv"
+alias elz="vi $dotfiles_local/.zshrc.local"
+alias ele="vi $dotfiles_local/.zshenv.local"
+
+alias rz="exec $SHELL -l"
+
+alias g='git'
 # }}}
 
 ZSH_COMPLETIONS=/usr/local/share/zsh-completions
@@ -93,7 +98,5 @@ fi
 if [ -r ~/.zshrc.local ]; then
   . ~/.zshrc.local
 fi
-
-alias g='git'
 
 # vim: fdm=marker

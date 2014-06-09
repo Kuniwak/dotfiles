@@ -268,7 +268,7 @@ let g:quickrun_config["perl.carton"] = {
 let g:quickrun_config["perl.prove"] = {
 			\ "cmdopt": "-lvfm",
 			\ "exec": 'carton exec "prove %o %s:p %a"',
-			\ "outputter/buffer/filetype": "prove",
+			\ "outputter/buffer/filetype": "prove-output",
 			\ "shebang": 0,
 			\ }
 
