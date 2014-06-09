@@ -1,70 +1,79 @@
-snippet dump
-alias d
-  warn Data::Dumper::Dumper ${0}
-
 snippet pm:5.014
-  package ${1};
-  use 5.014;
-  use warnings;
-  use utf8;
+    package ${1};
+    use 5.014;
+    use warnings;
+    use utf8;
 
-  ${0}
-
-  1;
+    ${0}
+    
+    1;
 
 snippet constant
 alias cons
 alias c
-  use constant {
-    ${0}
-  };
+    use constant {
+        ${0}
+    };
 
 snippet new
 alias n
-  sub new {
-    ${0}
+    sub new {
+        ${0}
     return bless {
     }, $class;
   }
 
 snippet method
 alias m
-  sub ${1} {
-    ${0}
-  }
+    sub ${1} {
+        ${0}
+    }
 
 snippet class
 alias c
-  my $class = shift;
+    my $class = shift;
 
 snippet class_list
 alias cl
-  my ($class, ${0}) = @_;
+    my ($class, ${0}) = @_;
 
 snippet self
 alias s
-  my $self = shift;
+    my $self = shift;
 
 snippet self_list
 alias sl
-  my ($self, ${0}) = @_;
+    my ($self, ${0}) = @_;
+
+snippet dump
+alias d
+    warn Data::Dumper::Dumper ${0}
+
+snippet val
+alias v
+    my ($self, @args) = @_;
+    state $rule = Data::Validator->new(
+        ${0}
+    );
+
+    my $validated = $rule->validate(@args);
 
 snippet test
 alias t
-  use strict;
-  use warnings;
-  use utf8;
-  use Test::More;
+    use strict;
+    use warnings;
+    use utf8;
+    use Test::More;
 
-  ${0}
+    ${0}
 
-  done_testing;
+    done_testing;
 
 snippet subtest
 alias st
-  subtest '${1}' => sub {
-    ${0}
-  };
+    subtest '${1}' => sub {
+        ${0}
+    };
 
 snippet use_ok
 alias uok
@@ -149,7 +158,7 @@ alias podt
     =head1 BUGS AND LIMITATION
 
     このモジュールには既知のバグは含まれていません。
-    何か問題があった場合は修正して頂くか、 L</AUTHOR> にご連絡ください。
+        何か問題があった場合は修正して頂くか、 L</AUTHOR> にご連絡ください。
 
     =head1 AUTHOR
 
