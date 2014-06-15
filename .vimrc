@@ -243,7 +243,8 @@ augroup END
 " Quick quit {{{
 augroup my_quick_quit
 	autocmd!
-	autocmd FileType help,qf,quickrun,MacDictBuffer nnoremap <buffer> q :<C-u>q<CR>
+	autocmd BufEnter MacDictBuffer nnoremap <buffer> q :<C-u>q<CR>
+	autocmd FileType help,qf,quickrun nnoremap <buffer> q :<C-u>q<CR>
 augroup END
 " }}}
 
