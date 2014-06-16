@@ -1,5 +1,6 @@
 set fileencodings=utf-8,euc-jp,cp932
 set encoding=utf-8
+scriptencoding utf-8
 filetype off
 
 if has("vim_starting")
@@ -23,7 +24,7 @@ filetype plugin indent on
 NeoBundleCheck
 
 " 未使用のkaoriyaプラグインを無効化
-let plugin_dicwin_disable = 1
+let g:plugin_dicwin_disable = 1
 
 " <Leader> を , に指定
 let g:mapleader = ","
@@ -412,8 +413,8 @@ augroup END
 
 " Syntastic {{{
 let g:syntastic_mode_map = { "mode": "passive",
-			\ "active_filetypes": ["perl", "ruby"],
-			\ "passive_filetypes": ["html", "css", "javascript", "python", "json"] }
+			\ "active_filetypes": ["perl", "ruby", "html", "css", "javascript", "python", "json", "coffee"],
+			\ "passive_filetypes": [] }
 
 let g:syntastic_closure_library_checkers = ["gjslint"]
 let g:syntastic_closure_library_gjslint_conf = " --disable 5,110 --strict"
@@ -421,7 +422,7 @@ let g:syntastic_closure_library_gjslint_conf = " --disable 5,110 --strict"
 let g:syntastic_javascript_checkers = ["jshint"]
 
 let g:syntastic_python_checkers = ["flake8"]
-let gvsyntastic_python_flake8_args = "--ignore=E501,E303"
+let g:syntastic_python_flake8_args = "--ignore=E501,E303"
 
 let g:syntastic_json_checkers = ["jsonlint"]
 
@@ -434,11 +435,13 @@ let g:syntastic_perl_perlcritic_args = "--harsh"
 
 let g:syntastic_ruby_checkers = ["rubocop"]
 
+let g:syntastic_coffee_checkers = ["coffee", "coffeelint"]
+
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_loc_list_height = 5
 
 nnoremap <silent> <Leader>sc :<C-u>SyntasticCheck<CR>
-nnoremap <silent> <Leader>st :<C-u>SyntasticToggleMode<CR>
+nnoremap <silent> <Leader>sr :<C-u>SyntasticReset<CR>
 "}}}
 
 " Fugitive {{{
@@ -449,12 +452,12 @@ nnoremap <silent> <Leader>gp :Git pull<CR>
 nnoremap <silent> <Leader>gP :Git push<CR>
 " }}}
 
-"Showmarks{{{
+" Showmarks{{{
 " 英字のマークのみ表示
-let showmarks_include = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+let g:showmarks_include = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
 "}}}
 
-"Gist-vim{{{
+" Gist-vim{{{
 let g:gist_detect_filetype = 1
 vnoremap <Leader>g :Gist<CR>
 "}}}
