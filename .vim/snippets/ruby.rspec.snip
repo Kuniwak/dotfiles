@@ -1,0 +1,25 @@
+snippet describe
+alias d
+  describe ${1:Class} do
+    ${2}
+  end
+
+snippet specify
+alias s
+  specify '${1:description}' do
+    ${2}
+  end
+
+snippet context
+alias c
+  context '${1:description}' do
+    ${2}
+  end
+
+snippet pending
+alias p
+  pending '${1:reason}'
+
+snippet expect
+alias e
+  expect(${0}).to

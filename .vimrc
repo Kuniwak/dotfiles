@@ -61,10 +61,20 @@ noremap <Up> gk
 cnoremap <C-a> <Home>
 cnoremap <C-b> <Left>
 cnoremap <C-d> <Del>
+cnoremap <C-h> <Backspace>
 cnoremap <C-f> <Right>
 cnoremap <C-k> <C-\>e getcmdpos() == 1 ? '' : getcmdline()[:getcmdpos()-2]<CR>
 cnoremap <C-n> <Down>
 cnoremap <C-p> <Up>
+
+inoremap <C-a> <Home>
+inoremap <C-b> <Left>
+inoremap <C-d> <Del>
+inoremap <C-h> <Backspace>
+inoremap <C-f> <Right>
+inoremap <C-k> <C-o>D
+inoremap <C-n> <Down>
+inoremap <C-p> <Up>
 
 " Yで行末までヤンク
 noremap Y y$
