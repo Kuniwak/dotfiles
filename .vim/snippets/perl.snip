@@ -1,3 +1,13 @@
+snippet pm:5.020
+    package ${1};
+    use 5.020;
+    use warnings;
+    use utf8;
+
+    ${0}
+    
+    1;
+
 snippet pm:5.014
     package ${1};
     use 5.014;
@@ -47,7 +57,14 @@ alias sl
 
 snippet dump
 alias d
-    warn Data::Dumper::Dumper ${0}
+    use Data::Dumper;
+    warn Dumper ${0}
+
+snippet dumpconcise
+alias dc
+    use Data::Dumper;
+    use Data::Dumper::Concise;
+    warn Dumper ${0}
 
 snippet val
 alias v
@@ -60,6 +77,7 @@ alias v
 
 snippet test
 alias t
+    #! /use/bin/env perl
     use strict;
     use warnings;
     use utf8;
