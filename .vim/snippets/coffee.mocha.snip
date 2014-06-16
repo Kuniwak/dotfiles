@@ -9,3 +9,92 @@ alias i
   it('${1}', () ->
     ${0}
   )
+  
+snippet pending
+alias p
+  it('${1}')
+
+
+snippet it_async
+alias ia
+  it('${1}', (done) ->
+    ${0}
+  )
+
+snippet after
+alias a
+  after(() ->
+    ${0}
+  )
+
+snippet afterEach
+alias ae
+  afterEach(() ->
+    ${0}
+  )
+
+snippet after_async
+alias aa
+  after((done) ->
+    ${0}
+  )
+
+snippet afterEach_async
+alias aea
+  afterEach((done) ->
+    ${0}
+  )
+
+snippet before
+alias b
+  before(() ->
+    ${0}
+  )
+
+snippet beforeEach
+alias be
+  beforeEach(() ->
+    ${0}
+  )
+
+snippet before_async
+alias ba
+  before((done) ->
+    ${0}
+  )
+
+snippet beforeEach_async
+alias bea
+  beforeEach((done) ->
+    ${0}
+  )
+
+snippet require_chai
+alias reqc
+  chai = require('chai')
+  expect = chai.expect
+
+snippet require_sinon_chai
+alias reqs
+  sinon = require('sinon')
+  spy = sinon.spy
+  stub = sinon.stub
+  sinonChai = require('sinon-chai')
+  chai.use(sinonChai)
+
+snippet require_promise_chai
+alias reqp
+  chaiAsPromised = require('chai-as-promised')
+  chai.use(chaiAsPromised)
+
+snippet expect
+alias e
+  expect(${1}).to.${0}
+
+snippet expect_to_have_property
+alias ep
+  expect(${1}).to.have.property(${2}, ${3})
+
+snippet expect_to_have_property_that
+alias ept
+  expect(${1}).to.have.property(${2}).that.${0}
