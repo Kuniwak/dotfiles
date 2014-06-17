@@ -73,8 +73,6 @@ inoremap <C-d> <Del>
 inoremap <C-h> <Backspace>
 inoremap <C-f> <Right>
 inoremap <C-k> <C-o>D
-inoremap <C-n> <Down>
-inoremap <C-p> <Up>
 
 " Yで行末までヤンク
 noremap Y y$
@@ -117,6 +115,8 @@ inoremap <C-h> <Backspace>
 set tabstop=2
 set shiftwidth=2
 set textwidth=0
+
+set backspace=2
 
 " 検索結果文字列のハイライトを有効にする
 set hlsearch

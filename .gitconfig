@@ -13,6 +13,9 @@
 	c = commit -v
 	o = checkout
 	b = checkout -b
+	f = fetch
+	pl = pull
+	ps = push
 	ready = rebase -i @{u}
 	s = status -s -b
 [include]
