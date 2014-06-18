@@ -153,9 +153,13 @@ set number
 
 " カーソルが上下20行以内にいかないようにする
 set scrolloff=20
+set sidescroll=1
+set sidescrolloff=16
 
 " カーソル行を強調
 set cursorline
+
+set laststatus=2
 
 " 検索結果を画面の中央に表示させる
 noremap n nzz
@@ -182,9 +186,6 @@ inoremap jj <ESC>
 
 " 縦分割したら新しいウィンドウは右に
 set splitright
-
-" 常にステータス行を表示
-set laststatus=2
 
 "command-line completion
 set wildmenu
