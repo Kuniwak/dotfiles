@@ -58,13 +58,20 @@ alias sl
 snippet dump
 alias d
     use Data::Dumper;
-    warn Dumper ${0}
+    warn Dumper ${0};
 
 snippet dumpconcise
 alias dc
     use Data::Dumper;
     use Data::Dumper::Concise;
-    warn Dumper ${0}
+    warn Dumper ${0};
+
+snippet dumpmarker
+alias dm
+    use Data::Dumper;
+    warn '<<<<<<<<<<<<<<<<<<<<<<<<<<<<<';
+    warn Dumper ${0j};
+    warn '>>>>>>>>>>>>>>>>>>>>>>>>>>>>>';
 
 snippet val
 alias v
