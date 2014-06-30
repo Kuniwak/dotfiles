@@ -69,21 +69,21 @@ alias bea
     ${0}
   )
 
-snippet require_chai
-alias reqc
+snippet chai
+alias c
   chai = require('chai')
   expect = chai.expect
 
-snippet require_sinon_chai
-alias reqs
+snippet sinon
+alias s
   sinon = require('sinon')
   spy = sinon.spy
   stub = sinon.stub
   sinonChai = require('sinon-chai')
   chai.use(sinonChai)
 
-snippet require_promise_chai
-alias reqp
+snippet promise-chai
+alias pc
   chaiAsPromised = require('chai-as-promised')
   chai.use(chaiAsPromised)
 
