@@ -591,6 +591,7 @@ augroup END
 
 syntax enable
 set background=dark
+set t_Co=256
 colorscheme iceberg
 
 let s:vimrc_local = "~/.vimrc.local"
