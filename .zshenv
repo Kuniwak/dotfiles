@@ -34,6 +34,14 @@ if [ -d $MY_CABAL ]; then
 	export PATH="$MY_CABAL/bin:$PATH"
 fi
 
+SOCK="/tmp/ssh-agent-$USER"
+if test $SSH_AUTH_SOCK && [ $SSH_AUTH_SOCK != $SOCK ]
+then
+    rm -f $SOCK
+    ln -sf $SSH_AUTH_SOCK $SOCK
+    export SSH_AUTH_SOCK=$SOCK
+fi
+
 #eval "$(hub alias -s)"
 
 if [ -r ~/.zshenv.local ]; then
