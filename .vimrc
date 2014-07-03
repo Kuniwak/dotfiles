@@ -153,9 +153,13 @@ set number
 
 " カーソルが上下20行以内にいかないようにする
 set scrolloff=20
+set sidescroll=1
+set sidescrolloff=16
 
 " カーソル行を強調
 set cursorline
+
+set laststatus=2
 
 " 検索結果を画面の中央に表示させる
 noremap n nzz
@@ -182,9 +186,6 @@ inoremap jj <ESC>
 
 " 縦分割したら新しいウィンドウは右に
 set splitright
-
-" 常にステータス行を表示
-set laststatus=2
 
 "command-line completion
 set wildmenu
@@ -246,6 +247,7 @@ augroup my_quick_quit
 	autocmd!
 	autocmd BufEnter MacDictBuffer nnoremap <buffer> q :<C-u>q<CR>
 	autocmd FileType help,qf,quickrun nnoremap <buffer> q :<C-u>q<CR>
+	autocmd FileType qf nnoremap <buffer> q :<C-u>cclose<CR>
 augroup END
 " }}}
 
@@ -589,6 +591,7 @@ augroup END
 
 syntax enable
 set background=dark
+set t_Co=256
 colorscheme iceberg
 
 let s:vimrc_local = "~/.vimrc.local"

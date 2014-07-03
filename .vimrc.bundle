@@ -55,6 +55,7 @@ NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'thinca/vim-ref'
 NeoBundle 'thinca/vim-scouter'
 NeoBundle 'thinca/vim-splash'
+NeoBundle 'thinca/vim-textobj-between', { 'depends': 'kana/vim-textobj-user' }
 NeoBundle 'thinca/vim-textobj-function-javascript', { 'depends': 'kana/vim-textobj-user' }
 NeoBundle 'thinca/vim-textobj-function-perl', { 'depends': 'kana/vim-textobj-user' }
 NeoBundle 'thinca/vim-visualstar'
