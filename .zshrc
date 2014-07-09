@@ -72,6 +72,8 @@ alias la='ls -a'
 alias ll='ls -l'
 alias lla='ls -la'
 
+alias vim='vim -p'
+
 dotfiles="$HOME/.dotfiles"
 dotfiles_local="$HOME/.dotfiles"
 
@@ -86,6 +88,9 @@ alias elz="vi $dotfiles_local/.zshrc.local"
 alias ele="vi $dotfiles_local/.zshenv.local"
 
 alias rz="exec $SHELL -l"
+
+alias ezrr='ez-codereview'
+alias ezr='ez-codereview mixi-service-3rd-group/mixi'
 
 alias g='git'
 # }}}
