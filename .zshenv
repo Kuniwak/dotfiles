@@ -7,25 +7,25 @@ export EDITOR
 
 MY_RBENV="$HOME/.rbenv"
 if [ -d $MY_RBENV ]; then
-	export PATH="$MY_RBENV/bin:$PATH"
+	export PATH="$MY_RBENV/bin:$MY_RBENV/shims:$PATH"
 	eval "$(rbenv init -)"
 fi
 
 MY_PLENV="$HOME/.plenv"
 if [ -d $MY_PLENV ]; then
-	export PATH="$MY_PLENV/bin:$PATH"
+	export PATH="$MY_PLENV/bin:$MY_PLENV/shims:$PATH"
 	eval "$(plenv init -)"
 fi
 
 MY_NDENV="$HOME/.ndenv"
 if [ -d $MY_NDENV ]; then
-	export PATH="$MY_NDENV/bin:$PATH"
+	export PATH="$MY_NDENV/bin:$MY_NDENV/shims:$PATH"
 	eval "$(ndenv init -)"
 fi
 
 MY_PYENV="$HOME/.pyenv"
 if [ -d $MY_PYENV ]; then
-	export PATH="$MY_PYENV/bin:$PATH"
+	export PATH="$MY_PYENV/bin:$MY_PYENV/shims:$PATH"
 	eval "$(pyenv init -)"
 fi
 
