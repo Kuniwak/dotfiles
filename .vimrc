@@ -62,14 +62,16 @@ noremap <Up> gk
 cnoremap <C-a> <Home>
 cnoremap <C-b> <Left>
 cnoremap <C-d> <Del>
-cnoremap <C-h> <Backspace>
+cnoremap <C-e> <End>
 cnoremap <C-f> <Right>
+cnoremap <C-h> <Backspace>
 cnoremap <C-k> <C-\>e getcmdpos() == 1 ? '' : getcmdline()[:getcmdpos()-2]<CR>
 cnoremap <C-n> <Down>
 cnoremap <C-p> <Up>
 
 inoremap <C-a> <Home>
 inoremap <C-b> <Left>
+inoremap <C-e> <End>
 inoremap <C-d> <Del>
 inoremap <C-h> <Backspace>
 inoremap <C-f> <Right>
@@ -77,12 +79,6 @@ inoremap <C-k> <C-o>D
 
 " Yで行末までヤンク
 noremap Y y$
-
-" ウィンドウ切替
-nnoremap <C-h> <C-w>h
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-l> <C-w>l
 
 " 横幅を87桁にする
 " 87桁は80桁折り返しルールで、行数が1000未満のときに都合がよい
