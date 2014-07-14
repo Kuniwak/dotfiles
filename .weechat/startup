@@ -1,0 +1,47 @@
+#
+# Run
+#   - weechat --no-plugin --no-script --run-command "$(grep -h '^/' ~/.weechat/startup ~/.weechat/startup.local 2> /dev/null | tr '\n' ';')"
+#
+
+#
+# Plugins
+#
+/set weechat.plugin.autoload 'irc,perl,script'
+/plugin autoload
+
+#
+# Style
+#
+/set weechat.bar.status.hidden on
+/set weechat.bar.title.hidden on
+/set weechat.color.separator !darkgray
+/set weechat.look.separator_horizontal ' '
+/set weechat.look.separator_vertical ' '
+/set weechat.bar.nicklist.size 18
+
+#
+# Window
+#
+/set weechat.look.scroll_amount 1
+
+#
+# Key Bindings
+#
+/key bind ctrl-B /window page_up
+/key bind ctrl-F /window page_down
+/key bind ctrl-E /window scroll_down
+/key bind ctrl-Y /window scroll_up
+
+#
+# Scripts
+#
+/script install buffers.pl chanmon.pl highmon.pl iset.pl
+
+/wait 15 /set buffers.color.current_bg default
+/wait 15 /set buffers.color.current_fg yellow
+/wait 15 /set buffers.color.hotlist_message_fg red
+/wait 15 /set buffers.color.hotlist_private_fg green
+/wait 15 /set buffers.color.number_char default
+/wait 15 /set buffers.color.number default
+/wait 15 /set buffers.look.show_number off
+/wait 15 /set weechat.bar.buffers.size 18
