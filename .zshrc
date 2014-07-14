@@ -111,6 +111,10 @@ if has 'peco'; then
 		tmux attach -t `tmux ls -F "#{session_name}" | peco | head -1`
 	}
 	alias ta='tmux-attach-peco'
+
+	git-conflict-peco() {
+		vim -p `git diff --name-only --diff-filter=U | peco`
+	}
 fi
 # }}}
 
