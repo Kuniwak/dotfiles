@@ -274,6 +274,11 @@ let g:quickrun_config["javascript.mocha"] = {
 " Python 3をつかう
 let g:quickrun_config["python.python3"] = {"command" : "python3"}
 
+let g:quickrun_config['perl'] = {
+			\ 'cmdopt': '-Ilib',
+			\ 'command': 'perl',
+			\ }
+
 let g:quickrun_config['perl.prove'] = {
 			\ 'cmdopt': '-lvfm',
 			\ 'command': 'prove',
@@ -358,10 +363,10 @@ let g:neocomplete#sources#dictionary#dictionaries = {
 augroup my_omni_completion
 	autocmd!
 	autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-	autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+	autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTag
 	autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 	autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-	autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+	autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTag
 augroup END
 
 augroup my_neocomplete
@@ -436,6 +441,7 @@ let g:syntastic_perl_lib_path = ['./lib', './local/lib/perl5', './local/lib/perl
 let g:syntastic_perl_perlcritic_args = "--harsh"
 
 let g:syntastic_ruby_checkers = ["rubocop"]
+let g:syntastic_ruby_rubocop_args = "--fail-level warning"
 
 let g:syntastic_coffee_checkers = ["coffee", "coffeelint"]
 
