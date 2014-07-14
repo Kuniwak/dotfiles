@@ -15,6 +15,9 @@ setopt NO_BEEP
 autoload -U colors; colors
 autoload -U compinit; compinit
 
+zstyle ':completion:*:default' menu select=1
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
+
 has() {
 	type "$1" > /dev/null 2>&1
 }
@@ -88,6 +91,22 @@ alias ele="vi $dotfiles_local/.zshenv.local"
 alias rz="exec $SHELL -l"
 
 alias g='git'
+
+alias wee="weechat --no-plugin --no-script --run-command \"\$(grep -h '^/' ~/.weechat/startup ~/.weechat/startup.local 2> /dev/null | tr '\n' ';')\""
+
+if has 'peco'; then
+	ssh-add-peco() {
+		for id_rsa in `ls -1 ~/.ssh/**/id_rsa | peco`; do
+			ssh-add "$id_rsa"
+		done
+	}
+	alias sa='ssh-add-peco'
+
+	tmux-attach-peco() {
+		tmux attach -t `tmux ls -F "#{session_name}" | peco | head -1`
+	}
+	alias ta='tmux-attach-peco'
+fi
 # }}}
 
 ZSH_COMPLETIONS=/usr/local/share/zsh-completions
