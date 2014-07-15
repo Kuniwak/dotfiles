@@ -22,6 +22,8 @@ has() {
 	type "$1" > /dev/null 2>&1
 }
 
+export EDITOR="vim -p"
+
 # Prompt {{{
 setopt PROMPT_SUBST
 autoload -Uz vcs_info
@@ -74,8 +76,6 @@ esac
 alias la='ls -a'
 alias ll='ls -l'
 alias lla='ls -la'
-
-alias vim='vim -p'
 
 dotfiles="$HOME/.dotfiles"
 dotfiles_local="$HOME/.dotfiles"
