@@ -1,13 +1,3 @@
-snippet pm:5.020
-    package ${1};
-    use 5.020;
-    use warnings;
-    use utf8;
-
-    ${0}
-    
-    1;
-
 snippet pm:5.014
     package ${1};
     use 5.014;
@@ -58,17 +48,13 @@ alias sl
 snippet dump
 alias d
     use Data::Dumper;
-    warn Dumper ${0};
-
-snippet dumpconcise
-alias dc
-    use Data::Dumper;
-    use Data::Dumper::Concise;
+    $Data::Dumper::Deparse = 1;
     warn Dumper ${0};
 
 snippet dumpmarker
 alias dm
     use Data::Dumper;
+    $Data::Dumper::Deparse = 1;
     warn '<<<<<<<<<<<<<<<<<<<<<<<<<<<<< $0';
     warn Dumper ${0};
     warn '>>>>>>>>>>>>>>>>>>>>>>>>>>>>> $0';

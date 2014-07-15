@@ -358,7 +358,8 @@ let g:neocomplete#sources#dictionary#dictionaries = {
 			\ "default" : "",
 			\ "javascript" : $HOME."/.vim/dictionary/javascript.dict",
 			\ "javascript.mocha" : $HOME."/.vim/dictionary/javascript.mocha.dict",
-			\ "javascript.closure" : $HOME."/.vim/dictionary/javascript.closure.dict"
+			\ "javascript.closure" : $HOME."/.vim/dictionary/javascript.closure.dict",
+			\ "perl" : $HOME."/.vim/dictionary/perl.dict",
 			\ }
 
 augroup my_omni_completion
