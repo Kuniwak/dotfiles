@@ -98,6 +98,7 @@ alias ezr='ez-codereview mixi-service-3rd-group/mixi'
 alias g='git'
 
 alias wee="weechat --no-plugin --no-script --run-command \"\$(grep -h '^/' ~/.weechat/startup ~/.weechat/startup.local 2> /dev/null | tr '\n' ';')\""
+# }}}
 
 if has 'peco'; then
 	ssh-add-peco() {
@@ -115,8 +116,11 @@ if has 'peco'; then
 	git-conflict-peco() {
 		vim -p `git diff --name-only --diff-filter=U | peco`
 	}
+
+	history-peco() {
+		eval `history -nr 1 | peco`
+	}
 fi
-# }}}
 
 ZSH_COMPLETIONS=/usr/local/share/zsh-completions
 if [ -d $ZSH_COMPLETIONS ]; then
