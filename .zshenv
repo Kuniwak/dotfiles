@@ -34,6 +34,11 @@ if [ -d $MY_CABAL ]; then
 	export PATH="$MY_CABAL/bin:$PATH"
 fi
 
+MY_GHC="/usr/local/ghc-7.8"
+if [ -d $MY_GHC ]; then
+	export PATH="$MY_GHC/bin:$PATH"
+fi
+
 SOCK="/tmp/ssh-agent-$USER"
 if test $SSH_AUTH_SOCK && [ $SSH_AUTH_SOCK != $SOCK ]
 then
