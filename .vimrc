@@ -77,6 +77,11 @@ inoremap <C-h> <Backspace>
 inoremap <C-f> <Right>
 inoremap <C-k> <C-o>D
 
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+
 " Yで行末までヤンク
 noremap Y y$
 
@@ -353,7 +358,8 @@ let g:neocomplete#sources#dictionary#dictionaries = {
 			\ "default" : "",
 			\ "javascript" : $HOME."/.vim/dictionary/javascript.dict",
 			\ "javascript.mocha" : $HOME."/.vim/dictionary/javascript.mocha.dict",
-			\ "javascript.closure" : $HOME."/.vim/dictionary/javascript.closure.dict"
+			\ "javascript.closure" : $HOME."/.vim/dictionary/javascript.closure.dict",
+			\ "perl" : $HOME."/.vim/dictionary/perl.dict",
 			\ }
 
 augroup my_omni_completion
