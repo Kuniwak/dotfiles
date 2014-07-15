@@ -77,6 +77,11 @@ inoremap <C-h> <Backspace>
 inoremap <C-f> <Right>
 inoremap <C-k> <C-o>D
 
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+
 " Yで行末までヤンク
 noremap Y y$
 
