@@ -90,11 +90,6 @@ alias ee"vi $dotfiles/zshenv"
 alias elz="vi $dotfiles_local/.zshrc.local"
 alias ele="vi $dotfiles_local/.zshenv.local"
 
-alias rz="exec $SHELL -l"
-
-alias ezrr='ez-codereview'
-alias ezr='ez-codereview mixi-service-3rd-group/mixi'
-
 alias g='git'
 
 alias wee="weechat --no-plugin --no-script --run-command \"\$(grep -h '^/' ~/.weechat/startup ~/.weechat/startup.local 2> /dev/null | tr '\n' ';')\""
@@ -119,6 +114,12 @@ if has 'peco'; then
 
 	history-peco() {
 		eval `history -nr 1 | peco`
+	}
+
+	git-checkout-remote-peco() {
+		remote_branch=`git remote -a | peco | head -1`
+		branch_name=`sed "s/remotes\/[^\/]*\///"`
+		git checkout -b $branch_name $remote_branch
 	}
 fi
 
