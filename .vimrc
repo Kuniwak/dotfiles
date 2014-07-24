@@ -40,7 +40,6 @@ nmap <C-[><C-[> :nohlsearch<CR><ESC>
 " Insertモードを抜けるときIMEをOff
 set noimdisable
 set iminsert=0 imsearch=0
-set noimcmdline
 inoremap <silent> <ESC> <ESC>:set iminsert=0<CR>
 inoremap <silent> <C-[> <C-[>:set iminsert=0<CR>
 
@@ -422,31 +421,31 @@ augroup END
 "}}}
 
 " Syntastic {{{
-let g:syntastic_mode_map = { "mode": "passive",
-			\ "active_filetypes": ["perl", "ruby", "html", "css", "javascript", "python", "json", "coffee"],
-			\ "passive_filetypes": [] }
+let g:syntastic_mode_map = { 'mode': 'passive',
+			\ 'active_filetypes': ['perl', 'ruby', 'html', 'css', 'javascript', 'python', 'json', 'coffee', 'sh'],
+			\ 'passive_filetypes': [] }
 
-let g:syntastic_closure_library_checkers = ["gjslint"]
-let g:syntastic_closure_library_gjslint_conf = " --disable 5,110 --strict"
+let g:syntastic_closure_library_checkers = ['gjslint']
+let g:syntastic_closure_library_gjslint_conf = ' --disable 5,110 --strict'
 
-let g:syntastic_javascript_checkers = ["jshint"]
+let g:syntastic_javascript_checkers = ['jshint']
 
-let g:syntastic_python_checkers = ["flake8"]
-let g:syntastic_python_flake8_args = "--ignore=E501,E303"
+let g:syntastic_python_checkers = ['flake8']
+let g:syntastic_python_flake8_args = '--ignore=E501,E303'
 
-let g:syntastic_json_checkers = ["jsonlint"]
+let g:syntastic_json_checkers = ['jsonlint']
 
-let g:syntastic_css_checkers = ["csslint"]
+let g:syntastic_css_checkers = ['csslint']
 
-let g:syntastic_perl_checkers = ["perl", "perlcritic", "podchecker"]
+let g:syntastic_perl_checkers = ['perl', 'perlcritic', 'podchecker']
 let g:syntastic_enable_perl_checker = 1
 let g:syntastic_perl_lib_path = ['./lib', './local/lib/perl5', './local/lib/perl5/x86_64-linux']
-let g:syntastic_perl_perlcritic_args = "--harsh"
+let g:syntastic_perl_perlcritic_args = '--harsh'
 
-let g:syntastic_ruby_checkers = ["rubocop"]
-let g:syntastic_ruby_rubocop_args = "--fail-level warning"
+let g:syntastic_ruby_checkers = ['rubocop']
+let g:syntastic_ruby_rubocop_args = '--fail-level warning'
 
-let g:syntastic_coffee_checkers = ["coffee", "coffeelint"]
+let g:syntastic_coffee_checkers = ['coffee', 'coffeelint']
 
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_loc_list_height = 5
