@@ -18,7 +18,7 @@ setup() {
 	if [ -d "$dotfiles" ]; then
 		(cd "$dotfiles" && git pull --rebase)
 	else
-		git clone git@github.com:Kuniwak/.dotfiles "$dotfiles"
+		git clone git@github.com:Kuniwak/dotfiles "$dotfiles"
 	fi
 
 	has git && symlink "$dotfiles/.gitconfig" "$HOME/.gitconfig"
