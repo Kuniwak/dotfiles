@@ -18,7 +18,7 @@ setup() {
 	if [ -d "$dotfiles" ]; then
 		(cd "$dotfiles" && git pull --rebase)
 	else
-		git clone https://github.com/Kuniwak/.dotfiles "$dotfiles"
+		git clone git@github.com:Kuniwak/.dotfiles "$dotfiles"
 	fi
 
 	has git && symlink "$dotfiles/.gitconfig" "$HOME/.gitconfig"
@@ -42,7 +42,7 @@ setup() {
 		if [ -d "$neobundle" ]; then
 			(cd "$neobundle" && git pull --rebase)
 		else
-			git clone https://github.com/Shougo/neobundle.vim "$neobundle/neobundle.vim"
+			git clone git@github.com:Shougo/neobundle.vim "$neobundle/neobundle.vim"
 		fi
 	fi
 }
