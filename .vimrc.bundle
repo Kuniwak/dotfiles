@@ -1,4 +1,5 @@
 NeoBundle 'Kuniwak/tsumekusa-syntax.vim'
+NeoBundle 'Kuniwak/vim-coffee-script'
 NeoBundle 'Kuniwak/vim-javascript'
 NeoBundle 'Kuniwak/vim-prove-syntax'
 NeoBundle 'Kuniwak/vim-qrcode'
@@ -32,7 +33,6 @@ NeoBundle 'kana/vim-textobj-indent', { 'depends': 'kana/vim-textobj-user' }
 NeoBundle 'kana/vim-textobj-syntax', { 'depends': 'kana/vim-textobj-user' }
 NeoBundle 'kana/vim-textobj-underscore', { 'depends': 'kana/vim-textobj-user' }
 NeoBundle 'kana/vim-textobj-user'
-NeoBundle 'kchmck/vim-coffee-script'
 NeoBundle 'mattn/emmet-vim'
 NeoBundle 'mattn/gist-vim', { 'depends': 'mattn/webapi-vim' }
 NeoBundle 'mattn/webapi-vim'
