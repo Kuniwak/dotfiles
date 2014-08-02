@@ -272,8 +272,13 @@ let g:quickrun_config["javascript.mocha"] = {
 			\ "tempfile": '%{tempname()}.js'
 			\ }
 
-" Python 3をつかう
+" 明示的に Python 3をつかう
 let g:quickrun_config["python.python3"] = {"command" : "python3"}
+
+let g:quickrun_config['python.unittest'] = {
+			\ 'command': 'python',
+			\ 'cmdopt': '-m unittest',
+			\ }
 
 let g:quickrun_config['perl'] = {
 			\ 'cmdopt': '-Ilib',

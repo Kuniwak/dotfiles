@@ -1,0 +1,24 @@
+snippet test
+alias t
+  import unittest
+
+  class Test${1:Class}(unittest.TestCase):
+      def test_${2:method}(self):
+          ${0}
+
+  if __name__ == '__main__':
+      unittest.main()
+
+snippet doctest
+alias dt
+  imoort unittest
+  import doctest
+  import ${0:module}
+
+  def load_tests(loader, tests, ignore):
+      suite = doctest.DocTestSuite(my_module_with_doctests)
+      tests.addTests(suite)
+      return tests
+
+  if __name__ == '__main__':
+      unittest.main()
