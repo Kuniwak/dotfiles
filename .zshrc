@@ -91,9 +91,10 @@ alias elz="vi $dotfiles_local/.zshrc.local"
 alias ele="vi $dotfiles_local/.zshenv.local"
 
 alias g='git'
-alias -g B='`git branch -a | peco | head -n 1 | sed -e "s/^\*[ ]*//g"`'
-alias -g R='`git remote | peco | head -n 1`'
-alias -g S='`git log --oneline | peco | head -n 1 | sed "s/^\([0-9a-f]*\).*/\1/"`'
+alias -g B='`git branch -a | peco --prompt "GIT BRANCH>" | head -n 1 | sed -e "s/^\*[ ]*//g"`'
+alias -g R='`git remote | peco --prompt "GIT REMOTE>" | head -n 1`'
+alias -g S='`git log --date=short --pretty="format:%h %cd %an%d %s" | peco --prompt "GIT SHA1>" | head -n 1 | sed "s/^\([0-9a-f]*\).*/\1/"`'
+alias -g D='`echo S | git diff --name-only | peco --prompt "GIT DIFF FILE>" | head -n 1 | sed "s/^\(\S*\).*/\1/"`'
 
 alias wee="weechat --no-plugin --no-script --run-command \"\$(grep -h '^/' ~/.weechat/startup ~/.weechat/startup.local 2> /dev/null | tr '\n' ';')\""
 # }}}
