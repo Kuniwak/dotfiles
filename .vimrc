@@ -328,7 +328,7 @@ nnoremap <silent> <Leader>ub :<C-u>Unite buffer<CR>
 nnoremap <silent> <Leader>uc :<C-u>Unite colorscheme -auto-preview<CR>
 nnoremap <silent> <Leader>uf :<C-u>Unite file<CR>
 nnoremap <silent> <Leader>ul :<C-u>Unite line<CR>
-nnoremap <silent> <Leader>um :<C-u>Unite -default-action=open file_mru:all<CR>
+nnoremap <silent> <Leader>um :<C-u>Unite -default-action=open file_mru<CR>
 nnoremap <silent> <Leader>uo :<C-u>Unite outline<CR>
 nnoremap <silent> <Leader>ui :<C-u>Unite neobundle/install<CR>
 nnoremap <silent> <Leader>us :<C-u>Unite neobundle/search<CR>
