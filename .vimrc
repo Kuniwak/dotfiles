@@ -68,7 +68,7 @@ cnoremap <C-k> <C-\>e getcmdpos() == 1 ? '' : getcmdline()[:getcmdpos()-2]<CR>
 cnoremap <C-n> <Down>
 cnoremap <C-p> <Up>
 
-inoremap <C-a> <Home>
+inoremap <C-a> <C-o>^
 inoremap <C-b> <Left>
 inoremap <C-e> <End>
 inoremap <C-d> <Del>
@@ -224,8 +224,21 @@ augroup END
 " }}}
 
 " ファイルタイプ設定 {{{
+function! s:IsPythonTest()
+	if match(expand('%:p'), 'test') > 0
+		set filetype=python.pytest
+	endif
+endfunction
+
+function! s:IsPerlTest()
+	if match(expand('%:p'), 'test') > 0
+		set filetype=perl.carton-prove
+	endif
+endfunction
+
 augroup my_file_type
 	autocmd!
+	autocmd FileType python call s:IsPythonTest()
 	autocmd BufNewFile,BufRead *.js.map setf json
 	autocmd BufNewFile,BufRead *.webapp setf json
 	autocmd BufNewFile,BufRead .jshintrc setf json
@@ -273,11 +286,15 @@ let g:quickrun_config["javascript.mocha"] = {
 			\ }
 
 " 明示的に Python 3をつかう
-let g:quickrun_config["python.python3"] = {"command" : "python3"}
+let g:quickrun_config['python.python3'] = {'command' : 'python3'}
 
 let g:quickrun_config['python.unittest'] = {
-			\ 'command': 'python',
-			\ 'cmdopt': '-m unittest',
+			\ 'command' : 'python',
+			\ 'cmdopt' : '-m unittest',
+			\ }
+
+let g:quickrun_config['python.pytest'] = {
+			\ 'command' : 'py.test',
 			\ }
 
 let g:quickrun_config['perl'] = {
@@ -314,10 +331,6 @@ let g:vimfiler_as_default_explorer = 1
 " セーフモードを無効にした状態で起動する
 let g:vimfiler_safe_mode_by_default = 0
 
-" バックアップファイルとかを無視する
-let g:vimfiler_ignore_pattern = '\~$'
-
-" 現在開いているバッファをIDE風に開く
 nnoremap <silent> <Leader>vf :<C-u>VimFilerBufferDir<CR>
 "}}}
 
