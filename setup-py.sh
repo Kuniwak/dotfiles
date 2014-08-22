@@ -1,6 +1,5 @@
 #!/bin/sh
 
-set -e
 set -u
 
 has() {
@@ -8,14 +7,15 @@ has() {
 }
 
 setup_pyenv() {
+	RECOMMENDED_PY_VAR='3.4.1'
 	git clone git://github.com/tokuhirom/pyenv.git "$HOME/.pyenv"
 	git clone git://github.com/tokuhirom/Perl-Build.git "$HOME/.pyenv/plugins/perl-build/"
 
 	export PATH="$HOME/.pyenv/bin:$PATH"
 	eval "$(pyenv init -)"
 
-	pyenv install $RECOMMENDED_PL_VAR
-	pyenv global $RECOMMENDED_PL_VAR
+	pyenv install $RECOMMENDED_PY_VAR
+	pyenv global $RECOMMENDED_PY_VAR
 }
 
 setup_pip() {
@@ -32,4 +32,12 @@ setup_pip() {
 setup_flake8() {
 	has pip || setup_pip
 	sudo pip install flake8
+	pyenv rehash
 }
+
+setup_python() {
+	setup_pip
+	setup_flake8
+}
+
+setup_python

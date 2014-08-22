@@ -1,6 +1,5 @@
 #!/bin/sh
 
-set -e
 set -u
 
 has() {
@@ -17,18 +16,23 @@ setup_ndenv() {
 
 	ndenv install $RECOMMENDED_NODE_VAR
 	ndenv global $RECOMMENDED_NODE_VAR
-	ndenv rehash
 }
 
 setup_jshint() {
 	has ndenv || setup_ndenv
 	npm -g jshint
+	ndenv rehash
 }
 
 setup_grunt_cli() {
 	has ndenv || setup_ndenv
 	npm -g grunt_cli
+	ndenv rehash
 }
 
-setup_jshint
-setup_grunt_cli
+setup_node() {
+	has jshint || setup_jshint
+	has grunt || setup_grunt_cli
+}
+
+setup_node

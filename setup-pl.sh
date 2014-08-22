@@ -1,6 +1,5 @@
 #!/bin/sh
 
-set -e
 set -u
 
 has() {
@@ -22,17 +21,26 @@ setup_plenv() {
 setup_cpanm() {
 	has plenv || setup_plenv
 	plenv install-cpanm
+	plenv rehash
 }
 
 setup_carton() {
+	has plenv || setup_plenv
 	has cpanm || setup_cpanm
 	cpanm install Carton
+	plenv rehash
 }
 
 setup_perlcritic() {
+	has plenv || setup_plenv
 	has cpanm || setup_cpanm
 	cpanm install Perl::Critic
+	plenv rehash
 }
 
-setup_carton
-setup_perlcritic
+setup_perl() {
+	has carton || setup_carton
+	has perlcritic || setup_perlcritic
+}
+
+setup_perl
