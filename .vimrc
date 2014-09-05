@@ -225,20 +225,13 @@ augroup END
 
 " ファイルタイプ設定 {{{
 function! s:IsPythonTest()
-	if match(expand('%:p'), 'test') > 0
+	if match(expand('%:p'), '\<test\>') > 0
 		set filetype=python.pytest
-	endif
-endfunction
-
-function! s:IsPerlTest()
-	if match(expand('%:p'), 'test') > 0
-		set filetype=perl.carton-prove
 	endif
 endfunction
 
 augroup my_file_type
 	autocmd!
-	autocmd FileType python call s:IsPythonTest()
 	autocmd BufNewFile,BufRead *.js.map setf json
 	autocmd BufNewFile,BufRead *.webapp setf json
 	autocmd BufNewFile,BufRead .jshintrc setf json
@@ -248,9 +241,13 @@ augroup my_file_type
 	autocmd BufNewFile,BufRead *.pac setf javascript
 	autocmd BufNewFile,BufRead Guardfile setf ruby
 	autocmd BufNewFile,BufRead Gruntfile setf javascript
+
+	autocmd FileType python call s:IsPythonTest()
+
 	autocmd BufNewFile,BufRead cpanfile setf perl
-	autocmd BufNewFile,BufRead *.pm set filetype=perl.carton
-	autocmd BufNewFile,BufRead *.t set filetype=perl.prove
+	autocmd FileType perl set filetype=perl.carton
+	autocmd BufNewFile,BufRead *.t set filetype=perl.carton-prove
+
 	" setf を上書きするために set filetype=markdown で強制的に ft 変更
 	autocmd BufNewFile,BufRead *.md set filetype=markdown
 augroup END
@@ -303,7 +300,7 @@ let g:quickrun_config['perl'] = {
 			\ }
 
 let g:quickrun_config['perl.prove'] = {
-			\ 'cmdopt': '-lvfm',
+			\ 'cmdopt': '-lvfm --norc',
 			\ 'command': 'prove',
 			\ 'outputter/buffer/filetype': 'prove-output',
 			\ 'shebang': 0,
@@ -315,7 +312,7 @@ let g:quickrun_config['perl.carton'] = {
 			\ }
 
 let g:quickrun_config['perl.carton-prove'] = {
-			\ 'cmdopt': '-lvfm',
+			\ 'cmdopt': '-lvfm --norc',
 			\ 'exec': 'carton exec "prove %o %s:p %a"',
 			\ 'outputter/buffer/filetype': 'prove-output',
 			\ 'shebang': 0,
