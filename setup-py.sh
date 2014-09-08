@@ -8,8 +8,7 @@ has() {
 
 setup_pyenv() {
 	RECOMMENDED_PY_VAR='3.4.1'
-	git clone git://github.com/tokuhirom/pyenv.git "$HOME/.pyenv"
-	git clone git://github.com/tokuhirom/Perl-Build.git "$HOME/.pyenv/plugins/perl-build/"
+	git clone git@github.com:yyuu/pyenv.git "$HOME/.pyenv"
 
 	export PATH="$HOME/.pyenv/bin:$PATH"
 	eval "$(pyenv init -)"
@@ -25,6 +24,7 @@ setup_pip() {
 
 	cd /tmp
 	curl -O https://bootstrap.pypa.io/get-pip.py
+	echo 'Type password or abort installation for pip.'
 	sudo python get-pip.py
 	cd $cwd
 }
