@@ -307,12 +307,12 @@ let g:quickrun_config['perl.prove'] = {
 			\ }
 
 let g:quickrun_config['perl.carton'] = {
-			\ 'cmdopt': '-Ilib',
+			\ 'cmdopt': '-Ilib -It_lib',
 			\ 'exec': 'carton exec "perl %o %s:p %a"',
 			\ }
 
 let g:quickrun_config['perl.carton-prove'] = {
-			\ 'cmdopt': '-lvfm --norc',
+			\ 'cmdopt': '-It_lib -lvfm --norc',
 			\ 'exec': 'carton exec "prove %o %s:p %a"',
 			\ 'outputter/buffer/filetype': 'prove-output',
 			\ 'shebang': 0,
