@@ -472,7 +472,7 @@ nnoremap <silent> <Leader>sr :<C-u>SyntasticReset<CR>
 " Fugitive {{{
 nnoremap <silent> <Leader>gb :Gblame<CR>
 nnoremap <silent> <Leader>gd :Gdiff<CR>
-nnoremap <silent> <Leader>gs :Gstatus<CR>
+nnoremap <silent> <Leader>gs :!tig status<CR>
 nnoremap <silent> <Leader>gp :Git pull<CR>
 nnoremap <silent> <Leader>gP :Git push<CR>
 " }}}
