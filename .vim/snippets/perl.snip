@@ -1,5 +1,7 @@
+# Perl lang snippets {{{
 snippet pm:5.014
-    package ${1};
+options head
+    package ${1:`substitute(substitute(expand('%'), '\(^lib\/\|\.pm$\)', '', 'g'), '/', '::', 'g')`};
     use 5.014;
     use warnings;
     use utf8;
@@ -8,12 +10,11 @@ snippet pm:5.014
     
     1;
 
-snippet constant
-alias cons
-alias c
-    use constant {
+snippet sub
+alias s
+    sub ${1} {
         ${0}
-    };
+    }
 
 snippet new
 alias n
@@ -23,28 +24,66 @@ alias n
     }, $class;
   }
 
-snippet method
-alias m
-    sub ${1} {
-        ${0}
-    }
-
 snippet class
 alias c
-    my $class = shift;
+    my ($class) = @_;
+    ${0}
 
-snippet class_list
-alias cl
-    my ($class, ${0}) = @_;
+snippet class
+    my ($class, ${1}) = @_;
+    ${0}
 
 snippet self
 alias s
-    my $self = shift;
+    my ($self) = @_;
+    ${0}
 
-snippet self_list
-alias sl
-    my ($self, ${0}) = @_;
+snippet self
+    my ($self, ${1}) = @_;
+    ${0}
 
+snippet no_critic
+alias noc
+    ## no critic (${1:#:policy_name})
+
+snippet qw/
+    qw/${0}/
+
+snippet qw|
+    qw|${0}|
+
+snippet qw(
+    qw(${0})
+
+snippet qr/
+    qr/${0}/xms
+
+snippet qr(
+    qr(${0})xms
+
+snippet unless
+    unless (${1}) {
+        ${0}
+    }
+
+snippet foreach
+    foreach my ${1} (${2}) {
+        ${0}
+    }
+# }}}
+
+
+snippet val
+alias v
+    my ($self, @args) = @_;
+    state $rule = Data::Validator->new(
+        ${0}
+    );
+
+    my $validated = $rule->validate(@args);
+
+
+# Debugging snippets {{{
 snippet dump
 alias d
     use Data::Dumper;
@@ -58,17 +97,24 @@ alias dm
     warn '<<<<<<<<<<<<<<<<<<<<<<<<<<<<< $0';
     warn Dumper ${0};
     warn '>>>>>>>>>>>>>>>>>>>>>>>>>>>>> $0';
+# }}}
 
-snippet val
-alias v
-    my ($self, @args) = @_;
-    state $rule = Data::Validator->new(
-        ${0}
-    );
 
-    my $validated = $rule->validate(@args);
+# General test snippets {{{
+snippet mock_module
+    my $mock_module = Test::MockModule->new('${1}');
+    $mock_module->mock('${2:#:subroutine_name}', sub { ${3} });
 
-snippet test
+
+snippet mock_obj
+    my $mock_obj = Test::MockObject->new();
+    $mock_obj->mock('${1:#:subroutine_name}', sub { ${2} });
+# }}}
+
+
+# Test::More snippets {{{
+snippet test:more
+options head
 alias t
     #! /use/bin/env perl
     use strict;
@@ -103,26 +149,157 @@ alias cok
         /
     );
 
+snippet ok_diag
+alias okd
+    ok(${1:#:target}, '${2:#:message}') or diag explain $1;${0}
+
+snippet is_diag
+alias isd
+    is(${1:#:actual}, ${2:#:expected}, '${3:#:message}') or diag explain $1;${0}
+
+snippet cmp_deeply_diag
+alias cdd
+    cmp_deeply(${1:#:actual}, ${2:#:expected}, '${3:#:message}') or diag explain $1;${0}
+
+snippet plan_skip
+alias skipp
+    plan skip_all => '${1:#:reason}';
+# }}}
+
+
+# Test::Kantan snippets {{{
+snippet test:kantan
+options head
+    #! /use/bin/env perl
+    use strict;
+    use warnings;
+    use utf8;
+    use Test::Kantan;
+
+    ${0}
+
+    done_testing;
+
+snippet describe
+alias desc
+    describe '${1}', sub {
+        ${0}
+    };
+
+snippet it
+    it '${1}', sub {
+        ${0}
+    };
+
+snippet context
+    context '${1}', sub {
+        ${0}
+    };
+
+snippet setup
+alias su
+    setup {
+        ${0}
+    };
+
+snippet teardown
+alias td
+    teardown {
+        ${0}
+    };
+
+snippet before_each
+alias be
+    before_each {
+        ${0}
+    };
+
+snippet after_each
+alias ae
+    after_each {
+        ${0}
+    };
+
 snippet ok
-    ok(${1:target}, '${2:message}') or diag explain $1;${0}
+    ok {${0}};
 
-snippet is
-    is(${1:actual}, ${2:expected}, '${3:message}') or diag explain $1;${0}
+snippet use_ok
+    it 'should be loaded successfully', sub {
+        ok { require ${1:substitute(substitute(expand('%'), '\(^t\/lib\/\|\.t$\)', '', 'g'), '/', '::', 'g')} };
+    };
+    ${0}
 
-snippet is_deeply
-    is_deeply(${1:actual}, ${2:expected}, '${3:message}') or diag explain $1;${0}
+snippet setup
+    setup {
+        require ${1:#:FQN};
+        $1->import(${2:#:LIST});
+    };
+    ${0}
+
+snippet expect
+alias exp
+    expect(${1})->${0}
+
+snippet not
+    not()${0}
+
+snippet to_be_defined
+    to_be_defined()${0}
+
+snippet to_be_truthy
+    to_be_truthy()${0}
+
+snippet to_be_falsey
+    to_be_falsey()${0}
+
+snippet to_equal
+    to_equal(${1})${0}
+
+snippet to_be
+    to_be(${1})${0}
+
+snippet to_throw
+    to_throw()${0}
+
+snippet to_match
+    to_match(${1})${0}
+
+snippet to_be_a
+    to_be_a(${1})${0}
+
+snippet to_be_a_bag_of
+    to_be_a_bag_of(${1})${0}
+
+snippet to_be_a_set_of
+    to_be_a_set_of(${1})${0}
+
+snippet to_be_a_super_bag_of
+    to_be_a_super_bag_of(${1})${0}
+
+snippet to_be_a_super_set_of
+    to_be_a_super_set_of(${1})${0}
+
+snippet to_be_a_super_hash_of
+    to_be_a_super_hash_of(${1})${0}
+
+snippet to_be_a_sub_bag_of
+    to_be_a_sub_bag_of(${1})${0}
+
+snippet to_be_a_sub_set_of
+    to_be_a_sub_set_of(${1})${0}
+
+snippet to_be_a_sub_hash_of
+    to_be_a_sub_hash_of(${1})${0}
 
 snippet skip
-alias sk
-    plan skip_all => '${1:reason}';
+    skip_all;
+# }}}
 
-snippet no_critic
-alias noc
-    ## no critic (${1:policy_name})
 
+# POD snippets {{{
 snippet podmethod
 alias podm
-    =head3 C<<${1}>>
+    =head3 C<<${1:#:method_name}>>
 
     =head4 PARAMETERS
 
@@ -146,7 +323,7 @@ alias podh
 
     =head1 NAME
 
-    ${1:NAME}
+    ${1:#:package_name}
 
     =head1 SYNOPSIS
 
@@ -175,6 +352,9 @@ alias podt
 
     =head1 AUTHOR
 
-    Kuniwak (yuki.kokubun@mixi.co.jp)
+    ${1:`system('git config user.name')`} (${2:`system('git config user.email')`})
 
     =cut
+# }}}
+
+# vim: fdm=marker
