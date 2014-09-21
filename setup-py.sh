@@ -2,15 +2,18 @@
 
 set -u
 
+$RECOMMENDED_PY_VAR='3.4.1'
+
 has() {
 	type "$1" > /dev/null 2>&1
 }
 
 setup_pyenv() {
-	RECOMMENDED_PY_VAR='3.4.1'
 	git clone git@github.com:yyuu/pyenv.git "$HOME/.pyenv"
+	git clone https://github.com/yyuu/pyenv-virtualenv.git "$HOME/.pyenv/plugins/pyenv-virtualenv"
 
 	export PATH="$HOME/.pyenv/bin:$PATH"
+	export PIP_REQUIRE_VIRTUALENV=true
 	eval "$(pyenv init -)"
 
 	pyenv install $RECOMMENDED_PY_VAR
