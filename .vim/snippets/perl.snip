@@ -1,4 +1,23 @@
 # Perl lang snippets {{{
+snippet pm:strict
+options head
+    package ${1:`substitute(substitute(expand('%'), '\(^lib\/\|\.pm$\)', '', 'g'), '/', '::', 'g')`};
+    use strict;
+    use warnings;
+    use utf8;
+
+    ${0}
+    
+    1;
+
+snippet pl
+options head
+    use strict;
+    use warnings;
+    use utf8;
+
+    ${0}
+
 snippet pm:5.014
 options head
     package ${1:`substitute(substitute(expand('%'), '\(^lib\/\|\.pm$\)', '', 'g'), '/', '::', 'g')`};
@@ -29,7 +48,8 @@ alias c
     my ($class) = @_;
     ${0}
 
-snippet class
+snippet class_arg
+alias ca
     my ($class, ${1}) = @_;
     ${0}
 
@@ -38,7 +58,8 @@ alias s
     my ($self) = @_;
     ${0}
 
-snippet self
+snippet self_arg
+alias sa
     my ($self, ${1}) = @_;
     ${0}
 
@@ -175,6 +196,8 @@ options head
     use warnings;
     use utf8;
     use Test::Kantan;
+    use Test::MockModule;
+    use Test::MockObject;
 
     ${0}
 
@@ -191,8 +214,18 @@ snippet it
         ${0}
     };
 
+snippet should
+    it 'should ${1}', sub {
+        ${0}
+    };
+
 snippet context
     context '${1}', sub {
+        ${0}
+    };
+
+snippet when
+    context 'when ${1}', sub {
         ${0}
     };
 
