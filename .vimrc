@@ -328,6 +328,22 @@ let g:vimfiler_as_default_explorer = 1
 " セーフモードを無効にした状態で起動する
 let g:vimfiler_safe_mode_by_default = 0
 
+" VimFiler で無視するファイルを指定
+"   - 隠しファイル
+"   - swap ファイル
+"   - python の byte code cache
+let g:vimfiler_ignore_pattern='\(^\.\|\~$\|\.sw[opn]\|\.pyc$\|__pycache__\)'
+
+function! s:change_vimfiler_mapping()
+	unmap <buffer> <C-j>
+	unmap <buffer> <C-l>
+endfunction
+
+augroup vimrc_vimfiler
+	autocmd!
+	autocmd FileType vimfiler call s:change_vimfiler_mapping()
+augroup END
+
 nnoremap <silent> <Leader>vf :<C-u>VimFilerBufferDir<CR>
 "}}}
 
@@ -454,7 +470,7 @@ let g:syntastic_css_checkers = ['csslint']
 
 let g:syntastic_perl_checkers = ['perl', 'perlcritic', 'podchecker']
 let g:syntastic_enable_perl_checker = 1
-let g:syntastic_perl_lib_path = ['./lib', './local/lib/perl5', './local/lib/perl5/x86_64-linux']
+let g:syntastic_perl_lib_path = ['./lib', './t_lib', './local/lib/perl5', './local/lib/perl5/x86_64-linux']
 let g:syntastic_perl_perlcritic_args = '--harsh'
 
 let g:syntastic_ruby_checkers = ['rubocop']
