@@ -335,8 +335,8 @@ let g:vimfiler_safe_mode_by_default = 0
 let g:vimfiler_ignore_pattern='\(^\.\|\~$\|\.sw[opn]\|\.pyc$\|__pycache__\)'
 
 function! s:change_vimfiler_mapping()
-	unmap <buffer> <C-j>
-	unmap <buffer> <C-l>
+	" unmap <buffer> <C-j>
+	" unmap <buffer> <C-l>
 endfunction
 
 augroup vimrc_vimfiler
