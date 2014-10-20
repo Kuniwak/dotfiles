@@ -1,9 +1,11 @@
 if type vim > /dev/null 2>&1; then
-	EDITOR=vim
+	export EDITOR='vim'
+	export GIT_EDITOR='vim'
+	alias vi='vim'
 else
-	EDITOR=vi
+	export EDITOR='vi'
+	export GIT_EDITOR='vi'
 fi
-export EDITOR
 
 MY_RBENV="$HOME/.rbenv"
 if [ -d $MY_RBENV ]; then
