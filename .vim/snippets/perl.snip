@@ -92,6 +92,11 @@ snippet foreach
     foreach my ${1} (${2}) {
         ${0}
     }
+
+snippet while
+    while (my (${1:#:$key}, ${2:#:$value}) = each(${3:#:HASHREF or HASH})) {
+        ${0}
+    }
 # }}}
 
 
