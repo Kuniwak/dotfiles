@@ -241,6 +241,7 @@ augroup my_file_type
 	autocmd BufNewFile,BufRead *.pac setf javascript
 	autocmd BufNewFile,BufRead Guardfile setf ruby
 	autocmd BufNewFile,BufRead Gruntfile setf javascript
+	autocmd BufNewFile,BufRead .perlcriticrc setf perlcriticrc
 
 	autocmd FileType python call s:IsPythonTest()
 
@@ -385,12 +386,14 @@ let g:neocomplete#sources#file_include#exprs.perl =
 let g:neocomplete#sources#omni#input_patterns.perl =
 			\ "[^. \t]->\%(\h\w*\)\?\|\h\w*::\%(\h\w*\)\?"
 
+let s:neocomplete_dict_home = $HOME.'/.vim/dictionary'
 let g:neocomplete#sources#dictionary#dictionaries = {
-			\ "default" : "",
-			\ "javascript" : $HOME."/.vim/dictionary/javascript.dict",
-			\ "javascript.mocha" : $HOME."/.vim/dictionary/javascript.mocha.dict",
-			\ "javascript.closure" : $HOME."/.vim/dictionary/javascript.closure.dict",
-			\ "perl" : $HOME."/.vim/dictionary/perl.dict",
+			\ 'default': '',
+			\ 'javascript': s:neocomplete_dict_home.'/javascript.dict',
+			\ 'javascript.mocha': s:neocomplete_dict_home.'/javascript.mocha.dict',
+			\ 'javascript.closure': s:neocomplete_dict_home.'/javascript.closure.dict',
+			\ 'perl': s:neocomplete_dict_home.'/perl.dict',
+			\ 'perlcriticrc': s:neocomplete_dict_home.'/perlcriticrc.dict',
 			\ }
 
 augroup my_omni_completion
