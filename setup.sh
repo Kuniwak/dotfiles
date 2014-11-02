@@ -21,11 +21,12 @@ setup() {
 		git clone git@github.com:Kuniwak/dotfiles "$dotfiles"
 	fi
 
-	has git && symlink "$dotfiles/.gitconfig" "$HOME/.gitconfig"
-	has git && symlink "$dotfiles/.gitignore.global" "$HOME/.gitignore.global"
-	has curl && symlink "$dotfiles/.curlrc" "$HOME/.curlrc"
-	has tig && symlink "$dotfiles/.tigrc" "$HOME/.tigrc"
-	has tmux && symlink "$dotfiles/.tmux.conf" "$HOME/.tmux.conf"
+	symlink "$dotfiles/.gitconfig" "$HOME/.gitconfig"
+	symlink "$dotfiles/.gitignore.global" "$HOME/.gitignore.global"
+	symlink "$dotfiles/.curlrc" "$HOME/.curlrc"
+	symlink "$dotfiles/.tigrc" "$HOME/.tigrc"
+	symlink "$dotfiles/.tmux.conf" "$HOME/.tmux.conf"
+	symlink "$dotfiles/.agignore" "$HOME/.agignore"
 
 	if has zsh; then
 		symlink "$dotfiles/.zshrc" "$HOME/.zshrc"

@@ -1,0 +1,8 @@
+*~
+*.swp
+*.bak
+*.old
+tmp
+.git
+*.egg
+*.egg-info
