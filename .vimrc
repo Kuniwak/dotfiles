@@ -57,6 +57,15 @@ noremap gk k
 noremap <Down> gj
 noremap <Up> gk
 
+"" Ctrl-a Ctrl-eで移動できるようにする
+function! MoveCursorToHome()
+  let c = col(".")
+  exec "normal! ^"
+  if col(".") == c
+    exec "normal! 0"
+  endif
+endfunction
+
 " コマンドモードでemacsキーバインドを使えるようにする
 cnoremap <C-a> <Home>
 cnoremap <C-b> <Left>
@@ -68,7 +77,7 @@ cnoremap <C-k> <C-\>e getcmdpos() == 1 ? '' : getcmdline()[:getcmdpos()-2]<CR>
 cnoremap <C-n> <Down>
 cnoremap <C-p> <Up>
 
-inoremap <C-a> <C-o>^
+inoremap <silent> <C-a> <C-o>:call MoveCursorToHome()<CR>
 inoremap <C-b> <Left>
 inoremap <C-e> <End>
 inoremap <C-d> <Del>
@@ -76,14 +85,20 @@ inoremap <C-h> <Backspace>
 inoremap <C-f> <Right>
 inoremap <C-k> <C-o>D
 
+nnoremap <silent> <C-a> :call MoveCursorToHome()<CR>
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
+xnoremap <silent> <C-a> :call MoveCursorToHome()<CR>
+
 " Yで行末までヤンク
 noremap Y y$
 noremap vv V
+
+" 検索時に/をエスケープ
+cnoremap <expr>/ getcmdtype() == '/' ? '\/' : '/'
 
 " 横幅を87桁にする
 " 87桁は80桁折り返しルールで、行数が1000未満のときに都合がよい
