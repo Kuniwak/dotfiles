@@ -39,7 +39,9 @@ precmd () {
 	LANG=en_US.UTF-8 vcs_info
 	[[ -n "$vcs_info_msg_0_" ]] && psvar[1]="$vcs_info_msg_0_"
 
-	PROMPT="%F{green}[%D{%m/%d %T}]%f → " 
+	DEFAULT=$'%F{green}[%D{%m/%d %T}]%f → '
+	ERROR=$'%F{red}[%D{%m/%d %T}]%f → '
+	PROMPT=$'%(?.${DEFAULT}.${ERROR}) '
 	RPROMPT="%1(v|%F{red}%1v%f|) %F{cyan}%d%f %F{magenta}%n%f"
 }
 # }}}
