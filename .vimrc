@@ -184,9 +184,9 @@ noremap N Nzz
 inoremap ( ()<Left>
 inoremap [ []<Left>
 inoremap { {}<Left>
-inoremap (<Enter> (<C-m>)<Esc>O
-inoremap [<Enter> [<C-m>]<Esc>O
-inoremap {<Enter> {<C-m>}<Esc>O
+inoremap (<CR> (<C-m>)<C-o>O
+inoremap [<CR> [<C-m>]<C-o>O
+inoremap {<CR> {<C-m>}<C-o>O
 inoremap (<Space> (<Space><Space>)<Left><Left>
 inoremap [<Space> [<Space><Space>]<Left><Left>
 inoremap {<Space> {<Space><Space>}<Left><Left>
