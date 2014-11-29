@@ -85,7 +85,6 @@ inoremap <C-h> <Backspace>
 inoremap <C-f> <Right>
 inoremap <C-k> <C-o>D
 
-nnoremap <silent> <C-a> :call MoveCursorToHome()<CR>
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
