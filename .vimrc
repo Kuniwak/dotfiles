@@ -473,6 +473,8 @@ let g:syntastic_mode_map = { 'mode': 'passive',
 			\ 'active_filetypes': ['perl', 'ruby', 'html', 'css', 'javascript', 'python', 'json', 'coffee', 'sh'],
 			\ 'passive_filetypes': [] }
 
+let g:syntastic_html_tidy_ignore_errors=[" proprietary attribute \"ng-"]
+
 let g:syntastic_closure_library_checkers = ['gjslint']
 let g:syntastic_closure_library_gjslint_conf = ' --disable 5,110 --strict'
 
@@ -496,7 +498,7 @@ let g:syntastic_ruby_rubocop_args = '--fail-level warning'
 let g:syntastic_coffee_checkers = ['coffee', 'coffeelint']
 
 let g:syntastic_auto_loc_list = 1
-let g:syntastic_loc_list_height = 5
+let g:syntastic_loc_list_height = 1
 
 nnoremap <silent> <Leader>sc :<C-u>SyntasticCheck<CR>
 nnoremap <silent> <Leader>sr :<C-u>SyntasticReset<CR>
