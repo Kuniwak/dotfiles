@@ -32,6 +32,7 @@ setup() {
 		symlink "$dotfiles/.zshrc" "$HOME/.zshrc"
 		symlink "$dotfiles/.zshenv" "$HOME/.zshenv"
 		symlink "$dotfiles/.zshprofile" "$HOME/.zshprofile"
+		git clone https://github.com/zsh-users/zsh-syntax-highlighting.git "$HOME/.zsh-syntax-highlighting"
 	fi
 
 	if has vim; then
