@@ -1,3 +1,7 @@
+has() {
+	type "$1" > /dev/null 2>&1
+}
+
 if type vim > /dev/null 2>&1; then
 	export EDITOR='vim'
 	export GIT_EDITOR='vim'
@@ -53,6 +57,11 @@ then
     ln -sf $SSH_AUTH_SOCK $SOCK
     export SSH_AUTH_SOCK=$SOCK
 fi
+
+if has 'npm'; then
+	export PATH="$(npm bin):$PATH"
+fi
+
 
 #eval "$(hub alias -s)"
 
