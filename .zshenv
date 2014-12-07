@@ -58,10 +58,6 @@ then
     export SSH_AUTH_SOCK=$SOCK
 fi
 
-if has 'npm'; then
-	export PATH="$(npm bin):$PATH"
-fi
-
 
 #eval "$(hub alias -s)"
 
