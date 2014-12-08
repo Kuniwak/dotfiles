@@ -119,6 +119,10 @@ if has 'peco'; then
 fi
 # }}}
 
+if has 'npm'; then
+	export PATH="$(npm bin):$PATH"
+fi
+
 if has 'peco'; then
 	ssh-add-peco() {
 		for id_rsa in `ls -1 ~/.ssh/**/id_rsa | peco`; do
