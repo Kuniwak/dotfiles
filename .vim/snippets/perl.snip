@@ -161,7 +161,7 @@ alias st
         ${0}
     };
 
-snippet use_ok
+snippet use_ok:more
 alias uok
     BEGIN {
         use_ok qw/${0}/;
@@ -262,7 +262,7 @@ alias ae
 snippet ok
     ok {${0}};
 
-snippet use_ok
+snippet use_ok:kantan
     it 'should be loaded successfully', sub {
         ok { require ${1:`substitute(substitute(expand('%'), '\(^t\/lib\/\|\.t$\)', '', 'g'), '/', '::', 'g')`} };
     };
