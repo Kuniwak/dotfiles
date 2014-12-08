@@ -15,6 +15,7 @@ NeoBundle 'airblade/vim-gitgutter'
 NeoBundle 'airblade/vim-rooter'
 NeoBundle 'alpaca-tc/neorspec.vim', { 'depends' : 'tpope/vim-rails' }
 NeoBundle 'altercation/vim-colors-solarized'
+NeoBundle 'autowitch/hive.vim'
 NeoBundle 'c9s/perlomni.vim'
 NeoBundle 'cocopon/colorswatch.vim'
 NeoBundle 'cocopon/googkit.vim'
