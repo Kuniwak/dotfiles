@@ -58,6 +58,11 @@ then
     export SSH_AUTH_SOCK=$SOCK
 fi
 
+JAVA_HOME_DETECTOR="/usr/libexec/java_home"
+if [ -x "$JAVA_HOME_DETECTOR" ]; then
+	export JAVA_HOME="$($JAVA_HOME_DETECTOR)"
+fi
+
 
 #eval "$(hub alias -s)"
 
