@@ -4,7 +4,6 @@ scriptencoding utf-8
 filetype off
 
 if has("vim_starting")
-	set nocompatible
 	set runtimepath+=~/.vim/bundle/neobundle.vim
 endif
 
@@ -199,6 +198,10 @@ inoremap } <ESC>f}a
 " jj で ESC
 inoremap jj <ESC>
 
+" Undo履歴をファイルに保存する
+set undodir=$HOME/.vim-undodir
+set undofile
+
 " 縦分割したら新しいウィンドウは右に
 set splitright
 
@@ -214,6 +217,8 @@ set diffopt+=vertical
 
 " Beep を消す
 set visualbell t_vb=
+
+nnoremap ,v :<c-u>cexpr system('vint ' . expand('%'))<cr>
 
 " 保存時に行末の空白を除去する {{{
 function! s:remove_dust()
@@ -477,6 +482,8 @@ let g:syntastic_html_tidy_quiet_messages = {
 			\ 'regex': [
 			\   '\V\ctrimming empty <i>',
 			\   '\V\cproprietary attribute "ng-',
+			\   '\V\cproprietary attribute "min',
+			\   '\V\cproprietary attribute "max',
 			\   '\V\cunescaped &',
 			\   '\V\clacks "action',
 			\   '\m\c<ng-[^>]\+> is not recognized',
@@ -508,7 +515,7 @@ let g:syntastic_ruby_rubocop_args = '--fail-level warning'
 let g:syntastic_coffee_checkers = ['coffee', 'coffeelint']
 
 let g:syntastic_auto_loc_list = 1
-let g:syntastic_loc_list_height = 2
+let g:syntastic_loc_list_height = 3
 
 nnoremap <silent> <Leader>sc :<C-u>SyntasticCheck<CR>
 nnoremap <silent> <Leader>sr :<C-u>SyntasticReset<CR>
