@@ -37,6 +37,7 @@ NeoBundle 'kana/vim-textobj-syntax', { 'depends': 'kana/vim-textobj-user' }
 NeoBundle 'kana/vim-textobj-underscore', { 'depends': 'kana/vim-textobj-user' }
 NeoBundle 'kana/vim-textobj-user'
 NeoBundle 'mattn/emmet-vim'
+NeoBundle 'mattn/excitetranslate-vim', { 'depends': 'mattn/webapi-vim' }
 NeoBundle 'mattn/gist-vim', { 'depends': 'mattn/webapi-vim' }
 NeoBundle 'mattn/webapi-vim'
 NeoBundle 'mjbrownie/html-textobjects', { 'depends': 'kana/vim-textobj-user' }
