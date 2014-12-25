@@ -3,19 +3,19 @@ set encoding=utf-8
 scriptencoding utf-8
 filetype off
 
-if has("vim_starting")
+if has('vim_starting')
 	set runtimepath+=~/.vim/bundle/neobundle.vim
 endif
 
-call neobundle#begin(expand("~/.vim/bundle"))
-	let s:bundle_file = "~/.vimrc.bundle"
+call neobundle#begin(expand('~/.vim/bundle'))
+	let s:bundle_file = '~/.vimrc.bundle'
 	if filereadable(expand(s:bundle_file))
-		exec ":source ".s:bundle_file
+		exec ':source '.s:bundle_file
 	endif
 
-	let s:bundle_file_local = "~/.vimrc.bundle.local"
+	let s:bundle_file_local = '~/.vimrc.bundle.local'
 	if filereadable(expand(s:bundle_file_local))
-		exec ":source ".s:bundle_file_local
+		exec ':source '.s:bundle_file_local
 	endif
 call neobundle#end()
 filetype plugin indent on
@@ -26,7 +26,7 @@ NeoBundleCheck
 let g:plugin_dicwin_disable = 1
 
 " <Leader> を , に指定
-let g:mapleader = ","
+let g:mapleader = ','
 
 " Key
 " Disable Ctrl+@
@@ -58,10 +58,10 @@ noremap <Up> gk
 
 "" Ctrl-a Ctrl-eで移動できるようにする
 function! MoveCursorToHome()
-  let c = col(".")
-  exec "normal! ^"
-  if col(".") == c
-    exec "normal! 0"
+  let c = col('.')
+  exec 'normal! ^'
+  if col('.') == c
+    exec 'normal! 0'
   endif
 endfunction
 
@@ -218,14 +218,22 @@ set diffopt+=vertical
 " Beep を消す
 set visualbell t_vb=
 
-nnoremap ,v :<c-u>cexpr system('vint ' . expand('%'))<cr>
+nnoremap ,v :<c-u>cexpr system('vint --style ' . expand('%'))<cr>
 
 " 保存時に行末の空白を除去する {{{
 function! s:remove_dust()
-	let cursor = getpos(".")
+	" It hold cursor position, so these policies are false positive.
+	" vint: -ProhibitCommandRelyOnUser -ProhibitCommandWithUnintendedSideEffect
+	let gdefault_save = &gdefault
+	let cursor = getpos('.')
+
 	%s/\s\+$//ge
-	call setpos(".", cursor)
+
+	call setpos('.', cursor)
 	unlet cursor
+	let &gdefault = gdefault_save
+	unlet gdefault_save
+	" vint: +ProhibitCommandRelyOnUser +ProhibitCommandWithUnintendedSideEffect
 endfunction
 
 augroup remove_dust
@@ -286,20 +294,20 @@ augroup END
 let g:quickrun_config = {}
 
 " Vimproc で Quickrun
-let g:quickrun_config["_"] = {
-			\ "split": "vertical",
-			\ "runner": "vimproc",
-			\       "runner/vimproc/updatetime" : 100
+let g:quickrun_config['_'] = {
+			\ 'split': 'vertical',
+			\ 'runner': 'vimproc',
+			\       'runner/vimproc/updatetime' : 100
 			\ }
 
 " JavaScript の実行環境を Node.js に指定
-let g:quickrun_config["javascript"] = {"type": "javascript/nodejs"}
+let g:quickrun_config['javascript'] = {'type': 'javascript/nodejs'}
 
 " mocha の設定を追加
-let g:quickrun_config["javascript.mocha"] = {
-			\ "command": "mocha",
-			\ "cmdopt": "-R tap",
-			\ "tempfile": '%{tempname()}.js'
+let g:quickrun_config['javascript.mocha'] = {
+			\ 'command': 'mocha',
+			\ 'cmdopt': '-R tap',
+			\ 'tempfile': '%{tempname()}.js'
 			\ }
 
 " 明示的に Python 3をつかう
@@ -387,16 +395,16 @@ let g:neocomplete#enable_at_startup = 1
 let g:neocomplete#manual_completion_start_length = 2
 let g:neocomplete#use_vimproc = 1
 
-if !exists("g:neocomplete#sources#omni#input_patterns")
+if !exists('g:neocomplete#sources#omni#input_patterns')
 	let g:neocomplete#sources#omni#input_patterns = {}
 endif
 
-if !exists("g:neocomplete#keyword_patterns")
+if !exists('g:neocomplete#keyword_patterns')
 	let g:neocomplete#keyword_patterns = {}
 endif
-let g:neocomplete#keyword_patterns["default"] = "\h\w*"
+let g:neocomplete#keyword_patterns['default'] = '\h\w*'
 
-if !exists("g:neocomplete#sources#file_include#exprs")
+if !exists('g:neocomplete#sources#file_include#exprs')
 	let g:neocomplete#sources#file_include#exprs = {}
 endif
 let g:neocomplete#sources#file_include#exprs.perl =
@@ -460,12 +468,12 @@ smap <expr><TAB> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expan
 nnoremap <Leader>ens :<C-u>NeoSnippetEdit -split -vertical<CR>
 
 " For snippet_complete marker.
-if has("conceal")
+if has('conceal')
 	set conceallevel=2 concealcursor=i
 endif
 
 " Tell Neosnippet about the other snippets
-let g:neosnippet#snippets_directory="~/.vim/snippets"
+let g:neosnippet#snippets_directory='~/.vim/snippets'
 
 augroup my_neosnippet
 	autocmd!
@@ -531,7 +539,7 @@ nnoremap <silent> <Leader>gP :Git push<CR>
 
 " Showmarks{{{
 " 英字のマークのみ表示
-let g:showmarks_include = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+let g:showmarks_include = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
 "}}}
 
 " Gist-vim{{{
@@ -545,8 +553,8 @@ vnoremap <Leader>g :Gist<CR>
 "
 " ま た M a c V i m か
 "
-if !has("mac")
-	let g:restart_sessionoptions = "blank,buffers,curdir,folds,help,localoptions,tabpages"
+if !has('mac')
+	let g:restart_sessionoptions = 'blank,buffers,curdir,folds,help,localoptions,tabpages'
 endif
 "}}}
 
@@ -570,14 +578,14 @@ let g:lightline = {
 
 function! MyFugitive()
 	try
-		if expand("%:t") !~? 'Tagbar\|Gundo\|NERD' && &ft !~? "vimfiler" && exists("*fugitive#head")
-			let mark = ""  " edit here for cool mark
+		if expand('%:t') !~? 'Tagbar\|Gundo\|NERD' && &ft !~? 'vimfiler' && exists('*fugitive#head')
+			let mark = ''  " edit here for cool mark
 			let _ = fugitive#head()
-			return strlen(_) ? mark._ : ""
+			return strlen(_) ? mark._ : ''
 		endif
 	catch
 	endtry
-	return ""
+	return ''
 endfunction
 
 augroup AutoSyntastic
@@ -613,7 +621,7 @@ augroup END
 " }}}
 
 " Splash {{{
-let g:splash#path = $HOME . "/.vim/splashes/start.txt"
+let g:splash#path = $HOME . '/.vim/splashes/start.txt'
 command! OrgaChem :Splash $HOME/.vim/splashes/profile_white.txt
 command! SplashJavaScriptOperatorPriorityTable :Splash $HOME/.vim/splashes/js_op_priority.txt
 command! SplashPullRequestManner :Splash $HOME/.vim/splashes/pull_request_manner.markdown
@@ -624,7 +632,7 @@ nnoremap <Leader>s :Switch<CR>
 " }}}
 
 " MacDict {{{
-if has("mac")
+if has('mac')
 	nnoremap <Leader>d :MacDictCWord<CR>
 endif
 " }}} 
@@ -642,17 +650,17 @@ augroup my_neorspec
 	autocmd BufEnter *.rb call s:load_rspec_settings()
 augroup END
 
-let g:neorspec_command = "QuickRun ruby.neorspec"
+let g:neorspec_command = 'QuickRun ruby.neorspec'
 
-let g:quickrun_config["ruby.neorspec"] = {
-			\ "command": "bundle",
-			\ "cmdopt": "exec rspec",
-			\ "tempfile": "{spec}",
+let g:quickrun_config['ruby.neorspec'] = {
+			\ 'command': 'bundle',
+			\ 'cmdopt': 'exec rspec',
+			\ 'tempfile': '{spec}',
 			\ }
 
-let g:quickrun_config["ruby.rspec"] = {
-			\ "command": "bundle",
-			\ "cmdopt": "exec rspec",
+let g:quickrun_config['ruby.rspec'] = {
+			\ 'command': 'bundle',
+			\ 'cmdopt': 'exec rspec',
 			\ }
 " }}} 
 
@@ -669,9 +677,9 @@ set background=dark
 set t_Co=256
 colorscheme iceberg
 
-let s:vimrc_local = "~/.vimrc.local"
+let s:vimrc_local = '~/.vimrc.local'
 if filereadable(expand(s:vimrc_local))
-	exec ":source ".s:vimrc_local
+	exec ':source '.s:vimrc_local
 	nnoremap <Leader>elv :<C-u>tabnew ~/.dotfiles.local/.vimrc.local<CR>
 endif
 
