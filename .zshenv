@@ -11,6 +11,10 @@ else
 	export GIT_EDITOR='vi'
 fi
 
+if has npm; then
+	export PATH="$(npm bin):$PATH"
+fi
+
 MY_RBENV="$HOME/.rbenv"
 if [ -d $MY_RBENV ]; then
 	export PATH="$MY_RBENV/bin:$MY_RBENV/shims:$PATH"
