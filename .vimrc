@@ -224,15 +224,15 @@ nnoremap ,v :<c-u>cexpr system('~/Development/vint/bin/vint --style ' . expand('
 function! s:remove_dust()
 	" It hold cursor position, so these policies are false positive.
 	" vint: -ProhibitCommandRelyOnUser -ProhibitCommandWithUnintendedSideEffect
-	let gdefault_save = &gdefault
-	let cursor = getpos('.')
+	let l:gdefault_save = &gdefault
+	let l:cursor = getpos('.')
 
 	%s/\s\+$//ge
 
-	call setpos('.', cursor)
-	unlet cursor
-	let &gdefault = gdefault_save
-	unlet gdefault_save
+	call setpos('.', l:cursor)
+	unlet l:cursor
+	let &gdefault = l:gdefault_save
+	unlet l:gdefault_save
 	" vint: +ProhibitCommandRelyOnUser +ProhibitCommandWithUnintendedSideEffect
 endfunction
 
@@ -522,6 +522,8 @@ let g:syntastic_ruby_rubocop_args = '--fail-level warning'
 
 let g:syntastic_coffee_checkers = ['coffee', 'coffeelint']
 
+let g:syntastic_vim_checkers = ['vint']
+
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_loc_list_height = 3
 
@@ -560,19 +562,19 @@ endif
 
 " Lightline {{{
 let g:lightline = {
-			\   "colorscheme": "iceberg",
-			\   "active": {
-			\     "left": [ [ "mode", "paste" ], [ "fugitive", "readonly", "filename", "modified" ] ],
-			\     "right": [ [ "syntastic", "lineinfo" ], ["percent"], [ "fileformat", "fileencoding", "filetype" ] ]
+			\   'colorscheme': 'iceberg',
+			\   'active': {
+			\     'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'readonly', 'filename', 'modified' ] ],
+			\     'right': [ [ 'syntastic', 'lineinfo' ], ['percent'], [ 'fileformat', 'fileencoding', 'filetype' ] ]
 			\   },
-			\   "component_function": {
-			\     "fugitive": "g:MyFugitive"
+			\   'component_function': {
+			\     'fugitive': 'g:MyFugitive'
 			\   },
-			\   "component_expand": {
-			\     "syntastic": "SyntasticStatuslineFlag",
+			\   'component_expand': {
+			\     'syntastic': 'SyntasticStatuslineFlag',
 			\   },
-			\   "component_type": {
-			\     "syntastic": "error",
+			\   'component_type': {
+			\     'syntastic': 'error',
 			\   }
 			\ }
 
