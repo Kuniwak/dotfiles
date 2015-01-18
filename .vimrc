@@ -7,7 +7,7 @@ if has('vim_starting')
 	set runtimepath+=~/.vim/bundle/neobundle.vim
 endif
 
-call neobundle#begin(expand('~/.vim/bundle'))
+call g:neobundle#begin(expand('~/.vim/bundle'))
 	let s:bundle_file = '~/.vimrc.bundle'
 	if filereadable(expand(s:bundle_file))
 		exec ':source '.s:bundle_file
@@ -17,7 +17,7 @@ call neobundle#begin(expand('~/.vim/bundle'))
 	if filereadable(expand(s:bundle_file_local))
 		exec ':source '.s:bundle_file_local
 	endif
-call neobundle#end()
+call g:neobundle#end()
 filetype plugin indent on
 
 NeoBundleCheck
@@ -57,10 +57,10 @@ noremap <Down> gj
 noremap <Up> gk
 
 "" Ctrl-a Ctrl-eで移動できるようにする
-function! MoveCursorToHome()
-  let c = col('.')
+function! g:MoveCursorToHome()
+  let l:c = col('.')
   exec 'normal! ^'
-  if col('.') == c
+  if col('.') == l:c
     exec 'normal! 0'
   endif
 endfunction
@@ -76,7 +76,7 @@ cnoremap <C-k> <C-\>e getcmdpos() == 1 ? '' : getcmdline()[:getcmdpos()-2]<CR>
 cnoremap <C-n> <Down>
 cnoremap <C-p> <Up>
 
-inoremap <silent> <C-a> <C-o>:call MoveCursorToHome()<CR>
+inoremap <silent> <C-a> <C-o>:call g:MoveCursorToHome()<CR>
 inoremap <C-b> <Left>
 inoremap <C-e> <End>
 inoremap <C-d> <Del>
@@ -89,7 +89,7 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
-xnoremap <silent> <C-a> :call MoveCursorToHome()<CR>
+xnoremap <silent> <C-a> :call g:MoveCursorToHome()<CR>
 
 " Yで行末までヤンク
 noremap Y y$
@@ -140,10 +140,10 @@ set hlsearch
 set list
 set listchars=eol:¬,tab:▸\ 
 set foldtext=MyFold()
-function! MyFold()
-    let line = getline(v:foldstart)
-    let sub = substitute(line, '{{{', '', 'g') "}}}
-    return ' ⇳ '.sub
+function! g:MyFold()
+    let l:line = getline(v:foldstart)
+    let l:sub = substitute(l:line, '{{{', '', 'g') "}}}
+    return ' ⇳ ' . l:sub
 endfunction
 
 " 改行後もインデントを維持
@@ -218,7 +218,7 @@ set diffopt+=vertical
 " Beep を消す
 set visualbell t_vb=
 
-nnoremap ,v :<c-u>cexpr system('vint --style ' . expand('%'))<cr>
+nnoremap ,v :<c-u>cexpr system('~/Development/vint/bin/vint --style ' . expand('%'))<cr>
 
 " 保存時に行末の空白を除去する {{{
 function! s:remove_dust()
@@ -566,7 +566,7 @@ let g:lightline = {
 			\     "right": [ [ "syntastic", "lineinfo" ], ["percent"], [ "fileformat", "fileencoding", "filetype" ] ]
 			\   },
 			\   "component_function": {
-			\     "fugitive": "MyFugitive"
+			\     "fugitive": "g:MyFugitive"
 			\   },
 			\   "component_expand": {
 			\     "syntastic": "SyntasticStatuslineFlag",
@@ -576,12 +576,12 @@ let g:lightline = {
 			\   }
 			\ }
 
-function! MyFugitive()
+function! g:MyFugitive()
 	try
-		if expand('%:t') !~? 'Tagbar\|Gundo\|NERD' && &ft !~? 'vimfiler' && exists('*fugitive#head')
-			let mark = ''  " edit here for cool mark
-			let _ = fugitive#head()
-			return strlen(_) ? mark._ : ''
+		if expand('%:t') !~? 'Tagbar\|Gundo\|NERD' && &filetype !~? 'vimfiler' && exists('*fugitive#head')
+			let l:mark = ''
+			let l:_ = g:fugitive#head()
+			return strlen(l:_) ? l:mark._ : ''
 		endif
 	catch
 	endtry
@@ -594,7 +594,7 @@ augroup AutoSyntastic
 augroup END
 function! s:syntastic()
 	SyntasticCheck
-	call lightline#update()
+	call g:lightline#update()
 endfunction
 
 let g:unite_force_overwrite_statusline = 0
