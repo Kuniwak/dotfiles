@@ -2,7 +2,6 @@ NeoBundle 'Kuniwak/vim-coffee-script'
 NeoBundle 'Kuniwak/vim-javascript'
 NeoBundle 'Kuniwak/vim-prove-syntax'
 NeoBundle 'Kuniwak/vim-qrcode'
-NeoBundle 'todesking/vint-syntastic'
 NeoBundle 'Shougo/neocomplete'
 NeoBundle 'Shougo/neomru.vim'
 NeoBundle 'Shougo/neosnippet'
@@ -52,6 +51,7 @@ NeoBundle 'popkirby/lightline-iceberg'
 NeoBundle 'rking/ag.vim'
 NeoBundle 'scrooloose/syntastic'
 NeoBundle 'sjl/gundo.vim'
+NeoBundle 'stephpy/vim-yaml'
 NeoBundle 'syngan/vim-vimlint', { 'depends' : 'ynkdir/vim-vimlparser' }
 NeoBundle 'therubymug/vim-pyte'
 NeoBundle 'thinca/vim-qfreplace'
@@ -63,6 +63,7 @@ NeoBundle 'thinca/vim-textobj-between', { 'depends': 'kana/vim-textobj-user' }
 NeoBundle 'thinca/vim-textobj-function-javascript', { 'depends': 'kana/vim-textobj-user' }
 NeoBundle 'thinca/vim-textobj-function-perl', { 'depends': 'kana/vim-textobj-user' }
 NeoBundle 'thinca/vim-visualstar'
+NeoBundle 'todesking/vint-syntastic'
 NeoBundle 'tomasr/molokai'
 NeoBundle 'tomtom/tcomment_vim'
 NeoBundle 'tpope/vim-abolish'
