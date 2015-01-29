@@ -20,19 +20,19 @@ setup_ndenv() {
 
 setup_jshint() {
 	has ndenv || setup_ndenv
-	npm -g jshint
+	npm install -g jshint
 	ndenv rehash
 }
 
-setup_grunt_cli() {
+setup_gulp() {
 	has ndenv || setup_ndenv
-	npm -g grunt_cli
+	npm install -g gulp
 	ndenv rehash
 }
 
 setup_node() {
 	has jshint || setup_jshint
-	has grunt || setup_grunt_cli
+	has gulp || setup_gulp
 }
 
 setup_node
