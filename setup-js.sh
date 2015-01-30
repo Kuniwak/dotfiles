@@ -7,7 +7,7 @@ has() {
 }
 
 setup_ndenv() {
-	RECOMMENDED_NODE_VAR="v0.10.26"
+	RECOMMENDED_NODE_VAR="v0.10.36"
 	git clone git://github.com/riywo/ndenv.git "$HOME/.ndenv"
 	git clone git://github.com/riywo/node-build.git "$HOME/.ndenv/plugins/node-build/"
 
