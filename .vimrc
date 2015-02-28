@@ -306,7 +306,6 @@ let g:quickrun_config['javascript'] = {'type': 'javascript/nodejs'}
 " mocha の設定を追加
 let g:quickrun_config['javascript.mocha'] = {
 			\ 'command': 'mocha',
-			\ 'cmdopt': '-R tap',
 			\ 'tempfile': '%{tempname()}.js'
 			\ }
 
@@ -503,7 +502,7 @@ let g:syntastic_html_tidy_quiet_messages = {
 let g:syntastic_closure_library_checkers = ['gjslint']
 let g:syntastic_closure_library_gjslint_conf = ' --disable 5,110 --strict'
 
-let g:syntastic_javascript_checkers = ['jshint']
+let g:syntastic_javascript_checkers = ['eslint']
 
 let g:syntastic_python_checkers = ['flake8']
 let g:syntastic_python_flake8_args = '--ignore=E501,E303'
