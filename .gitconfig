@@ -13,7 +13,7 @@
 	c = commit -v
 	o = checkout
 	b = checkout -b
-	f = fetch
+	f = fetch --prune
 	pl = pull
 	ps = push
 	ready = rebase -i @{u}
