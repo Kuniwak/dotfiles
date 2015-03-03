@@ -1,4 +1,4 @@
-set fileencodings=utf-8,euc-jp,cp932
+set fileencodings=utf-8,euc-jp,cp932,iso-2022-jp
 set encoding=utf-8
 scriptencoding utf-8
 filetype off
@@ -657,6 +657,16 @@ augroup my_perl_lib_path
 	autocmd!
 	autocmd FileType perl PerlLocalLibPath
 augroup END
+" }}}
+
+" Unite pt {{{
+nnoremap <silent> <Leader>pt :<C-u>Unite grep:. -buffer-name=search-buffer<CR>
+if executable('pt')
+	let g:unite_source_grep_command = 'pt'
+	let g:unite_source_grep_default_opts = '--nogroup --nocolor'
+	let g:unite_source_grep_recursive_opt = ''
+	let g:unite_source_grep_encoding = 'utf-8'
+endif
 " }}}
 
 syntax enable
