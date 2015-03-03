@@ -25,6 +25,7 @@ NeoBundle 'cocopon/iceberg.vim'
 NeoBundle 'deris/vim-duzzle'
 NeoBundle 'digitaltoad/vim-jade'
 NeoBundle 'fugalh/desert.vim'
+NeoBundle 'groenewege/vim-less'
 NeoBundle 'hail2u/vim-css3-syntax'
 NeoBundle 'helino/vim-json'
 NeoBundle 'https://vimperator-labs.googlecode.com/hg/', { 'name': 'vimperator-syntax', 'type': 'hg', 'rtp':  'vimperator/contrib/vim/' }
