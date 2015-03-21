@@ -1,0 +1,8 @@
+" 入力欄に自動フォーカスしない
+set focuscontent
+
+" :oなどでの補完候補をサーチエンジン、履歴に限定
+set complete=sl
+
+" Hintモードでアルファベット使用
+set hintchars=hjklasdfgyuiopqwertnmzxcvb
