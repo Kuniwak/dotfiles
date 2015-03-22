@@ -6,3 +6,7 @@ set complete=sl
 
 " Hintモードでアルファベット使用
 set hintchars=hjklasdfgyuiopqwertnmzxcvb
+
+" 移動量増加
+nnoremap j 5j
+nnoremap k 5k
