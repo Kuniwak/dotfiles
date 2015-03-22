@@ -7,6 +7,12 @@ set hintkeys=hjklasdfgyuiopqwertnmzxcvb
 " tabbar の表示崩れ防止のハック
 js document.getElementById('main-window').setAttribute('dactyl-australis', false); 
 
-" スライド送りがあるページでは、カーソルキーをフックしない
-set passkeys+=slideshare.com:<Left>,<Right>
+group! -locations read.amazon.co.jp AmazonCloudReader
 set passkeys+=read.amazon.co.jp:<Left>,<Right>
+nmap -group AmazonCloudReader l <Right>
+nmap -group AmazonCloudReader h <Left>
+
+group! -locations slideshare SlideShare
+set passkeys+=slideshare.com:<Left>,<Right>
+nmap -group SlideShare l <Right>
+nmap -group SlideShare h <Left>
