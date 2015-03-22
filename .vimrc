@@ -218,7 +218,9 @@ set diffopt+=vertical
 " Beep を消す
 set visualbell t_vb=
 
-nnoremap ,v :<c-u>cexpr system('~/Development/vint/bin/vint --style ' . expand('%'))<cr>
+set pastetoggle=<Leader>tp
+
+noremap ,v :<c-u>cexpr system('~/Development/vint/bin/vint --style ' . expand('%'))<cr>
 
 " 保存時に行末の空白を除去する {{{
 function! s:remove_dust()
@@ -640,31 +642,13 @@ if has('mac')
 endif
 " }}} 
 
-" neorspec {{{
-function! s:load_rspec_settings()
-	set filetype=ruby.rspec
-	nnoremap <buffer><Leader>rc :<C-U>RSpecCurrent<CR>
-	nnoremap <buffer><Leader>rn :<C-U>RSpecNearest<CR>
-	nnoremap <buffer><Leader>ra :<C-U>RSpecAll<CR>
-endfunction
-
-augroup my_neorspec
-	autocmd!
-	autocmd BufEnter *.rb call s:load_rspec_settings()
-augroup END
-
-let g:neorspec_command = 'QuickRun ruby.neorspec'
-
-let g:quickrun_config['ruby.neorspec'] = {
-			\ 'command': 'bundle',
-			\ 'cmdopt': 'exec rspec',
-			\ 'tempfile': '{spec}',
-			\ }
-
-let g:quickrun_config['ruby.rspec'] = {
-			\ 'command': 'bundle',
-			\ 'cmdopt': 'exec rspec',
-			\ }
+" EasyMotion {{{
+let g:EasyMotion_do_mapping = 0
+nmap s <Plug>(easymotion-s2)
+map f <Plug>(easymotion-fl)
+map t <Plug>(easymotion-tl)
+map F <Plug>(easymotion-Fl)
+map T <Plug>(easymotion-Tl)
 " }}} 
 
 " Perl lib {{{
