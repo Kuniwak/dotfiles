@@ -310,6 +310,7 @@ let g:quickrun_config['javascript'] = {'type': 'javascript/nodejs'}
 " mocha の設定を追加
 let g:quickrun_config['javascript.mocha'] = {
 			\ 'command': 'mocha',
+			\ 'cmdopt': '-R spec',
 			\ 'tempfile': '%{tempname()}.js'
 			\ }
 
