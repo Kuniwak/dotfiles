@@ -350,6 +350,11 @@ let g:quickrun_config['perl.carton-prove'] = {
 			\ 'shebang': 0,
 			\ }
 
+let g:quickrun_config['d'] = {
+			\ 'command': 'rdmd',
+			\ 'cmdopt': '-unittest -main'
+			\ }
+
 nnoremap <silent> <Leader>l :<C-u>QuickRun<CR>
 "}}}
 
