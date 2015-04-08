@@ -9,10 +9,13 @@ js document.getElementById('main-window').setAttribute('dactyl-australis', false
 
 group! -locations read.amazon.co.jp AmazonCloudReader
 set passkeys+=read.amazon.co.jp:<Left>,<Right>
-nmap -group AmazonCloudReader l <Right>
 nmap -group AmazonCloudReader h <Left>
+nmap -group AmazonCloudReader l <Right>
 
-group! -locations slideshare SlideShare
+group! -locations slideshare.com SlideShare
 set passkeys+=slideshare.com:<Left>,<Right>
-nmap -group SlideShare l <Right>
 nmap -group SlideShare h <Left>
+nmap -group SlideShare l <Right>
+
+group! -locations http://localhost:1948 RevealJS
+set passkeys+=localhost:<Left>,<Right>,<Up>,<Down>
