@@ -104,7 +104,7 @@ alias g='git'
 alias -g B='`git branch -a | peco --prompt "GIT BRANCH>" | head -n 1 | sed -e "s/^\*[ ]*//g"`'
 alias -g R='`git remote | peco --prompt "GIT REMOTE>" | head -n 1`'
 alias -g S='`git log --date=short --pretty="format:%h %cd %an%d %s" | peco --prompt "GIT SHA1>" | head -n 1 | sed "s/^\([0-9a-f]*\).*/\1/"`'
-alias -g D='`echo S | sed "s/\([0-9a-f]*\)/\1..\1^/" | xargs git diff --name-only | peco --prompt "GIT DIFF FILE>" | head -n 1 | sed "s/^\(\S*\).*/\1/"`'
+alias -g D='`echo S | sed "s/\([0-9a-f]*\)/\1..\1^/" | xargs git diff --name-only | peco --prompt "GIT DIFF FILE>" | sed "s/^\(\S*\).*/\1/"`'
 alias -g LR='`git branch -a | peco --query "remotes/ " --prompt "GIT REMOTE BRANCH>" | head -n 1 | sed "s/^\*\s*//" | sed "s/remotes\/\([^\/]*\)\/\(.*\)/\2 \1\/\2/"`'
 alias -g C='`git rev-parse --abbrev-ref HEAD`'
 # }}}
