@@ -110,6 +110,14 @@ alias v
     my $validated = $rule->validate(@args);
 
 
+snippet export
+alias exp
+    use Exporter 'import';
+    @EXPORT_OK = qw {
+        ${0}
+    };
+
+
 # Debugging snippets {{{
 snippet dump
 alias d
