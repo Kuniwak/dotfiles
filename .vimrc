@@ -253,9 +253,15 @@ augroup END
 " }}}
 
 " ファイルタイプ設定 {{{
-function! s:IsPythonTest()
+function! s:SetPytestIfUnderTestDir()
 	if match(expand('%:p'), '\<test\>') > 0
-		set filetype=python.pytest
+		set filetype+=.pytest
+	endif
+endfunction
+
+function! s:SetMochaIfUnderTestDir()
+	if match(expand('%:p'), '\<test\>') > 0
+		set filetype+=.mocha
 	endif
 endfunction
 
@@ -264,6 +270,7 @@ augroup my_file_type
 	autocmd BufNewFile,BufRead *.js.map setf json
 	autocmd BufNewFile,BufRead *.webapp setf json
 	autocmd BufNewFile,BufRead .jslintrc setf json
+	autocmd BufNewFile,BufRead .jscsrc setf json
 	autocmd BufNewFile,BufRead .jshintrc setf json
 	autocmd BufNewFile,BufRead .eslintrc setf json
 	autocmd BufNewFile,BufRead .jscsrc setf json
@@ -276,7 +283,8 @@ augroup my_file_type
 	autocmd BufNewFile,BufRead Gruntfile setf javascript
 	autocmd BufNewFile,BufRead .perlcriticrc setf perlcriticrc
 
-	autocmd FileType python call s:IsPythonTest()
+	autocmd FileType python call s:SetPytestIfUnderTestDir()
+	autocmd FileType javascript call s:SetMochaIfUnderTestDir()
 
 	autocmd BufNewFile,BufRead cpanfile setf perl
 	autocmd FileType perl set filetype=perl.carton
@@ -354,7 +362,7 @@ let g:quickrun_config['perl.carton-prove'] = {
 
 let g:quickrun_config['d'] = {
 			\ 'command': 'rdmd',
-			\ 'cmdopt': '-unittest -main'
+			\ 'cmdopt': '-unittest'
 			\ }
 
 nnoremap <silent> <Leader>l :<C-u>QuickRun<CR>
@@ -514,7 +522,7 @@ let g:syntastic_html_tidy_quiet_messages = {
 let g:syntastic_closure_library_checkers = ['gjslint']
 let g:syntastic_closure_library_gjslint_conf = ' --disable 5,110 --strict'
 
-let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_javascript_checkers = ['eslint', 'jscs']
 
 let g:syntastic_python_checkers = ['flake8']
 let g:syntastic_python_flake8_args = '--ignore=E501,E303'
