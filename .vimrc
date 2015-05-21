@@ -263,12 +263,14 @@ augroup my_file_type
 	autocmd!
 	autocmd BufNewFile,BufRead *.js.map setf json
 	autocmd BufNewFile,BufRead *.webapp setf json
+	autocmd BufNewFile,BufRead .jslintrc setf json
 	autocmd BufNewFile,BufRead .jshintrc setf json
 	autocmd BufNewFile,BufRead .eslintrc setf json
+	autocmd BufNewFile,BufRead .jscsrc setf json
+	autocmd BufNewFile,BufRead .bowerrc setf json
 	autocmd BufNewFile,BufRead .watsonrc setf json
 	autocmd BufNewFile,BufRead .csslintrc setf json
 	autocmd BufNewFile,BufRead .googkit setf config
-	autocmd BufNewFile,BufRead *.tsumekusa setf tsumekusa
 	autocmd BufNewFile,BufRead *.pac setf javascript
 	autocmd BufNewFile,BufRead Guardfile setf ruby
 	autocmd BufNewFile,BufRead Gruntfile setf javascript
