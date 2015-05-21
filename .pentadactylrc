@@ -2,6 +2,8 @@
 nmap -builtin j 5j
 nmap -builtin k 5k
 
+map <ESC><ESC> :nohlsearch<CR>
+
 set hintkeys=hjklasdfgyuiopqwertnmzxcvb
 
 " tabbar の表示崩れ防止のハック
