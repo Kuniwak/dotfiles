@@ -507,8 +507,10 @@ augroup END
 "}}}
 
 " Syntastic {{{
+" let g:syntastic_debug = 3
+
 let g:syntastic_mode_map = { 'mode': 'passive',
-			\ 'active_filetypes': ['perl', 'ruby', 'html', 'css', 'javascript', 'python', 'json', 'coffee', 'sh'],
+			\ 'active_filetypes': ['perl', 'ruby', 'html', 'css', 'javascript', 'python', 'json', 'coffee', 'sh', 'typescript'],
 			\ 'passive_filetypes': [] }
 
 let g:syntastic_html_tidy_quiet_messages = {
@@ -529,6 +531,8 @@ let g:syntastic_closure_library_checkers = ['gjslint']
 let g:syntastic_closure_library_gjslint_conf = ' --disable 5,110 --strict'
 
 let g:syntastic_javascript_checkers = ['eslint', 'jscs']
+
+let g:syntastic_typescript_checkers = ['tslint']
 
 let g:syntastic_python_checkers = ['flake8']
 let g:syntastic_python_flake8_args = '--ignore=E501,E303'
@@ -689,6 +693,17 @@ if executable('pt')
 	let g:unite_source_grep_recursive_opt = ''
 	let g:unite_source_grep_encoding = 'utf-8'
 endif
+" }}}
+
+" Tsuquyomi {{{
+" Syntastic do it
+let g:tsuquyomi_disable_quickfix = 0
+
+augroup tsuquyomi_configs
+	autocmd!
+	autocmd FileType typescript setlocal completeopt+=menu,preview
+	autocmd FileType typescript nnoremap <buffer> <Leader>t : <C-u>echo tsuquyomi#hint()<CR>
+augroup END
 " }}}
 
 syntax enable
