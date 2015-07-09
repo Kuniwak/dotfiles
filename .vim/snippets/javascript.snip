@@ -304,3 +304,22 @@ alias @ext
 	@extends {${1}}${0}
 # }}}
 # }}}
+
+snippet express
+	'use strict';
+	
+	var util = require('util');
+	var express = require('express');
+	
+	var app = express();
+	
+	var PUBLIC_DIR = __dirname;
+	app.use(express.static(PUBLIC_DIR));
+	
+	var PORT = process.env.PORT;
+	var HOSTNAME = 'localhost';
+	
+	var server = require('http').createServer(app);
+	server.listen(PORT, HOSTNAME, function () {
+	  console.log(util.format('http://%s:%d にブラウザでアクセスしてください'), HOSTNAME, PORT);
+	});
