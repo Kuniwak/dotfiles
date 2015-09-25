@@ -2,14 +2,14 @@
 
 set -u
 
-$RECOMMENDED_PY_VAR='3.4.2'
+RECOMMENDED_PY_VAR='3.4.3'
 
 has() {
 	type "$1" > /dev/null 2>&1
 }
 
 setup_pyenv() {
-	git clone git@github.com:yyuu/pyenv.git "$HOME/.pyenv"
+	git clone https://github.com/yyuu/pyenv.git "$HOME/.pyenv"
 	git clone https://github.com/yyuu/pyenv-virtualenv.git "$HOME/.pyenv/plugins/pyenv-virtualenv"
 
 	export PATH="$HOME/.pyenv/bin:$PATH"
@@ -29,13 +29,13 @@ setup_pip() {
 	cd /tmp
 	curl -O https://bootstrap.pypa.io/get-pip.py
 	echo 'Type password or abort installation for pip.'
-	sudo python get-pip.py
+	python get-pip.py
 	cd $cwd
 }
 
 setup_flake8() {
 	has pip || setup_pip
-	sudo pip install flake8
+	pip install flake8
 	pyenv rehash
 }
 
