@@ -266,7 +266,7 @@ function! s:SetPytestIfUnderTestDir()
 endfunction
 
 function! s:SetMochaIfUnderTestDir()
-	if match(expand('%:p'), '\<test\>') > 0
+	if match(expand('%:p'), '\<tests\?\>') > 0
 		set filetype+=.mocha
 	endif
 endfunction
