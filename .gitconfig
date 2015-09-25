@@ -19,4 +19,4 @@
 	ready = rebase -i @{u}
 	s = status -s -b
 [include]
-  path = ~/.gitconfig.local
+  # path = ~/.gitconfig.local

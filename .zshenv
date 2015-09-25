@@ -12,7 +12,7 @@ else
 fi
 
 if has npm; then
-	export PATH="$(npm bin):$PATH"
+	export PATH="./node_modules/.bin:$PATH"
 fi
 
 MY_RBENV="$HOME/.rbenv"

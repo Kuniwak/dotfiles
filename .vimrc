@@ -507,7 +507,7 @@ augroup END
 "}}}
 
 " Syntastic {{{
-" let g:syntastic_debug = 3
+let g:syntastic_debug = 0
 
 let g:syntastic_mode_map = { 'mode': 'passive', "active_filetypes": ["json", "typescript"] }
 
@@ -529,8 +529,6 @@ let g:syntastic_closure_library_checkers = ['gjslint']
 let g:syntastic_closure_library_gjslint_conf = ' --disable 5,110 --strict'
 
 let g:syntastic_javascript_checkers = ['eslint', 'jscs']
-
-let g:syntastic_typescript_checkers = ['tslint']
 
 let g:syntastic_python_checkers = ['flake8']
 let g:syntastic_python_flake8_args = '--ignore=E501,E303'
