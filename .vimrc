@@ -176,9 +176,6 @@ set scrolloff=20
 set sidescroll=1
 set sidescrolloff=16
 
-" カーソル行を強調
-set cursorline
-
 set laststatus=2
 
 " 検索結果を画面の中央に表示させる
@@ -524,6 +521,8 @@ let g:syntastic_html_tidy_quiet_messages = {
 			\   '\V\cdiscarding unexpected',
 			\   '\V\chas invalid value "{{',
 			\ ]}
+
+let g:syntastic_typescript_checkers = ['tslint']
 
 let g:syntastic_closure_library_checkers = ['gjslint']
 let g:syntastic_closure_library_gjslint_conf = ' --disable 5,110 --strict'

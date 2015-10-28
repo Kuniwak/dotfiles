@@ -3,6 +3,7 @@ NeoBundle 'Kuniwak/vim-javascript'
 NeoBundle 'Kuniwak/vim-prove-syntax'
 NeoBundle 'Kuniwak/vim-qrcode'
 NeoBundle 'Lokaltog/vim-easymotion'
+NeoBundle 'Quramy/tsuquyomi'
 NeoBundle 'Rykka/riv.vim'
 NeoBundle 'Shougo/neocomplete'
 NeoBundle 'Shougo/neomru.vim'
@@ -11,15 +12,14 @@ NeoBundle 'Shougo/neosnippet-snippets'
 NeoBundle 'Shougo/unite-outline'
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/vimfiler'
+NeoBundle 'Shougo/vimproc.vim', { 'build' : { 'windows' : 'tools\\update-dll-mingw', 'cygwin' : 'make -f make_cygwin.mak', 'mac' : 'make -f make_mac.mak', 'linux' : 'make', 'unix' : 'gmake' } }
 NeoBundle 'airblade/vim-gitgutter'
 NeoBundle 'airblade/vim-rooter'
 NeoBundle 'altercation/vim-colors-solarized'
 NeoBundle 'alunny/pegjs-vim'
 NeoBundle 'autowitch/hive.vim'
-NeoBundle 'Shougo/vimproc.vim', { 'build' : { 'windows' : 'tools\\update-dll-mingw', 'cygwin' : 'make -f make_cygwin.mak', 'mac' : 'make -f make_mac.mak', 'linux' : 'make', 'unix' : 'gmake' } }
-NeoBundle 'leafgarland/typescript-vim'
+NeoBundle 'blockloop/vim-swigjs'
 NeoBundle 'c9s/perlomni.vim'
-NeoBundle 'Quramy/tsuquyomi'
 NeoBundle 'cocopon/colorswatch.vim'
 NeoBundle 'cocopon/googkit.vim'
 NeoBundle 'cocopon/iceberg.vim'
@@ -40,6 +40,7 @@ NeoBundle 'kana/vim-textobj-indent', { 'depends': 'kana/vim-textobj-user' }
 NeoBundle 'kana/vim-textobj-syntax', { 'depends': 'kana/vim-textobj-user' }
 NeoBundle 'kana/vim-textobj-underscore', { 'depends': 'kana/vim-textobj-user' }
 NeoBundle 'kana/vim-textobj-user'
+NeoBundle 'leafgarland/typescript-vim'
 NeoBundle 'mattn/emmet-vim'
 NeoBundle 'mattn/excitetranslate-vim', { 'depends': 'mattn/webapi-vim' }
 NeoBundle 'mattn/gist-vim', { 'depends': 'mattn/webapi-vim' }
