@@ -506,7 +506,7 @@ augroup END
 " Syntastic {{{
 let g:syntastic_debug = 0
 
-let g:syntastic_mode_map = { 'mode': 'passive', "active_filetypes": ["json", "typescript"] }
+let g:syntastic_mode_map = { 'mode': 'passive', "active_filetypes": ["json", "typescript", "python"] }
 
 let g:syntastic_html_tidy_quiet_messages = {
 			\ 'regex': [
