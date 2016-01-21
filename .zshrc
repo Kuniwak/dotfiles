@@ -48,12 +48,6 @@ precmd () {
 }
 # }}}
 
-ZSH_SYNTAX_HIGHLIGHTING_PATH="$HOME/.zsh-syntax-highlighting"
-if [ -d "$ZSH_SYNTAX_HIGHLIGHTING_PATH" ]; then
-	source "$ZSH_SYNTAX_HIGHLIGHTING_PATH/zsh-syntax-highlighting.zsh"
-fi
-
-# History {{{
 HISTFILE=~/.zsh_history
 HISTSIZE=100000000
 SAVEHIST=${HISTSIZE}
@@ -68,8 +62,21 @@ zle -N history-beginning-search-forward-end history-search-end
 
 bindkey "^p" history-beginning-search-backward-end
 bindkey "^n" history-beginning-search-forward-end
-# }}}
 
+PATH_LOADER="$HOME/.dotfiles/path_loader.zsh"
+if [ -r "$PATH_LOADER" ]; then
+	source "$PATH_LOADER"
+fi
+
+ZSH_COMPLETIONS=/usr/local/share/zsh-completions
+if [ -d $ZSH_COMPLETIONS ]; then
+	fpath=("$ZSH_COMPLETIONS/src" $fpath)
+fi
+
+ZSH_SYNTAX_HIGHLIGHTING_PATH="$HOME/.zsh-syntax-highlighting"
+if [ -d "$ZSH_SYNTAX_HIGHLIGHTING_PATH" ]; then
+	source "$ZSH_SYNTAX_HIGHLIGHTING_PATH/zsh-syntax-highlighting.zsh"
+fi
 
 # General aliases {{{
 case "${OSTYPE}" in
@@ -142,11 +149,6 @@ if has 'peco'; then
 		branch_name=`sed "s/remotes\/[^\/]*\///"`
 		git checkout -b $branch_name $remote_branch
 	}
-fi
-
-ZSH_COMPLETIONS=/usr/local/share/zsh-completions
-if [ -d $ZSH_COMPLETIONS ]; then
-	fpath=("$ZSH_COMPLETIONS/src" $fpath)
 fi
 
 if [ -r ~/.zshrc.local ]; then
