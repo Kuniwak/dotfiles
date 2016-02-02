@@ -701,6 +701,16 @@ augroup tsuquyomi_configs
 augroup END
 " }}}
 
+" hdevtools {{{
+augroup MyHaskell
+	autocmd!
+	autocmd FileType haskell nnoremap <buffer> <leader>t :HdevtoolsType<CR>
+	" autocmd FileType haskell nnoremap <buffer> <silent> <leader> :HdevtoolsClear<CR>
+augroup END
+
+let g:syntastic_haskell_hdevtools_args = '-g-isrc -g-Wall'
+" }}}
+
 syntax enable
 set background=dark
 set t_Co=256
