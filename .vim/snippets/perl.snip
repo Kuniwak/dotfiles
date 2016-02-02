@@ -113,7 +113,7 @@ alias v
 snippet export
 alias exp
     use Exporter 'import';
-    @EXPORT_OK = qw {
+    our @EXPORT_OK = qw {
         ${0}
     };
 
@@ -123,6 +123,7 @@ snippet dump
 alias d
     use Data::Dumper;
     $Data::Dumper::Deparse = 1;
+    $Data::Dumper::Indent = 1;
     warn Dumper ${0};
 
 snippet dumpmarker
