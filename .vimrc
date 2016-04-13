@@ -648,7 +648,7 @@ augroup END
 
 " Splash {{{
 let g:splash#path = $HOME . '/.vim/splashes/start.txt'
-command! OrgaChem :Splash $HOME/.vim/splashes/profile_white.txt
+command! Kuniwak :Splash $HOME/.vim/splashes/profile_white.txt
 command! SplashJavaScriptOperatorPriorityTable :Splash $HOME/.vim/splashes/js_op_priority.txt
 command! SplashPullRequestManner :Splash $HOME/.vim/splashes/pull_request_manner.markdown
 " }}}
