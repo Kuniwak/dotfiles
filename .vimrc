@@ -64,12 +64,21 @@ noremap <Up> gk
 
 "" Ctrl-a Ctrl-eで移動できるようにする
 function! g:MoveCursorToHome()
-  let l:c = col('.')
-  exec 'normal! ^'
-  if col('.') == l:c
-    exec 'normal! 0'
-  endif
+	let l:c = col('.')
+	exec 'normal! ^'
+	if col('.') == l:c
+		exec 'normal! 0'
+	endif
 endfunction
+
+
+function! PutFilename()
+	let pos = getpos('.')
+	execute ':normal a' . expand('%')
+	call setpos('.', pos)
+endfunction
+nnoremap <Leader>wp :<C-u>call PutFilename()<CR>
+
 
 " コマンドモードでemacsキーバインドを使えるようにする
 cnoremap <C-a> <Home>
