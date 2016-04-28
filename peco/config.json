@@ -1,0 +1,6 @@
+{
+  "Keymap": {
+    "C-a": "peco.SelectAll",
+    "C-s": "peco.ToggleSelectionAndSelectNext"
+  }
+}
