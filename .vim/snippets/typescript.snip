@@ -1,3 +1,62 @@
 snippet reference
 alias ref
   /// <reference path="${0}" />
+
+
+snippet namespace
+  namespace ${0} {
+  }
+
+
+snippet class
+  class ${0} {
+  }
+
+
+snippet interface
+  interface ${0} {
+  }
+
+
+snippet dict
+  { [${1:key}: ${2:string}]: ${0} }
+
+
+snippet const
+alias c
+  const ${0};
+
+
+snippet let
+  let ${0};
+
+
+snippet describe
+  describe("${0}", () => {
+  });
+
+
+snippet context
+  context("when ${0}", () => {
+  });
+
+
+snippet it
+  it("should ${0}", () => {
+  });
+
+
+snippet before
+  before(() => {${0}});
+
+
+snippet after
+  after(() => {${0}});
+
+
+snippet beforeEach
+  beforeEach(() => {${0}});
+
+
+snippet afterEach
+  afterEach(() => {${0}});
