@@ -223,8 +223,6 @@ set visualbell t_vb=
 
 set pastetoggle=<Leader>tp
 
-noremap ,v :<c-u>cexpr system('~/Development/vint/bin/vint --style ' . expand('%'))<cr>
-
 " 保存時に行末の空白を除去する {{{
 function! s:remove_dust()
 	" It hold cursor position, so these policies are false positive.
