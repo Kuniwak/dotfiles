@@ -18,7 +18,7 @@ if [ -d $MY_NDENV ]; then
 	eval "$(ndenv init -)"
 fi
 
-MY_DENV="$HOM#/.denv"
+MY_DENV="$HOME/.denv"
 if [ -d $MY_DENV ]; then
 	export PATH="$MY_DENV/bin:$MY_DENV/shims:$PATH"
 	eval "$(denv init -)"
