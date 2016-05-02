@@ -91,6 +91,7 @@ esac
 alias la='ls -a'
 alias ll='ls -l'
 alias lla='ls -la'
+alias pt='pt --home-ptignore'
 # }}}
 
 # KAIZEN aliases {{{

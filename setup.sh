@@ -27,6 +27,7 @@ setup() {
 	symlink "$dotfiles/.tigrc" "$HOME/.tigrc"
 	symlink "$dotfiles/.tmux.conf" "$HOME/.tmux.conf"
 	symlink "$dotfiles/.agignore" "$HOME/.agignore"
+	symlink "$dotfiles/.ptignore" "$HOME/.ptignore"
 	symlink "$dotfiles/.vimperatorrc" "$HOME/.vimperatorrc"
 	symlink "$dotfiles/.pentadactylrc" "$HOME/.pentadactylrc"
 
