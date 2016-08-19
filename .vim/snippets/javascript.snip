@@ -1,261 +1,4 @@
-# Statement snippets {{{
-snippet function
-alias f
-	function(${1:#:args}) {
-	  ${0}
-	};
-
-snippet interface
-	/**
-	 * Interface for ${1:#:interface_name}.
-	 * @interface
-	 */
-	 ${2:#:interface} = function() {};
-
-snippet class
-	/**
-	 * A class for ${1:#:class_name}.
-	 * @constructor
-	 */
-	${2:#:class} = function(${3:#:args}) {
-	  ${0}
-	};
-
-snippet sub
-alias extends
-alias ext
-	/**
-	 * A class for ${1:#:sub_class_name}.
-	 * @constructor
-	 * @extends {${2:#:super_class}}
-	 */
-	${3:sub_class} = function(${4:#:args}) {
-	  goog.base(this${5:#:super_args});
-	  ${0}
-	};
-	goog.inherits($3, $2);
-
-snippet inherits
-alias inh
-	goog.inherits(${1:#:sub_class}, ${2:#:super_class});
-
-snippet singleton
-alias sing
-	goog.addSingletonGetter(${1:#:singleton_class});
-
-snippet UiComponent
-alias uicomp
-	/**
-	 * A class for ${1:#:sub_class_name}.
-	 * @param {goog.dom.DomHelper=} opt_domHelper Optional DOM helper, used for
-	 *     document interaction.
-	 * @constructor
-	 * @extends {goog.ui.Component}
-	 */
-	${2:#:sub_class} = function(${3:#:args}opt_domHelper) {
-	  goog.base(this, opt_domHelper);
-	  ${0}
-	};
-	goog.inherits($2, goog.ui.Component);
-
-snippet UiControl
-alias uictrl
-	/**
-	 * A class for ${1:#:sub_class_name}.
-	 * @param {goog.ui.ControlContent} content Text caption or DOM structure
-	 *     to display as the content of the component (if any).
-	 * @param {goog.ui.ControlRenderer=} opt_renderer Renderer used to render or
-	 *     decorate the component; defaults to {@link goog.ui.ControlRenderer}.
-	 * @param {goog.dom.DomHelper=} opt_domHelper Optional DOM helper, used for
-	 *     document interaction.
-	 * @constructor
-	 * @extends {goog.ui.Control}
-	 */
-	${2:#:sub_class} = function(${3:#:args}opt_renderer, opt_domHelper) {
-	  goog.base(this, content, opt_renderer, opt_domHelper);
-	  ${0}
-	};
-	goog.inherits($2, goog.ui.Control);
-
-snippet req
-alias require
-	goog.require('${1}');
-
-snippet reqgoog
-	goog.require('goog.${1}');
-
-snippet reqarr
-	goog.require('goog.array${1}');
-
-snippet reqobj
-	goog.require('goog.object${1}');
-
-snippet reqdom
-	goog.require('goog.dom${1}');
-
-snippet reqev
-	goog.require('goog.events${1}');
-
-snippet requi
-	goog.require('goog.ui${1}');
-
-snippet provide
-alias prov
-	goog.provide('${1}');
-
-snippet abstract
-alias abs
-	goog.abstractMethod
-
-snippet nullfunction
-alias nullf
-	goog.nullFunction
-
-snippet disposeInternal
-snippet disp
-	/** @override */
-	${1}.prototype.disposeInternal = function() {
-	  goog.base(this, 'disposeInternal');
-	  ${0}
-	};
-
-snippet enterDocument
-alias entdoc
-	/** @override */
-	${1}.prototype.enterDocument = function() {
-	  goog.base(this, 'enterDocument');
-	  ${0}
-	};
-
-snippet exitDocument
-alias exitdoc
-	/** @override */
-	${1}.prototype.exitDocument = function() {
-	  goog.base(this, 'exitDocument');
-	  ${0}
-	};
-
-snippet decorateInternal
-alias deco
-	/** @override */
-	${1}.prototype.decorateInternal = function(element) {
-	  goog.base(this, 'decorateInternal', element);
-	  ${0}
-	};
-
-snippet rendererSupport
-alias rdrsup
-	/**
-	 * Returns the renderer used by this ${1:component} to render itself or to decorate
-	 * an existing element.
-	 * @return {${2:#:renderer_type}} Renderer used by the $1.
-	 */
-	${3:#:renderer}.prototype.getRenderer = function() {
-	  return this.renderer_;
-	};
-
-
-	/**
-	 * Registers the given renderer with the $1. Changing renderers after
-	 * the $1 has already been rendered or decorated is an error.
-	 * @param {$2} renderer Renderer used by the $1.
-	 */
-	$3.prototype.setRenderer = function(renderer) {
-	  if (this.getElement()) {
-	    // Too late.
-	    throw Error(goog.ui.Component.Error.ALREADY_RENDERED);
-	  }
-	
-	  this.renderer_ = renderer;
-	};
-
-
-	 /** @override */
-	$3.prototype.createDom = function() {
-	  // Delegate to renderer.
-	  this.setElementInternal(this.renderer_.createDom(this));
-	};
-
-
-	 /** @override */
-	$3.prototype.getContentElement = function() {
-	  // Delegate to renderer.
-	  return this.renderer_.getContentElement(this.getElement());
-	};
-	
-	
-	 /** @override */
-	$3.prototype.canDecorate = function(element) {
-	  // Delegate to renderer.
-	  return this.renderer_.canDecorate(element);
-	};
-	
-	
-	 /** @override */
-	$3.prototype.decorateInternal = function(element) {
-	  // Delegate to renderer.
-	  this.setElementInternal(this.renderer_.decorate(this, element));
-	};
-
-snippet log
-	console.log(${0});
-
-snippet assert
-	goog.assert.{0}
-
-snippet eventtype
-alias etp
-	/**
-	 * Common events fired by ${1:#:class_name}.
-	 * @enum {string}
-	 */
-	${2:#:event_target}.EventType = {
-	  /** Dispatched ${3:#:firing_timing}. */
-	  ${0}
-	};
-# }}}
-
-# Annotation snippets {{{
-snippet //license
-alias //li
-	// This script licensed under the MIT.
-	// http://orgachem.mit-license.org
-	${0}
-
-snippet @fileoverview
-alias @file
-alias @f
-	/**
-	 * @fileoverview ${1:#:file_description}
-	 * @author orga.chem.job@gmail.com (OrgaChem)
-	 */
-	${0}
-
-snippet @override
-alias @ov
-	/** @override */
-
-snippet setter
-	/**
-	 * Sets ${1:a property.}
-	 * @param {${2:type}} ${3:Property to set.}
-	 */
-	${0}
-
-snippet getter
-	/**
-	 * Returns ${1:a property.}
-	 * @return {${2:type}} ${3:Property.}
-	 */
-	${0}
-
-snippet whether
-	/**
-	 * Whether ${1:#:condition}
-	 * @return {boolean} Whether $1
-	 */
-	${0}
-
+# JSDoc {{{
 snippet jsdoc
 alias jd
 	/**
@@ -265,61 +8,116 @@ alias jd
 snippet onelinerjsdoc
 alias ojd
 	/** ${1} */
-
-# Row tags {{{
-snippet @supress
-alias @sup
-	@supress {${1}}${0}
-
-snippet @supressVisibility
-alias @supv
-	@supress {visibility}
-
-snippet @constructor
-alias @ctor
-	@constructor
-
-snippet @param
-alias @pm
-	@param {${1:#:type}} ${2:#:name} ${3:#:desc}
-
-snippet @return
-alias @ret
-	@return {${1:#:type}} ${2:#:desc}
-
-snippet @type
-alias @tp
-	@type {${1:#:type}}${0}
-
-snippet @private
-alias @pv
-	@private
-
-snippet @protected
-alias @pt
-	@protected
-
-snippet @extends
-alias @ext
-	@extends {${1}}${0}
-# }}}
 # }}}
 
+# Express {{{
 snippet express
 	'use strict';
 	
-	var util = require('util');
+	var Path = require('path');
+	var Http = require('http');
 	var express = require('express');
 	
-	var app = express();
-	
-	var PUBLIC_DIR = __dirname;
-	app.use(express.static(PUBLIC_DIR));
-	
-	var PORT = process.env.PORT;
+	var PUBLIC_DIR = Path.join(__dirname, 'public');
+	var PORT = process.env.PORT || 8080;
 	var HOSTNAME = 'localhost';
 	
-	var server = require('http').createServer(app);
-	server.listen(PORT, HOSTNAME, function () {
-	  console.log(util.format('http://%s:%d にブラウザでアクセスしてください'), HOSTNAME, PORT);
+	var app = express();
+	app.use(express.static(PUBLIC_DIR));
+	Http.createServer(app).listen(PORT, HOSTNAME, function () {
+	  console.log(\`http://${HOSTNAME}:${PORT} にブラウザでアクセスしてください\`);
 	});
+# }}}
+
+# Mocha {{{
+snippet describe
+alias d
+	describe('${1}', function() {
+	  ${0}
+	});
+
+snippet it
+alias i
+	it('should ${1}', function() {
+	  ${0}
+	});
+
+snippet context
+alias c
+	context('when ${1}', function() {
+	  ${0}
+	});
+
+snippet after
+alias a
+	after(function() {
+	  ${0}
+	});
+
+snippet afterEach
+	afterEach(function() {
+	  ${0}
+	});
+
+snippet before
+alias b
+	before(function() {
+	  ${0}
+	});
+
+snippet beforeEach
+	beforeEach(function() {
+	  ${0}
+	});
+# }}}
+
+# chai {{{
+snippet require-chai
+alias chai
+	var chai = require('chai');
+	var assert = chai.assert;
+# }}}
+
+# assert {{{
+snippet require-assert
+alias assert
+	var assert = require('assert');
+# }}}
+
+# selenium-webdriver {{{
+snippet require-selenium-webdriver
+alias selenium-webdriver
+	var webdriver = require('selenium-webdriver');
+	var By = webdriver.By;
+	var testing = require('selenium-webdriver/testing');
+	
+	var describe = testing.describe;
+	var it = testing.it;
+	var context = testing.context;
+	var before = testing.before;
+	var after = testing.after;
+	var beforeEach = testing.beforeEach;
+	var afterEach = testing.afterEach;
+	
+	
+	describe('${1}', function() {
+	  var driver;
+	
+	
+	  before(function() {
+	    driver = new webdriver.Builder()
+	      .forBrowser("Chrome")
+	      .build();
+	  });
+	
+	
+	  ${0}
+	
+	
+	  after(function() {
+	    return driver.quit();
+	  });
+	});
+# }}}
+
+# vim: fdm=marker
