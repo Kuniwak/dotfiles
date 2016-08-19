@@ -1,62 +1,91 @@
 snippet reference
 alias ref
-  /// <reference path="${0}" />
+	/// <reference path="${0}" />
 
 
 snippet namespace
-  namespace ${0} {
-  }
+	namespace ${0} {
+	}
 
 
 snippet class
-  class ${0} {
-  }
+	class ${0} {
+	}
 
 
 snippet interface
-  interface ${0} {
-  }
+	interface ${0} {
+	}
 
 
 snippet dict
-  { [${1:key}: ${2:string}]: ${0} }
+	{ [${1:key}: ${2:string}]: ${0} }
 
 
 snippet const
 alias c
-  const ${0};
+	const ${0};
 
 
 snippet let
-  let ${0};
+	let ${0};
 
 
 snippet describe
-  describe("${0}", () => {
-  });
+	describe("${0}", () => {
+	});
 
 
 snippet context
-  context("when ${0}", () => {
-  });
+	context("when ${0}", () => {
+	});
 
 
 snippet it
-  it("should ${0}", () => {
-  });
+	it("should ${0}", () => {
+	});
 
 
 snippet before
-  before(() => {${0}});
+	before(() => {${0}});
 
 
 snippet after
-  after(() => {${0}});
+	after(() => {${0}});
 
 
 snippet beforeEach
-  beforeEach(() => {${0}});
+	beforeEach(() => {${0}});
 
 
 snippet afterEach
-  afterEach(() => {${0}});
+	afterEach(() => {${0}});
+
+
+snippet parameterized
+	interface TestCase {
+	}
+	
+	(<TestCase[]> [
+	]).forEach((testCase) => {
+	  const {} = testCase;
+	
+	  context(\`when ${0}\`, () => {
+	  });
+	});
+
+
+snippet import_assert
+	import * as assert from "assert";
+
+
+snippet import_path
+	import * as Path from "path";
+
+
+snippet import_fs
+	import * as Fs from "fs";
+
+
+snippet import_webdriver
+	import * as Selenium from "selenium-webdriver";
