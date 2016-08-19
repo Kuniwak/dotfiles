@@ -287,6 +287,7 @@ augroup my_file_type
 	autocmd BufNewFile,BufRead .bowerrc setf json
 	autocmd BufNewFile,BufRead .watsonrc setf json
 	autocmd BufNewFile,BufRead .csslintrc setf json
+	autocmd BufNewFile,BufRead .babelrc setf json
 	autocmd BufNewFile,BufRead .googkit setf config
 	autocmd BufNewFile,BufRead *.pac setf javascript
 	autocmd BufNewFile,BufRead Guardfile setf ruby
@@ -534,7 +535,7 @@ let g:syntastic_typescript_checkers = ['tslint']
 let g:syntastic_closure_library_checkers = ['gjslint']
 let g:syntastic_closure_library_gjslint_conf = ' --disable 5,110 --strict'
 
-let g:syntastic_javascript_checkers = ['eslint', 'jscs']
+let g:syntastic_javascript_checkers = ['eslint']
 
 let g:syntastic_python_checkers = ['flake8']
 let g:syntastic_python_flake8_args = '--ignore=E501,E303'
