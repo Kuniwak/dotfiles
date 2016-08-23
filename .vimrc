@@ -293,6 +293,7 @@ augroup my_file_type
 	autocmd BufNewFile,BufRead Guardfile setf ruby
 	autocmd BufNewFile,BufRead Gruntfile setf javascript
 	autocmd BufNewFile,BufRead .perlcriticrc setf perlcriticrc
+	autocmd BufNewFile,BufRead Jenkinsfile setf groovy
 
 	autocmd FileType python call s:SetPytestIfUnderTestDir()
 	autocmd FileType javascript call s:SetMochaIfUnderTestDir()
