@@ -39,13 +39,6 @@ if [ -d $MY_PYENV ]; then
 	fi
 fi
 
-if has stack; then
-	function stack_path_silent () {
-		stack path $1 2> /dev/null
-	}
-	export PATH="$(stack_path_silent --local-bin-path):$PATH"
-fi
-
 SOCK="/tmp/ssh-agent-$USER"
 if test $SSH_AUTH_SOCK && [ $SSH_AUTH_SOCK != $SOCK ]
 then
