@@ -7,7 +7,7 @@ if has('vim_starting')
 	set runtimepath+=~/.vim/bundle/neobundle.vim
 endif
 
-call g:neobundle#begin(expand('~/.vim/bundle'))
+call neobundle#begin(expand('~/.vim/bundle'))
 	let s:bundle_file = '~/.vimrc.bundle'
 	if filereadable(expand(s:bundle_file))
 		exec ':source '.s:bundle_file
@@ -17,7 +17,7 @@ call g:neobundle#begin(expand('~/.vim/bundle'))
 	if filereadable(expand(s:bundle_file_local))
 		exec ':source '.s:bundle_file_local
 	endif
-call g:neobundle#end()
+call neobundle#end()
 filetype plugin indent on
 
 NeoBundleCheck
