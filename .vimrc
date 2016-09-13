@@ -211,8 +211,32 @@ inoremap } <ESC>f}a
 inoremap jj <ESC>
 
 " Undo履歴をファイルに保存する
-set undodir=$HOME/.vim-undodir
+function! s:make_dir_if_not_found(path) abort
+	let dirname = expand(a:path . ':h')
+	let basename = expand(a:path . ':t')
+
+	if !isdirectory(a:path)
+		call mkdir(a:path, 'p')
+	endif
+endfunction
+
+function! s:set_bkupdir(path) abort
+	let bkupdir = expand(a:path)
+	call s:make_dir_if_not_found(bkupdir)
+	let &backupdir = bkupdir
+endfunction
+
+function! s:set_undodir(path) abort
+	let undodir = expand(a:path)
+	call s:make_dir_if_not_found(undodir)
+	let &undodir = undodir
+endfunction
+
+call s:set_bkupdir('~/.vim-undo')
 set undofile
+call s:set_bkupdir('~/.vim-bkup')
+set backup
+
 
 " 縦分割したら新しいウィンドウは右に
 set splitright
