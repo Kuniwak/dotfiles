@@ -2,7 +2,7 @@
 
 set -u
 
-RECOMMENDED_PY_VAR='3.4.3'
+RECOMMENDED_PY_VAR='3.5.2'
 
 has() {
 	type "$1" > /dev/null 2>&1
