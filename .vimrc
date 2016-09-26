@@ -220,19 +220,19 @@ function! s:make_dir_if_not_found(path) abort
 	endif
 endfunction
 
-function! s:set_bkupdir(path) abort
-	let bkupdir = expand(a:path)
-	call s:make_dir_if_not_found(bkupdir)
-	let &backupdir = bkupdir
-endfunction
-
 function! s:set_undodir(path) abort
 	let undodir = expand(a:path)
 	call s:make_dir_if_not_found(undodir)
 	let &undodir = undodir
 endfunction
 
-call s:set_bkupdir('~/.vim-undo')
+function! s:set_bkupdir(path) abort
+	let bkupdir = expand(a:path)
+	call s:make_dir_if_not_found(bkupdir)
+	let &backupdir = bkupdir
+endfunction
+
+call s:set_undodir('~/.vim-undo')
 set undofile
 call s:set_bkupdir('~/.vim-bkup')
 set backup
