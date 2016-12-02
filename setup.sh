@@ -30,6 +30,7 @@ setup() {
 	symlink "$dotfiles/.ptignore" "$HOME/.ptignore"
 	symlink "$dotfiles/.vimperatorrc" "$HOME/.vimperatorrc"
 	symlink "$dotfiles/.pentadactylrc" "$HOME/.pentadactylrc"
+	symlink "$dotfiles/.percol.d" "$HOME/.percol.d"
 
 	if has zsh; then
 		symlink "$dotfiles/.zshrc" "$HOME/.zshrc"
