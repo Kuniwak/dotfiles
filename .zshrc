@@ -94,59 +94,44 @@ alias lla='ls -la'
 alias pt='pt --home-ptignore'
 # }}}
 
-# KAIZEN aliases {{{
-dotfiles="$HOME/.dotfiles"
-dotfiles_local="$HOME/.dotfiles"
-
-alias ev="vi $dotfiles/.vimrc"
-alias eb="vi $dotfiles/.vimrc.bundle"
-alias elv="vi $dotfiles_local/.vimrc.local"
-alias elb="vi $dotfiles_local/.vimrc.bundle.local"
-
-alias ez="vi $dotfiles/.zshrc"
-alias ee"vi $dotfiles/zshenv"
-alias elz="vi $dotfiles_local/.zshrc.local"
-alias ele="vi $dotfiles_local/.zshenv.local"
-# }}}
-
 # Git aliases {{{
 alias g='git'
-alias -g B='`git branch -a | peco --prompt "GIT BRANCH>" | head -n 1 | sed -e "s/^\*[ ]*//g"`'
-alias -g R='`git remote | peco --prompt "GIT REMOTE>" | head -n 1`'
-alias -g S='`git log --date=short --pretty="format:%h %cd %an%d %s" | peco --prompt "GIT SHA1>" | head -n 1 | sed "s/^\([0-9a-f]*\).*/\1/"`'
-alias -g D='`echo S | sed "s/\([0-9a-f]*\)/\1..\1^/" | xargs git diff --name-only | peco --prompt "GIT DIFF FILE>" | sed "s/^\(\S*\).*/\1/"`'
-alias -g LR='`git branch -a | peco --query "remotes/ " --prompt "GIT REMOTE BRANCH>" | head -n 1 | sed "s/^\*\s*//" | sed "s/remotes\/\([^\/]*\)\/\(.*\)/\2 \1\/\2/"`'
+alias -g B='`git branch -a | percol --prompt "GIT BRANCH>" | head -n 1 | sed -e "s/^\*[ ]*//g"`'
+alias -g R='`git remote | percol --prompt "GIT REMOTE>" | head -n 1`'
+alias -g S='`git log --date=short --pretty="format:%h %cd %an%d %s" | percol --prompt "GIT SHA1>" | head -n 1 | sed "s/^\([0-9a-f]*\).*/\1/"`'
+alias -g D='`echo S | sed "s/\([0-9a-f]*\)/\1..\1^/" | xargs git diff --name-only | percol --prompt "GIT DIFF FILE>" | sed "s/^\(\S*\).*/\1/"`'
+alias -g LR='`git branch -a | percol --query "remotes/ " --prompt "GIT REMOTE BRANCH>" | head -n 1 | sed "s/^\*\s*//" | sed "s/remotes\/\([^\/]*\)\/\(.*\)/\2 \1\/\2/"`'
 alias -g C='`git rev-parse --abbrev-ref HEAD`'
 # }}}
 
 # Tmux aliases {{{
 alias tn='tmux new -s'
-if has 'peco'; then
-	tmux-attach-peco() {
-		tmux attach -t `tmux ls -F "#{session_name}" | peco | head -1`
+if has 'percol'; then
+	tmux-attach-percol() {
+		tmux attach -t `tmux ls -F "#{session_name}" | percol`
 	}
-	alias ta='tmux-attach-peco'
+	alias ta='tmux-attach-percol'
 fi
 # }}}
 
-if has 'peco'; then
-	ssh-add-peco() {
-		for id_rsa in `ls -1 ~/.ssh/**/id_rsa | peco`; do
+if has 'percol'; then
+	ssh-add-percol() {
+		for id_rsa in `ls -1 ~/.ssh/**/id_rsa | percol`; do
 			ssh-add "$id_rsa"
 		done
 	}
-	alias sa='ssh-add-peco'
+	alias sa='ssh-add-percol'
 
-	git-conflict-peco() {
-		vim -p `git diff --name-only --diff-filter=U | peco`
+	git-conflict-percol() {
+		vim -p `git diff --name-only --diff-filter=U | percol`
 	}
 
-	history-peco() {
-		eval `history -nr 1 | peco`
+	history-percol() {
+		eval `history -nr 1 | percol`
 	}
 
-	git-checkout-remote-peco() {
-		remote_branch=`git remote -a | peco | head -1`
+	git-checkout-remote-percol() {
+		remote_branch=`git remote -a | percol | head -1`
 		branch_name=`sed "s/remotes\/[^\/]*\///"`
 		git checkout -b $branch_name $remote_branch
 	}
