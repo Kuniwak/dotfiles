@@ -47,6 +47,11 @@ then
     export SSH_AUTH_SOCK=$SOCK
 fi
 
+MY_CARGO="$HOME/.cargo"
+if [ -d $MY_CARGO ]; then
+	export PATH="$MY_CARGO/bin:$PATH"
+fi
+
 MY_SWIFTENV="$HOME/.swiftenv"
 if [ -d $MY_SWIFTENV ]; then
 	export SWIFTENV_ROOT="$MY_SWIFTENV"
