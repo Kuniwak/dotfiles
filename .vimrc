@@ -539,7 +539,7 @@ augroup END
 " Syntastic {{{
 let g:syntastic_debug = 0
 
-let g:syntastic_mode_map = { 'mode': 'passive', "active_filetypes": ["json", "typescript", "python", "javascript"] }
+let g:syntastic_mode_map = { 'mode': 'passive', "active_filetypes": ["json", "typescript", "python", "javascript", "swift"] }
 
 let g:syntastic_html_tidy_quiet_messages = {
 			\ 'regex': [
@@ -580,6 +580,8 @@ let g:syntastic_ruby_rubocop_args = '--fail-level warning'
 let g:syntastic_coffee_checkers = ['coffee', 'coffeelint']
 
 let g:syntastic_vim_checkers = ['vint']
+
+let g:syntastic_swift_checkers = ['swiftlint']
 
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_loc_list_height = 3

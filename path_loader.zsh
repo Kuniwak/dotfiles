@@ -47,6 +47,14 @@ then
     export SSH_AUTH_SOCK=$SOCK
 fi
 
+MY_SWIFTENV="$HOME/.swiftenv"
+if [ -d $MY_SWIFTENV ]; then
+	export SWIFTENV_ROOT="$MY_SWIFTENV"
+	export PATH="$MY_SWIFTENV/bin:$PATH"
+	eval "$(swiftenv init -)"
+fi
+
+
 JAVA_HOME_DETECTOR="/usr/libexec/java_home"
 if [ -x "$JAVA_HOME_DETECTOR" ]; then
 	export JAVA_HOME="$($JAVA_HOME_DETECTOR)"
