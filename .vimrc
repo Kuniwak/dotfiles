@@ -86,7 +86,7 @@ cnoremap <C-b> <Left>
 cnoremap <C-d> <Del>
 cnoremap <C-e> <End>
 cnoremap <C-f> <Right>
-cnoremap <C-h> <Backspace>
+cnoremap <C-h> <BS>
 cnoremap <C-k> <C-\>e getcmdpos() == 1 ? '' : getcmdline()[:getcmdpos()-2]<CR>
 cnoremap <C-n> <Down>
 cnoremap <C-p> <Up>
@@ -95,7 +95,7 @@ inoremap <silent> <C-a> <C-o>:call g:MoveCursorToHome()<CR>
 inoremap <C-b> <Left>
 inoremap <C-e> <End>
 inoremap <C-d> <Del>
-inoremap <C-h> <Backspace>
+inoremap <C-h> <BS>
 inoremap <C-f> <Right>
 inoremap <C-k> <C-o>D
 
