@@ -48,6 +48,8 @@ set formatoptions+=mB
 " 全角文字を半角に判定されることを回避
 set ambiwidth=double
 
+set termguicolors
+
 augroup highlightIdegraphicSpace
 	autocmd!
 	autocmd Colorscheme * highlight IdeographicSpace term=underline ctermbg=DarkGreen guibg=DarkGreen

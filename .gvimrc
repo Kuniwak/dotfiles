@@ -5,8 +5,6 @@ set columns=130
 set showtabline=2
 set guioptions-=T
 
-set termguicolors
-
 if has('gui_macvim')
 	set guifont=SourceCodePro-ExtraLight:h10
 	set guifontwide=HiraKakuPro-W3:h10
