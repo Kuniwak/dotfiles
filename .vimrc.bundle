@@ -20,7 +20,6 @@ NeoBundle 'cocopon/vaffle.vim'
 NeoBundle 'digitaltoad/vim-jade'
 NeoBundle 'groenewege/vim-less'
 NeoBundle 'hail2u/vim-css3-syntax'
-NeoBundle 'keith/swift.vim'
 NeoBundle 'itchyny/lightline.vim'
 NeoBundle 'juanpabloaj/ShowMarks'
 NeoBundle 'kana/vim-textobj-entire', { 'depends': 'kana/vim-textobj-user' }
@@ -28,6 +27,7 @@ NeoBundle 'kana/vim-textobj-indent', { 'depends': 'kana/vim-textobj-user' }
 NeoBundle 'kana/vim-textobj-syntax', { 'depends': 'kana/vim-textobj-user' }
 NeoBundle 'kana/vim-textobj-underscore', { 'depends': 'kana/vim-textobj-user' }
 NeoBundle 'kana/vim-textobj-user'
+NeoBundle 'keith/swift.vim'
 NeoBundle 'leafgarland/typescript-vim'
 NeoBundle 'mattn/emmet-vim'
 NeoBundle 'modsound/macdict-vim'
