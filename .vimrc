@@ -407,28 +407,6 @@ nnoremap <silent> <Leader>l :<C-u>QuickRun<CR>
 "}}}
 
 " Vimfiler {{{
-" vimデフォルトのエクスプローラをvimfilerで置き換える
-let g:vimfiler_as_default_explorer = 1
-
-" セーフモードを無効にした状態で起動する
-let g:vimfiler_safe_mode_by_default = 0
-
-" VimFiler で無視するファイルを指定
-"   - 隠しファイル
-"   - swap ファイル
-"   - python の byte code cache
-let g:vimfiler_ignore_pattern='\(^\.\|\~$\|\.sw[opn]\|\.pyc$\|__pycache__\)'
-
-function! s:change_vimfiler_mapping()
-	" unmap <buffer> <C-j>
-	" unmap <buffer> <C-l>
-endfunction
-
-augroup vimrc_vimfiler
-	autocmd!
-	autocmd FileType vimfiler call s:change_vimfiler_mapping()
-augroup END
-
 nnoremap <silent> <Leader>vf :<C-u>VimFilerBufferDir<CR>
 "}}}
 
