@@ -406,8 +406,8 @@ let g:quickrun_config['d'] = {
 nnoremap <silent> <Leader>l :<C-u>QuickRun<CR>
 "}}}
 
-" Vimfiler {{{
-nnoremap <silent> <Leader>vf :<C-u>VimFilerBufferDir<CR>
+" Vaffle {{{
+nnoremap <silent> <Leader>vf :<C-u>execute 'Vaffle ' . fnameescape(getcwd())<CR>
 "}}}
 
 " Unite {{{
