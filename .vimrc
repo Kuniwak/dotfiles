@@ -412,7 +412,7 @@ nnoremap <silent> <Leader>l :<C-u>QuickRun<CR>
 "}}}
 
 " Vaffle {{{
-nnoremap <silent> <Leader>vf :<C-u>execute 'Vaffle ' . fnameescape(getcwd())<CR>
+nnoremap <silent> <Leader>vf :<C-u>execute 'Vaffle ' . fnameescape(expand('%:h'))<CR>
 "}}}
 
 " Unite {{{
