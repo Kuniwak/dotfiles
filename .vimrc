@@ -22,6 +22,9 @@ filetype plugin indent on
 
 NeoBundleCheck
 
+" $VIMRUNTIME/syntax/sh.vim で bash を有効にするた
+let g:is_bash = 1
+
 " 未使用のkaoriyaプラグインを無効化
 let g:plugin_dicwin_disable = 1
 
