@@ -45,6 +45,7 @@ setup() {
 		symlink "$dotfiles/.vimrc" "$HOME/.vimrc"
 		symlink "$dotfiles/.vimrc.bundle" "$HOME/.vimrc.bundle"
 		symlink "$dotfiles/.gvimrc" "$HOME/.gvimrc"
+		symlink "$dotfiles/.xvimrc" "$HOME/.xvimrc"
 		if [ -d "$neobundle" ]; then
 			(cd "$neobundle" && git pull --rebase)
 		else

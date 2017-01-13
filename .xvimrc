@@ -1,0 +1,32 @@
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+
+noremap <ESC><ESC> :nohlsearch<CR><ESC>
+
+inoremap jj <ESC>
+
+nnoremap gf gd
+
+nnoremap Y y$
+nnoremap vv V
+nnoremap n nzz
+nnoremap N Nzz
+
+nnoremap j gj
+nnoremap k gk
+nnoremap gj j 
+nnoremap gk k 
+vnoremap j gj
+vnoremap k gk
+vnoremap gj j 
+vnoremap gk k 
+
+nnoremap r<CR> xi<CR><ESC>
+inoremap <C-u> <ESC>d^xi
+
+nnoremap <C-o> :xcmenucmd Go Back<CR>
+nnoremap <C-i> :xcmenucmd Go Forward<CR>
+nnoremap gcc :xcmenucmd Comment Selection<CR>
+vnoremap gc :xcmenucmd Comment Selection<CR>
