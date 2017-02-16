@@ -23,6 +23,7 @@ has() {
 }
 
 export EDITOR="vim -p"
+export GIT_EDITOR="vim -p"
 
 # Prompt {{{
 setopt PROMPT_SUBST
@@ -92,6 +93,7 @@ alias la='ls -a'
 alias ll='ls -l'
 alias lla='ls -la'
 alias pt='pt --home-ptignore'
+alias be='bundle exec --'
 # }}}
 
 # Git aliases {{{
