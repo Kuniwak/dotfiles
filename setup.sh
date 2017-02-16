@@ -7,6 +7,16 @@ setup() {
 		type "$command_name" > /dev/null 2>&1
 	}
 
+	symlink_with_bkup() {
+		local source="$1"
+		local dest="$2"
+		local bkup_dir="$HOME/.backups/$(date +%s)"
+
+		mkdir -p "$bkup_dir"
+		[[ -e "$dest" ]] || mv "$dest" "$bkup_dir/$(basename "$dest")"
+		ln -s "$source" "$dest"
+	}
+
 	symlink_if_not_exists() {
 		local source="$1"
 		local dest="$2"
@@ -37,7 +47,7 @@ setup() {
 	symlink_if_not_exists "$dotfiles/.bundle/config" "$HOME/.bundle/config"
 
 	if has zsh; then
-		symlink_if_not_exists "$dotfiles/.zshrc" "$HOME/.zshrc"
+		symlink_with_bkup "$dotfiles/.zshrc" "$HOME/.zshrc"
 		symlink_if_not_exists "$dotfiles/.zshenv" "$HOME/.zshenv"
 		symlink_if_not_exists "$dotfiles/.zshprofile" "$HOME/.zshprofile"
 		git_clone_if_not_exists 'https://github.com/zsh-users/zsh-syntax-highlighting.git' "$HOME/.zsh-syntax-highlighting"
