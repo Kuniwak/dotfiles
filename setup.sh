@@ -12,8 +12,10 @@ setup() {
 		local dest="$2"
 		local bkup_dir="$HOME/.backups/$(date +%s)"
 
-		mkdir -p "$bkup_dir"
-		[[ -e "$dest" ]] || mv "$dest" "$bkup_dir/$(basename "$dest")"
+		if [[ -e "$dest" ]]; then
+			mkdir -p "$bkup_dir"
+			mv "$dest" "$bkup_dir/$(basename "$dest")"
+		fi
 		ln -s "$source" "$dest"
 	}
 
