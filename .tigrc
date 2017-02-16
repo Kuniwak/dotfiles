@@ -4,3 +4,5 @@ bind generic G move-last-line
 bind generic <Ctrl-f> move-page-down
 bind generic <Ctrl-b> move-page-up
 bind status C !git commit -v
+
+set main-view-id-display = yes
