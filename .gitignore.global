@@ -44,5 +44,8 @@ $RECYCLE.BIN/
 *.msm
 *.msp
 # }}}
+vendor/bundle
+vendor/bundler
+.bin
 
 # vim: fdm=marker
