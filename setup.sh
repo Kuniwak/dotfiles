@@ -1,56 +1,56 @@
-#!/bin/sh
+#!/bin/bash -eu -o pipefail
 # Thanks, @kaorimatz!
 
-set -e
-set -u
-
 setup() {
-	dotfiles=$HOME/.dotfiles
-
 	has() {
-		type "$1" > /dev/null 2>&1
+		local command_name="$1"
+		type "$command_name" > /dev/null 2>&1
 	}
 
-	symlink() {
-		[ -e "$2" ] || ln -s "$1" "$2"
+	symlink_if_not_exists() {
+		local source="$1"
+		local dest="$2"
+
+		mkdir -p "$(dirname "$2")"
+		[[ -e "$dest" ]] || ln -s "$source" "$dest"
 	}
 
-	if [ -d "$dotfiles" ]; then
-		(cd "$dotfiles" && git pull --rebase)
-	else
-		git clone git@github.com:Kuniwak/dotfiles "$dotfiles"
-	fi
+	git_clone_if_not_exists() {
+		local repo="$1"
+		local dest="$2"
+		[[ -e "$dest" ]] || git clone "$1" "$2"
+	}
 
-	symlink "$dotfiles/.gitconfig" "$HOME/.gitconfig"
-	symlink "$dotfiles/.gitignore.global" "$HOME/.gitignore.global"
-	symlink "$dotfiles/.curlrc" "$HOME/.curlrc"
-	symlink "$dotfiles/.tigrc" "$HOME/.tigrc"
-	symlink "$dotfiles/.tmux.conf" "$HOME/.tmux.conf"
-	symlink "$dotfiles/.agignore" "$HOME/.agignore"
-	symlink "$dotfiles/.ptignore" "$HOME/.ptignore"
-	symlink "$dotfiles/.vimperatorrc" "$HOME/.vimperatorrc"
-	symlink "$dotfiles/.pentadactylrc" "$HOME/.pentadactylrc"
-	symlink "$dotfiles/.percol.d" "$HOME/.percol.d"
+	local dotfiles="$HOME/.dotfiles"
+	git_clone_if_not_exists 'https://github.com/Kuniwak/dotfiles' "$dotfiles"
+
+	symlink_if_not_exists "$dotfiles/.gitconfig" "$HOME/.gitconfig"
+	symlink_if_not_exists "$dotfiles/.gitignore.global" "$HOME/.gitignore.global"
+	symlink_if_not_exists "$dotfiles/.curlrc" "$HOME/.curlrc"
+	symlink_if_not_exists "$dotfiles/.tigrc" "$HOME/.tigrc"
+	symlink_if_not_exists "$dotfiles/.tmux.conf" "$HOME/.tmux.conf"
+	symlink_if_not_exists "$dotfiles/.agignore" "$HOME/.agignore"
+	symlink_if_not_exists "$dotfiles/.ptignore" "$HOME/.ptignore"
+	symlink_if_not_exists "$dotfiles/.vimperatorrc" "$HOME/.vimperatorrc"
+	symlink_if_not_exists "$dotfiles/.pentadactylrc" "$HOME/.pentadactylrc"
+	symlink_if_not_exists "$dotfiles/.percol.d" "$HOME/.percol.d"
+	symlink_if_not_exists "$dotfiles/.bundle/config" "$HOME/.bundle/config"
 
 	if has zsh; then
-		symlink "$dotfiles/.zshrc" "$HOME/.zshrc"
-		symlink "$dotfiles/.zshenv" "$HOME/.zshenv"
-		symlink "$dotfiles/.zshprofile" "$HOME/.zshprofile"
-		git clone https://github.com/zsh-users/zsh-syntax-highlighting.git "$HOME/.zsh-syntax-highlighting"
+		symlink_if_not_exists "$dotfiles/.zshrc" "$HOME/.zshrc"
+		symlink_if_not_exists "$dotfiles/.zshenv" "$HOME/.zshenv"
+		symlink_if_not_exists "$dotfiles/.zshprofile" "$HOME/.zshprofile"
+		git_clone_if_not_exists 'https://github.com/zsh-users/zsh-syntax-highlighting.git' "$HOME/.zsh-syntax-highlighting"
 	fi
 
 	if has vim; then
-		neobundle="$dotfiles/.vim/bundle"
-		symlink "$dotfiles/.vim" "$HOME/.vim"
-		symlink "$dotfiles/.vimrc" "$HOME/.vimrc"
-		symlink "$dotfiles/.vimrc.bundle" "$HOME/.vimrc.bundle"
-		symlink "$dotfiles/.gvimrc" "$HOME/.gvimrc"
-		symlink "$dotfiles/.xvimrc" "$HOME/.xvimrc"
-		if [ -d "$neobundle" ]; then
-			(cd "$neobundle" && git pull --rebase)
-		else
-			git clone git@github.com:Shougo/neobundle.vim "$neobundle/neobundle.vim"
-		fi
+		local neobundle="$dotfiles/.vim/bundle"
+		symlink_if_not_exists "$dotfiles/.vim" "$HOME/.vim"
+		symlink_if_not_exists "$dotfiles/.vimrc" "$HOME/.vimrc"
+		symlink_if_not_exists "$dotfiles/.vimrc.bundle" "$HOME/.vimrc.bundle"
+		symlink_if_not_exists "$dotfiles/.gvimrc" "$HOME/.gvimrc"
+		symlink_if_not_exists "$dotfiles/.xvimrc" "$HOME/.xvimrc"
+		git_clone_if_not_exists 'https://github.com/Shougo/neobundle.vim' "$neobundle/neobundle.vim"
 	fi
 }
 
