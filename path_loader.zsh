@@ -39,9 +39,12 @@ if [ -d $MY_PYENV ]; then
 	fi
 fi
 
-for pip_dir in $(find "$HOME/Library/Python" -type d -depth 1); do
-	export PATH="$pip_dir/bin:$PATH"
-done
+MAC_PYTHON_DIR="$HOME/Library/Python"
+if [[ -d "$MAC_PYTHON_DIR" ]]; then
+	for pip_dir in $(find "$MAC_PYTHON_DIR" -type d -depth 1); do
+		export PATH="$pip_dir/bin:$PATH"
+	done
+fi
 
 SOCK="/tmp/ssh-agent-$USER"
 if test $SSH_AUTH_SOCK && [ $SSH_AUTH_SOCK != $SOCK ]
