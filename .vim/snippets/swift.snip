@@ -1,0 +1,86 @@
+snippet testcase
+alias t
+options head
+    func test${0}() {
+    }
+
+
+    ${1}
+
+
+snippet parametrized
+    private struct TestCase {
+        ${0}
+        line: Int
+    }
+
+
+    func test() {
+        let testCases: [TestCase] = [
+        ]
+
+
+        testCases.forEach { testCase in
+        }
+    }
+
+
+    ${1}
+
+
+snippet parametrizedelement
+alias p
+        TestCase(
+            ${0},
+            line: #line
+        ),
+
+
+snippet testsuite
+alias suite
+    import XCTest
+    @testable import TestDiffKit
+    
+    
+    class TestDiffKitTests: XCTestCase {
+        ${0}
+
+
+        static var allTests : [(String, (TestDiffKitTests) -> () throws -> Void)] {
+            return [
+                // ("testExample", testExample),
+            ]
+        }
+    }
+
+
+snippet assert
+alias a
+    XCTAssert(${0})
+
+
+snippet assertequal
+alias ae
+    XCTAssertEqual(${0})
+
+
+snippet assertthrow
+alias at
+    XCTAssertThrowsError({
+        ${0}
+    })
+
+
+snippet assertnotnil
+alias ann
+    XCTAssertEqual(${0})
+
+
+snippet document
+alias d
+    /**
+     ${0}
+     - parameters:
+        -
+     - returns:
+     */

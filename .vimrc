@@ -22,7 +22,7 @@ filetype plugin indent on
 
 NeoBundleCheck
 
-" $VIMRUNTIME/syntax/sh.vim で bash を有効にするた
+" $VIMRUNTIME/syntax/sh.vim で bash を有効にするため
 let g:is_bash = 1
 
 " 未使用のkaoriyaプラグインを無効化
@@ -283,6 +283,7 @@ augroup remove_dust
 	autocmd BufWritePre *.py call <SID>remove_dust()
 	autocmd BufWritePre *.pl call <SID>remove_dust()
 	autocmd BufWritePre *.t call <SID>remove_dust()
+	autocmd BufWritePre *.swift call <SID>remove_dust()
 augroup END
 
 augroup force_utf8
@@ -301,6 +302,12 @@ endfunction
 function! s:SetMochaIfUnderTestDir()
 	if match(expand('%:p'), '\<tests\?\>') > 0
 		set filetype+=.mocha
+	endif
+endfunction
+
+function! s:SetSPMTestIfUnderTestDir()
+	if match(expand('%:p'), '\<Tests\>') > 0
+		set filetype+=.swift-package-manager
 	endif
 endfunction
 
@@ -328,6 +335,7 @@ augroup my_file_type
 
 	autocmd FileType python call s:SetPytestIfUnderTestDir()
 	autocmd FileType javascript call s:SetMochaIfUnderTestDir()
+	autocmd FileType swift call s:SetSPMTestIfUnderTestDir()
 
 	autocmd BufNewFile,BufRead cpanfile setf perl
 	autocmd FileType perl set filetype=perl.carton
@@ -407,6 +415,11 @@ let g:quickrun_config['d'] = {
 			\ 'command': 'rdmd',
 			\ 'cmdopt': '-unittest'
 			\ }
+
+let g:quickrun_config['swift.swift-package-manager'] = {
+			\ 'exec': 'swift test',
+			\ }
+
 
 nnoremap <silent> <Leader>l :<C-u>QuickRun<CR>
 "}}}
