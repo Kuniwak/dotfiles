@@ -1,0 +1,26 @@
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+
+" noremap <ESC><ESC> :nohlsearch<CR><ESC>
+inoremap <C-h> <BS>
+inoremap <C-d> <DEL>
+
+inoremap jj <ESC>
+inoremap <C-]> <ESC>
+noremap <C-]> <ESC>
+
+nnoremap Y y$
+nnoremap vv V
+nnoremap n nzz
+nnoremap N Nzz
+
+noremap j gj
+noremap k gk
+noremap gj j 
+noremap gk k 
+
+noremap gcc V:action CommentLineComment<CR>
+vnoremap gc :action CommentLineComment<CR>
+nnoremap ,l :action Run<CR>

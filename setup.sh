@@ -62,6 +62,7 @@ setup() {
 		symlink_if_not_exists "$dotfiles/.vimrc.bundle" "$HOME/.vimrc.bundle"
 		symlink_if_not_exists "$dotfiles/.gvimrc" "$HOME/.gvimrc"
 		symlink_if_not_exists "$dotfiles/.xvimrc" "$HOME/.xvimrc"
+		symlink_if_not_exists "$dotfiles/.ideavimrc" "$HOME/.ideavimrc"
 		git_clone_if_not_exists 'https://github.com/Shougo/neobundle.vim' "$neobundle/neobundle.vim"
 	fi
 }
