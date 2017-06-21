@@ -39,6 +39,15 @@ if [[ -d $MY_PYENV ]]; then
 	fi
 fi
 
+export GOENV_ROOT="$HOME/.goenv"
+if [[ -x "$GOENV_ROOT" ]]; then
+	export PATH="$GOENV_ROOT/bin:$PATH"
+	eval "$(goenv init -)"
+
+	export GOPATH="$HOME/.go"
+	export PATH="$PATH:$GOPATH/bin"
+fi
+
 MAC_PYTHON_DIR="$HOME/Library/Python"
 if [[ -d "$MAC_PYTHON_DIR" ]]; then
 	for pip_dir in $(find "$MAC_PYTHON_DIR" -type d -depth 1); do
