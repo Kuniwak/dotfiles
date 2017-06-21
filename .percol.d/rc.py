@@ -59,6 +59,7 @@ percol.import_keymap({
     "C-y" : lambda percol: percol.command.yank(),
     "C-n" : lambda percol: percol.command.select_next(),
     "C-p" : lambda percol: percol.command.select_previous(),
+    "C-s" : lambda percol: percol.command.toggle_mark_and_next(),
     "C-v" : lambda percol: percol.command.select_next_page(),
     "M-v" : lambda percol: percol.command.select_previous_page(),
     "M-<" : lambda percol: percol.command.select_top(),
