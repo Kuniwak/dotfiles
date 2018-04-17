@@ -7,7 +7,7 @@ has() {
 }
 
 setup_rbenv() {
-	RECOMMENDED_RB_VAR="2.3.3"
+	RECOMMENDED_RB_VAR="2.5.1"
 	git clone https://github.com/sstephenson/rbenv "$HOME/.rbenv"
 	git clone https://github.com/sstephenson/ruby-build.git "$HOME/.rbenv/plugins/ruby-build"
 

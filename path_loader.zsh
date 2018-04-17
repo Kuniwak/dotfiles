@@ -6,6 +6,11 @@ if [[ -d $MY_RBENV ]]; then
 	eval "$(rbenv init -)"
 fi
 
+if has gem; then
+	GEM_USER_PATH="$(gem environment gempath | cut -f 1 -d :)"
+	export PATH="$GEM_USER_PATH/bin:$PATH"
+fi
+
 MY_PLENV="$HOME/.plenv"
 if [[ -d $MY_PLENV ]]; then
 	export PATH="$MY_PLENV/bin:$MY_PLENV/shims:$PATH"
@@ -74,7 +79,6 @@ if [[ -d $MY_SWIFTENV ]]; then
 	export PATH="$MY_SWIFTENV/bin:$PATH"
 	eval "$(swiftenv init -)"
 fi
-
 
 JAVA_HOME_DETECTOR="/usr/libexec/java_home"
 if [[ -x "$JAVA_HOME_DETECTOR" ]]; then
