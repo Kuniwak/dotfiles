@@ -118,8 +118,8 @@ fi
 
 if has 'percol'; then
 	ssh-add-percol() {
-		for id_rsa in `ls -1 ~/.ssh/**/id_rsa | percol`; do
-			ssh-add "$id_rsa"
+	for id_rsa in $(find ~/.ssh -type f -name 'id_rsa' | percol); do
+		ssh-add "$id_rsa"
 		done
 	}
 	alias sa='ssh-add-percol'
