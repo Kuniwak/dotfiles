@@ -361,8 +361,7 @@ let g:quickrun_config = {}
 " Vimproc で Quickrun
 let g:quickrun_config['_'] = {
 			\ 'split': 'vertical',
-			\ 'runner': 'vimproc',
-			\       'runner/vimproc/updatetime' : 100
+			\ 'runner': 'job',
 			\ }
 
 " JavaScript の実行環境を Node.js に指定
@@ -537,7 +536,7 @@ augroup END
 " Syntastic {{{
 let g:syntastic_debug = 0
 
-let g:syntastic_mode_map = { 'mode': 'passive', "active_filetypes": ["json", "python", "javascript", "swift"] }
+let g:syntastic_mode_map = { 'mode': 'passive', "active_filetypes": ["json", "python", "javascript", "swift", "yaml"] }
 
 let g:syntastic_html_tidy_quiet_messages = {
 			\ 'regex': [
@@ -564,6 +563,8 @@ let g:syntastic_python_checkers = ['flake8']
 let g:syntastic_python_flake8_args = '--ignore=E501,E303'
 
 let g:syntastic_json_checkers = ['jsonlint']
+
+let g:syntastic_yaml_checkers = ['yamllint']
 
 let g:syntastic_css_checkers = ['csslint']
 
