@@ -1,13 +1,13 @@
 #!/bin/sh
 
-set -u
+set -eu
 
 has() {
 	type "$1" > /dev/null 2>&1
 }
 
 setup_ndenv() {
-	RECOMMENDED_NODE_VAR="v5.11.1"
+	RECOMMENDED_NODE_VAR="v8.11.1"
 	git clone git://github.com/riywo/ndenv.git "$HOME/.ndenv"
 	git clone git://github.com/riywo/node-build.git "$HOME/.ndenv/plugins/node-build/"
 
