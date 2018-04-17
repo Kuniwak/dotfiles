@@ -18,5 +18,11 @@
 	ps = push
 	ready = rebase -i @{u}
 	s = status -s -b
+	ignore = "!gi() { curl -L -s https://www.gitignore.io/api/$@ ;}; gi"
 [include]
   path = ~/.gitconfig.local
+[filter "lfs"]
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
