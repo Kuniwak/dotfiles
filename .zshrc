@@ -144,7 +144,3 @@ if [ -r ~/.zshrc.local ]; then
 fi
 
 # vim: fdm=marker
-
-#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="/Users/yuki.kokubun/.sdkman"
-[[ -s "/Users/yuki.kokubun/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/yuki.kokubun/.sdkman/bin/sdkman-init.sh"
