@@ -47,7 +47,6 @@ setup() {
 	symlink_if_not_exists "$dotfiles/.pentadactylrc" "$HOME/.pentadactylrc"
 	symlink_if_not_exists "$dotfiles/.percol.d" "$HOME/.percol.d"
 	symlink_if_not_exists "$dotfiles/.bundle/config" "$HOME/.bundle/config"
-	symlink_if_not_exists "$dotfiles/.gemrc" "$HOME/.gemrc"
 
 	if has zsh; then
 		symlink_with_bkup "$dotfiles/.zshrc" "$HOME/.zshrc"
