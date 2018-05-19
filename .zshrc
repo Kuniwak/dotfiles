@@ -110,7 +110,14 @@ alias -g C='`git rev-parse --abbrev-ref HEAD`'
 alias tn='tmux new -s'
 if has 'percol'; then
 	tmux-attach-percol() {
-		tmux attach -t `tmux ls -F "#{session_name}" | percol`
+		session_names=$(tmux ls -F "#{session_name}")
+
+		if [[ -z "$session_names" ]]; then
+			return 1
+		fi
+
+		session_name=$(echo "$session_name" | percol)
+		tmux attach -t "$session_name"
 	}
 	alias ta='tmux-attach-percol'
 fi
@@ -118,8 +125,8 @@ fi
 
 if has 'percol'; then
 	ssh-add-percol() {
-	for id_rsa in $(find ~/.ssh -type f -name 'id_rsa' | percol); do
-		ssh-add "$id_rsa"
+		for id_rsa in $(find ~/.ssh -type f -name 'id_rsa' | percol); do
+			ssh-add "$id_rsa"
 		done
 	}
 	alias sa='ssh-add-percol'
