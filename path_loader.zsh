@@ -85,7 +85,8 @@ if [[ -s "$SDKMAN_DIR/bin/sdkman-init.sh" ]]; then
 	source "$SDKMAN_DIR/bin/sdkman-init.sh"
 fi
 
-# JAVA_HOME_DETECTOR="/usr/libexec/java_home"
-# if [[ -x "$JAVA_HOME_DETECTOR" ]]; then
-# 	export JAVA_HOME="$($JAVA_HOME_DETECTOR)"
-# fi
+SDKMAN_DIR="$HOME/.sdkman"
+if [[ -d "$SDKMAN_DIR" ]]; then
+	# source "$SDKMAN_DIR/bin/sdkman-init.sh"
+else
+fi
