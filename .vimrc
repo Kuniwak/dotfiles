@@ -582,6 +582,8 @@ let g:syntastic_vim_checkers = ['vint']
 
 let g:syntastic_swift_checkers = ['swiftlint']
 
+let g:syntastic_markdown_checkers = ['textlint']
+
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_loc_list_height = 3
 
