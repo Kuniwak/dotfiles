@@ -116,7 +116,7 @@ if has 'percol'; then
 			return 1
 		fi
 
-		session_name=$(echo "$session_name" | percol)
+		session_name=$(echo "$session_names" | percol)
 		tmux attach -t "$session_name"
 	}
 	alias ta='tmux-attach-percol'
