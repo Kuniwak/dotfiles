@@ -1,4 +1,4 @@
-setlocal noexpandtab
+setlocal expandtab
 setlocal tabstop=4
 setlocal shiftwidth=4
 setlocal foldmethod=manual
