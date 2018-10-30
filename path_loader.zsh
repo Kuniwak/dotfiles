@@ -80,13 +80,12 @@ if [[ -d $MY_SWIFTENV ]]; then
 	eval "$(swiftenv init -)"
 fi
 
-export SDKMAN_DIR="$HOME/.sdkman"
+SDKMAN_DIR="$HOME/.sdkman"
 if [[ -s "$SDKMAN_DIR/bin/sdkman-init.sh" ]]; then
 	source "$SDKMAN_DIR/bin/sdkman-init.sh"
 fi
 
-SDKMAN_DIR="$HOME/.sdkman"
-if [[ -d "$SDKMAN_DIR" ]]; then
-	# source "$SDKMAN_DIR/bin/sdkman-init.sh"
-else
+ANDROID_DIR="$HOME/Library/Android"
+if [[ -d "$ANDROID_DIR" ]]; then
+	export PATH="$ANDROID_DIR/sdk/ndk-bundle:$ANDROID_DIR/sdk/platform-tools:$PATH"
 fi
