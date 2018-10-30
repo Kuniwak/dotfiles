@@ -1,5 +1,4 @@
 NeoBundle 'Kuniwak/vim-javascript'
-NeoBundle 'Lokaltog/vim-easymotion'
 NeoBundle 'Quramy/tsuquyomi'
 NeoBundle 'Shougo/neomru.vim'
 NeoBundle 'Shougo/neosnippet'

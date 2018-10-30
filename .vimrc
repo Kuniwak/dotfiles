@@ -696,15 +696,6 @@ if has('mac')
 endif
 " }}} 
 
-" EasyMotion {{{
-let g:EasyMotion_do_mapping = 0
-nmap s <Plug>(easymotion-s2)
-map f <Plug>(easymotion-fl)
-map t <Plug>(easymotion-tl)
-map F <Plug>(easymotion-Fl)
-map T <Plug>(easymotion-Tl)
-" }}} 
-
 " Perl lib {{{
 let g:rooter_use_lcd = 1
 augroup my_perl_lib_path
