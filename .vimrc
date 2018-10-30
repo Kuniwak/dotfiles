@@ -212,9 +212,6 @@ inoremap ) <ESC>f)a
 inoremap ] <ESC>f]a
 inoremap } <ESC>f}a
 
-" jj で ESC
-inoremap jj <ESC>
-
 " Undo履歴をファイルに保存する
 function! s:make_dir_if_not_found(path) abort
 	let dirname = expand(a:path . ':h')

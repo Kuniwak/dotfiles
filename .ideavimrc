@@ -11,7 +11,6 @@ inoremap <C-d> <DEL>
 cnoremap <C-h> <BS>
 cnoremap <C-d> <DEL>
 
-inoremap jj <ESC>
 inoremap <C-]> <ESC>
 vnoremap <C-]> <ESC>
 cnoremap <C-]> <ESC>
