@@ -1,5 +1,5 @@
 # Run command file for percol
-import sys, commands
+import sys, subprocess
 from percol.command import SelectorCommand
 from percol.key import SPECIAL_KEYS
 from percol.finder import FinderMultiQueryMigemo, FinderMultiQueryRegex
@@ -7,7 +7,7 @@ from percol.finder import FinderMultiQueryMigemo, FinderMultiQueryRegex
 ## prompt
 # Case Insensitive / Match Method に応じてプロンプトに表示
 def dynamic_prompt():
-    prompt = ur""
+    prompt = ""
     if percol.model.finder.__class__ == FinderMultiQueryMigemo:
         prompt += "[Migemo]"
     elif percol.model.finder.__class__ == FinderMultiQueryRegex:
@@ -23,22 +23,15 @@ def dynamic_prompt():
 
 percol.view.__class__.PROMPT = property(lambda self: dynamic_prompt())
 
-## migemo
-# Mac と Ubuntu で辞書のパスを変える
-if sys.platform == "darwin":
-    FinderMultiQueryMigemo.dictionary_path = "/usr/local/Cellar/cmigemo/20110227/share/migemo/utf-8/migemo-dict"
-else:
-    FinderMultiQueryMigemo.dictionary_path = "/usr/local/share/migemo/utf-8/migemo-dict"
-
 ## kill
 # Mac の場合は kill（yank）をクリップボードと共有する
 if sys.platform == "darwin":
     def copy_end_of_line_as_kill(self):
-        commands.getoutput("echo " + self.model.query[self.model.caret:] + " | pbcopy")
+        subprocess.getoutput("echo " + self.model.query[self.model.caret:] + " | pbcopy")
         self.model.query  = self.model.query[:self.model.caret]
 
     def paste_as_yank(self):
-        self.model.insert_string(commands.getoutput("pbpaste"))
+        self.model.insert_string(subprocess.getoutput("pbpaste"))
 
     SelectorCommand.kill_end_of_line = copy_end_of_line_as_kill
     SelectorCommand.yank = paste_as_yank
