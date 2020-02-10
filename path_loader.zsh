@@ -76,3 +76,9 @@ DOTNET_DIR="$HOME/.dotnet"
 if [[ -d "$DOTNET_DIR" ]]; then
 	export PATH="$PATH:$DOTNET_DIR/tools"
 fi
+
+# opam configuration
+OPAM_DIR="$HOME/.opam"
+if [[ -d "$OPAM_DIR" ]]; then
+	. "$HOME/.opam/opam-init/init.zsh" > /dev/null 2> /dev/null || true
+fi
