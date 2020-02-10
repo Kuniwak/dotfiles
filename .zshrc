@@ -80,7 +80,7 @@ if [[ -x $AWS_COMPLETIONS ]]; then
 fi
 
 ZSH_SYNTAX_HIGHLIGHTING_PATH="$HOME/.zsh-syntax-highlighting"
-if [ -d "$ZSH_SYNTAX_HIGHLIGHTING_PATH" ]; then
+if [[ -d "$ZSH_SYNTAX_HIGHLIGHTING_PATH" ]]; then
 	source "$ZSH_SYNTAX_HIGHLIGHTING_PATH/zsh-syntax-highlighting.zsh"
 fi
 
