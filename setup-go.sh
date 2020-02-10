@@ -7,7 +7,7 @@ has() {
 }
 
 setup_goenv() {
-	git clone git://github.com/syndbg/goenv.git "$HOME/.goenv"
+	git clone git@github.com:syndbg/goenv.git "$HOME/.goenv"
 
 	export PATH="$HOME/.goenv/bin:$PATH"
 	eval "$(goenv init -)"
