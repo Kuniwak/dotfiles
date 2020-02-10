@@ -83,3 +83,9 @@ OPAM_DIR="$HOME/.opam"
 if [[ -d "$OPAM_DIR" ]]; then
 	. "$HOME/.opam/opam-init/init.zsh" > /dev/null 2> /dev/null || true
 fi
+
+
+LOCAL_DIR="$HOME/.local"
+if [[ -d $LOCAL_DIR ]]; then
+	export PATH="$LOCAL_DIR/bin:$PATH"
+fi
