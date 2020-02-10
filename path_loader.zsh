@@ -46,6 +46,7 @@ if [[ -x "$GOENV_ROOT" ]]; then
 	eval "$(goenv init -)"
 
 	export GOPATH="$HOME/.go"
+	export GOBIN="$GOPATH/bin"
 	export PATH="$PATH:$GOPATH/bin"
 fi
 
