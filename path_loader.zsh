@@ -38,10 +38,6 @@ if [[ -d $MY_PYENV ]]; then
 	export PYENV_ROOT=$MY_PYENV
 	export PATH="$MY_PYENV/bin:$MY_PYENV/shims:$PATH"
 	eval "$(pyenv init -)"
-
-	if [[ -d "$MY_PYENV/plugins/pyenv-virtualenv" ]];then
-		eval "$(pyenv virtualenv-init -)"
-	fi
 fi
 
 export GOENV_ROOT="$HOME/.goenv"
