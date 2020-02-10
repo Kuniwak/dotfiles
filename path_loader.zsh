@@ -49,13 +49,6 @@ if [[ -x "$GOENV_ROOT" ]]; then
 	export PATH="$PATH:$GOPATH/bin"
 fi
 
-MAC_PYTHON_DIR="$HOME/Library/Python"
-if [[ -d "$MAC_PYTHON_DIR" ]]; then
-	for pip_dir in $(find "$MAC_PYTHON_DIR" -type d -depth 1); do
-		export PATH="$pip_dir/bin:$PATH"
-	done
-fi
-
 SOCK="/tmp/ssh-agent-$USER"
 if test $SSH_AUTH_SOCK && [[ $SSH_AUTH_SOCK != $SOCK ]]
 then
@@ -67,13 +60,6 @@ fi
 MY_CARGO="$HOME/.cargo"
 if [[ -d $MY_CARGO ]]; then
 	export PATH="$MY_CARGO/bin:$PATH"
-fi
-
-MY_SWIFTENV="$HOME/.swiftenv"
-if [[ -d $MY_SWIFTENV ]]; then
-	export SWIFTENV_ROOT="$MY_SWIFTENV"
-	export PATH="$MY_SWIFTENV/bin:$PATH"
-	eval "$(swiftenv init -)"
 fi
 
 SDKMAN_DIR="$HOME/.sdkman"
