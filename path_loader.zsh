@@ -71,4 +71,8 @@ fi
 ANDROID_DIR="$HOME/Library/Android"
 if [[ -d "$ANDROID_DIR" ]]; then
 	export PATH="$ANDROID_DIR/sdk/ndk-bundle:$ANDROID_DIR/sdk/platform-tools:$PATH"
+
+DOTNET_DIR="$HOME/.dotnet"
+if [[ -d "$DOTNET_DIR" ]]; then
+	export PATH="$PATH:$DOTNET_DIR/tools"
 fi
