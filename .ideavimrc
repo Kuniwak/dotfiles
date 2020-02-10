@@ -29,7 +29,4 @@ vnoremap k gk
 vnoremap gj j 
 vnoremap gk k 
 
-inoremap ¥ \
-inoremap \ ¥
-
 nnoremap ,l :action Debug<CR>
