@@ -1,3 +1,4 @@
+NeoBundle 'Kuniwak/promela.vim'
 NeoBundle 'Kuniwak/vim-javascript'
 NeoBundle 'Quramy/tsuquyomi'
 NeoBundle 'Shougo/neomru.vim'
@@ -13,6 +14,7 @@ NeoBundle 'cocopon/colorswatch.vim'
 NeoBundle 'cocopon/iceberg.vim'
 NeoBundle 'cocopon/vaffle.vim'
 NeoBundle 'hail2u/vim-css3-syntax'
+NeoBundle 'hwayne/tla.vim'
 NeoBundle 'itchyny/lightline.vim'
 NeoBundle 'juanpabloaj/ShowMarks'
 NeoBundle 'kana/vim-textobj-entire', { 'depends': 'kana/vim-textobj-user' }
