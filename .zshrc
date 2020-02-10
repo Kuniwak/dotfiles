@@ -74,6 +74,11 @@ if [[ -d $ZSH_COMPLETIONS ]]; then
 	fpath=("$ZSH_COMPLETIONS/src" $fpath)
 fi
 
+AWS_COMPLETIONS=/usr/local/bin/aws_zsh_completer.sh
+if [[ -x $AWS_COMPLETIONS ]]; then
+	source "$AWS_COMPLETIONS"
+fi
+
 ZSH_SYNTAX_HIGHLIGHTING_PATH="$HOME/.zsh-syntax-highlighting"
 if [ -d "$ZSH_SYNTAX_HIGHLIGHTING_PATH" ]; then
 	source "$ZSH_SYNTAX_HIGHLIGHTING_PATH/zsh-syntax-highlighting.zsh"
