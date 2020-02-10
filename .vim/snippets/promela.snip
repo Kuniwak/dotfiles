@@ -1,0 +1,21 @@
+snippet go-function
+alias gof
+	proctype Example() {
+		bool panic = false
+	
+		goto _return
+	
+	_panic:
+		panic = true
+		goto _defer
+	_return:
+	_defer:
+	end:
+	}
+
+snippet go-defer
+	bool should_defer${1:1} = false
+	if
+	:: d_step { should_defer$1 -> should_defer$1 = false }
+	:: else -> skip
+	fi
