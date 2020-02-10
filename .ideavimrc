@@ -30,3 +30,4 @@ vnoremap gj j
 vnoremap gk k 
 
 nnoremap ,l :action Debug<CR>
+set clipboard+=ideaput
