@@ -65,12 +65,12 @@ bindkey "^p" history-beginning-search-backward-end
 bindkey "^n" history-beginning-search-forward-end
 
 PATH_LOADER="$HOME/.dotfiles/path_loader.zsh"
-if [ -r "$PATH_LOADER" ]; then
+if [[ -r "$PATH_LOADER" ]]; then
 	source "$PATH_LOADER"
 fi
 
 ZSH_COMPLETIONS=/usr/local/share/zsh-completions
-if [ -d $ZSH_COMPLETIONS ]; then
+if [[ -d $ZSH_COMPLETIONS ]]; then
 	fpath=("$ZSH_COMPLETIONS/src" $fpath)
 fi
 
