@@ -17,10 +17,10 @@ if [[ -d $MY_PLENV ]]; then
 	eval "$(plenv init -)"
 fi
 
-MY_NDENV="$HOME/.ndenv"
+MY_NDENV="$HOME/.nodenv"
 if [[ -d $MY_NDENV ]]; then
-	export PATH="$MY_NDENV/bin:$MY_NDENV/shims:$PATH"
-	eval "$(ndenv init -)"
+	export PATH="$MY_NDENV/bin:$PATH"
+	eval "$(nodenv init -)"
 fi
 
 MY_DENV="$HOME/.denv"
