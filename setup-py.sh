@@ -2,8 +2,6 @@
 
 set -u
 
-RECOMMENDED_PY_VAR='3.5.2'
-
 has() {
 	type "$1" > /dev/null 2>&1
 }
@@ -16,9 +14,6 @@ setup_pyenv() {
 	export PIP_REQUIRE_VIRTUALENV=true
 	eval "$(pyenv init -)"
 	eval "$(pyenv virtualenv-init -)"
-
-	pyenv install $RECOMMENDED_PY_VAR
-	pyenv global $RECOMMENDED_PY_VAR
 }
 
 setup_pip() {
