@@ -81,7 +81,7 @@ fi
 # opam configuration
 OPAM_DIR="$HOME/.opam"
 if [[ -d "$OPAM_DIR" ]]; then
-	. "$HOME/.opam/opam-init/init.zsh" > /dev/null 2> /dev/null || true
+	eval $(opam env)
 fi
 
 

@@ -4,6 +4,9 @@ scriptencoding utf-8
 filetype off
 
 if has('vim_starting')
+	let g:opamshare = substitute(system('opam config var share'),'\n$','','''')
+	exec 'set runtimepath+=' . g:opamshare . '/merlin/vim'
+	exec 'set runtimepath^=' . g:opamshare . '/ocp-indent/vim'
 	set runtimepath+=~/.vim/bundle/neobundle.vim
 endif
 
@@ -535,7 +538,7 @@ augroup END
 " Syntastic {{{
 let g:syntastic_debug = 0
 
-let g:syntastic_mode_map = { 'mode': 'passive', "active_filetypes": ["json", "python", "javascript", "swift", "yaml"] }
+let g:syntastic_mode_map = { 'mode': 'passive', "active_filetypes": ["json", "python", "javascript", "swift", "yaml", "ocaml"] }
 
 let g:syntastic_html_tidy_quiet_messages = {
 			\ 'regex': [
@@ -583,8 +586,10 @@ let g:syntastic_swift_checkers = ['swiftlint']
 
 let g:syntastic_markdown_checkers = ['textlint']
 
+let g:syntastic_ocaml_checkers = ['merlin']
+
 let g:syntastic_auto_loc_list = 1
-let g:syntastic_loc_list_height = 3
+let g:syntastic_loc_list_height = 6
 
 nnoremap <silent> <Leader>sc :<C-u>SyntasticCheck<CR>
 nnoremap <silent> <Leader>sr :<C-u>SyntasticReset<CR>
