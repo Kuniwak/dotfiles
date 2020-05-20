@@ -14,11 +14,9 @@
 	o = checkout
 	b = checkout -b
 	f = fetch --prune
-	pl = pull
-	ps = push
-	ready = rebase -i @{u}
+	pull = pull --prune
 	s = status -s -b
-	ignore = "!gi() { curl -L -s https://www.gitignore.io/api/$@ ;}; gi"
+	ignore = "!gi() { curl -sLf https://www.gitignore.io/api/$@ ;}; gi"
 [include]
   path = ~/.gitconfig.local
 [filter "lfs"]
