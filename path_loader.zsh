@@ -84,6 +84,10 @@ if [[ -d "$OPAM_DIR" ]]; then
 	eval $(opam env)
 fi
 
+FLUTTER_DIR="$HOME/flutter"
+if [[ -d "$FLUTTER_DIR" ]]; then
+	export PATH="$PATH:$FLUTTER_DIR/bin"
+fi
 
 LOCAL_DIR="$HOME/.local"
 if [[ -d $LOCAL_DIR ]]; then
