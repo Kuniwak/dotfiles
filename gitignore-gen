@@ -1,0 +1,11 @@
+#!/bin/bash
+set -euox pipefail
+
+BASE_DIR="$(cd "$(dirname "$0")"; pwd)"
+GITIGNORE_GLOBAL="${BASE_DIR}/.gitignore.global"
+
+echo "/.bin" > "$GITIGNORE_GLOBAL"
+
+while read seed; do
+	git ignore "$seed" >> "$GITIGNORE_GLOBAL"
+done < "${BASE_DIR}/gitignore-seed"
