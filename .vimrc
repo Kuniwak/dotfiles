@@ -742,6 +742,13 @@ augroup END
 let g:syntastic_haskell_hdevtools_args = '-g-isrc -g-Wall'
 " }}}
 
+" OCaml {{{
+augroup ocaml_configs
+	autocmd!
+	autocmd FileType ocaml nnoremap <buffer> <Leader>t :<C-u>MerlinTypeOf<CR>
+augroup END
+" }}}
+
 syntax enable
 set background=dark
 set t_Co=256
