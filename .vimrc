@@ -330,6 +330,7 @@ augroup my_file_type
 	autocmd BufNewFile,BufRead Gruntfile setf javascript
 	autocmd BufNewFile,BufRead .perlcriticrc setf perlcriticrc
 	autocmd BufNewFile,BufRead Jenkinsfile setf groovy
+	autocmd BufNewFile,BufRead *.jenkinsfile setf groovy
 	autocmd BufNewFile,BufRead Podfile setf ruby
 	autocmd BufNewFile,BufRead *.podspec setf ruby
 	autocmd BufNewFile,BufRead Cartfile setf ruby
