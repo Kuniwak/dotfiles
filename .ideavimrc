@@ -31,3 +31,4 @@ vnoremap gk k
 
 nnoremap ,l :action Debug<CR>
 set clipboard+=ideaput
+set ideajoin
