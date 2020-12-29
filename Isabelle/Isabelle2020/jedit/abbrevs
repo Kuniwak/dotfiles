@@ -1,7 +1,10 @@
 [global]
+impI|\tapply(intro impI)
 ast|∗
 ass|\tapply(assumption)
+insert|\tapply(insert \|)
 xi|ξ
+safe|\tapply(safe)
 Upsilon|Υ
 <-|←
 female|♀
@@ -9,13 +12,13 @@ qed|∴
 leftarpoonup|↼
 angle|∠
 varphi|φ
-swarrow|↙
 nillams|∍
+swarrow|↙
 rightarrow|→
 delta|δ
 bigtriangleup|∆
-wr|≀
 propto|∝
+wr|≀
 times|✕
 succ|≻
 hookleftarrow|↪
@@ -28,6 +31,7 @@ nabla|∇
 union|∪
 elim|\tapply(elim \|)
 Diamond|◇
+case_tac|  apply(case_tac "\|")
 triangleright|⊳
 mangle|∢
 rule|\tapply(rule \|)
@@ -46,6 +50,7 @@ Downarrow|⇓
 male|♂
 --|—
 !!|\|¡
+disjE|  apply(erule disjE)
 rho|ρ
 Pi|Π
 cdot|⋅
@@ -53,17 +58,19 @@ app|\tapply(\|)
 doesnotdivide|∤
 heartsuit|♡
 unf|\tapply(unfold \|_def)
+rename|\tapply(rename_tac \|)
 uparrow|↑
 emptyset|∅
 forall|∀
 rightleftharpoons|⇋
-rhd|◁
 div|∻
+rhd|◁
 leftrighthaproons|⇌
 phi|ϕ
 aleph|א
 omega|ω
 Updownarrow|⇳
+clar|\tapply(clarify)
 upsilon|υ
 doteq|≐
 perp|⊥
@@ -71,34 +78,41 @@ Omega|Ω
 int|∫
 lhd|▷
 approx|≈
-simp|\tapply(simp)
 notexists|∄
+simp|\tapply(simp)
+clmp|  apply(clarsimp)
 bigcirc|◯
 alpha|α
 bspe|\tapply(drule_tac \| in bspec)
 simeq|≃
 sqsubseteq|⊑
+sym|\tapply(rule sym)
 zeta|ζ
 oint|∮
 ss|ß
-psi|ψ
 gg|≫
+meta_mp|\tapply(drule meta_mp)
+psi|ψ
 OO|Ø
 +-|±
 niton|∌
 gamma|γ
 clubsuit|♣
 diamond|◇
+subst|\tapply(subst \|)
+hoge|\tapply(hoge "\|")
 OE|Œ
 Gamma|Γ
 triangleleft|⊲
 and|∧
 cap|∩
 setminus|∖
+spec|\tapply(drule_tac x="\|" in spec)
 vee|∨
 searrow|↘
 bemol|♭
 parallel|∥
+case|  apply(case_tac "\|")
 kappa|κ
 frown|⁀
 circ|∘
@@ -126,11 +140,13 @@ ddag|‡
 leadsto|↝
 <->|↔
 pm|±
+erule|\tapply(erule_tac \|)
 intro|\tapply(intro \|)
 downarrow|↓
 pi|π
 top|⊤
 sim|∼
+exI|\tapply(rule_tac x="\|" in exI)
 leftharpoondown|↽
 lfloor|⎣
 sangle|∢
@@ -148,14 +164,17 @@ or|∨
 bigtriangledown|∇
 supseteq|⊇
 sub|\tapply(subgoal_tac "\|")
+unfold|\tapply(unfold \|_def)
 oo|ø
 smile|‿
 preceq|≼
 smallin|∊
+f|\tapply(frule \|)
 rightharpoonup|⇀
 e|\tapply(erule \|)
 ??|¿
-d|\tapply(drule_tac \|)
+d|\tapply(drule \|)
+refl|\tapply(rule refl)
 mid||
 oe|œ
 copyright|©
@@ -170,28 +189,32 @@ S|§
 Theta|Θ
 nu|ν
 c->|↪
-lceil|⎡
 prec|≺
+lceil|⎡
 updownarrow|↕
 sigma|σ
 wedge|∧
 spadesuit|♠
+induct|\tapply(induct \|)
 ni|∋
 notparallel|∦
+bspec|\tapply(drule_tac x="\|" in bspec)
 Sigma|Σ
 cup|∪
-asymp|≍
 ominus|⊝
+asymp|≍
 notsim|≁
 odot|⊙
 subset|⊂
 lambda|λ
 surd|√
+subgoal_tac|\tapply(subgoal_tac "\|")
 mu|μ
 Rightarrow|⇒
-ae|æ
-mp|∓
 partial|∂
+ae|æ
+mp|\tapply(drule mp)
+simp_all|\tapply(simp_all)
 supset|⊃
 sqcup|⊔
 aa|å
@@ -199,18 +222,23 @@ aa|å
 chi|χ
 sqsubset|⊏
 rightharpoondown|⇁
+clarify|  apply(clarify)
 bowtie|⋈
 divides|∣
+drule|\tapply(drule_tac \|)
 eta|η
 hookrightarrow|↩
 sqsupset|⊐
 increment|∆
+induct_tac|\tapply(induct_tac \|)
 dag|†
 Uparrow|⇑
+force|\tapply(force)
 ll|≪
 sqsupseteq|⊒
 prod|∏
 <=|⇐
+done|  done
 models|⊨
 [c++]
 [sqr]
@@ -218,13 +246,13 @@ models|⊨
 [markdown]
 [asp]
 [latex]
-ty|\\qic{type}{\|}
 qc|\\qic{class}{\|}
+ty|\\qic{type}{\|}
 it|\\textit{\|}
 img|\\imageFullWidth{\|}
 ft|\\frametitle{\|}
-ul|\\begin{itemize}\n\|\n\\end{itemize}
 tt|\\texttt{\|}
+ul|\\begin{itemize}\n\|\n\\end{itemize}
 qt|\\qic{type}{\|}
 ol|\\begin{enumerate}\n\|\\end{enumerate}
 cpp|\\begin{cpp}\n\|\\end{cpp}\n
@@ -234,10 +262,10 @@ b|\\textbf{\|}
 li|\\item 
 cl|\\iCls{\|}
 bs|% ----------------------------------------------------------------------\n\\begin{slide}\n\\frametitle{\|}\n\\end{slide}\n
-[cfscript]
 [factor]
-[m4]
+[cfscript]
 [batch]
+[m4]
 [assembly-mcs51]
 [vrml2]
 [groovy]
@@ -247,8 +275,8 @@ bs|% ----------------------------------------------------------------------\n\\b
 [patch]
 [beanshell]
 [pl1]
-[pyrex]
 [fortran90]
+[pyrex]
 [inno-setup]
 [inform]
 [netrexx]
@@ -287,10 +315,10 @@ sig|signal
 [maple]
 [lotos]
 [java module-info]
-[django]
 [PowerCenter Parameter File]
-[php]
+[django]
 [ada]
+[php]
 [yab]
 [lua]
 [makefile]
@@ -317,9 +345,9 @@ pse|<xsl:preserve-space elements="\|"/>
 cwt|<xsl:choose>\n\t<xsl:when test="\|">\n\t</xsl:when>\n</xsl:choose>
 wpn|<xsl:with-param name="\|" select=""/>
 it|<xsl:if test="\|">\n</xsl:if>
-tnm|<xsl:template name="\|" match="">\n</xsl:template>
 ctn|<xsl:call-template name="\|"/>
 co|<xsl:copy>\|</xsl:copy>
+tnm|<xsl:template name="\|" match="">\n</xsl:template>
 pin|<xsl:processing-instruction name="\|"></xsl:processing-instruction>
 om|<xsl:output method="\|"/>
 ats|<xsl:apply-templates select="\|"/>
@@ -346,31 +374,31 @@ tm|<xsl:template match="\|">\n</xsl:template>
 [drawj2d]
 [moin]
 [bibtex]
-[modula3]
 [hxml]
-[tsp]
+[modula3]
 [perl]
+[tsp]
 [swift]
 [transact-sql]
-[sml]
 [lisp]
+[sml]
 [smi-mib]
 [actionscript]
 [pop11]
 [progress]
-[ini]
 [jamon]
+[ini]
 [html]
 [go]
 [sgml]
 [bcel]
 [psp]
 [antlr]
-[cmake]
 [PostgreSQL]
+[cmake]
 [ant]
-[isabelle-options]
 [assembly-m68k]
+[isabelle-options]
 [omnimark]
 [interlis]
 [mxml]
@@ -398,8 +426,8 @@ tm|<xsl:template match="\|">\n</xsl:template>
 [zpt]
 [objective-c]
 [mqsc]
-[rust]
 [lex]
+[rust]
 [prolog]
 [assembly-r2000]
 [sdl/pr]
@@ -413,8 +441,8 @@ tm|<xsl:template match="\|">\n</xsl:template>
 [forth]
 [nqc]
 [s#]
-[mavscript]
 [isabelle-ml]
+[mavscript]
 [fhtml]
 [occam]
 [objectrexx]
@@ -459,17 +487,17 @@ tm|<xsl:template match="\|">\n</xsl:template>
 [slax]
 [assembly-agc]
 [java]
-ne|nextElement()
 Il|SwingUtilities.invokeLater(new Runnable()\n{\n\tpublic void run()\n\t{\n\t\t\|\n\t}\n});
+ne|nextElement()
 W|while($1)\n{\n\t\|\n}
 V|Vector
 Fd|for(int $1 = $2 - 1; $1 >= 0; $1--)\n{\n\t\|\n}
-serr|System.err.println(\|);
 Fc|for(int $1 = 0; $1 < $2.size(); $1++)\n{\n\t$3 \| = ($3)$2.get($1);\n}
 Ie|if($1)\n{\n\t|\n}\nelse\n{\n\t\n}\n
+serr|System.err.println(\|);
+JE|JEditTextArea
 VDE|VFS.DirectoryEntry
 S|String
-JE|JEditTextArea
 Fa|for(int $1 = 0; $1 < $2.length; $1++)\n{\n\t$3 \| = $2[$1];\n}
 P|public
 O|Object
@@ -483,11 +511,11 @@ Br|BufferedReader $1 = new BufferedReader(\|);
 E|Exception
 D|do\n{\n\t\|\n}\nwhile($1);
 sp|jEdit.setProperty(\|);
-Mal|MalformedURLException
 C|$1 $2 = ($1)\|
+Mal|MalformedURLException
 B|Buffer
-ogs|import org.gjt.sp.
 hme|hasMoreElements()
+ogs|import org.gjt.sp.
 El|else\n{\n\t\|\n}
 IO|IOException
 gb|getBuffer()
