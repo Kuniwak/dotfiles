@@ -31,7 +31,7 @@ nabla|∇
 union|∪
 elim|\tapply(elim \|)
 Diamond|◇
-case_tac|  apply(case_tac "\|")
+case_tac|\tapply(case_tac "\|")
 triangleright|⊳
 mangle|∢
 rule|\tapply(rule \|)
@@ -67,6 +67,7 @@ div|∻
 rhd|◁
 leftrighthaproons|⇌
 phi|ϕ
+leftrighthaproons|⇌
 aleph|א
 omega|ω
 Updownarrow|⇳
@@ -80,13 +81,14 @@ lhd|▷
 approx|≈
 notexists|∄
 simp|\tapply(simp)
-clmp|  apply(clarsimp)
+clmp|\tapply(clarsimp)
 bigcirc|◯
 alpha|α
 bspe|\tapply(drule_tac \| in bspec)
 simeq|≃
 sqsubseteq|⊑
 sym|\tapply(rule sym)
+frule|\tapply(frule \|)
 zeta|ζ
 oint|∮
 ss|ß
@@ -100,19 +102,19 @@ gamma|γ
 clubsuit|♣
 diamond|◇
 subst|\tapply(subst \|)
-hoge|\tapply(hoge "\|")
 OE|Œ
 Gamma|Γ
 triangleleft|⊲
 and|∧
 cap|∩
+spec|\tapply(drule_tac x="\|" in spec)
 setminus|∖
 spec|\tapply(drule_tac x="\|" in spec)
 vee|∨
 searrow|↘
 bemol|♭
 parallel|∥
-case|  apply(case_tac "\|")
+case|\tapply(case_tac "\|")
 kappa|κ
 frown|⁀
 circ|∘
@@ -231,6 +233,7 @@ hookrightarrow|↩
 sqsupset|⊐
 increment|∆
 induct_tac|\tapply(induct_tac \|)
+meta_spec|\tapply(drule_tac x="\|" in meta_spec)
 dag|†
 Uparrow|⇑
 force|\tapply(force)
@@ -238,7 +241,7 @@ ll|≪
 sqsupseteq|⊒
 prod|∏
 <=|⇐
-done|  done
+done|\tdone
 models|⊨
 [c++]
 [sqr]
