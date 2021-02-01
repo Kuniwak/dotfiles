@@ -22,6 +22,7 @@ wr|≀
 times|✕
 succ|≻
 hookleftarrow|↪
+TrueI|\tapply(rule TrueI)
 Delta|Δ
 geq|≥
 Box|∞
@@ -49,6 +50,7 @@ succeq|≽
 rfloor|⎦
 Downarrow|⇓
 male|♂
+arith|\tapply(arith)
 --|—
 !!|\|¡
 disjE|  apply(erule disjE)
@@ -127,6 +129,7 @@ el|\tapply(elim \|)
 dashv|⊢
 neg|¬
 AE|Æ
+subgoal|\tapply(subgoal_tac "\|")
 AA|Å
 Phi|Φ
 Lambda|Λ
@@ -143,8 +146,8 @@ ddag|‡
 vcg|\tapply(vcg)
 leadsto|↝
 <->|↔
-pm|±
 erule|\tapply(erule_tac \|)
+pm|±
 intro|\tapply(intro \|)
 downarrow|↓
 pi|π
