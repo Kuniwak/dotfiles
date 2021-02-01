@@ -25,6 +25,7 @@ hookleftarrow|↪
 Delta|Δ
 geq|≥
 Box|∞
+allI|\tapply(intro allI)
 subseteq|⊆
 rceil|⎤
 nabla|∇
@@ -67,7 +68,6 @@ div|∻
 rhd|◁
 leftrighthaproons|⇌
 phi|ϕ
-leftrighthaproons|⇌
 aleph|א
 omega|ω
 Updownarrow|⇳
@@ -87,8 +87,8 @@ alpha|α
 bspe|\tapply(drule_tac \| in bspec)
 simeq|≃
 sqsubseteq|⊑
-sym|\tapply(rule sym)
 frule|\tapply(frule \|)
+sym|\tapply(rule sym)
 zeta|ζ
 oint|∮
 ss|ß
@@ -107,9 +107,9 @@ Gamma|Γ
 triangleleft|⊲
 and|∧
 cap|∩
-spec|\tapply(drule_tac x="\|" in spec)
 setminus|∖
 spec|\tapply(drule_tac x="\|" in spec)
+ballI|\tapply(intro ballI)
 vee|∨
 searrow|↘
 bemol|♭
@@ -130,6 +130,7 @@ AE|Æ
 AA|Å
 Phi|Φ
 Lambda|Λ
+fold|\tapply(fold \|)
 nearrow|↗
 iota|ι
 cla|\tapply(clarify)
@@ -139,6 +140,7 @@ complement|∁
 equiv|≡
 epsilon|ε
 ddag|‡
+vcg|\tapply(vcg)
 leadsto|↝
 <->|↔
 pm|±
@@ -182,8 +184,10 @@ oe|œ
 copyright|©
 theta|ϴ
 cong|≅
+standard|\tapply(standard)
 Leftarrow|⇐
 auto|\tapply(auto)
+blast|\tapply(blast)
 mapsto|↦
 diamondsuit|♢
 tau|τ
