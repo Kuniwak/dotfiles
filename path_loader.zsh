@@ -42,7 +42,7 @@ fi
 
 export GOENV_ROOT="$HOME/.goenv"
 if [[ -x "$GOENV_ROOT" ]]; then
-	export PATH="$GOENV_ROOT/bin:$PATH"
+	export PATH="$GOENV_ROOT/bin:$GOENV_ROOT/shims:$PATH"
 	eval "$(goenv init -)"
 
 	export GOPATH="$HOME/go"  # XXX: goenv force to use it...
