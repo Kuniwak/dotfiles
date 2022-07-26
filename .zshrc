@@ -97,8 +97,9 @@ esac
 alias la='ls -a'
 alias ll='ls -l'
 alias lla='ls -la'
-alias pt='pt --home-ptignore'
-alias be='bundle exec --'
+alias posh='pwsh -nologo'
+alias pwsh='pwsh -nologo'
+alias sudoedit='sudo vim -u NONE'
 # }}}
 
 # Git aliases {{{
