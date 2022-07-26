@@ -536,6 +536,9 @@ let g:syntastic_ocaml_checkers = ['merlin']
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_loc_list_height = 6
 
+let g:syntactic_sh_checkers = ['shellcheck']
+let g:syntactic_sh_shellcheck_args = '-x'
+
 nnoremap <silent> <Leader>sc :<C-u>SyntasticCheck<CR>
 nnoremap <silent> <Leader>sr :<C-u>SyntasticReset<CR>
 "}}}
