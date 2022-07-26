@@ -445,62 +445,6 @@ nnoremap <silent> <Leader>uu :<C-u>Unite neobundle/update<CR>
 nnoremap <silent> <Leader>uy :<C-u>Unite history/yank<CR>
 " }}}
 
-" NeoComplete {{{
-let g:neocomplete#enable_at_startup = 1
-let g:neocomplete#manual_completion_start_length = 2
-let g:neocomplete#use_vimproc = 1
-
-if !exists('g:neocomplete#sources#omni#input_patterns')
-	let g:neocomplete#sources#omni#input_patterns = {}
-endif
-
-if !exists('g:neocomplete#keyword_patterns')
-	let g:neocomplete#keyword_patterns = {}
-endif
-let g:neocomplete#keyword_patterns['default'] = '\h\w*'
-
-if !exists('g:neocomplete#sources#file_include#exprs')
-	let g:neocomplete#sources#file_include#exprs = {}
-endif
-let g:neocomplete#sources#file_include#exprs.perl =
-			\ "fnamemodify(substitute(v:fname, '/', '::', 'g'), ':r')"
-
-let g:neocomplete#sources#omni#input_patterns.perl =
-			\ "[^. \t]->\%(\h\w*\)\?\|\h\w*::\%(\h\w*\)\?"
-
-let s:neocomplete_dict_home = $HOME.'/.vim/dictionary'
-let g:neocomplete#sources#dictionary#dictionaries = {
-			\ 'default': '',
-			\ 'javascript': s:neocomplete_dict_home.'/javascript.dict',
-			\ 'javascript.mocha': s:neocomplete_dict_home.'/javascript.mocha.dict',
-			\ 'javascript.closure': s:neocomplete_dict_home.'/javascript.closure.dict',
-			\ 'perl': s:neocomplete_dict_home.'/perl.dict',
-			\ 'perlcriticrc': s:neocomplete_dict_home.'/perlcriticrc.dict',
-			\ }
-
-augroup my_omni_completion
-	autocmd!
-	autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-	autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTag
-	autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-	autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-	autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTag
-augroup END
-
-augroup my_neocomplete
-	autocmd!
-	autocmd VimEnter call neocomplete#initialize()
-augroup END
-
-" For tern
-"let g:neocomplete#force_omni_input_patterns.javascript = "[^. \t]\.\w*"
-
-" For Jedi
-"autocmd FileType python setlocal omnifunc=jedi#completions
-"let g:neocomplete#force_omni_input_patterns.python =
-"			\ "\%([^. \t]\.\|^\s*@\|^\s*from\s.\+import \|^\s*from \|^\s*import \)\w*"
-"}}}
-
 " Jedi {{{
 "let g:jedi#auto_vim_configuration = 0
 "let g:jedi#popup_on_dot = 0
