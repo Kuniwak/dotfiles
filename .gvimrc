@@ -6,8 +6,8 @@ set showtabline=2
 set guioptions-=T
 
 if has('gui_macvim')
-	set guifont=Source\ Code\ Variable\ Light:h11
-	set guifontwide=HiraKakuPro-W3:h10
+	set guifont=Source\ Code\ Variable\ Light:h18
+	set guifontwide=HiraKakuPro-W3:h18
 
 	" 起動時にフルスクリーンにする
 	set fuoptions=maxvert,maxhorz
