@@ -1,10 +1,6 @@
 [global]
-impI|\tapply(intro impI)
 ast|∗
-ass|\tapply(assumption)
-insert|\tapply(insert \|)
 xi|ξ
-safe|\tapply(safe)
 Upsilon|Υ
 <-|←
 female|♀
@@ -17,28 +13,21 @@ nillams|∍
 rightarrow|→
 delta|δ
 bigtriangleup|∆
-disjI2|\tapply(rule disjI2)
 wr|≀
 propto|∝
-disjI1|\tapply(rule disjI1)
 times|✕
 succ|≻
 hookleftarrow|↪
-TrueI|\tapply(rule TrueI)
 Delta|Δ
 geq|≥
 Box|∞
-allI|\tapply(intro allI)
 subseteq|⊆
 rceil|⎤
 nabla|∇
 union|∪
-elim|\tapply(elim \|)
 Diamond|◇
-case_tac|  apply(case_tac "\|")
 triangleright|⊳
 mangle|∢
-rule|\tapply(rule \|)
 nwarrow|↖
 beta|β
 coprod|∐
@@ -52,31 +41,24 @@ succeq|≽
 rfloor|⎦
 Downarrow|⇓
 male|♂
-arith|\tapply(arith)
 --|—
 !!|\|¡
-disjE|  apply(erule disjE)
 rho|ρ
 Pi|Π
 cdot|⋅
-app|\tapply(\|)
 doesnotdivide|∤
 heartsuit|♡
-unf|\tapply(unfold \|_def)
-rename|\tapply(rename_tac \|)
 uparrow|↑
 emptyset|∅
 forall|∀
 rightleftharpoons|⇋
-rhd|◁
 div|∻
-phi|ϕ
+rhd|◁
 leftrighthaproons|⇌
-metis|\tapply(metis \|)
+phi|ϕ
 aleph|א
 omega|ω
 Updownarrow|⇳
-clar|\tapply(clarify)
 upsilon|υ
 doteq|≐
 perp|⊥
@@ -84,68 +66,47 @@ Omega|Ω
 int|∫
 lhd|▷
 approx|≈
-ins|\tapply(insert \|)
-simp|\tapply(simp)
 notexists|∄
-clmp|  apply(clarsimp)
 bigcirc|◯
-psubset|⊂
 alpha|α
-bspe|\tapply(drule_tac \| in bspec)
 simeq|≃
-conjI|\tapply(intro conjI)
 sqsubseteq|⊑
-sym|\tapply(rule sym)
 zeta|ζ
-conjE|\tapply(elim conjE)\n
 oint|∮
 ss|ß
-psi|ψ
 gg|≫
-meta_mp|\tapply(drule meta_mp)
+psi|ψ
 OO|Ø
 +-|±
 niton|∌
 gamma|γ
-conjunct2|\tapply(erule conjunct2)
 clubsuit|♣
 diamond|◇
-subst|\tapply(subst \|)
-hoge|\tapply(hoge "\|")
 OE|Œ
 Gamma|Γ
 triangleleft|⊲
 and|∧
-contrapos_pp|\tapply(erule contrapos_pp)
 cap|∩
-spec|\tapply(drule_tac x="\|" in spec)
 setminus|∖
-ballI|\tapply(intro ballI)
 vee|∨
 searrow|↘
 bemol|♭
 parallel|∥
-case|  apply(case_tac "\|")
 kappa|κ
 frown|⁀
 circ|∘
 sqcap|⊔
 pounds|£
 neq|≠
-clarsimp|\tapply(clarsimp)
 leq|≤
-el|\tapply(elim \|)
 dashv|⊢
 neg|¬
 AE|Æ
-subgoal|\tapply(subgoal_tac "\|")
 AA|Å
 Phi|Φ
 Lambda|Λ
-fold|\tapply(fold \|)
 nearrow|↗
 iota|ι
-cla|\tapply(clarify)
 Xi|Ξ
 oslash|⊘
 complement|∁
@@ -155,13 +116,10 @@ ddag|‡
 leadsto|↝
 <->|↔
 pm|±
-erule|\tapply(erule_tac \|)
-intro|\tapply(intro \|)
 downarrow|↓
 pi|π
 top|⊤
 sim|∼
-exI|\tapply(rule_tac x="\|" in exI)
 leftharpoondown|↽
 lfloor|⎣
 sangle|∢
@@ -172,32 +130,22 @@ sun|☼
 sum|∑
 exists|∃
 inter|∩
-r|\tapply(rule \|)
-cl|\tapply(clarify)
 star|∗
 or|∨
 bigtriangledown|∇
 supseteq|⊇
-sub|\tapply(subgoal_tac "\|")
-unfold|\tapply(unfold \|_def)
 oo|ø
 smile|‿
 preceq|≼
 smallin|∊
-f|\tapply(frule \|)
 rightharpoonup|⇀
-e|\tapply(erule \|)
 ??|¿
-d|\tapply(drule \|)
-refl|\tapply(rule refl)
 mid||
 oe|œ
 copyright|©
 theta|ϴ
 cong|≅
 Leftarrow|⇐
-auto|\tapply(auto)
-blast|\tapply(blast)
 mapsto|↦
 diamondsuit|♢
 tau|τ
@@ -205,32 +153,28 @@ S|§
 Theta|Θ
 nu|ν
 c->|↪
-prec|≺
 lceil|⎡
+prec|≺
 updownarrow|↕
 sigma|σ
 wedge|∧
 spadesuit|♠
-notparallel|∦
 ni|∋
-induct|\tapply(induct \|)
-bspec|\tapply(drule_tac x="\|" in bspec)
+notparallel|∦
 Sigma|Σ
 cup|∪
-ominus|⊝
 asymp|≍
+ominus|⊝
 notsim|≁
 odot|⊙
 subset|⊂
 lambda|λ
 surd|√
-subgoal_tac|\tapply(subgoal_tac "\|")
 mu|μ
 Rightarrow|⇒
-partial|∂
 ae|æ
-mp|\tapply(drule mp)
-simp_all|\tapply(simp_all)
+mp|∓
+partial|∂
 supset|⊃
 sqcup|⊔
 aa|å
@@ -238,25 +182,18 @@ aa|å
 chi|χ
 sqsubset|⊏
 rightharpoondown|⇁
-bexI|\tapply(rule_tac x="\|" in bexI)
-clarify|  apply(clarify)
 bowtie|⋈
 divides|∣
-drule|\tapply(drule_tac \|)
 eta|η
 hookrightarrow|↩
 sqsupset|⊐
 increment|∆
-induct_tac|\tapply(induct_tac \|)
-meta_spec|\tapply(drule_tac x="\|" in meta_spec)
 dag|†
 Uparrow|⇑
-force|\tapply(force)
 ll|≪
 sqsupseteq|⊒
-prod|∏
 <=|⇐
-done|  done
+prod|∏
 models|⊨
 [c++]
 [sqr]
