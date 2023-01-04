@@ -78,7 +78,6 @@ if [[ -d "$DOTNET_DIR" ]]; then
 	export PATH="$PATH:$DOTNET_DIR/tools"
 fi
 
-# opam configuration
 OPAM_DIR="$HOME/.opam"
 if [[ -d "$OPAM_DIR" ]]; then
 	eval $(opam env)
@@ -92,4 +91,9 @@ fi
 LOCAL_DIR="$HOME/.local"
 if [[ -d $LOCAL_DIR ]]; then
 	export PATH="$LOCAL_DIR/bin:$PATH"
+fi
+
+CARGO_ENV="$HOME/.cargo/env"
+if [[ -f "$CARGO_ENV" ]]; then
+	source "$CARGO_ENV"
 fi

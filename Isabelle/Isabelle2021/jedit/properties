@@ -1,5 +1,5 @@
 #jEdit properties
-#Fri Jul 22 08:19:51 JST 2022
+#Thu Aug 11 11:50:01 JST 2022
 Combined\ Options.x=-38
 Combined\ Options.y=-16
 Global\ Options.last=syntax
@@ -170,7 +170,7 @@ vfs.browser.colors.8.color=\#ff666666
 vfs.browser.dialog.height=425
 vfs.browser.dialog.width=475
 vfs.browser.dialog.x=652
-vfs.browser.dialog.y=235
+vfs.browser.dialog.y=234
 vfs.browser.filter-enabled=false
 vfs.browser.last-filter=*[^~\#]
 vfs.browser.modified.width=100
@@ -235,7 +235,7 @@ view.gutter.minDigitCount=3
 view.gutter.noFocusBorderColor=\#ff1e2132
 view.gutter.selectionAreaBgColor=\#ff1e2132
 view.gutter.structureHighlightColor=\#ff666699
-view.height=1175
+view.height=1055
 view.lineHighlightColor=\#ff1e2132
 view.multipleSelectionColor=\#ff1e2132
 view.pageBreaksColor=\#ff8080ff
@@ -279,5 +279,5 @@ view.toolbar.floatable=false
 view.width=1920
 view.wrapGuide=false
 view.wrapGuideColor=\#ff8080ff
-view.x=565
-view.y=129
+view.x=-1123
+view.y=250

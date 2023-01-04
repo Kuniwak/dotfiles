@@ -97,6 +97,7 @@ esac
 alias la='ls -a'
 alias ll='ls -l'
 alias lla='ls -la'
+alias less='less -n'
 alias posh='pwsh -nologo'
 alias pwsh='pwsh -nologo'
 alias sudoedit='sudo vim -u NONE'

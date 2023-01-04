@@ -13,8 +13,8 @@
 	c = commit -v
 	o = checkout
 	b = checkout -b
-	f = fetch --prune
-	pull = pull --prune
+	f = fetch -p
+	pull = pull -p
 	s = status -s -b
 	ignore = "!gi() { curl -sLf https://www.gitignore.io/api/$@ ;}; gi"
 [include]

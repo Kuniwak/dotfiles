@@ -1,12 +1,11 @@
 #jEdit's keymap imported
-#Thu Aug 18 09:14:15 JST 2022
+#Wed Jan 04 09:12:50 JST 2023
 action-bar.shortcut=C+ENTER
 add-explicit-fold.shortcut=C+e a
 add-marker-shortcut.shortcut=C+t
 add-marker.shortcut=C+e C+m
 backspace-word.shortcut=C+BACK_SPACE
 backspace.shortcut=BACK_SPACE
-backspace.shortcut2=A+h
 bottom-docking-area.shortcut=C+e C+DOWN
 center-caret.shortcut=C+e C+n
 clear-register.shortcut=C+r C+l
@@ -71,6 +70,7 @@ isabelle.goto-entity.shortcut=CS+d
 isabelle.increase-font-size.shortcut=C+PLUS
 isabelle.increase-font-size.shortcut2=C+ADD
 isabelle.increase-font-size2.shortcut=C+EQUALS
+isabelle.last-error.shortcut=CS+z
 isabelle.message.shortcut=CS+m
 isabelle.newline.shortcut=ENTER
 isabelle.next-error.shortcut=CS+n
@@ -85,8 +85,8 @@ last-action.shortcut=C+SPACE
 last-macro.shortcut=C+m C+l
 left-docking-area.shortcut=C+e C+LEFT
 line-comment.shortcut=C+e C+k
-line-end.shortcut=A+e
-line-home.shortcut=A+a
+line-end.shortcut=END
+line-home.shortcut=HOME
 match-bracket.shortcut=C+CLOSE_BRACKET
 match-bracket.shortcut2=C+9
 narrow-to-fold.shortcut=C+e n n
@@ -132,7 +132,6 @@ recent-buffer.shortcut2=C+CIRCUMFLEX
 record-macro.shortcut=C+m C+r
 record-temp-macro.shortcut=C+m C+m
 redo.shortcut=C+e C+z
-redo.shortcut2=CS+z
 regexp.shortcut=C+e C+x
 reload.shortcut=F5
 remove-trailing-ws.shortcut=C+e r

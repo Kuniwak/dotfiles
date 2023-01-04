@@ -1,38 +1,47 @@
-#!/bin/bash -eu -o pipefail
+#!/bin/bash
 # Thanks, @kaorimatz!
 
+set -euo pipefail
+
+
+has() {
+  local command_name="$1"
+  type "$command_name" > /dev/null 2>&1
+}
+
+
+symlink_with_bkup() {
+  local source="$1"
+  local dest="$2"
+  local timestamp
+  timestamp="$(date +%s)"
+  local bkup_dir="$HOME/.backups/$timestamp"
+
+  if [[ -e "$dest" ]]; then
+    mkdir -p "$bkup_dir"
+    mv "$dest" "$bkup_dir/$(basename "$dest")"
+  fi
+  ln -s "$source" "$dest"
+}
+
+
+symlink_if_not_exists() {
+  local source="$1"
+  local dest="$2"
+
+  mkdir -p "$(dirname "$2")"
+  [[ -e "$dest" ]] || ln -s "$source" "$dest"
+}
+
+
+git_clone_if_not_exists() {
+  local repo="$1"
+  local dest="$2"
+  [[ -e "$dest" ]] || git clone "$repo" "$dest"
+}
+
+
 setup() {
-	has() {
-		local command_name="$1"
-		type "$command_name" > /dev/null 2>&1
-	}
-
-	symlink_with_bkup() {
-		local source="$1"
-		local dest="$2"
-		local bkup_dir="$HOME/.backups/$(date +%s)"
-
-		if [[ -e "$dest" ]]; then
-			mkdir -p "$bkup_dir"
-			mv "$dest" "$bkup_dir/$(basename "$dest")"
-		fi
-		ln -s "$source" "$dest"
-	}
-
-	symlink_if_not_exists() {
-		local source="$1"
-		local dest="$2"
-
-		mkdir -p "$(dirname "$2")"
-		[[ -e "$dest" ]] || ln -s "$source" "$dest"
-	}
-
-	git_clone_if_not_exists() {
-		local repo="$1"
-		local dest="$2"
-		[[ -e "$dest" ]] || git clone "$1" "$2"
-	}
-
 	local dotfiles="$HOME/.dotfiles"
 	git_clone_if_not_exists 'https://github.com/Kuniwak/dotfiles' "$dotfiles"
 
@@ -47,6 +56,7 @@ setup() {
 	symlink_if_not_exists "$dotfiles/.pentadactylrc" "$HOME/.pentadactylrc"
 	symlink_if_not_exists "$dotfiles/.percol.d" "$HOME/.percol.d"
 	symlink_if_not_exists "$dotfiles/.bundle/config" "$HOME/.bundle/config"
+	symlink_if_not_exists "$dotfiles/.config/Microsoft.PowerShell_profile.ps1" "$HOME/.config/powershell/Microsoft.PowerShell_profile.ps1"
 
 	if has zsh; then
 		symlink_with_bkup "$dotfiles/.zshrc" "$HOME/.zshrc"

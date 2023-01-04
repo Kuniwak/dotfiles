@@ -335,6 +335,7 @@ augroup my_file_type
 	autocmd BufNewFile,BufRead *.podspec setf ruby
 	autocmd BufNewFile,BufRead Cartfile setf ruby
 	autocmd BufNewFile,BufRead Cartfile.private setf ruby
+	autocmd BufNewFile,BufRead *.tsv setf tsv
 
 	autocmd FileType python call s:SetPytestIfUnderTestDir()
 	autocmd FileType javascript call s:SetMochaIfUnderTestDir()
@@ -346,15 +347,6 @@ augroup my_file_type
 
 	" setf を上書きするために set filetype=markdown で強制的に ft 変更
 	autocmd BufNewFile,BufRead *.md set filetype=markdown
-augroup END
-" }}}
-
-" Quick quit {{{
-augroup my_quick_quit
-	autocmd!
-	autocmd BufEnter MacDictBuffer nnoremap <buffer> q :<C-u>q<CR>
-	autocmd FileType help,qf,quickrun nnoremap <buffer> q :<C-u>q<CR>
-	autocmd FileType qf nnoremap <buffer> q :<C-u>cclose<CR>
 augroup END
 " }}}
 
@@ -443,14 +435,6 @@ nnoremap <silent> <Leader>ui :<C-u>Unite neobundle/install<CR>
 nnoremap <silent> <Leader>us :<C-u>Unite neobundle/search<CR>
 nnoremap <silent> <Leader>uu :<C-u>Unite neobundle/update<CR>
 nnoremap <silent> <Leader>uy :<C-u>Unite history/yank<CR>
-" }}}
-
-" Jedi {{{
-"let g:jedi#auto_vim_configuration = 0
-"let g:jedi#popup_on_dot = 0
-"let g:jedi#popup_select_first = 0
-"let g:jedi#rename_command = "<leader>R"
-"autocmd FileType python let b:did_ftplugin = 1
 " }}}
 
 " NeoSnippet {{{
@@ -543,34 +527,7 @@ nnoremap <silent> <Leader>sc :<C-u>SyntasticCheck<CR>
 nnoremap <silent> <Leader>sr :<C-u>SyntasticReset<CR>
 "}}}
 
-" Fugitive {{{
-nnoremap <silent> <Leader>gb :Gblame<CR>
-nnoremap <silent> <Leader>gd :Gdiff<CR>
 nnoremap <silent> <Leader>gs :!tig status<CR>
-nnoremap <silent> <Leader>gp :Git pull<CR>
-nnoremap <silent> <Leader>gP :Git push<CR>
-" }}}
-
-" Showmarks{{{
-" 英字のマークのみ表示
-let g:showmarks_include = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
-"}}}
-
-" Gist-vim{{{
-let g:gist_detect_filetype = 1
-vnoremap <Leader>g :Gist<CR>
-"}}}
-
-" Restart.vim {{{
-" 終了時に保存するセッションオプションを設定する
-" このオプションはMacVimだと動かない
-"
-" ま た M a c V i m か
-"
-if !has('mac')
-	let g:restart_sessionoptions = 'blank,buffers,curdir,folds,help,localoptions,tabpages'
-endif
-"}}}
 
 " Lightline {{{
 let g:lightline = {
@@ -620,81 +577,11 @@ let g:vimshell_force_overwrite_statusline = 0
 let g:gitgutter_realtime = 0
 " }}}
 
-" Vim Indent Guides {{{
-let g:indent_guides_start_level = 2
-let g:indent_guides_guide_size = 1
-
-let g:indent_guides_auto_colors = 0
-let g:indent_guides_color_change_percent = 5
-
-augroup my_indent_color
-	autocmd!
-	autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg='#282a2e'
-	autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg='#282a2e'
-augroup END
-" }}}
-
 " Splash {{{
 let g:splash#path = $HOME . '/.vim/splashes/start.txt'
 command! Kuniwak :Splash $HOME/.vim/splashes/profile_white.txt
 command! SplashJavaScriptOperatorPriorityTable :Splash $HOME/.vim/splashes/js_op_priority.txt
 command! SplashPullRequestManner :Splash $HOME/.vim/splashes/pull_request_manner.markdown
-" }}}
-
-" Switch {{{
-nnoremap <Leader>s :Switch<CR>
-" }}}
-
-" MacDict {{{
-if has('mac')
-	nnoremap <Leader>d :MacDictCWord<CR>
-endif
-" }}} 
-
-" Perl lib {{{
-let g:rooter_use_lcd = 1
-augroup my_perl_lib_path
-	autocmd!
-	autocmd FileType perl PerlLocalLibPath
-augroup END
-" }}}
-
-" Unite pt {{{
-nnoremap <silent> <Leader>pt :<C-u>Unite grep:. -buffer-name=search-buffer<CR>
-if executable('pt')
-	let g:unite_source_grep_command = 'pt'
-	let g:unite_source_grep_default_opts = '--nogroup --nocolor'
-	let g:unite_source_grep_recursive_opt = ''
-	let g:unite_source_grep_encoding = 'utf-8'
-endif
-" }}}
-
-" Tsuquyomi {{{
-" Syntastic do it
-let g:tsuquyomi_disable_quickfix = 0
-
-augroup tsuquyomi_configs
-	autocmd!
-	autocmd FileType typescript setlocal completeopt+=menu,preview
-	autocmd FileType typescript nnoremap <buffer> <Leader>t : <C-u>echo tsuquyomi#hint()<CR>
-augroup END
-" }}}
-
-" hdevtools {{{
-augroup MyHaskell
-	autocmd!
-	autocmd FileType haskell nnoremap <buffer> <leader>t :HdevtoolsType<CR>
-	" autocmd FileType haskell nnoremap <buffer> <silent> <leader> :HdevtoolsClear<CR>
-augroup END
-
-let g:syntastic_haskell_hdevtools_args = '-g-isrc -g-Wall'
-" }}}
-
-" OCaml {{{
-augroup ocaml_configs
-	autocmd!
-	autocmd FileType ocaml nnoremap <buffer> <Leader>t :<C-u>MerlinTypeOf<CR>
-augroup END
 " }}}
 
 syntax enable
