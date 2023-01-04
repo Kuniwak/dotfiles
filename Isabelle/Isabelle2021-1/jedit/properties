@@ -1,5 +1,5 @@
 #jEdit properties
-#Wed Jan 04 09:30:00 JST 2023
+#Wed Jan 04 09:54:03 JST 2023
 Combined\ Options.x=696
 Combined\ Options.y=187
 Global\ Options.last=shortcuts
@@ -140,5 +140,5 @@ view.style.markup=color\:\#ff84a0c6
 view.style.operator=color\:\#ffc6c8d1
 view.width=1920
 view.wrapGuideColor=\#ff1e2132
-view.x=-1920
-view.y=25
+view.x=-4
+view.y=48

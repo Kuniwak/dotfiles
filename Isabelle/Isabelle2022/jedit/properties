@@ -1,5 +1,5 @@
 #jEdit properties
-#Wed Jan 04 09:33:22 JST 2023
+#Wed Jan 04 09:54:00 JST 2023
 Combined\ Options.x=696
 Combined\ Options.y=187
 Global\ Options.last=shortcuts
@@ -85,6 +85,7 @@ view-registers.dock-position=floating
 view.bgColor=\#ff161821
 view.caretColor=\#ffc6c8d1
 view.eolMarkerColor=\#ffff6633
+view.extendedState=6
 view.fgColor=\#ffc6c8d1
 view.gutter.bgColor=\#ff1e2132
 view.gutter.currentLineColor=\#ffcdd1e6
