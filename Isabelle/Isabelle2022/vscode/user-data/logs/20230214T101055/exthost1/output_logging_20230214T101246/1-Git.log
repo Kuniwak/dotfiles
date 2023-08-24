@@ -1,0 +1,27 @@
+[2023-02-14T01:12:49.731Z] Log level: Info
+[2023-02-14T01:12:49.758Z] [info] Validating found git in: /usr/local/bin/git
+[2023-02-14T01:12:49.808Z] [info] Using git 2.33.1 from /usr/local/bin/git
+[2023-02-14T01:12:49.835Z] > git rev-parse --show-toplevel [16ms]
+[2023-02-14T01:12:49.856Z] > git rev-parse --git-dir --git-common-dir [13ms]
+[2023-02-14T01:12:49.865Z] [info] Open repository: /Users/yuki.kokubun/Dev/isabelle-pfd-spec
+[2023-02-14T01:12:49.888Z] > git status -z -uall [15ms]
+[2023-02-14T01:12:49.904Z] > git symbolic-ref --short HEAD [12ms]
+[2023-02-14T01:12:49.922Z] > git for-each-ref --format=%(refname)%00%(upstream:short)%00%(objectname)%00%(upstream:track)%00%(upstream:remotename)%00%(upstream:remoteref) refs/heads/master refs/remotes/master [14ms]
+[2023-02-14T01:12:49.941Z] > git for-each-ref --sort -committerdate --format %(refname) %(objectname) %(*objectname) [14ms]
+[2023-02-14T01:12:49.942Z] > git remote --verbose [11ms]
+[2023-02-14T01:12:49.970Z] > git config --get commit.template [19ms]
+[2023-02-14T01:12:49.989Z] > git status -z -uall [13ms]
+[2023-02-14T01:12:50.005Z] > git symbolic-ref --short HEAD [11ms]
+[2023-02-14T01:12:50.023Z] > git for-each-ref --format=%(refname)%00%(upstream:short)%00%(objectname)%00%(upstream:track)%00%(upstream:remotename)%00%(upstream:remoteref) refs/heads/master refs/remotes/master [14ms]
+[2023-02-14T01:12:50.045Z] > git for-each-ref --sort -committerdate --format %(refname) %(objectname) %(*objectname) [18ms]
+[2023-02-14T01:12:50.051Z] > git remote --verbose [21ms]
+[2023-02-14T01:12:50.072Z] > git config --get commit.template [15ms]
+[2023-02-14T01:12:50.410Z] > git check-ignore -v -z --stdin [11ms]
+[2023-02-14T01:12:54.565Z] > git show --textconv :Example0.thy [16ms]
+[2023-02-14T01:12:54.570Z] > git ls-files --stage -- /Users/yuki.kokubun/Dev/isabelle-pfd-spec/Example0.thy [16ms]
+[2023-02-14T01:12:54.602Z] > git show --textconv :Example0.thy [16ms]
+[2023-02-14T01:12:54.605Z] > git ls-files --stage -- /Users/yuki.kokubun/Dev/isabelle-pfd-spec/Example0.thy [15ms]
+[2023-02-14T03:01:49.141Z] > git show --textconv :Example0.thy [16ms]
+[2023-02-14T03:01:49.142Z] > git ls-files --stage -- /Users/yuki.kokubun/Dev/isabelle-pfd-spec/Example0.thy [13ms]
+[2023-02-14T03:01:49.166Z] > git show --textconv :Example0.thy [12ms]
+[2023-02-14T03:01:49.172Z] > git ls-files --stage -- /Users/yuki.kokubun/Dev/isabelle-pfd-spec/Example0.thy [14ms]

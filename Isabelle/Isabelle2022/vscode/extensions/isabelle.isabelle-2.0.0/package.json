@@ -1,0 +1,328 @@
+{
+	"name": "isabelle",
+	"displayName": "Isabelle/VSCode",
+	"description": "Isabelle/VSCode Prover IDE",
+	"keywords": [
+		"theorem prover",
+		"formalized mathematics",
+		"mathematical logic",
+		"functional programming",
+		"document preparation"
+	],
+	"icon": "isabelle.png",
+	"version": "2.0.0",
+	"publisher": "isabelle",
+	"license": "MIT",
+	"repository": {
+		"url": "https://isabelle-dev.sketis.net"
+	},
+	"engines": {
+		"vscode": "1.70.1"
+	},
+	"categories": [
+		"Programming Languages"
+	],
+	"activationEvents": [
+		"onStartupFinished"
+	],
+	"main": "./out/src/extension",
+	"contributes": {
+		"viewsContainers": {
+			"panel": [
+				{
+					"id": "isabelle",
+					"title": "Isabelle",
+					"icon": "isabelle.png"
+				}
+			]
+		},
+		"views": {
+			"isabelle": [
+				{
+					"type": "webview",
+					"id": "isabelle-output",
+					"name": "Output"
+				}
+			]
+		},
+		"commands": [
+			{
+				"command": "isabelle.state",
+				"title": "Show State",
+				"category": "Isabelle"
+			},
+			{
+				"command": "isabelle.preview",
+				"title": "Open Preview",
+				"category": "Isabelle",
+				"icon": {
+					"light": "./media/Preview.svg",
+					"dark": "./media/Preview_inverse.svg"
+				}
+			},
+			{
+				"command": "isabelle.preview-split",
+				"title": "Open Preview (Split Editor)",
+				"category": "Isabelle",
+				"icon": {
+					"light": "./media/PreviewOnRightPane_16x.svg",
+					"dark": "./media/PreviewOnRightPane_16x_dark.svg"
+				}
+			},
+			{
+				"command": "isabelle.include-word",
+				"title": "Include word",
+				"category": "Isabelle"
+			},
+			{
+				"command": "isabelle.include-word-permanently",
+				"title": "Include word permanently",
+				"category": "Isabelle"
+			},
+			{
+				"command": "isabelle.exclude-word",
+				"title": "Exclude word",
+				"category": "Isabelle"
+			},
+			{
+				"command": "isabelle.exclude-word-permanently",
+				"title": "Exclude word permanently",
+				"category": "Isabelle"
+			},
+			{
+				"command": "isabelle.reset-words",
+				"title": "Reset non-permanent words",
+				"category": "Isabelle"
+			}
+		],
+		"menus": {
+			"editor/title": [
+				{
+					"when": "editorLangId == isabelle",
+					"command": "isabelle.preview",
+					"group": "navigation"
+				},
+				{
+					"when": "editorLangId == isabelle-ml",
+					"command": "isabelle.preview",
+					"group": "navigation"
+				},
+				{
+					"when": "editorLangId == bibtex",
+					"command": "isabelle.preview",
+					"group": "navigation"
+				},
+				{
+					"when": "editorLangId == isabelle",
+					"command": "isabelle.preview-split",
+					"group": "navigation"
+				},
+				{
+					"when": "editorLangId == isabelle-ml",
+					"command": "isabelle.preview-split",
+					"group": "navigation"
+				},
+				{
+					"when": "editorLangId == bibtex",
+					"command": "isabelle.preview-split",
+					"group": "navigation"
+				}
+			],
+			"explorer/context": [
+				{
+					"when": "resourceLangId == isabelle",
+					"command": "isabelle.preview",
+					"group": "navigation"
+				},
+				{
+					"when": "resourceLangId == isabelle-ml",
+					"command": "isabelle.preview",
+					"group": "navigation"
+				},
+				{
+					"when": "resourceLangId == bibtex",
+					"command": "isabelle.preview",
+					"group": "navigation"
+				}
+			]
+		},
+		"languages": [
+			{
+				"id": "isabelle",
+				"aliases": [
+					"Isabelle"
+				],
+				"extensions": [
+					".thy"
+				],
+				"configuration": "./isabelle-language.json"
+			},
+			{
+				"id": "isabelle-ml",
+				"aliases": [
+					"Isabelle/ML"
+				],
+				"extensions": [
+					".ML",
+					".sml",
+					".sig"
+				],
+				"configuration": "./isabelle-ml-language.json"
+			}
+		],
+		"configurationDefaults": {
+			"[isabelle]": {
+				"files.encoding": "utf8isabelle"
+			},
+			"[isabelle-ml]": {
+				"files.encoding": "utf8isabelle"
+			}
+		},
+		"grammars": [
+			{
+				"language": "isabelle",
+				"scopeName": "source.isabelle",
+				"path": "./isabelle-grammar.json"
+			},
+			{
+				"language": "isabelle-ml",
+				"scopeName": "source.isabelle-ml",
+				"path": "./isabelle-ml-grammar.json"
+			}
+		],
+		"configuration": {
+			"title": "Isabelle",
+			"properties": {
+				"isabelle.replacement": {
+					"type": "string",
+					"default": "non-alphanumeric",
+					"enum": [
+						"none",
+						"non-alphanumeric",
+						"all"
+					],
+					"enumDescriptions": [
+						"Replacments are deactivated. No replacments are done.",
+						"Replaces all uniqe abbreviations that contain no alphanumeric characters",
+						"Replaces all uniqe abbreviations"
+					],
+					"description": "Symbol replacement mode."
+				},
+				"isabelle.text_color": {
+					"type": "object",
+					"additionalProperties": {
+						"type": "string"
+					},
+					"default": {
+						"unprocessed_light": "rgba(255, 160, 160, 1.00)",
+						"unprocessed_dark": "rgba(97, 0, 97, 1.00)",
+						"unprocessed1_light": "rgba(255, 160, 160, 0.20)",
+						"unprocessed1_dark": "rgba(97, 0, 97, 0.20)",
+						"running_light": "rgba(97, 0, 97, 1.00)",
+						"running_dark": "rgba(255, 160, 160, 1.00)",
+						"running1_light": "rgba(97, 0, 97, 0.40)",
+						"running1_dark": "rgba(255, 160, 160, 0.40)",
+						"canceled_light": "rgba(255, 106, 106, 0.40)",
+						"canceled_dark": "rgba(255, 106, 106, 0.40)",
+						"bad_light": "rgba(255, 106, 106, 0.40)",
+						"bad_dark": "rgba(255, 106, 106, 0.40)",
+						"intensify_light": "rgba(255, 204, 102, 0.40)",
+						"intensify_dark": "rgba(204, 136, 0, 0.20)",
+						"markdown_bullet1_light": "rgba(218, 254, 218, 1.00)",
+						"markdown_bullet1_dark": "rgba(5, 199, 5, 0.20)",
+						"markdown_bullet2_light": "rgba(255, 240, 204, 1.00)",
+						"markdown_bullet2_dark": "rgba(204, 143, 0, 0.20)",
+						"markdown_bullet3_light": "rgba(231, 231, 255, 1.00)",
+						"markdown_bullet3_dark": "rgba(0, 0, 204, 0.20)",
+						"markdown_bullet4_light": "rgba(255, 224, 240, 1.00)",
+						"markdown_bullet4_dark": "rgba(204, 0, 105, 0.20)",
+						"quoted_light": "rgba(139, 139, 139, 0.10)",
+						"quoted_dark": "rgba(150, 150, 150, 0.15)",
+						"antiquoted_light": "rgba(255, 200, 50, 0.10)",
+						"antiquoted_dark": "rgba(255, 214, 102, 0.15)",
+						"writeln_light": "rgba(192, 192, 192, 1.0)",
+						"writeln_dark": "rgba(192, 192, 192, 1.0)",
+						"information_light": "rgba(193, 223, 238, 1.0)",
+						"information_dark": "rgba(193, 223, 238, 1.0)",
+						"warning_light": "rgba(255, 140, 0, 1.0)",
+						"warning_dark": "rgba(255, 140, 0, 1.0)",
+						"error_light": "rgba(178, 34, 34, 1.00)",
+						"error_dark": "rgba(178, 34, 34, 1.00)",
+						"spell_checker_light": "rgba(0, 0, 255, 1.0)",
+						"spell_checker_dark": "rgba(86, 156, 214, 1.00)",
+						"main_light": "rgba(0, 0, 0, 1.00)",
+						"main_dark": "rgba(212, 212, 212, 1.00)",
+						"keyword1_light": "rgba(175, 0, 219, 1.00)",
+						"keyword1_dark": "rgba(197, 134, 192, 1.00)",
+						"keyword2_light": "rgba(9, 136, 90, 1.00)",
+						"keyword2_dark": "rgba(181, 206, 168, 1.00)",
+						"keyword3_light": "rgba(38, 127, 153, 1.00)",
+						"keyword3_dark": "rgba(78, 201, 176), 1.00)",
+						"quasi_keyword_light": "rgba(153, 102, 255, 1.00)",
+						"quasi_keyword_dark": "rgba(153, 102, 255, 1.00)",
+						"improper_light": "rgba(205, 49, 49, 1.00)",
+						"improper_dark": "rgba(244, 71, 71, 1.00)",
+						"operator_light": "rgba(50, 50, 50, 1.00)",
+						"operator_dark": "rgba(212, 212, 212, 1.00)",
+						"tfree_light": "rgba(160, 32, 240, 1.00)",
+						"tfree_dark": "rgba(160, 32, 240, 1.00)",
+						"tvar_light": "rgba(160, 32, 240, 1.00)",
+						"tvar_dark": "rgba(160, 32, 240, 1.00)",
+						"free_light": "rgba(0, 0, 255, 1.00)",
+						"free_dark": "rgba(86, 156, 214, 1.00)",
+						"skolem_light": "rgba(210, 105, 30, 1.00)",
+						"skolem_dark": "rgba(210, 105, 30, 1.00)",
+						"bound_light": "rgba(0, 128, 0, 1.00)",
+						"bound_dark": "rgba(96, 139, 78, 1.00)",
+						"var_light": "rgba(0, 16, 128, 1.00)",
+						"var_dark": "rgba(156, 220, 254, 1.00)",
+						"inner_numeral_light": "rgba(9, 136, 90, 1.00)",
+						"inner_numeral_dark": "rgba(181, 206, 168, 1.00)",
+						"inner_quoted_light": "rgba(163, 21, 21, 1.00)",
+						"inner_quoted_dark": "rgba(206, 145, 120, 1.00)",
+						"inner_cartouche_light": "rgba(129, 31, 63, 1.00)",
+						"inner_cartouche_dark": "rgba(209, 105, 105, 1.00)",
+						"inner_comment_light": "rgba(0, 128, 0, 1.00)",
+						"inner_comment_dark": "rgba(96, 139, 78, 1.00)",
+						"comment1_light": "rgba(129, 31, 63, 1.00)",
+						"comment1_dark": "rgba(100, 102, 149, 1.00)",
+						"comment2_light": "rgba(209, 105, 105, 1.00)",
+						"comment2_dark": "rgba(206, 155, 120, 1.00)",
+						"comment3_light": "rgba(0, 128, 0, 1.00)",
+						"comment3_dark": "rgba(96, 139, 78, 1.00)",
+						"dynamic_light": "rgba(121, 94, 38, 1.00)",
+						"dynamic_dark": "rgba(220, 220, 170, 1.00)",
+						"class_parameter_light": "rgba(210, 105, 30, 1.00)",
+						"class_parameter_dark": "rgba(210, 105, 30, 1.00)",
+						"antiquote_light": "rgba(102, 0, 204, 1.00)",
+						"antiquote_dark": "rgba(197, 134, 192, 1.00)",
+						"raw_text_light": "rgba(102, 0, 204, 1.00)",
+						"raw_text_dark": "rgba(197, 134, 192, 1.00)",
+						"plain_text_light": "rgba(102, 0, 204, 1.00)",
+						"plain_text_dark": "rgba(197, 134, 192, 1.00)"
+					}
+				}
+			}
+		}
+	},
+	"scripts": {
+		"vscode:prepublish": "yarn run compile",
+		"compile": "tsc -p ./",
+		"watch": "tsc -watch -p ./"
+	},
+	"devDependencies": {
+		"@types/mocha": "^9.1.0",
+		"@types/node": "^17.0.19",
+		"@types/vscode": "^1.65.0",
+		"mocha": "^9.2.1",
+		"typescript": "^4.5.5"
+	},
+	"dependencies": {
+		"vscode-languageclient": "~7.0.0",
+		"vscode-languageserver-types": "~3.16.0"
+	},
+	"__metadata": {
+		"isApplicationScoped": false,
+		"installedTimestamp": 1676337053510
+	}
+}
