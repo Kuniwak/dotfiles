@@ -11,6 +11,11 @@ inoremap <C-d> <DEL>
 cnoremap <C-h> <BS>
 cnoremap <C-d> <DEL>
 
+nnoremap <C-u> <PageUp>
+nnoremap <C-d> <PageDown>
+vnoremap <C-u> <PageUp>
+vnoremap <C-d> <PageDown>
+
 inoremap <C-]> <ESC>
 vnoremap <C-]> <ESC>
 cnoremap <C-]> <ESC>
