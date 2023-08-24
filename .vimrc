@@ -422,48 +422,6 @@ nnoremap <silent> <Leader>l :<C-u>QuickRun<CR>
 nnoremap <silent> <Leader>vf :<C-u>execute 'Vaffle ' . fnameescape(expand('%:h'))<CR>
 "}}}
 
-" Unite {{{
-let g:unite_enable_start_insert = 1
-let g:unite_source_history_yank_enable = 1
-nnoremap <silent> <Leader>ub :<C-u>Unite buffer<CR>
-nnoremap <silent> <Leader>uc :<C-u>Unite colorscheme -auto-preview<CR>
-nnoremap <silent> <Leader>uf :<C-u>Unite file<CR>
-nnoremap <silent> <Leader>ul :<C-u>Unite line<CR>
-nnoremap <silent> <Leader>um :<C-u>Unite -default-action=open file_mru<CR>
-nnoremap <silent> <Leader>uo :<C-u>Unite outline<CR>
-nnoremap <silent> <Leader>ui :<C-u>Unite neobundle/install<CR>
-nnoremap <silent> <Leader>us :<C-u>Unite neobundle/search<CR>
-nnoremap <silent> <Leader>uu :<C-u>Unite neobundle/update<CR>
-nnoremap <silent> <Leader>uy :<C-u>Unite history/yank<CR>
-" }}}
-
-" NeoSnippet {{{
-set completeopt-=preview
-
-" Plugin key-mappings.
-imap <C-k>     <Plug>(neosnippet_expand_or_jump)
-smap <C-k>     <Plug>(neosnippet_expand_or_jump)
-
-" SuperTab like snippets behavior.
-imap <expr><TAB> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : pumvisible() ? "\<C-n>" : "\<TAB>"
-smap <expr><TAB> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
-
-nnoremap <Leader>ens :<C-u>NeoSnippetEdit -split -vertical<CR>
-
-" For snippet_complete marker.
-if has('conceal')
-	set conceallevel=2 concealcursor=i
-endif
-
-" Tell Neosnippet about the other snippets
-let g:neosnippet#snippets_directory='~/.vim/snippets'
-
-augroup my_neosnippet
-	autocmd!
-	autocmd InsertLeave * NeoSnippetClearMarkers
-augroup END
-"}}}
-
 " Syntastic {{{
 let g:syntastic_debug = 0
 
