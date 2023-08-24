@@ -89,7 +89,7 @@ if [[ -d "$FLUTTER_DIR" ]]; then
 fi
 
 LOCAL_DIR="$HOME/.local"
-if [[ -d $LOCAL_DIR ]]; then
+if [[ -d "$LOCAL_DIR" ]]; then
 	export PATH="$LOCAL_DIR/bin:$PATH"
 fi
 
