@@ -97,3 +97,8 @@ CARGO_ENV="$HOME/.cargo/env"
 if [[ -f "$CARGO_ENV" ]]; then
 	source "$CARGO_ENV"
 fi
+
+ISABELLE_DIR="/Applications/Isabelle2022.app/bin"
+if [[ -d "$ISABELLE_DIR" ]]; then
+	export PATH="$PATH:$ISABELLE_DIR"
+fi
