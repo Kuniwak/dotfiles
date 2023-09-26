@@ -1,6 +1,7 @@
 [user]
 	name = Kuniwak
 	email = orga.chem.job@gmail.com
+	signingkey = E673DCBE31CD9D7AF65D8A338C729125EC6D6060
 [core]
 	editor = /usr/bin/vim
 	excludesfile = ~/.gitignore.global
