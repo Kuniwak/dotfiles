@@ -1,0 +1,25 @@
+[2023-02-20T00:58:52.300Z] Log level: Info
+[2023-02-20T00:58:52.327Z] [info] Validating found git in: /usr/local/bin/git
+[2023-02-20T00:58:52.373Z] [info] Using git 2.33.1 from /usr/local/bin/git
+[2023-02-20T00:59:37.860Z] > git rev-parse --show-toplevel [13ms]
+[2023-02-20T00:59:37.879Z] > git rev-parse --git-dir --git-common-dir [10ms]
+[2023-02-20T00:59:37.888Z] [info] Open repository: /Users/yuki.kokubun/Dev/isabelle-pfd-spec
+[2023-02-20T00:59:37.912Z] > git status -z -uall [16ms]
+[2023-02-20T00:59:37.928Z] > git symbolic-ref --short HEAD [12ms]
+[2023-02-20T00:59:37.954Z] > git for-each-ref --format=%(refname)%00%(upstream:short)%00%(objectname)%00%(upstream:track)%00%(upstream:remotename)%00%(upstream:remoteref) refs/heads/master refs/remotes/master [22ms]
+[2023-02-20T00:59:37.972Z] > git for-each-ref --sort -committerdate --format %(refname) %(objectname) %(*objectname) [14ms]
+[2023-02-20T00:59:37.975Z] > git remote --verbose [12ms]
+[2023-02-20T00:59:37.995Z] > git config --get commit.template [10ms]
+[2023-02-20T00:59:38.015Z] > git status -z -uall [14ms]
+[2023-02-20T00:59:38.030Z] > git symbolic-ref --short HEAD [11ms]
+[2023-02-20T00:59:38.048Z] > git for-each-ref --format=%(refname)%00%(upstream:short)%00%(objectname)%00%(upstream:track)%00%(upstream:remotename)%00%(upstream:remoteref) refs/heads/master refs/remotes/master [14ms]
+[2023-02-20T00:59:38.067Z] > git for-each-ref --sort -committerdate --format %(refname) %(objectname) %(*objectname) [15ms]
+[2023-02-20T00:59:38.068Z] > git remote --verbose [12ms]
+[2023-02-20T00:59:38.085Z] > git config --get commit.template [11ms]
+[2023-02-20T00:59:38.407Z] > git show --textconv :Example0.thy [13ms]
+[2023-02-20T00:59:38.408Z] > git ls-files --stage -- /Users/yuki.kokubun/Dev/isabelle-pfd-spec/Example0.thy [11ms]
+[2023-02-20T00:59:38.425Z] > git cat-file -s 4a83341f045e2f9b2f6b3a78a77ab519886b4b23 [12ms]
+[2023-02-20T00:59:38.459Z] > git show --textconv :Example0.thy [13ms]
+[2023-02-20T00:59:38.461Z] > git ls-files --stage -- /Users/yuki.kokubun/Dev/isabelle-pfd-spec/Example0.thy [11ms]
+[2023-02-20T00:59:38.465Z] > git check-ignore -v -z --stdin [11ms]
+[2023-02-20T00:59:38.476Z] > git cat-file -s 4a83341f045e2f9b2f6b3a78a77ab519886b4b23 [11ms]

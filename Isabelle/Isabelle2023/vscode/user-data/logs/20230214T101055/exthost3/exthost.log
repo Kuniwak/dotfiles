@@ -1,0 +1,17 @@
+[2023-02-17 15:28:00.700] [exthost] [info] Extension host with pid 18486 started
+[2023-02-17 15:28:00.760] [exthost] [info] ExtensionService#_doActivateExtension vscode.debug-auto-launch, startup: true, activationEvent: '*'
+[2023-02-17 15:28:00.767] [exthost] [info] ExtensionService#_doActivateExtension vscode.git-base, startup: true, activationEvent: '*', root cause: vscode.git
+[2023-02-17 15:28:00.771] [exthost] [info] ExtensionService#_doActivateExtension vscode.ipynb, startup: true, activationEvent: '*'
+[2023-02-17 15:28:00.783] [exthost] [info] ExtensionService#_doActivateExtension vscode.git, startup: true, activationEvent: '*'
+[2023-02-17 15:28:00.807] [exthost] [info] ExtensionService#_doActivateExtension vscode.github, startup: true, activationEvent: '*'
+[2023-02-17 15:28:01.165] [exthost] [info] Eager extensions activated
+[2023-02-17 15:28:01.181] [exthost] [info] ExtensionService#_doActivateExtension vscode.emmet, startup: false, activationEvent: 'onStartupFinished'
+[2023-02-17 15:28:01.189] [exthost] [info] ExtensionService#_doActivateExtension vscode.merge-conflict, startup: false, activationEvent: 'onStartupFinished'
+[2023-02-17 15:28:01.193] [exthost] [info] ExtensionService#_doActivateExtension isabelle.isabelle, startup: false, activationEvent: 'onStartupFinished'
+[2023-02-17 15:29:35.523] [exthost] [info] ExtensionService#_doActivateExtension vscode.configuration-editing, startup: false, activationEvent: 'onLanguage:jsonc'
+[2023-02-17 15:29:35.530] [exthost] [info] ExtensionService#_doActivateExtension vscode.json-language-features, startup: false, activationEvent: 'onLanguage:jsonc'
+[2023-02-17 15:29:35.557] [exthost] [info] ExtensionService#_doActivateExtension vscode.typescript-language-features, startup: false, activationEvent: 'onLanguage:jsonc'
+[2023-02-17 15:31:36.698] [exthost] [info] ExtensionService#_doActivateExtension vscodevim.vim, startup: false, activationEvent: '*'
+[2023-02-17 17:59:12.541] [exthost] [info] Extension host terminating: received terminate message from renderer
+[2023-02-17 17:59:12.567] [exthost] [error] Error: ENOENT: no such file or directory, open '/Users/yuki.kokubun/.isabelle/Isabelle2022/vscode/user-data/User/globalStorage/vscodevim.vim/.registers'
+[2023-02-17 17:59:12.567] [exthost] [info] Extension host with pid 18486 exiting with code 0

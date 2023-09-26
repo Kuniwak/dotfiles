@@ -1,0 +1,552 @@
+[global]
+ast|∗
+xi|ξ
+Upsilon|Υ
+<-|←
+female|♀
+qed|∴
+leftarpoonup|↼
+angle|∠
+varphi|φ
+swarrow|↙
+nillams|∍
+rightarrow|→
+delta|δ
+bigtriangleup|∆
+wr|≀
+propto|∝
+times|✕
+succ|≻
+hookleftarrow|↪
+Delta|Δ
+geq|≥
+Box|∞
+subseteq|⊆
+rceil|⎤
+nabla|∇
+union|∪
+Diamond|◇
+triangleright|⊳
+mangle|∢
+nwarrow|↖
+beta|β
+coprod|∐
+notin|∉
+bullet|∙
+->|→
+leftarrow|←
+sharp|♯
+in|∈
+succeq|≽
+rfloor|⎦
+Downarrow|⇓
+male|♂
+--|—
+!!|\|¡
+rho|ρ
+Pi|Π
+cdot|⋅
+doesnotdivide|∤
+heartsuit|♡
+uparrow|↑
+emptyset|∅
+forall|∀
+rightleftharpoons|⇋
+div|∻
+rhd|◁
+leftrighthaproons|⇌
+phi|ϕ
+aleph|א
+omega|ω
+Updownarrow|⇳
+upsilon|υ
+doteq|≐
+perp|⊥
+Omega|Ω
+int|∫
+lhd|▷
+approx|≈
+notexists|∄
+bigcirc|◯
+alpha|α
+simeq|≃
+sqsubseteq|⊑
+zeta|ζ
+oint|∮
+ss|ß
+gg|≫
+psi|ψ
+OO|Ø
++-|±
+niton|∌
+gamma|γ
+clubsuit|♣
+diamond|◇
+OE|Œ
+Gamma|Γ
+triangleleft|⊲
+and|∧
+cap|∩
+setminus|∖
+vee|∨
+searrow|↘
+bemol|♭
+parallel|∥
+kappa|κ
+frown|⁀
+circ|∘
+sqcap|⊔
+pounds|£
+neq|≠
+leq|≤
+dashv|⊢
+neg|¬
+AE|Æ
+AA|Å
+Phi|Φ
+Lambda|Λ
+nearrow|↗
+iota|ι
+Xi|Ξ
+oslash|⊘
+complement|∁
+equiv|≡
+epsilon|ε
+ddag|‡
+leadsto|↝
+<->|↔
+pm|±
+downarrow|↓
+pi|π
+top|⊤
+sim|∼
+leftharpoondown|↽
+lfloor|⎣
+sangle|∢
+otimes|⊗
+leftrightarrow|↔
+Psi|Ψ
+sun|☼
+sum|∑
+exists|∃
+inter|∩
+star|∗
+or|∨
+bigtriangledown|∇
+supseteq|⊇
+oo|ø
+smile|‿
+preceq|≼
+smallin|∊
+rightharpoonup|⇀
+??|¿
+mid||
+oe|œ
+copyright|©
+theta|ϴ
+cong|≅
+Leftarrow|⇐
+mapsto|↦
+diamondsuit|♢
+tau|τ
+S|§
+Theta|Θ
+nu|ν
+c->|↪
+lceil|⎡
+prec|≺
+updownarrow|↕
+sigma|σ
+wedge|∧
+spadesuit|♠
+ni|∋
+notparallel|∦
+Sigma|Σ
+cup|∪
+asymp|≍
+ominus|⊝
+notsim|≁
+odot|⊙
+subset|⊂
+lambda|λ
+surd|√
+mu|μ
+Rightarrow|⇒
+ae|æ
+mp|∓
+partial|∂
+supset|⊃
+sqcup|⊔
+aa|å
+=>|⇒
+chi|χ
+sqsubset|⊏
+rightharpoondown|⇁
+bowtie|⋈
+divides|∣
+eta|η
+hookrightarrow|↩
+sqsupset|⊐
+increment|∆
+dag|†
+Uparrow|⇑
+ll|≪
+sqsupseteq|⊒
+<=|⇐
+prod|∏
+models|⊨
+[c++]
+[sqr]
+[nsis2]
+[markdown]
+[asp]
+[latex]
+ty|\\qic{type}{\|}
+qc|\\qic{class}{\|}
+it|\\textit{\|}
+img|\\imageFullWidth{\|}
+ft|\\frametitle{\|}
+ul|\\begin{itemize}\n\|\n\\end{itemize}
+tt|\\texttt{\|}
+qt|\\qic{type}{\|}
+ol|\\begin{enumerate}\n\|\\end{enumerate}
+cpp|\\begin{cpp}\n\|\\end{cpp}\n
+in|\\input{\|}
+fn|\\iClsFn{}{\|}
+b|\\textbf{\|}
+li|\\item 
+cl|\\iCls{\|}
+bs|% ----------------------------------------------------------------------\n\\begin{slide}\n\\frametitle{\|}\n\\end{slide}\n
+[cfscript]
+[factor]
+[m4]
+[batch]
+[assembly-mcs51]
+[vrml2]
+[groovy]
+[relax-ng-compact]
+[icon]
+[velocity]
+[patch]
+[beanshell]
+[sipp]
+[pl1]
+[pyrex]
+[fortran90]
+[inno-setup]
+[inform]
+[netrexx]
+[eiffel]
+[fortran]
+[wellknowntext]
+[chill]
+[pl-sql9]
+[json]
+[macroscheduler]
+[smalltalk]
+[mustache-template]
+[idl]
+[haxe]
+[smarty]
+[pvwave]
+[ada95]
+[pl-sql]
+[vala]
+[htaccess]
+[apacheconf]
+[clojure]
+[io]
+[pure]
+[sbt]
+[properties]
+[isabelle]
+[metapost]
+[rhtml]
+[powerdynamo]
+[vhdl]
+slv|std_logic_vector( x downto y )
+sl|std_logic
+var|variable
+sig|signal
+[logs]
+[maple]
+[lotos]
+[java module-info]
+[django]
+[PowerCenter Parameter File]
+[php]
+[ada]
+[yab]
+[lua]
+[makefile]
+[sas]
+[rtf]
+[ptl]
+[gcbasic]
+[xsl]
+fes|<xsl:for-each select="\|">\n</xsl:for-each>
+nc|<xsl:number count="\|"/>
+asn|<xsl:attribute-set name="\|">\n</xsl:attribute-set>
+sse|<xsl:strip-space elements="\|"/>
+cos|<xsl:copy-of select="\|"/>
+com|<xsl:comment>\|</xsl:comment>
+imh|<xsl:import href="\|"/>
+an|<xsl:attribute name="\|"></xsl:attribute>
+mt|<xsl:message terminate="\|"></xsl:message>
+vns|<xsl:variable name="\|" select=""/>
+ai|<xsl:apply-imports/>
+ss|<xsl:sort select="\|"/>
+pn|<xsl:param name="\|"/>
+vn|<xsl:variable name="\|"/>
+pse|<xsl:preserve-space elements="\|"/>
+cwt|<xsl:choose>\n\t<xsl:when test="\|">\n\t</xsl:when>\n</xsl:choose>
+wpn|<xsl:with-param name="\|" select=""/>
+it|<xsl:if test="\|">\n</xsl:if>
+tnm|<xsl:template name="\|" match="">\n</xsl:template>
+ctn|<xsl:call-template name="\|"/>
+co|<xsl:copy>\|</xsl:copy>
+pin|<xsl:processing-instruction name="\|"></xsl:processing-instruction>
+om|<xsl:output method="\|"/>
+ats|<xsl:apply-templates select="\|"/>
+oe|<xsl:output encoding="\|"/>
+atsm|<xsl:apply-templates select="\|" mode=""/>
+x|<?xml version="1.0"?>\|
+tdoe|<xsl:text disable-output-escaping="\|"></xsl:text>
+xe|<?xml vesion="1.0" encoding="\|"?>
+t|<xsl:text>\|</xsl:text>
+ctnwp|<xsl:call-template name="\|">\n\t<xsl:with-param name="" select=""/>\n</xsl:call-template>
+s|<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">\n\|\n</xsl:stylesheet>
+o|<xsl:otherwise>\n\|\n</xsl:otherwise>
+cwto|<xsl:choose>\n\t<xsl:when test="\|">\n\t</xsl:when>\n\t<xsl:otherwise>\n\t</xsl:otherwise>\n</xsl:choose>
+n|<xsl:number/>
+tmm|<xsl:template match="\|" mode="">\n</xsl:template>
+m|<xsl:message>\|</xsl:message>
+inh|<xsl:include href="\|"/>
+k|<xsl:key name="\|" match="" use=""/>
+en|<xsl:element name="\|">\n</xsl:element>
+vos|<xsl:value-of select="\|"/>
+f|<xsl:fallback>\|</xsl:fallback>
+tn|<xsl:template name="\|">\n</xsl:template>
+tm|<xsl:template match="\|">\n</xsl:template>
+[drawj2d]
+[moin]
+[bibtex]
+[modula3]
+[hxml]
+[tsp]
+[perl]
+[swift]
+[transact-sql]
+[sml]
+[lisp]
+[smi-mib]
+[actionscript]
+[pop11]
+[progress]
+[ini]
+[jamon]
+[html]
+[go]
+[sgml]
+[bcel]
+[psp]
+[antlr]
+[cmake]
+[PostgreSQL]
+[hl7v2]
+[ant]
+[isabelle-options]
+[assembly-m68k]
+[omnimark]
+[interlis]
+[mxml]
+[avro]
+[cvs-commit]
+[lilypond]
+[jsp]
+[protobuf]
+[foxpro]
+[rfc]
+[tex]
+[mail]
+[assembly-macro32]
+[svn-commit]
+[aspect-j]
+[squidconf]
+[rview]
+[gherkin]
+[jhtml]
+[jedit-actions]
+[gradle]
+[embperl]
+[mysql]
+[rd]
+[zpt]
+[objective-c]
+[mqsc]
+[rust]
+[lex]
+[prolog]
+[assembly-r2000]
+[sdl/pr]
+[hex]
+[isabelle-news]
+[swig]
+[javafx]
+[rebol]
+[s+]
+[dsssl]
+[forth]
+[nqc]
+[s#]
+[mavscript]
+[isabelle-ml]
+[fhtml]
+[occam]
+[objectrexx]
+[rpm-spec]
+[apdl]
+[cplex-lp]
+[myghty]
+[kotlin]
+[tcl]
+[scala]
+[rcp]
+[sip]
+[template-toolkit]
+[python]
+[i4gl]
+[clips]
+[roff]
+[rest]
+[stata]
+[twiki]
+[text]
+[awk]
+[verilog]
+[outline]
+[erlang]
+[yaml]
+[assembly-ags]
+[shellscript]
+[plantuml]
+[gettext]
+[jcl]
+[jflex]
+[d]
+[c]
+[maven]
+[coldfusion]
+[b]
+[typoscript]
+[scheme]
+[dart]
+[antlr4]
+[texinfo]
+[slax]
+[assembly-agc]
+[java]
+ne|nextElement()
+Il|SwingUtilities.invokeLater(new Runnable()\n{\n\tpublic void run()\n\t{\n\t\t\|\n\t}\n});
+W|while($1)\n{\n\t\|\n}
+V|Vector
+Fd|for(int $1 = $2 - 1; $1 >= 0; $1--)\n{\n\t\|\n}
+serr|System.err.println(\|);
+Fc|for(int $1 = 0; $1 < $2.size(); $1++)\n{\n\t$3 \| = ($3)$2.get($1);\n}
+Ie|if($1)\n{\n\t|\n}\nelse\n{\n\t\n}\n
+VDE|VFS.DirectoryEntry
+S|String
+JE|JEditTextArea
+Fa|for(int $1 = 0; $1 < $2.length; $1++)\n{\n\t$3 \| = $2[$1];\n}
+P|public
+O|Object
+N|$1 $2 = new $1(\|);
+gta|getTextArea()
+gp|jEdit.getProperty(\|)
+I|if($1)\n{\n\t\|\n}
+H|Hashtable
+F|for(int $1 = 0; $1 < $2; $1++)\n{\n\t\|\n}
+Br|BufferedReader $1 = new BufferedReader(\|);
+E|Exception
+D|do\n{\n\t\|\n}\nwhile($1);
+sp|jEdit.setProperty(\|);
+Mal|MalformedURLException
+C|$1 $2 = ($1)\|
+B|Buffer
+ogs|import org.gjt.sp.
+hme|hasMoreElements()
+El|else\n{\n\t\|\n}
+IO|IOException
+gb|getBuffer()
+IN|$1 $2 = ($1)$3.next();
+Ei|else if($1)\n{\n\t\|\n}
+chs|Box.createHorizontalStrut(\|)
+Cget|($1)$2.get($3)
+sbp|jEdit.setBooleanProperty(\|);
+cg|Box.createGlue()
+logw|Log.log(Log.WARNING,this,\|);
+gip|jEdit.getIntegerProperty(\|)
+CtoArray|($1[])$2.toArray(new $1[$2.size()])
+logn|Log.log(Log.NOTICE,this,\|);
+logm|Log.log(Log.MESSAGE,this,\|);
+DMTN|DefaultMutableTreeNode
+loge|Log.log(Log.ERROR,this,\|);
+cvs|Box.createVerticalStrut(\|)
+logd|Log.log(Log.DEBUG,this,\|);
+WI|while($1.hasNext())\n{\n\t\|\n}
+ogsu|import org.gjt.sp.util.
+gbp|jEdit.getBooleanProperty(\|)
+sout|System.out.println(\|);
+ogsj|import org.gjt.sp.jedit.
+[assembly-parrot]
+[dot]
+[xml]
+YY|<$1>\n\|\n</$1>
+Ykeycombo|<keycombo><keycap>$1</keycap><keycap>$2</keycap></keycombo>
+Ykeycap|<keycap>\|</keycap>
+[rakefile]
+[powershell]
+[cil]
+[logtalk]
+[postscript]
+[sql-loader]
+[redcode]
+[literate-haskell]
+[renderman-rib]
+[doxygen]
+[javacc]
+[ruby]
+[pike]
+[applescript]
+[pascal]
+[c#]
+[bbj]
+[freemarker]
+[coffeescript]
+[assembly-arm32]
+[vbscript]
+[visualbasic]
+[url]
+[povray]
+[jmk]
+[icalendar]
+[slate]
+[tld]
+[shtml]
+[haskell]
+[gsp]
+[hlsl]
+[n3]
+[plaintex]
+[cobol]
+[csv]
+[isabelle-root]
+[css]
+[assembly-x86]
+[binsource-agc]
+[ans-forth94]
+[xq]
+[gnuplot]
+[javascript]
+[uscript]
+[opensips]

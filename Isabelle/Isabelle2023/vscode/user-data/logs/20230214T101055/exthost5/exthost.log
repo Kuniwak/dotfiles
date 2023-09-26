@@ -1,0 +1,14 @@
+[2023-02-20 09:58:52.061] [exthost] [info] Extension host with pid 8540 started
+[2023-02-20 09:58:52.158] [exthost] [info] ExtensionService#_doActivateExtension vscode.debug-auto-launch, startup: true, activationEvent: '*'
+[2023-02-20 09:58:52.162] [exthost] [info] ExtensionService#_doActivateExtension vscode.git-base, startup: true, activationEvent: '*', root cause: vscode.git
+[2023-02-20 09:58:52.165] [exthost] [info] ExtensionService#_doActivateExtension vscode.ipynb, startup: true, activationEvent: '*'
+[2023-02-20 09:58:52.168] [exthost] [info] ExtensionService#_doActivateExtension vscodevim.vim, startup: true, activationEvent: '*'
+[2023-02-20 09:58:52.271] [exthost] [info] ExtensionService#_doActivateExtension vscode.git, startup: true, activationEvent: '*'
+[2023-02-20 09:58:52.293] [exthost] [info] ExtensionService#_doActivateExtension vscode.github, startup: true, activationEvent: '*'
+[2023-02-20 09:58:52.379] [exthost] [info] Eager extensions activated
+[2023-02-20 09:58:52.395] [exthost] [info] ExtensionService#_doActivateExtension vscode.emmet, startup: false, activationEvent: 'onStartupFinished'
+[2023-02-20 09:58:52.401] [exthost] [info] ExtensionService#_doActivateExtension vscode.merge-conflict, startup: false, activationEvent: 'onStartupFinished'
+[2023-02-20 09:58:52.403] [exthost] [info] ExtensionService#_doActivateExtension isabelle.isabelle, startup: false, activationEvent: 'onStartupFinished'
+[2023-02-20 10:03:04.902] [exthost] [info] Extension host terminating: received terminate message from renderer
+[2023-02-20 10:03:04.921] [exthost] [error] Error: ENOENT: no such file or directory, open '/Users/yuki.kokubun/.isabelle/Isabelle2022/vscode/user-data/User/globalStorage/vscodevim.vim/.registers'
+[2023-02-20 10:03:04.921] [exthost] [info] Extension host with pid 8540 exiting with code 0

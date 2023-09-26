@@ -1,0 +1,30 @@
+[2023-02-14 10:10:59.938] [sharedprocess] [info] Starting worker process with pid 15147 (type: fileWatcher, window: 1).
+[2023-02-14 10:12:43.959] [sharedprocess] [info] Worker process with pid 15147 terminated normally (type: fileWatcher, window: 1).
+[2023-02-14 10:12:46.112] [sharedprocess] [info] Starting worker process with pid 15786 (type: fileWatcher, window: 1).
+[2023-02-14 12:01:34.798] [sharedprocess] [info] Getting Manifest... kuniwak.iceberg-theme
+[2023-02-14 12:01:35.079] [sharedprocess] [info] Installing extension: kuniwak.iceberg-theme
+[2023-02-14 12:01:36.718] [sharedprocess] [info] Downloaded extension: kuniwak.iceberg-theme /Users/yuki.kokubun/.isabelle/Isabelle2022/vscode/user-data/CachedExtensionVSIXs/kuniwak.iceberg-theme-2.0.4-universal
+[2023-02-14 12:01:36.837] [sharedprocess] [info] Extracted extension to /Users/yuki.kokubun/.isabelle/Isabelle2022/vscode/extensions/.d7d39d71-7efe-4baf-9bd3-679d9f47d620: kuniwak.iceberg-theme
+[2023-02-14 12:01:36.857] [sharedprocess] [info] Renamed to /Users/yuki.kokubun/.isabelle/Isabelle2022/vscode/extensions/kuniwak.iceberg-theme-2.0.4-universal
+[2023-02-14 12:01:36.860] [sharedprocess] [info] Extracting completed. kuniwak.iceberg-theme
+[2023-02-14 12:01:36.862] [sharedprocess] [info] Extension installed successfully: kuniwak.iceberg-theme
+[2023-02-14 12:01:51.745] [sharedprocess] [info] Worker process with pid 15786 terminated normally (type: fileWatcher, window: 1).
+[2023-02-17 15:27:59.662] [sharedprocess] [info] Starting worker process with pid 18473 (type: fileWatcher, window: 3).
+[2023-02-17 15:31:33.028] [sharedprocess] [info] Getting Manifest... vscodevim.vim
+[2023-02-17 15:31:33.330] [sharedprocess] [info] Installing extension: vscodevim.vim
+[2023-02-17 15:31:36.190] [sharedprocess] [info] Downloaded extension: vscodevim.vim /Users/yuki.kokubun/.isabelle/Isabelle2022/vscode/user-data/CachedExtensionVSIXs/vscodevim.vim-1.24.3-universal
+[2023-02-17 15:31:36.392] [sharedprocess] [info] Extracted extension to /Users/yuki.kokubun/.isabelle/Isabelle2022/vscode/extensions/.b6fca0d5-fa07-4bb1-966e-b7f4b6b004d1: vscodevim.vim
+[2023-02-17 15:31:36.410] [sharedprocess] [info] Renamed to /Users/yuki.kokubun/.isabelle/Isabelle2022/vscode/extensions/vscodevim.vim-1.24.3-universal
+[2023-02-17 15:31:36.413] [sharedprocess] [info] Extracting completed. vscodevim.vim
+[2023-02-17 15:31:36.416] [sharedprocess] [info] Extension installed successfully: vscodevim.vim
+[2023-02-17 17:59:12.700] [sharedprocess] [info] Worker process with pid 18473 terminated normally (type: fileWatcher, window: 3).
+[2023-02-18 20:00:08.687] [sharedprocess] [warning] No ptyHost heartbeat after 6 seconds
+[2023-02-19 06:26:28.342] [sharedprocess] [warning] No ptyHost heartbeat after 6 seconds
+[2023-02-19 07:00:07.785] [sharedprocess] [warning] No ptyHost heartbeat after 6 seconds
+[2023-02-19 20:00:07.311] [sharedprocess] [warning] No ptyHost heartbeat after 6 seconds
+[2023-02-20 07:00:07.209] [sharedprocess] [warning] No ptyHost heartbeat after 6 seconds
+[2023-02-20 09:53:29.717] [sharedprocess] [warning] No ptyHost heartbeat after 6 seconds
+[2023-02-20 09:58:21.213] [sharedprocess] [info] Starting worker process with pid 8227 (type: fileWatcher, window: 4).
+[2023-02-20 09:58:24.498] [sharedprocess] [info] Worker process with pid 8227 terminated normally (type: fileWatcher, window: 4).
+[2023-02-20 09:58:51.396] [sharedprocess] [info] Starting worker process with pid 8539 (type: fileWatcher, window: 5).
+[2023-02-20 10:03:05.038] [sharedprocess] [info] Worker process with pid 8539 terminated normally (type: fileWatcher, window: 5).

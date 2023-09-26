@@ -1,0 +1,3 @@
+[2023-02-14T01:11:00.567Z] Log level: Info
+[2023-02-14T01:11:00.709Z] [info] Validating found git in: /usr/local/bin/git
+[2023-02-14T01:11:00.757Z] [info] Using git 2.33.1 from /usr/local/bin/git

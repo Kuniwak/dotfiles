@@ -1,0 +1,28 @@
+[2023-02-14 10:11:00.331] [exthost] [info] Extension host with pid 15144 started
+[2023-02-14 10:11:00.411] [exthost] [info] ExtensionService#_doActivateExtension vscode.debug-auto-launch, startup: true, activationEvent: '*'
+[2023-02-14 10:11:00.426] [exthost] [info] ExtensionService#_doActivateExtension vscode.git-base, startup: true, activationEvent: '*', root cause: vscode.git
+[2023-02-14 10:11:00.433] [exthost] [info] ExtensionService#_doActivateExtension vscode.ipynb, startup: true, activationEvent: '*'
+[2023-02-14 10:11:00.463] [exthost] [info] ExtensionService#_doActivateExtension vscode.git, startup: true, activationEvent: '*'
+[2023-02-14 10:11:00.551] [exthost] [info] ExtensionService#_doActivateExtension vscode.github, startup: true, activationEvent: '*'
+[2023-02-14 10:11:00.767] [exthost] [info] Eager extensions activated
+[2023-02-14 10:11:00.782] [exthost] [info] ExtensionService#_doActivateExtension vscode.emmet, startup: false, activationEvent: 'onStartupFinished'
+[2023-02-14 10:11:00.803] [exthost] [info] ExtensionService#_doActivateExtension vscode.merge-conflict, startup: false, activationEvent: 'onStartupFinished'
+[2023-02-14 10:11:00.809] [exthost] [info] ExtensionService#_doActivateExtension isabelle.isabelle, startup: false, activationEvent: 'onStartupFinished'
+[2023-02-14 10:11:01.296] [exthost] [info] ExtensionService#_doActivateExtension vscode.configuration-editing, startup: false, activationEvent: 'onLanguage:jsonc'
+[2023-02-14 10:11:01.304] [exthost] [info] ExtensionService#_doActivateExtension vscode.json-language-features, startup: false, activationEvent: 'onLanguage:jsonc'
+[2023-02-14 10:11:01.396] [exthost] [info] ExtensionService#_doActivateExtension vscode.typescript-language-features, startup: false, activationEvent: 'onLanguage:jsonc'
+[2023-02-14 10:12:43.927] [exthost] [info] Extension host terminating: received terminate message from renderer
+[2023-02-14 10:12:43.950] [exthost] [info] Extension host with pid 15144 exiting with code 0
+[2023-02-14 10:12:46.881] [exthost] [info] Extension host with pid 15787 started
+[2023-02-14 10:12:46.881] [exthost] [info] Skipping acquiring lock for /Users/yuki.kokubun/.isabelle/Isabelle2022/vscode/user-data/User/workspaceStorage/c640b0ad7b003e755c5d9c967f3c0e47.
+[2023-02-14 10:12:47.021] [exthost] [info] ExtensionService#_doActivateExtension vscode.debug-auto-launch, startup: true, activationEvent: '*'
+[2023-02-14 10:12:47.025] [exthost] [info] ExtensionService#_doActivateExtension vscode.git-base, startup: true, activationEvent: '*'
+[2023-02-14 10:12:47.028] [exthost] [info] ExtensionService#_doActivateExtension vscode.ipynb, startup: true, activationEvent: '*'
+[2023-02-14 10:12:47.039] [exthost] [info] ExtensionService#_doActivateExtension vscode.github, startup: true, activationEvent: '*'
+[2023-02-14 10:12:47.046] [exthost] [info] Eager extensions activated
+[2023-02-14 10:12:47.047] [exthost] [info] ExtensionService#_doActivateExtension vscode.emmet, startup: false, activationEvent: 'onStartupFinished'
+[2023-02-14 10:12:47.053] [exthost] [info] ExtensionService#_doActivateExtension vscode.merge-conflict, startup: false, activationEvent: 'onStartupFinished'
+[2023-02-14 10:12:49.597] [exthost] [info] ExtensionService#_doActivateExtension vscode.git, startup: false, activationEvent: 'api', root cause: vscode.github
+[2023-02-14 10:12:49.617] [exthost] [info] ExtensionService#_doActivateExtension isabelle.isabelle, startup: false, activationEvent: 'onStartupFinished'
+[2023-02-14 12:01:51.596] [exthost] [info] Extension host terminating: received terminate message from renderer
+[2023-02-14 12:01:51.609] [exthost] [info] Extension host with pid 15787 exiting with code 0

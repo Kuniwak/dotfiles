@@ -1,0 +1,11 @@
+[2023-02-14 10:10:56.051] [main] [info] update#ctor - updates are disabled by user preference
+[2023-02-14 10:10:59.354] [main] [info] Starting extension host with pid 15144 (fork() took 9 ms).
+[2023-02-14 10:12:43.966] [main] [info] Extension host with pid 15144 exited with code: 0, signal: null.
+[2023-02-14 10:12:46.123] [main] [info] Starting extension host with pid 15787 (fork() took 4 ms).
+[2023-02-14 12:01:51.620] [main] [info] Extension host with pid 15787 exited with code: 0, signal: null.
+[2023-02-17 15:27:59.672] [main] [info] Starting extension host with pid 18486 (fork() took 6 ms).
+[2023-02-17 17:59:12.671] [main] [info] Extension host with pid 18486 exited with code: 0, signal: null.
+[2023-02-20 09:58:21.171] [main] [info] Starting extension host with pid 8226 (fork() took 10 ms).
+[2023-02-20 09:58:24.474] [main] [info] Extension host with pid 8226 exited with code: 0, signal: null.
+[2023-02-20 09:58:51.406] [main] [info] Starting extension host with pid 8540 (fork() took 7 ms).
+[2023-02-20 10:03:05.037] [main] [info] Extension host with pid 8540 exited with code: 0, signal: null.
