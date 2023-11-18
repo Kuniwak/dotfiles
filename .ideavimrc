@@ -5,6 +5,7 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
+
 " noremap <ESC><ESC> :nohlsearch<CR><ESC>
 inoremap <C-h> <BS>
 inoremap <C-d> <DEL>
