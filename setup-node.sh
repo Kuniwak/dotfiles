@@ -17,7 +17,7 @@ install_nodenv() {
 }
 
 setup_nodenv() {
-	RECOMMENDED_NODE_VAR=18.15.0
+	RECOMMENDED_NODE_VAR=20.12.0
 
 	nodenv install --skip-existing "$RECOMMENDED_NODE_VAR"
 	nodenv global "$RECOMMENDED_NODE_VAR"
