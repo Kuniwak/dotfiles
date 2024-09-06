@@ -102,3 +102,10 @@ CARGO_ENV="$HOME/.cargo/env"
 if [[ -f "$CARGO_ENV" ]]; then
 	source "$CARGO_ENV"
 fi
+
+HOMEBREW_DIR="/opt/homebrew"
+if [[ -d "$HOMEBREW_DIR" ]]; then
+	export PATH="/opt/homebrew/bin:$PATH"
+	export PATH="/opt/homebrew/opt/coreutils/libexec/gnubin:$PATH"
+fi
+
