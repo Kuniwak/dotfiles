@@ -40,6 +40,11 @@ if [[ -d $MY_PYENV ]]; then
 	eval "$(pyenv init -)"
 fi
 
+MY_TFENV="$HOME/.tfenv"
+if [[ -d $MY_TFENV ]]; then
+	export PATH="$HOME/.tfenv/bin:$PATH"
+fi
+
 export GOENV_ROOT="$HOME/.goenv"
 if [[ -x "$GOENV_ROOT" ]]; then
 	export PATH="$GOENV_ROOT/bin:$GOENV_ROOT/shims:$PATH"
@@ -64,7 +69,7 @@ if [[ -d $MY_CARGO ]]; then
 fi
 
 SDKMAN_DIR="$HOME/.sdkman"
-if [[ -s "$SDKMAN_DIR/bin/sdkman-init.sh" ]]; then
+if [[ -e "$SDKMAN_DIR/bin/sdkman-init.sh" ]]; then
 	source "$SDKMAN_DIR/bin/sdkman-init.sh"
 fi
 
