@@ -24,13 +24,13 @@ setup_pip() {
 	cd /tmp
 	curl -O https://bootstrap.pypa.io/get-pip.py
 	echo 'Type password or abort installation for pip.'
-	python get-pip.py
+	python3 get-pip.py
 	cd $cwd
 }
 
 setup_flake8() {
-	has pip || setup_pip
-	pip install flake8
+	has pip3 || setup_pip
+	pip3 install flake8
 	pyenv rehash
 }
 
