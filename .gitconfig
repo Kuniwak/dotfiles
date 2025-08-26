@@ -38,3 +38,5 @@
 	defaultBranch = master
 [safe]
 	directory = *
+[protocol "file"]
+	allow = user

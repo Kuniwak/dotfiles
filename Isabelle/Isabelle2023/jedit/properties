@@ -1,5 +1,5 @@
 #jEdit properties
-#Thu Dec 05 16:58:48 JST 2024
+#Wed Jul 30 18:12:54 JST 2025
 Combined\ Options.x=327
 Combined\ Options.y=105
 Global\ Options.last=browser.custom.context
@@ -108,18 +108,18 @@ quicknotepad.dock-position=floating
 resetUndoOnSave=false
 restore.splits=true
 search.beanshell.toggle=false
-search.find.value=class
+search.find.value=\ x
 search.height=474
 search.hypersearch.toggle=false
 search.ignoreCase.toggle=false
 search.regexp.toggle=false
-search.replace.value=
+search.replace.value=\ (state_repo s)
 search.skipBinary.toggle=true
 search.skipHidden.toggle=true
 search.wholeWord.toggle=false
 search.width=577
 search.wrap.toggle=false
-search.x=1405
+search.x=1343
 search.y=506
 sidekick.splitter.location=888
 task-monitor.dock-position=floating
@@ -214,7 +214,7 @@ view.style.literal3=color\:\#ff33ff00 bgColor\:\#ff161821
 view.style.literal4=color\:\#ff84a0c6 bgColor\:\#ff161821
 view.style.markup=color\:\#ff84a0c6
 view.style.operator=color\:\#ffc6c8d1
-view.width=1030
+view.width=1920
 view.wrapGuideColor=\#ff1e2132
 view.x=-1920
 view.y=-185

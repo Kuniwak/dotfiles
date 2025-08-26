@@ -64,11 +64,6 @@ zle -N history-beginning-search-forward-end history-search-end
 bindkey "^p" history-beginning-search-backward-end
 bindkey "^n" history-beginning-search-forward-end
 
-PATH_LOADER="$HOME/.dotfiles/path_loader.zsh"
-if [[ -r "$PATH_LOADER" ]]; then
-	source "$PATH_LOADER"
-fi
-
 ZSH_COMPLETIONS=/usr/local/share/zsh-completions
 if [[ -d $ZSH_COMPLETIONS ]]; then
 	fpath=("$ZSH_COMPLETIONS/src" $fpath)
@@ -110,39 +105,39 @@ alias -g C='`git rev-parse --abbrev-ref HEAD`'
 
 # Tmux aliases {{{
 alias tn='tmux new -s'
-if has 'percol'; then
-	tmux-attach-percol() {
+if has 'peco'; then
+	tmux-attach-peco() {
 		session_names=$(tmux ls -F "#{session_name}")
 
 		if [[ -z "$session_names" ]]; then
 			return 1
 		fi
 
-		session_name=$(echo "$session_names" | percol)
+		session_name=$(echo "$session_names" | peco)
 		tmux attach -t "$session_name"
 	}
-	alias ta='tmux-attach-percol'
+	alias ta='tmux-attach-peco'
 fi
 # }}}
 
-if has 'percol'; then
-	ssh-add-percol() {
-		for id_rsa in $(find ~/.ssh -type f -name 'id_rsa' | percol); do
+if has 'peco'; then
+	ssh-add-peco() {
+		for id_rsa in $(find ~/.ssh -type f -name 'id_rsa' | peco); do
 			ssh-add "$id_rsa"
 		done
 	}
-	alias sa='ssh-add-percol'
+	alias sa='ssh-add-peco'
 
-	git-conflict-percol() {
-		vim -p `git diff --name-only --diff-filter=U | percol`
+	git-conflict-peco() {
+		vim -p `git diff --name-only --diff-filter=U | peco`
 	}
 
-	history-percol() {
-		eval `history -nr 1 | percol`
+	history-peco() {
+		eval `history -nr 1 | peco`
 	}
 
-	git-checkout-remote-percol() {
-		remote_branch=`git remote -a | percol | head -1`
+	git-checkout-remote-peco() {
+		remote_branch=`git remote -a | peco | head -1`
 		branch_name=`sed "s/remotes\/[^\/]*\///"`
 		git checkout -b $branch_name $remote_branch
 	}
