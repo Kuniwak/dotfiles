@@ -35,17 +35,33 @@ zstyle ':vcs_info:git:*' unstagedstr "-"
 
 zstyle ':vcs_info:*' formats '[%b%m%u%c]'
 zstyle ':vcs_info:*' actionformats '[%b|%a]'
+
+in-git() {
+	git rev-parse --show-toplevel >/dev/null 2>&1
+}
+
+github-owner-repo() {
+	git remote get-url origin | sed -e 's|^ssh://git@||'
+}
+
 precmd () {
 	psvar=()
 	LANG=en_US.UTF-8 vcs_info
 	[[ -n "$vcs_info_msg_0_" ]] && psvar[1]="$vcs_info_msg_0_"
+
+	local loc
+	if in-git; then
+		loc="$(github-owner-repo)"
+	else
+		loc="$(pwd)"
+	fi
 
 	# DEFAULT=$'%F{green}[%D{%m/%d %T}]%f $'
 	# ERROR=$'%F{red}[%D{%m/%d %T}]%f $'
 	DEFAULT=$'%F{green}$%f'
 	ERROR=$'%F{red}$%f'
 	PROMPT=$'%(?.${DEFAULT}.${ERROR}) '
-	RPROMPT="%1(v|%F{red}%1v%f|) %F{cyan}%d%f %F{magenta}%n%f"
+	RPROMPT="%1(v|%F{red}%1v%f|) %F{cyan}${loc}%f %F{magenta}%n%f"
 }
 # }}}
 
@@ -79,7 +95,7 @@ if [[ -d "$ZSH_SYNTAX_HIGHLIGHTING_PATH" ]]; then
 	source "$ZSH_SYNTAX_HIGHLIGHTING_PATH/zsh-syntax-highlighting.zsh"
 fi
 
-# General aliases {{{
+# Aliases {{{
 case "${OSTYPE}" in
 freebsd*|darwin*)
 	alias ls="ls -FG"
@@ -95,56 +111,54 @@ alias lla='ls -la'
 alias less='less -n'
 alias posh='pwsh -nologo'
 alias pwsh='pwsh -nologo'
-alias sudoedit='sudo vim -u NONE'
-# }}}
-
-# Git aliases {{{
+alias sudoedit='sudo vim -u NONE -N'
+alias codex='cage --preset codex codex -s danger-full-access'
+alias claude='cage --preset claude claude'
+alias gemini='cage --preset gemini gemini'
+alias brew='cage --preset homebrew brew'
 alias g='git'
 alias -g C='`git rev-parse --abbrev-ref HEAD`'
-# }}}
 
-# Tmux aliases {{{
+function gcd() {
+	local query="$*"
+	res="$(ghq list | peco --query "$query" --exit-0)"
+	if [[ -z "$res" ]]; then
+		false
+	else
+		cd "$(ghq root)/$res"
+	fi
+}
+
+function gco() {
+	local query="$*"
+	res="$(g wt | tail -n +2 | peco --query "$query" --exit-0 | awk '{print $(NF-1)}')"
+	if [[ -z "$res" ]]; then
+		false
+	else
+		g wt "$res"
+	fi
+}
+
 alias tn='tmux new -s'
-if has 'peco'; then
-	tmux-attach-peco() {
-		session_names=$(tmux ls -F "#{session_name}")
+function ta() {
+	session_names=$(tmux ls -F "#{session_name}")
 
-		if [[ -z "$session_names" ]]; then
-			return 1
-		fi
+	if [[ -z "$session_names" ]]; then
+		return 1
+	fi
 
-		session_name=$(echo "$session_names" | peco)
-		tmux attach -t "$session_name"
-	}
-	alias ta='tmux-attach-peco'
-fi
+	session_name=$(echo "$session_names" | peco)
+	tmux attach -t "$session_name"
+}
+
+h() {
+	eval `history -nr 1 | peco`
+}
 # }}}
-
-if has 'peco'; then
-	ssh-add-peco() {
-		for id_rsa in $(find ~/.ssh -type f -name 'id_rsa' | peco); do
-			ssh-add "$id_rsa"
-		done
-	}
-	alias sa='ssh-add-peco'
-
-	git-conflict-peco() {
-		vim -p `git diff --name-only --diff-filter=U | peco`
-	}
-
-	history-peco() {
-		eval `history -nr 1 | peco`
-	}
-
-	git-checkout-remote-peco() {
-		remote_branch=`git remote -a | peco | head -1`
-		branch_name=`sed "s/remotes\/[^\/]*\///"`
-		git checkout -b $branch_name $remote_branch
-	}
-fi
 
 if [ -r ~/.zshrc.local ]; then
   . ~/.zshrc.local
 fi
 
+eval "$(git wt --init zsh)"
 # vim: fdm=marker
