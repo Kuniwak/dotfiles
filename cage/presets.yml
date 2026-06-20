@@ -1,0 +1,94 @@
+presets:
+  npm:
+    allow:
+      - "."
+      - "$HOME/.npm"
+      - "$HOME/.cache/npm"
+      - "$HOME/.npmrc"
+  
+  cargo:
+    allow:
+      - "."
+      - "$HOME/.cargo"
+      - "$HOME/.rustup"
+      - "$HOME/.cache/sccache"
+  
+  pip:
+    allow:
+      - "."
+      - "$HOME/.cache/pip"
+      - "$HOME/.local"
+      - "$HOME/Library/Caches/pip"
+  
+  go:
+    allow:
+      - "."
+      - "$HOME/go"
+      - "$HOME/.cache/go-build"
+  
+  node:
+    allow:
+      - "."
+      - "$HOME/.npm"
+      - "$HOME/.cache/npm"
+      - "$HOME/.npmrc"
+      - "node_modules"
+  
+  ruby:
+    allow:
+      - "."
+      - "$HOME/.gem"
+      - "$HOME/.bundle"
+      - "$HOME/.rbenv"
+      - "$HOME/.rvm"
+  
+  python:
+    allow:
+      - "."
+      - "$HOME/.pyenv"
+      - "$HOME/.cache/pip"
+      - "$HOME/.local"
+      - "$HOME/.virtualenvs"
+      - "venv"
+      - ".venv"
+  
+  homebrew:
+    allow:
+      - "."
+      - "/private/tmp"
+      - "/usr/local/Homebrew"
+      - "/opt/homebrew"
+      - "$HOME/.homebrew"
+      - "$HOME/Library/Caches/Homebrew"
+      - "$HOME/Library/Logs/Homebrew"
+
+  gemini:
+    allow:
+      - "."
+      - "/private/tmp" # on macOS
+      - "/dev/tty"
+      - "$HOME/.gemini"
+    allow-git: true
+
+  claude:
+    allow:
+      - "."
+      - "/private/tmp" # on macOS
+      - "/dev/tty"
+      - "$HOME/.local/share/claude"
+      - "$HOME/.cache/claude"
+      - "$HOME/.claude"
+      - "$HOME/.claude.json"
+      - "$HOME/.claude.json.backup"
+      - "$HOME/.claude.json.lock"
+      - "$HOME/.claude.lock"
+    allow-keychain: true
+    allow-git: true
+
+  codex:
+    allow:
+      - "."
+      - "/private/tmp" # on macOS
+      - "/dev/tty"
+      - "$HOME/.codex"
+    allow-git: true
