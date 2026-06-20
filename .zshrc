@@ -41,7 +41,9 @@ in-git() {
 }
 
 github-owner-repo() {
-	git remote get-url origin | sed -e 's|^ssh://git@||'
+	local url
+	url="$(git remote get-url origin)"
+	print -r -- "${${url/#ssh:\/\/git@/}/#git@/}"
 }
 
 precmd () {
