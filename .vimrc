@@ -199,22 +199,6 @@ set laststatus=2
 noremap n nzz
 noremap N Nzz
 
-" 対応するリテラルの生成
-inoremap ( ()<Left>
-inoremap [ []<Left>
-inoremap { {}<Left>
-inoremap (<CR> (<C-m>)<C-o>O
-inoremap [<CR> [<C-m>]<C-o>O
-inoremap {<CR> {<C-m>}<C-o>O
-inoremap (<Space> (<Space><Space>)<Left><Left>
-inoremap [<Space> [<Space><Space>]<Left><Left>
-inoremap {<Space> {<Space><Space>}<Left><Left>
-
-" 閉じ括弧で直後の閉じ括弧の後に移動
-inoremap ) <ESC>f)a
-inoremap ] <ESC>f]a
-inoremap } <ESC>f}a
-
 " Undo履歴をファイルに保存する
 function! s:make_dir_if_not_found(path) abort
 	let dirname = expand(a:path . ':h')
