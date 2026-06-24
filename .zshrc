@@ -123,7 +123,7 @@ alias -g C='`git rev-parse --abbrev-ref HEAD`'
 
 function gcd() {
 	local query="$*"
-	res="$(ghq list | peco --query "$query" --exit-0)"
+	res="$(ghq list | peco --query "$query" --exit-0 --select-1)"
 	if [[ -z "$res" ]]; then
 		false
 	else
@@ -133,7 +133,7 @@ function gcd() {
 
 function gco() {
 	local query="$*"
-	res="$(g wt | tail -n +2 | peco --query "$query" --exit-0 | awk '{print $(NF-1)}')"
+	res="$(g wt | tail -n +2 | peco --query "$query" --exit-0 --select-1 | awk '{print $(NF-1)}')"
 	if [[ -z "$res" ]]; then
 		false
 	else
@@ -149,7 +149,7 @@ function ta() {
 		return 1
 	fi
 
-	session_name=$(echo "$session_names" | peco)
+	session_name=$(echo "$session_names" | peco --exit-0 --select-1)
 	tmux attach -t "$session_name"
 }
 
